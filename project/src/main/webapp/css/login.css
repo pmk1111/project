@@ -101,7 +101,7 @@ h1 {
 	height: 50px;
 	border: none;
 	border-radius: 3px;
-	margin-bottom: 8px;
+	margin-bottom: 15px;
 	cursor: pointer;
 }
 
@@ -169,6 +169,9 @@ a {
 	color: white;
 	text-decoration: none;
 }
+.find_pw{margin:5px 0px 15px 0px; color:#8D52A9;}
+.auto_login_text{display:inline-block; margin:5px 0px 10px 0px; color:#8D52A9;}
+.auto_login{border-color:#8D52A9; margin-left:10px;}
 
 form {
 	background-color: #fefefe;
