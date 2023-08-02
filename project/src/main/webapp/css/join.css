@@ -1,0 +1,182 @@
+#container {
+position: relative;
+width: 100%; 
+height: 3.2rem;
+background-color: white;
+box-shadow: 0px 0px 0.2rem rgba(0, 0, 0, 0.2);
+z-index: 10;
+
+}
+#top_menu{
+float: left;
+
+}
+#top_menu1{
+float: right;
+margin-right: 2rem;
+}
+
+ul {
+   margin: 0;
+   padding-left: 0;
+   line-height: 50px;
+   
+}
+
+li {
+   float: right;
+   list-style: none;
+   padding: 0 10px;
+}
+li:first-child{ 
+	float: left;
+	
+}
+li:second-child{ float: left;
+	}
+
+li a {
+  border:1px solid  #8D52A9;
+  text-decoration: none;
+  background-color: #8D52A9;
+  border-radius: 3px;
+  color:  white;
+  padding:5px 20px;
+  font-size:13px;
+  
+}
+
+ul li:first-child a{
+ border:1px solid  #8D52A9;
+ background-color: white;
+ border-radius: 3px;
+ color:  #8D52A9;
+}
+
+.logo {
+      display: inline;
+      width: 6.5rem; height: 2.5rem;
+      margin-left: 1.2rem; margin-top: 0.3rem;
+    }
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+	box-sizing: border-box
+}
+
+input {
+	border-radius: 3px;
+	border: 1px solid lightgray
+}
+
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+	outline: none;
+}
+ input[type="checkbox"],
+  label {
+    font-size: xx-small; 
+  }
+.required{color:red;}
+.hr {
+        display: flex;
+        flex-basis: 100%; /*가로 방향으로 flex 컨테이너의 전체 너비를 차지 */
+        align-items: center;
+        color: rgba(0, 0, 0, 0.35);
+        font-size: 12px;
+        margin: 8px 0px;
+      }
+      .hr::before,
+      .hr::after {
+        content: "";
+        flex-grow: 1;
+        background:#8D52A9; 
+        height: 1px;
+		margin: 0px 3px;
+      }
+ span {  color: #8D52A9; }
+ 
+.submitbtn { background: #8D52A9;
+	   color:white;
+	   text-align:center;
+	   padding: 10px 30px;
+	   border: none;
+	   margin:0 auto; 
+	   cursor: pointer; /* 손가락 커서 모양 */ 
+	   float: left;
+	   width: 100%;
+	   }
+.google, .kakao {
+   
+    color: black;
+    padding: 10px 30px;
+    margin: 8px 0;
+    border: 1px solid black;
+    cursor: pointer; /* 손가락 커서 모양 */
+    width: 100%;
+    
+}
+button:hover {
+	opacity: 0.8;
+	cursor: pointer; /* �հ��� Ŀ�� ��� */
+}
+
+button:focus {
+	outline: none;
+}
+
+
+
+form {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	/* 5% from the top, 15% from the bottom and centered */
+	border: none;
+	width: 600px; /* Could be more or less, depending on screen size */
+	padding: 16px;
+}
+
+
+
+b+div {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0 22px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+}
+
+/* Clear floats */
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+h1 {
+	text-align: center
+}
+
+b {
+	width: 100%;
+	display: block
+}
+
+
+
+input[name=id]+span, input[name=email]+span {
+	position: relative;
+	top: -20px
+}
+
