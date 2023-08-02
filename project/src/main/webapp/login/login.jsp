@@ -4,27 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>로그인 폼</title>
+<title>로그인</title>
 <link href="../css/login.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-3.7.0.min.js"></script>
 </head>
 <body>
-<header>
-<!-- <div id="home_nav">
-      <div id="home_logo">
-       <a href="main.jsp"><img class="home_logo" src="../img/logo.png" alt="메인 로고"></a>
- 	 </div>
-  	   
-      <div id="join_login_btn">
-      <ul>
-          <li><a class href="login.jsp">로그인</a></li>
-          <li><a href="join.jsp">회원가입</a></li>
-      </ul>
-      </div>
-   </div>
-   </header> -->
-   
-   
 	 <form name = "loginform" method="post" action="loginAction.net">
             <h1 id="login_text">로그인</h1>
 
