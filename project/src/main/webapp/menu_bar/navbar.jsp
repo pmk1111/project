@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <style>
     ul {list-style-type: none;}
     li {font-size: 10px}
     a {text-decoration: none; color: #8D52A9;}
     .navbar{margin-bottom: 0px;}
   </style>
-</head>
-<body>
 
     <div class="nav_bar">
       <a href="project_view.html"><img class="logo" src="../img/logo.png" alt="메인 로고"></a>
@@ -36,6 +31,3 @@
         </li>
       </ul>
     </div>
-
-</body>
-</html>

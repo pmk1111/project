@@ -1,0 +1,57 @@
+#board_title_info {
+  width: 80%;
+  height: 120px;
+  margin: 50px 50px 40px 50px;
+}
+
+.pj_board_name {
+  display: inline-block;
+  color: rgb(193, 193, 193);
+  margin-bottom: 30px;
+  font-size: 0.8em;
+}
+
+.fav_ed_del{float: right; margin-top: 40px;}
+#fav_icon {
+  width: 12px;
+  height: 12px;
+}
+
+.fav_label {
+  position: relative;
+  font-size: 12px;
+  color: rgb(193, 193, 193);
+  top: 1px;
+}
+.fav_ed_del > label + img{margin-left: 190px;}
+/* span: 인라인 요소라 size, margin 안먹히니 인라인 블록으로 변경 */
+
+.board_info{min-width: 100px; width: 100%; height: 15.8em; border: 1px solid #7C00B6; border-radius: 5px; font-weight: 600; font-size: 13px;}
+.board_info>span{display: inline-block; margin:12.5px 0px 10px 10px;}
+#i_create, #i_reporter, #i_assign, #i_status{ float: right; padding-right: 10px;}
+.board_info > hr{margin: 0;}
+.create, .reporter, .assign, .status{margin:18px 0px 10px 10px;}
+
+
+.board_desc{float: left; font-size: 20px; margin-left: 50px; }
+.board_desc>span:nth-child(1){display: block; color: rgb(193, 193, 193); margin-bottom: 32px; font-size: 0.8em;}
+
+.issue_content{min-width: 350px; width: 400px; letter-spacing: 0.7px; font-size: 13px;}
+
+.reply_textarea{ clear: both; min-width: 350px; width: 400px; margin: 50px 0px 50px 50px ;}
+.re_sub_cancel{float: right; margin-bottom: 30px;}
+.re_submit{width: 70px; height: 25px; background-color: #7C00B6; border-style: none; border-radius: 3px; color: white; font-size: 13px;}
+.re_cancel{width: 70px; height: 25px; background-color: white; border:1px solid #7C00B6; border-radius: 3px; color: #7C00B6; font-size: 13px;}
+.re_submit:hover, .re_cancel:hover{
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+.re_submit + .re_cancel{margin-left: 10px;}
+
+/* 서머노트 디자인 변경 */
+
+.btn-group-sm>.btn,
+.btn-sm {padding: 2px 5px;font-size: 8px;}
+.panel-default>.panel-heading {background-color: white;}
