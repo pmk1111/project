@@ -22,9 +22,14 @@
         <h2>효율적인 업무관리를 위한<br>
           최고의 솔루션</h2>
         <br><br>
-        <button type="button">지금 시작하기</button>
+        <button type="button" onclick="hrefLink()">지금 시작하기</button>
       </div>
     </div>
   </main>
+  <script>
+    function hrefLink() {
+	    location.href = "login.jsp";
+    }
+  </script>
 </body>
 </html>
