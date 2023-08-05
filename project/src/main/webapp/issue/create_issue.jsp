@@ -1,15 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<button id="openModalBtn">Open Modal</button>
-
-  <div id="modal_overlay"></div>
+    
+    
+<div id="modal_overlay"></div>
   <div id="issue_modal">
     <form method="post">
       <div id="issue_content">
@@ -47,10 +40,11 @@
         <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" required><br>
         <hr>
       </div>
+      <div id="issue_btn">
       <button id="issue_submit_btn" type="submit">작성하기</button>
-      <button id="close_modal_btn">취소</button>
+      <button type="button" id="close_modal_btn">취소</button>
+    </div>
     </form>
     <br>
   </div>
-</body>
-</html>
+ 

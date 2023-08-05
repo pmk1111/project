@@ -1,6 +1,6 @@
 $(document).ready(function () {
   //여기 아래 부분
-  $('#summernote').summernote({
+  $('#summernote_comm').summernote({
 
     height: 100,                 // 에디터 높이
     minHeight: null,             // 최소 높이
@@ -12,21 +12,21 @@ $(document).ready(function () {
   });
 
   // 서머노트에 text 쓰기
-  $('#summernote').summernote('insertText', 'sample Text');
+  // $('#summernote_comm').summernote('insertText', '');
 
   // 서머노트 쓰기 비활성화
-  $('#summernote').summernote('disable');
+  $('#summernote_comm').summernote('disable');
 
   // 서머노트 쓰기 활성화
-  $('#summernote').summernote('enable');
+  $('#summernote_comm').summernote('enable');
 
   // 서머노트 리셋
-  $('#summernote').summernote('reset');
+  $('#summernote_comm').summernote('reset');
 
   // 마지막으로 한 행동 취소 ( 뒤로가기 )
-  $('#summernote').summernote('undo');
+  $('#summernote_comm').summernote('undo');
   // 앞으로가기
-  $('#summernote').summernote('redo');
+  $('#summernote_comm').summernote('redo');
 
   //필요없는 서머노트 기능 및 디자인 제거, 변경
   $('.note-view').remove();

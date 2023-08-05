@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="../css/leftbar.css">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/board_detail.css">
+<link rel="stylesheet" href="../css/create_issue.css">
 <script src="../js/board_detail.js"></script>
   
 </head>
@@ -47,7 +48,14 @@
             <img id="fav_icon" name="fav" src="../img/star_grey.jpeg">
             <label for="fav" class="fav_label">즐겨찾기</label>
           <!-- </div> -->
-          <img src="../img/favorite.png" style="position: relative; width: 18px; height: 18px; top: 3.2px;">
+          <div class="ed_del_dropdown">
+            <img class="ed_del_dropdown_icon" src="../img/favorite.png"
+              style="position: relative; width: 18px; height: 18px; top: 3.2px;">
+            <div class="ed_del-dropdown_item">
+              <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#">수정</a>
+              <a class="del_issue" name="del_issue" href="#">삭제</a>
+            </div>
+          </div>
 
           <div class="board_info">
             <span>상세 정보</span>
@@ -97,7 +105,7 @@
         </div>
 
         <div class="reply_textarea">
-          <textarea id="summernote" name="editordata"></textarea>
+          <textarea id="summernote_comm" name="editordata"></textarea>
           <div class="re_sub_cancel">
           <button type="submit" class="re_submit" name="re_submit">댓글달기</button>
           <button type="submit" class="re_cancel" name="re_cancel">취소</button>
@@ -108,5 +116,9 @@
 
     </div>
 	</main>
+	
+	<jsp:include page="create_issue.jsp"/>
+	<script src="../js/issue_modal.js"></script>
+
 </body>
 </html>

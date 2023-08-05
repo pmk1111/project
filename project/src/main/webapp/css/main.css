@@ -15,5 +15,5 @@ main{width: 100%; height: calc(100vh - 60px);}
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width:1000px;
+  /* min-width:1000px; */
 }

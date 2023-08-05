@@ -55,3 +55,56 @@
 .btn-group-sm>.btn,
 .btn-sm {padding: 2px 5px;font-size: 8px;}
 .panel-default>.panel-heading {background-color: white;}
+
+.ed_del_dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .ed_del-dropdown_item {
+      display: none;
+      top: 24px;
+      right: -200px;
+      width: 100px;
+      height: 82px;
+      border: 1px solid #7C00B6;
+      background-color: white;
+      border-radius: 3px;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .ed_del-dropdown_item a {
+      display: block;
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 10px 0px;
+      border-radius: 3px;
+      font-size: 14px;
+      text-align: center;
+      color: black;
+      text-decoration: none;
+    }
+
+    .ed_del-dropdown_item a:hover {
+      cursor: pointer;
+      text-decoration: none;
+      background-color: #E9D2F4;
+      transition: .5s;
+    }
+
+    .ed_del_dropdown:hover .ed_del-dropdown_item {
+      display: block;
+      margin-right: 200px;
+      animation: slide .3s linear;
+    }
+
+    @keyframes slide {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
