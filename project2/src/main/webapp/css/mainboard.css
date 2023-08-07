@@ -1,0 +1,38 @@
+ ul {list-style-type: none;}
+    li {font-size: 10px}
+    /* a {text-decoration: none; color: #8D52A9;} */
+    .navbar{margin-bottom: 0px;}
+
+
+
+    @media(min-width: 300px) {
+      .my_work_status{margin-right: 50px;}
+      .brief{max-width: 860px; min-width: 860px;}
+    }
+
+    @media(min-width: 1400px) {
+      .my_work_status{margin-right: 80px;}
+      .brief{max-width: 920px;}
+    } 
+
+    @keyframes fade_in{
+      0%{opacity: 0; top:-40px;}
+      100%{opacity: 100%; top: 0px;}
+    }
+    .main{min-width: 1000px;}
+    .content{animation: fade_in 1.2s linear;}
+    .statue{width: 100%; min-width: 1000px; margin: 70px 0px 0px 70px;}
+    .my_work_status{display: inline-block; width: 250px; height: 200px;}
+    .my_work_status > p{margin-bottom: 5px; font-size: 14px;}
+    .todo_list, .progress_list, .done_list{width: 250px; height: 140px; background-color: lightgray; border-radius: 10px;}
+    .todo_item, .progress_item, .done_item{border-collapse: separate; border-spacing: 0px 6px; position:relative; width: 220px; margin-left: 15px; top: 10px;}
+    .todo_item tr, .progress_item tr, .done_item tr{background-color: white; height: 32px;}
+    .todo_item td a, .progress_item td a, .done_item td a{padding-left: 10px; border-radius: 3px; color: black;}
+    .todo_item a:active, .progress_item a:active, .done_item a:active{opacity: 0.6;}
+    .board_list_brief{margin: 50px 0px 0px 70px; width: 100%; min-width: 800px;}
+    .see_all{width: 180px;}
+    .see_all > h2{display: inline-block;}
+    .see_all > a{font-size: 13px; float: right; margin-top: 32px; color: black;}
+    .brief{width: 100%; border-collapse: collapse;}
+    .brief td{border-bottom: 2px solid lightgray; padding: 8px;}
+    .see_all > a:active{opacity: 0.6;}
