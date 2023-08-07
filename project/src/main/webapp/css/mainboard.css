@@ -16,11 +16,11 @@
     } 
 
     @keyframes fade_in{
-      0%{opacity: 0; top:-40px;}
+      0%{opacity: 0; top:-15px;}
       100%{opacity: 100%; top: 0px;}
     }
     .main{min-width: 1000px;}
-    .content{animation: fade_in 1.2s linear;}
+    .content{animation: fade_in 0.7s linear;}
     .statue{width: 100%; min-width: 1000px; margin: 70px 0px 0px 70px;}
     .my_work_status{display: inline-block; width: 250px; height: 200px;}
     .my_work_status > p{margin-bottom: 5px; font-size: 14px;}
