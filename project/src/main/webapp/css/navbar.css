@@ -16,7 +16,7 @@ a{text-decoration: none;}
 /* :root{--navbar-height: 60px;} */
 li{list-style: none;}
 .logo{width: 120px; height: 45px;}
-.nav_icon{display: flex; margin-bottom:0px;}
+.nav_icon{display: flex; margin-bottom:0px; margin-top:0px;}
 .nav_icon > li{margin-right: 8px;}
 
 .nav_img {

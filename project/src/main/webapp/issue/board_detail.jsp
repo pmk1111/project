@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 보기</title>
 
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -28,14 +28,21 @@
 <link rel="stylesheet" href="../css/create_issue.css">
 <script src="../js/board_detail.js"></script>
   
+  <style>
+  .left-bar-items label {top: 2.3px;}
+  .header-search {width: 347px;height: 30px;}
+  .logo{margin-bottom: 5px;}
+  .left-bar{width:260px;}
+
+  </style>
 </head>
 <body>
 	<header>
-		<jsp:include page="/menu_bar/navbar.jsp" />
+		<jsp:include page="../menu_bar/navbar.jsp" />
 	</header>
 
 	<main>
-		<jsp:include page="/menu_bar/leftbar.jsp" />
+		<jsp:include page="../menu_bar/leftbar.jsp" />
 		<div class="content">
       <div class="board-content">
         <div id="board_title_info">

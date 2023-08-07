@@ -13,6 +13,9 @@
   color: #8D52A9;
   margin-top: 30px;
   padding-left: 20px;
+  font-weight: bold;
+  font-family:"Apple SD Gothic Neo";
+  font-size:18.72px;
 }
 
 .left-bar>h5 {
@@ -22,14 +25,15 @@
   margin-bottom: 10px;
   padding-left: 20px;
   zoom: 0.9;
+      font-weight: bold;
   /* 크롬 등 일부 브라우저는 최소 폰트 크기를 10px로 정해서
   zoom으로 편법 써서 폰트 사이즈를 줄인다. */
 }
 
 .left-menu-line {
   border-bottom: 0.1px solid rgb(189, 189, 189);
-  margin-top: 1.3em;
-  margin-bottom: 1.3em;
+  margin-top: 21px;
+  margin-bottom: 21px;
   height: 0.1px;
   box-shadow: 0px 0px 5px 0px rgb(191, 191, 191);
 }
@@ -72,7 +76,7 @@ a>p {
   font-weight: 400;
   font-size: 14px;
   padding-left: 10px;
-  top: 2.2px;
+  top: -3px;
   color: #8D52A9;
 }
 

@@ -20,22 +20,12 @@
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/board_list.css">
   <style>
-    ul {
-      list-style-type: none;
-    }
-
-    li {
-      font-size: 10px
-    }
-
-    .left-bar a {
-      text-decoration: none;
-      color: #8D52A9;
-    }
-
-    .navbar {
-      margin-bottom: 0px;
-    }
+  .left-bar-items label {top: 2.3px;}
+  .project_name{font-size:1.17em;}
+  .header-search {width: 347px;height: 30px;}
+  .logo{margin-bottom: 5px;}
+  .left-bar{width:260px;}
+  .left-menu-line {marign:20.8px 0px;}
   </style>
 
   <script>
