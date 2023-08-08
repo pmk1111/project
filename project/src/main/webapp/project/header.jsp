@@ -5,7 +5,7 @@
 <header>
 	<div id="home_nav">
 		<!-- <div id="home_logo"> -->
-		<a href="main.jsp"><img class="home_logo" src="img/logo.png"
+		<a href="ProjectList.pro"><img class="home_logo" src="img/logo.png"
 			alt="메인 로고"></a>
 		<!-- </div> -->
 	</div>
