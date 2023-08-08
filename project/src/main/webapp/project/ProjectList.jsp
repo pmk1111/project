@@ -59,16 +59,7 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 	<c:if test="${listcount > 0 }">
 
 		<div class="rows">
-			<span>줄보기</span> 
-			<select class="form-control" id="viewcount">
-				<option value="1">1</option>
-				<option value="3">3</option>
-				<option value="5">5</option>
-				<option value="7">7</option>
-				<option value="10" selected>10</option>
-			</select>
 		
-
 		<table class="table table-striped">
 			<thead>
 				<tr>
