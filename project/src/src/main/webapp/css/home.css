@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+h1{font-family: 'Staatliches', cursive;}
+.home_content {
+position: relative;
+width: 100%;
+height: cals(100vh - 60px);
+min-width: 1062px;
+}
+
+.home_img {
+width: 100%;
+z-index: -2;
+position: relative;
+opacity: 0.7;
+animation: slide_fade .8s linear;
+}
+
+.slogan {
+position: absolute;
+text-align: center;
+top: 45%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: #4e348a;
+animation: fade 3s linear;
+letter-spacing: 3px;
+}
+
+.slogan h1 {
+font-size: 50px;
+letter-spacing: 5px;
+text-shadow: 3px 3px #926ee7;
+text-decoration: underline;
+}
+
+.slogan>button {
+border-style: none;
+border-radius: 5px;
+background-color: #8D52A9;
+color: white;
+width: 250px;
+height: 45px;
+font-size: 20px;
+text-align: center;
+cursor: pointer;
+}
+
+.slogan>button:hover {
+background-color: #9f70b5;
+opacity: 1;
+transition: 0.5s;
+}
+
+@keyframes slide_fade {
+0% {
+  opacity: 0;
+  margin-top: -30px;
+}
+
+100% {
+  opacity: 1;
+  margin-top: 0;
+}
+}
+@keyframes fade {
+0% {
+  opacity: 0;
+}
+30% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@keyframes stroke {
+  0%   {
+  stroke-dashoffset: 326px;
+  }
+  100% {
+  stroke-dashoffset: 0px;
+  }
+}

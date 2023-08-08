@@ -1,0 +1,19 @@
+main{width: 100%; height: calc(100vh - 60px);}
+
+.content {
+  position: relative;
+  float: right;
+  width: calc(100% - 260px);
+  height: calc(100vh - 60px);
+  overflow: auto;
+}
+
+.board-content {
+  position: absolute;
+  width: 90%;
+  height: calc(100vh - 60px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
