@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+# project
+=======
 JHTA L3 1팀의 GitHub
 ===
 ## 주의 사항
@@ -8,3 +11,4 @@ JHTA L3 1팀의 GitHub
 ## commit 진행 시 
 #### commit 메시지에 간략하게 어떤 수정사항이 있는 지 적어주세요
 > 추후 당일 업데이트 내역 관리 진행 예정
+>>>>>>> branch 'main' of https://github.com/pmk1111/project.git
