@@ -17,7 +17,7 @@
       </div>
       <div class="left-bar-items">
           <img id="issue_all" class="left-menu-icon" src="img/issueall.png">
-          <label for="issue_all">전체 이슈</label>
+          <label for="issue_all"><a href="BoardList.bo">전체 이슈</a></label>
       </div>
 
 

@@ -46,7 +46,7 @@ li {
 }
 </style>
 
-<script>
+<!-- <script>
 	$(document).ready(function() {
 
 		$('#summernote').summernote({
@@ -77,7 +77,7 @@ li {
 
 	});
 </script>
-
+ -->
 </head>
 <body>
 

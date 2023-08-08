@@ -143,7 +143,6 @@ public class BoardDAO {
 		
 
 			pstmt.setString(1, boarddata.getBoard_name());
-			//pstmt.setString(2, boarddata.getBoard_pass());
 			pstmt.setString(2, boarddata.getBoard_subject());
 			pstmt.setString(3, boarddata.getBoard_content());
 			//pstmt.setString(5, boarddata.getBoard_file());
