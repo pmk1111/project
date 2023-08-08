@@ -13,19 +13,21 @@ public class UsrLoginAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = "";
+
 		Cookie[] cookies = request.getCookies();
-		if(cookies !=null) {
-			for(int i=0;i<cookies.length;i++) {
-				if(cookies[i].getName().equals("id")) {
-					id=cookies[i].getValue();
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if (cookies[i].getName().equals("id")) {
+				id = cookies[i].getValue();
 				}
 			}
 		}
+
 		request.setAttribute("id", id);
-		ActionForward forward=new ActionForward();
-		forward.setRedirect(false);//주소변경없이 JSP페이지의 내용을 보여줍니다
+		
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(false); // 주소변경없이 JSP페이지의 내용을 보여줍니다
 		forward.setPath("login/login.jsp");
 		return forward;
 	}
-
 }

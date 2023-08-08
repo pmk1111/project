@@ -21,6 +21,30 @@ public class UsrDAO {
 			System.out.println("DB연결 실패 : " + ex);
 		}
 	}
+	
+	// 세션에 저장된 id의 넘버를 가져옴
+	public int getUserNum(String id) {
+
+		int num = 0;
+
+		String sql = "SELECT NUM FROM USR WHERE ID = ?";
+
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, id);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					num = rs.getInt("NUM");
+					return num;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return num;
+	}
 
 	public Usr usr_info(String id) {
 		Usr u = null;
@@ -49,12 +73,9 @@ public class UsrDAO {
 
 	public int update(Usr u) {
 		int result = 0;
-		String sql = "update usr " 
-		           + "set pic = ?, pass = ?, email = ? , name = ?, tel = ? " 
-				   + "where id = ? ";
+		String sql = "update usr " + "set pic = ?, pass = ?, email = ? , name = ?, tel = ? " + "where id = ? ";
 
-		try (Connection con = ds.getConnection(); 
-				PreparedStatement pstmt = con.prepareStatement(sql);) {
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setString(1, u.getPic());
 			pstmt.setString(2, u.getPass());
 			pstmt.setString(3, u.getEmail());
@@ -141,26 +162,23 @@ public class UsrDAO {
 	} // isId end
 
 	public int deleteId(String id) {
-	    
+
 		int result = 0;
 
-	    String sql = "delete from usr where id = ? ";
-	    try (Connection con = ds.getConnection(); 
-	    		PreparedStatement pstmt = con.prepareStatement(sql);) {
-	        pstmt.setString(1, id);
-	        try (ResultSet rs = pstmt.executeQuery()) {
-	        	if(rs.next()) {
-		              result = 1;
-	                    }
-	        }catch(SQLException e) {
-	        	e.printStackTrace();
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return result;
-	}//deleteId
-
-
+		String sql = "delete from usr where id = ? ";
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, id);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					result = 1;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}// deleteId
 
 }

@@ -28,9 +28,17 @@ public class UsrloginProcessAction implements Action {
 	         HttpSession session = request.getSession();
 	         session.setAttribute("id", id);
 	         
+	 		// UserDao를 사용하여 사용자의 num 값을 가져옵니다.
+	 		UsrDAO dao = new UsrDAO();
+	 		
+	 		int usrNum = dao.getUserNum(id);
+	 		
+	 		System.out.println("usrNum = " + usrNum);
+	 		
+	 		session.setAttribute("usrNum", usrNum);
 	         
 	         forward.setRedirect(true);
-	         forward.setPath("usrEdit.net");
+	         forward.setPath("ProjectList.pro");
 	         return forward;
 	         
 	      } else {
