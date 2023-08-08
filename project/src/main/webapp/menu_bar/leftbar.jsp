@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 
    <div class="left-bar">
       <h3 class="project_name">L3_Semi</h3>
+      
       <h5>프로젝트</h5>
       <div class="left-bar-items">
           <img id="create_pj" class="left-menu-icon" src="img/createproject.png">
-          <label for="create_pj">프로젝트 생성하기</label>
+          <label for="create_pj"><a href="ProjectCreate.pro">프로젝트 생성하기</a></label>
       </div>
       <div class="left-bar-items">
           <img id="pj_all" class="left-menu-icon" src="img/projectall.png">
-          <label for="pj_all">전체 프로젝트</label>
+          <label for="pj_all"><a href="ProjectList.pro">내 프로젝트</a></label>
       </div>
       <div class="left-bar-items">
           <img id="issue_all" class="left-menu-icon" src="img/issueall.png">
@@ -51,7 +53,7 @@
           <label for="pj_setting">프로젝트 설정</label>
       </div>
       <div class="left-bar-items">
-          <img id="add_team" class="left-menu-icon" src="Simg/person-add.png">
+          <img id="add_team" class="left-menu-icon" src="img/person-add.png">
           <label for="add_team">팀원 초대하기</label>
       </div>
       <br><br>
