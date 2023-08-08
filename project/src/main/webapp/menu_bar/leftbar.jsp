@@ -24,7 +24,7 @@
       <h5>일정</h5>
       <div class="left-bar-items">
           <img id="main_board" class="left-menu-icon" src="img/mainboard.png">
-          <label for="main_board">메인보드</label>
+          <label for="main_board"><a href="ProjectMainboard.pro">메인보드</a></label>
       </div>
       <div class="left-bar-items">
           <img id="pj_status" class="left-menu-icon" src="img/projectstatus.png">

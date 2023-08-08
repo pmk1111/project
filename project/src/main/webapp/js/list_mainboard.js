@@ -18,23 +18,13 @@ function ajax(sdata){
 				let output = "<tbody>";
 				$(data.boardlist).each(
 					function(index, item){
-						output += '<tr><td>' + (num--) + '</td>'
-						const blank_count = item.board_re_lev *2 + 1;
-						let blank = '&nbsp';
-						for(let i=0;i<blank_count;i++){
-							blank += '&nbsp;&nbsp;';
-						}
 						
-						let img = "";
-						if(item.board_re_lev > 0){
-							img = "<img src='image/line.gif'>";
-						}
 						
 						let subject = item.board_subject;
 						if(subject.length>=20){
 							subject = subject.substr(0,20) + "...";
 						}
-						output += '<td>' + item.board_name + '</td>'
+						output += '<tr><td>' + item.board_name + '</td>'
 						output += "<td>" + blank + img
 						output += '<a href="BoardDetailAction.bo?num=' + item.board_num + '">'
 						output += subject.replace(/</g, '&lt;').replace(/>/g, '&gt;')
