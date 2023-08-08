@@ -85,7 +85,8 @@
 
 							<div class="p_tel">
 								<p>전화번호</p>
-								<input type="text" class="tel" name="tel" value="${usrinfo.tel}">
+								<input type="tel" class="tel" name="tel" value="${usrinfo.tel}"
+								  maxlength="13">
 							</div>
 						</div>
 						<br> <br>
@@ -152,6 +153,15 @@
 		 }
 	 });
 	--%>
+	
+		// 전화번호 형식 확인
+		$("input[name=tel]").on('keyup',
+				function(){
+		const patt = /^[0-9]{2,3}[0-9]{4}[0-9]{4}$/
+		const res = patt.test( $(".tel").val());
+
+	
+		})
 		//회원탈퇴 구현
 
 		$(".withdraw").click(function() {
@@ -161,10 +171,10 @@
 			const inputPass = prompt("비밀번호를 입력하세요.");
 
 			const correctPass = "${usrinfo.pass}"; //비밀번호 체크
-
-			if (inputPass.trim() != '') {
+			
+				if (inputPass.trim() != '') {
 				// 입력 하지 않은 경우
-
+				
 				if (inputPass != correctPass) {
 					// 비밀번호가 일치하지 않을때
 					alert("비밀번호가 일치하지 않습니다.");

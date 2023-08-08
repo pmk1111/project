@@ -51,7 +51,7 @@
           <label for="pj_setting">프로젝트 설정</label>
       </div>
       <div class="left-bar-items">
-          <img id="add_team" class="left-menu-icon" src="Simg/person-add.png">
+          <img id="add_team" class="left-menu-icon" src="img/person-add.png">
           <label for="add_team">팀원 초대하기</label>
       </div>
       <br><br>
