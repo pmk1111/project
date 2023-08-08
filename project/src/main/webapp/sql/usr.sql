@@ -3,7 +3,7 @@ drop table usr cascade constraints purge;
 CREATE TABLE USR (
 num				NUMBER			PRIMARY KEY,
 id				VARCHAR2(50),
-password		VARCHAR2(50),
+pass			VARCHAR2(50),
 email			VARCHAR2(50),
 name			VARCHAR2(50),
 pic				VARCHAR2(50),
