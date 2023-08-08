@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <title>메인보드</title>
 
-<link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="../css/leftbar.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/mainboard.css">
+<link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/leftbar.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/mainboard.css">
   
   <style>
   ul {list-style-type: none;}
@@ -68,8 +68,8 @@
 
         <div class="board_list_brief">
           <div class="see_all">
-          <h2>모든 이슈</h2><a href="#"><sub>전체 보기</sub>
-            <img src="../img/add.svg" alt="전체보기" style="position: relative; width: 12px; height: 12px; top: 5px;"></a>
+          <h2>모든 이슈</h2><a href="BoardList.bo"><sub>전체 보기</sub>
+            <img src="img/add.svg" alt="전체보기" style="position: relative; width: 12px; height: 12px; top: 5px;"></a>
         </div>
           <table class="brief">
             <tr>
