@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+<div id="modal_overlay"></div>
+  <div id="issue_modal">
+    <form method="post">
+      <div id="issue_content">
+        <p>프로젝트<span class="req">*</span></p>
+        <select id="select_project">
+          <option>프로젝트1</option>
+          <option>프로젝트2</option>
+          <option>프로젝트3</option>
+        </select>
+        <br>
+        <p>유형<span class="req">*</span></p>
+        <select id="select_issue_type">
+          <option>버그</option>
+          <option>작업</option>
+          <option>하위작업</option>
+        </select>
+        <hr>
+        <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="issue_title" required><br>
+        <p>내용<span class="req">*</span></p><textarea id="summernote" name="editordata"></textarea>
+        <hr>
+        <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" required><br>
+        <p>담당자<span class="req">*</span></p>
+        <select id="issue_manager">
+          <option>직원 1</option>
+          <option>직원 2</option>
+          <option>직원 4</option>
+        </select><br>
+        <p>상태<span class="req">*</span></p>
+        <select id="issue_status">
+          <option></option>
+          <option>To Do</option>
+          <option>In Progress</option>
+          <option>Done</option>
+        </select><br>
+        <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" required><br>
+        <hr>
+      </div>
+      <div id="issue_btn">
+      <button id="issue_submit_btn" type="submit">작성하기</button>
+      <button type="button" id="close_modal_btn">취소</button>
+    </div>
+    </form>
+    <br>
+  </div>
+ 
