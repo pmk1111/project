@@ -1,8 +1,8 @@
 .edit_pf{padding-left: 50px; min-width: 800px;}
 .edit_pf_text{margin-top: 60px;}
 .profile_img{
-  width: 150px;
-  height: 150px;
+  width: 185px;
+  height: 185px;
 }
 
 .pf_img input{
@@ -12,7 +12,7 @@
 
 .filebox{
   float: left;
-  width: 200px; height: 300px;
+  width: 250px; height: 300px;
   color: lightgray; font-size: 13px; 
 }
 
@@ -70,6 +70,7 @@
 
 .edit{
   display: inline-block;
+  margin-left: 80px;
 }
 
 .edit > div{
@@ -85,7 +86,9 @@
   border: 1.2px solid rgb(140, 140, 140);
   border-radius: 3px;
 }
-.change_withdraw{text-align: center;}
+
+.change_withdraw{text-align: center;
+	margin-left: 110px;}
 .change_submit{
   display: inline-block;
   width: 120px; height: 35px;
