@@ -41,6 +41,17 @@ li {
 	color: #8D52A9;
 }
 
+.header-search{box-sizing:content-box;}
+.left-bar{width:260px;}
+.left-bar-items>label {
+  position: relative;
+  top:2.5px;
+}
+.logo{
+position:relative;
+top:-2.5px;
+}
+
 .navbar {
 	margin-bottom: 0px;
 }

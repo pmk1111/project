@@ -136,3 +136,9 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
     color: #fff;
 }
 
+ @keyframes fade_in{
+      0%{opacity: 0; top:-15px;}
+      100%{opacity: 100%; top: 0px;}
+    }
+   	body{animation: fade_in 0.4s linear;}
+   	.content{animation: fade_in 0.6s linear;}

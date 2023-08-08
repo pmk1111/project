@@ -8,9 +8,35 @@
 <meta charset="UTF-8">
 
 <title>내 프로젝트 리스트</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<jsp:include page="/menu_bar/menubar_all.jsp" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> 
+
+
+<link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/leftbar.css">
+  <link rel="stylesheet" href="css/main.css">
+
 <style>
+ @keyframes fade_in{
+      0%{opacity: 0; top:-15px;}
+      100%{opacity: 100%; top: 0px;}
+    }
+   	body{animation: fade_in 0.4s linear;}
+   	.content{animation: fade_in 0.6s linear;}
+.header-search-btn{position:relative; top:-1px;}
+.header-search{box-sizing:content-box;}
+.left-bar-items>label {
+  position: relative;
+  top:2.5px;
+}
+.logo{
+position:relative;
+top:-2.5px;
+}
+.left-bar{width:260px;}
+.left-bar a {
+	text-decoration: none;
+	color: #8D52A9;
+}
 select.form-control {
 	width: auto;
 	margin-bottom: 2em;
@@ -55,6 +81,15 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 </style>
 </head>
 <body>
+
+<header>
+<jsp:include page="../menu_bar/navbar.jsp" />
+</header>
+
+<main>
+<jsp:include page="../menu_bar/leftbar.jsp" />
+<div class="content">
+      <div class="board-content">
 <div class ="container">
 	<c:if test="${listcount > 0 }">
 
@@ -159,5 +194,9 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 	</c:if>
 
 	</div>
+	</div>
+	
+	</div>
+	</main>
 </body>
 </html>
