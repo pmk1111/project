@@ -1,3 +1,6 @@
+@charset "UTF-8";
+
+
 body{margin: 0; min-width: 900px;}
 
 a{text-decoration: none;}
@@ -13,7 +16,7 @@ a{text-decoration: none;}
 /* :root{--navbar-height: 60px;} */
 li{list-style: none;}
 .logo{width: 120px; height: 45px;}
-.nav_icon{display: flex;}
+.nav_icon{display: flex; margin-bottom:0px; margin-top:0px;}
 .nav_icon > li{margin-right: 8px;}
 
 .nav_img {
@@ -50,7 +53,7 @@ li{list-style: none;}
   display: none;
   right: -198px;
   width: 100px;
-  height: 74px;
+  height: 82px;
   border: 1px solid #7C00B6;
   background-color: white;
   border-radius: 5px;
@@ -67,6 +70,7 @@ li{list-style: none;}
   font-size: 14px;
   text-align: center;
   color: black;
+  text-decoration:none;
 }
 
 .uicon-dropdown-item a:hover {

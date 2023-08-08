@@ -23,10 +23,10 @@
   color: rgb(193, 193, 193);
   top: 1px;
 }
-.fav_ed_del > label + img{margin-left: 190px;}
+.ed_del_dropdown_icon{margin-left: 190px;}
 /* span: 인라인 요소라 size, margin 안먹히니 인라인 블록으로 변경 */
 
-.board_info{min-width: 100px; width: 100%; height: 15.8em; border: 1px solid #7C00B6; border-radius: 5px; font-weight: 600; font-size: 13px;}
+.board_info{min-width: 270px; width: 100%; height: 15.8em; border: 1px solid #7C00B6; border-radius: 5px; font-weight: 600; font-size: 13px;}
 .board_info>span{display: inline-block; margin:12.5px 0px 10px 10px;}
 #i_create, #i_reporter, #i_assign, #i_status{ float: right; padding-right: 10px;}
 .board_info > hr{margin: 0;}
