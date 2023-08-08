@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -42,12 +43,13 @@ public class ProjectAddAction implements Action {
 			String filename = multi.getFilesystemName("p_file");
 			pdata.setP_file(filename);
 			
-			// 세션에있는 유저 넘버
-//			HttpSession session = request.getSession();
-//			int usrnum = (int) session.getAttribute("num");
+//			 세션에있는 유저 넘버
+			HttpSession session = request.getSession();
+			
+			int usrnum = (int) session.getAttribute("usrNum");
 			
 			// 임시 번호
-			int usrnum = 1;
+//			int usrnum = 1;
 			
 			result = pdao.projectInsert(pdata, usrnum);
 			

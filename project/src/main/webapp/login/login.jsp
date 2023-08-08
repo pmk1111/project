@@ -23,7 +23,7 @@ function redirectToKakaoLogin() {
 	 <form name = "loginform" method="post" action="loginProcess.net">
             <h1 id="login_text">로그인</h1>
 
-            <input type="text" class="form-control" placeholder="아이디를 입력하세요" name="id" maxlength="20" required><br>
+            <input type="text" class="form-control" placeholder="아이디를 입력하세요" id="id" name="id" maxlength="20" required><br>
 			<input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="pass" maxlength="20" required>
 	   	    <p class="find_pw">비밀번호 찾기</p>
             <button type="submit" class="login_submit" name="login_submit">로그인</button>
