@@ -4,7 +4,7 @@
     
 <div id="modal_overlay"></div>
   <div id="issue_modal">
-    <form method="post">
+    <form action="IssueAddAction.bo" method="post" enctype="multipart/form-data" >
       <div id="issue_content">
         <p>프로젝트<span class="req">*</span></p>
         <select id="select_project">

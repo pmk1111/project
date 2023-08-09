@@ -46,7 +46,7 @@ function ajax(sdata){
 						
 						output +='<tr><td>' +item.i_name+'</td>'
 						output += "<td>" +blank+img
-						output += '<a href="BoardDetailAction.bo?num='+item.i_num+'">'
+						output += '<a href=IssueDetailAction.bo?num='+item.i_seq+'">'
 						output += title.replace(/</g,'&lt;').replace(/>/g,'&gt;')
 						  		+'</a></td>';
 						  		

@@ -65,7 +65,7 @@ public class IssueDAO {
 				+ "        SELECT comment_i_num, COUNT(*) cnt " 
 				+ "        FROM comm "
 				+ "        GROUP BY comment_i_num"
-				+ "    ) ON i_num = comment_i_num "
+				+ "    ) ON i_seq = comment_i_num "
 				+ "		 and p_num = 23"
 				+ "    ORDER BY i_seq DESC" 
 				+ ") j WHERE ROWNUM <= ?"
@@ -121,13 +121,6 @@ public class IssueDAO {
 		           + "(i_seq, i_NAME, i_title, i_CONTENT, issue_READCOUNT, p_num)" 
 		           + " values( i_seq.nextval, " + name + ", ?, ?, ?, " + projectNum + ")";
 
-
-
-		//String sql="INSERT INTO testissue (issue_TITLE) VALUES(?)";
-		/*
-		 * String sql = "INSERT INTO ISSUE "
-		 * +"(I_NUM,I_TITLE,WRITER,I_CONTENT,I_STATUS,"
-		 */
 
 		try {
 			con = ds.getConnection();
@@ -252,7 +245,7 @@ public class IssueDAO {
 	}
 	public int issueDelete(int num) {
 		String select_sql = "select * from issue "
-				+ " where I_NUM=? and p_num = ?";
+				+ " where I_seq=? and p_num = ?";
 
 		String issue_delete_sql = "delete from issue " 
 				+ " where issue_NUM=? and p_num = ?";
@@ -266,9 +259,9 @@ public class IssueDAO {
 			try(ResultSet rs = pstmt.executeQuery();){//2
 				if(rs.next()) {
 					try(PreparedStatement pstmt2 = con.prepareStatement(issue_delete_sql)){//3
-						pstmt2.setInt(1, rs.getInt("I_num"));
+						pstmt2.setInt(1, rs.getInt("I_seq"));
 						pstmt2.setInt(2, rs.getInt("p_num"));
-						pstmt2.setInt(3, rs.getInt("I_num"));
+						pstmt2.setInt(3, rs.getInt("I_seq"));
 						pstmt2.setInt(4, rs.getInt("p_num"));
 						
 						int count = pstmt2.executeUpdate();

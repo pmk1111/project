@@ -22,83 +22,14 @@ main {
 }
 
 @
-keyframes fade_in { 0%{
-	opacity: 0;
-	top: -15px;
+keyframes fade_in { 
+0%{opacity: 0;top: -15px;}
+100%{opacity:100%;top:0px;}
 }
 
-100
+body {animation: fade_in 0.4s linear;}
 
-
-
-
-
-
-
-
-%
-{
-opacity
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-100
-
-
-
-
-
-
-%;
-top
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-0px
-
-
-
-
-
-
-;
-}
-}
-body {
-	animation: fade_in 0.4s linear;
-}
-
-.content {
-	animation: fade_in 0.6s linear;
-}
+.content {animation: fade_in 0.6s linear;}
 
 .header-search-btn {
 	position: relative;
