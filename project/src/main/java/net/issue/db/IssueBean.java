@@ -66,7 +66,7 @@ public class IssueBean {
 		this.i_file = i_file;
 	}
 	public String getI_created() {
-		return i_created;
+		return i_created.substring(0, 10);
 	}
 	public void setI_created(String i_created) {
 		this.i_created = i_created;

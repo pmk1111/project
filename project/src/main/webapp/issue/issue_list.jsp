@@ -147,9 +147,10 @@ li {
 						<table class="issue_list">
 
 							<tr>
-								<td>작성자</td>
-								<td>제목</td>
-								<td>작성일</td>
+								<th>작성자</th>
+								<th>제목</th>
+								<th>작성일</th>
+								<th>조회수</th>
 
 							</tr>
 
@@ -159,24 +160,10 @@ li {
 								<c:forEach var="i" items="${issuelist}">
 									<tr>
 										<td>${i.i_name}</td>
-
 										<td>
 											<div>
 
-												<%-- <c:if test="${b.board_re_lev !=0 }">
-												<c:forEach var="a" begin="0" end="${b.board_re_lev * 2 }"
-													step="1">
-
-												</c:forEach>
-												<img src='image/line.gif'>
-											</c:if> --%>
-
-												<%-- 	<c:if test="${b.board_re_lev==0 }">
-											<!-- 	//원문 글 인 경우 -->
-
-											</c:if> --%>
-
-												<a href="IssueDetailAction.bo?num=${i.i_seq }"> 
+												<a class="title" href="IssueDetailAction.bo?num=${i.i_seq }"> 
 												<c:if test="${i.i_title.length()>=20 }">
 														<c:out value="${i.i_title.substring(0,20) }..." />
 													</c:if> <c:if test="${i.i_title.length()<20 }">
@@ -187,7 +174,7 @@ li {
 											</div>
 										</td>
 										<td>${i.i_created }</td>
-
+										<td>${i.i_readcount}</td>
 
 									</tr>
 								</c:forEach>
@@ -205,7 +192,7 @@ li {
 							</c:if>
 
 							<c:if test="${page >1 }">
-								<a href="BoardList.bo?page=${page-1}" class="bt first">&lt;&lt;</a>
+								<a href="IssueList.bo?page=${page-1}" class="bt first">&lt;&lt;</a>
 								<a href="#" class="bt prev">&lt;</a>
 
 							</c:if>
@@ -218,7 +205,7 @@ li {
 								</c:if>
 								<c:if test="${a !=page}">
 
-									<a href="BoardList.bo?page=${a}" class="num">${a}</a>
+									<a href="IssueList.bo?page=${a}" class="num">${a}</a>
 								</c:if>
 							</c:forEach>
 							<c:if test="${page >= maxpage }">
