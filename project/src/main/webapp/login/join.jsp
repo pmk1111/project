@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<jsp:include page="home_header.jsp"/>
+	pageEncoding="UTF-8"%>
+<jsp:include page="home_header.jsp" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +10,18 @@
 <script src="js/jquery-3.7.0.min.js"></script>
 
 <style>
-   .message {
-      font-size: 12px;
-    }
+.message {
+	font-size: 12px;
+}
 
-    .message.success {
-      color: green;
-    }
+.message.success {
+	color: green;
+}
 
-    .message.error {
-      color: blue;
-    }
+.message.error {
+	color: blue;
+}
+
 form {
 	background-color: #fefefe;
 	margin: 5% auto 15% auto;
@@ -31,13 +32,13 @@ form {
 }
 
 input[type=text], input[type=password] {
-    width: 580px;
-    height:45px;
-    padding: 10px;
-    margin: 5px 0 30px 0;
-    display: inline-block;
-    border: 0.8px solid #8D52A9;
-    border-radius: 3px;
+	width: 580px;
+	height: 45px;
+	padding: 10px;
+	margin: 5px 0 30px 0;
+	display: inline-block;
+	border: 0.8px solid #8D52A9;
+	border-radius: 3px;
 }
 
 .hr {
@@ -63,7 +64,6 @@ label[for="policy"] {
 	position: relative;
 	top: -2.5px;
 }
-
 </style>
 <script>
   $(document).ready(function () {
@@ -125,7 +125,7 @@ label[for="policy"] {
         $passwdMessage.removeClass('message error').empty();
       }
     });
-  });
+  
   
  	function redirectToGoogleLogin() {
 	    window.location.href = 'https://accounts.google.com/'; 
@@ -134,62 +134,95 @@ label[for="policy"] {
 	function redirectToKakaoLogin() {
 	    window.location.href = 'https://accounts.kakao.com/'; 
 	  }
+	
+	const form = document.join;
+
+	function emailValCheck(email){
+		var emailPattern= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	    return true;
+	}
+	
+	
+	 $("#emailAuthBtn").on('click', function () {
+		 var email = $("input[name=email]").val();
+		 if (!emailValCheck(email)) {
+			alert("유효하지 않은 이메일 주소입니다.");
+			return false;
+		}
+			
+		 var url = "confirmEmail.net";
+		 alert('인증번호가 발송되었습니다.');
+		  $.ajax({
+		        url: url,
+		        data: { "email": email }, 
+		        success: function (resp) {
+		        	$("#authRandNum").val(resp);
+		        }
+		      });	 
+     });
+
+  });
+  
+  function chkAuthMailNum(){
+		var inAuthMailNum = $("input[name=verify]").val();
+
+		if(inAuthMailNum == $("#authRandNum").val()){
+			alert("인증성공");
+		}else{
+			alert("인증실패");
+		}
+	}	
 </script>
-
-
-
-
 </head>
 <body>
 
-			<form name = "joinform" action="joinProcess.net" method="post">
-			<h1>회원가입</h1>
-			<br><br>
-			<b>아이디</b>
-			<input type="text" id="id" placeholder="아이디를 입력하세요" name = "id" maxLength="12" required>
-			<span id="id_message" ></span>
-			 
-			<button type="button" class="id_check" name="id_check" >중복검사</button>
-			
-			<b>비밀번호</b>
-			<span id="pw_message"></span>
-			<input type="password"  placeholder="비밀번호를 입력하세요" class="pw" name = "pass" required>
-			
-			<b>비밀번호 확인</b>
-			<span id="pw_check_message"></span>
-			<input type="password"  placeholder="비밀번호를 한번 더 입력하세요" class="pw_check" name = "passwd" required>
-			
-			<b>이름</b>
-			<input type="text" class="name" name="name" placeholder="이름을 입력하세요" maxLength="5" required>
-			
-			<b>이메일 주소</b>
-			<input type="text" class="email" name="email" maxLength="30" placeholder="이메일을 입력하세요" required>
-			<span id="email_message"></span>
-			<button onclick="emailAuthentication()" id="eamilAuthBtn" type="button" class="send_verify" name="send_verify">
-			인증번호 받기</button>
-			
-			<b>인증번호 입력</b>
-			<input type="text" class="verify" name="verify" maxLength="10" placeholder="인증번호를 입력하세요" required>
-			<span id="verify_message"></span>
-			<button type="button" class="verify_check" name="verify">인증번호 확인</button>
-			
-			
-			<label>
-			<input type="checkbox" id="policy" class="policy" name="policy" value="필수">
-			<label for="policy"><span class=required>&nbsp;&nbsp;(필수)</span>서비스 이용약관,개인정보 처리방침</label><br>
-			<input type="checkbox" id="benefits" class="benefits" name="benefits" value="선택">
-			<label for="benefits">&nbsp;&nbsp;(선택)혜택 수신에 동의</label>
-			</label>
-			<div class="hr"> <span>또는</span> </div>
-			
-            <button type="button" class="google" onclick="redirectToGoogleLogin()">Google 계정으로 가입하기</button>
-  			<br>
-  			<button type="button" class="kakao" onclick="redirectToKakaoLogin()">Kakao 계정으로 가입하기</button>
-			
-			<div class="clearfix">
-				<button type="submit" class="submitbtn">가입하기</button>
+	<form name="joinform" action="joinProcess.net" method="post">
+		<h1>회원가입</h1>
+		<br>
+		<br> <b>아이디</b> <input type="text" id="id"
+			placeholder="아이디를 입력하세요" name="id" maxLength="12" required> <span
+			id="id_message"></span>
 
-			</div>
+		<button type="button" class="id_check" name="id_check">중복검사</button>
+
+		<b>비밀번호</b> <span id="pw_message"></span> <input type="password"
+			placeholder="비밀번호를 입력하세요" class="pw" name="pass" required> <b>비밀번호
+			확인</b> <span id="pw_check_message"></span> <input type="password"
+			placeholder="비밀번호를 한번 더 입력하세요" class="pw_check" name="passwd"
+			required> <b>이름</b> <input type="text" class="name"
+			name="name" placeholder="이름을 입력하세요" maxLength="5" required> <b>이메일
+			주소</b> <input type="text" class="email" name="email" maxLength="30"
+			placeholder="이메일을 입력하세요" required> <span id="email_message"></span>
+		<button  id="emailAuthBtn" type="button" class="send_verify" name="send_verify">인증번호 받기</button>
+
+		<b>인증번호 입력</b> <input type="text" class="verify" name="verify"
+			maxLength="6" placeholder="인증번호를 입력하세요" required> <span
+			id="verify_message"></span>
+		<button onclick ="chkAuthMailNum()" type="button" class="verify_check" name="verify">인증번호
+			확인</button>
+		<input type="hidden" id = "authRandNum" name = "authRandNum" />
+
+		<label> <input type="checkbox" id="policy" class="policy"
+			name="policy" value="필수"> <label for="policy"><span
+				class=required>&nbsp;&nbsp;(필수)</span>서비스 이용약관,개인정보 처리방침</label><br> <input
+			type="checkbox" id="benefits" class="benefits" name="benefits"
+			value="선택"> <label for="benefits">&nbsp;&nbsp;(선택)혜택
+				수신에 동의</label>
+		</label>
+		<div class="hr">
+			<span>또는</span>
+		</div>
+
+		<button type="button" class="google" onclick="redirectToGoogleLogin()">Google
+			계정으로 가입하기</button>
+		<br>
+		<button type="button" class="kakao" onclick="redirectToKakaoLogin()">Kakao
+			계정으로 가입하기</button>
+
+		<div class="clearfix">
+			<button type="submit" class="submitbtn">가입하기</button>
+
+		</div>
 	</form>
 </body>
 </html>
