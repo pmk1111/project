@@ -41,7 +41,7 @@
 		<div class="content">
       <div class="board-content">
         <div id="board_title_info">
-          <span class="pj_board_name" name="pj_board_name">프로젝트 / ${p_name} /	${boarddata.board_subject} </span>
+          <span class="pj_board_name" name="pj_board_name">프로젝트 / ${p_name} /	${issuedata.i_title} </span>
           <h2 style="font-size: 1.5em;">${i_title}</h2>
         </div>
 
@@ -56,7 +56,7 @@
             <div class="ed_del-dropdown_item">
               <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#" >수정</a>
      
-              <a class="del_issue" name="del_issue" href="BoardDeleteAction.bo?num=${boarddata.board_num }" >삭제</a>
+              <a class="del_issue" name="del_issue" href="IssueDeleteAction.bo?num=${issuedata.i_seq }" >삭제</a>
             </div>
           </div>
 
@@ -64,10 +64,10 @@
             <span>상세 정보</span>
             <hr>
             <div class="create">
-              <span>생성일</span><span id="i_create">${boarddata.board_date }</span>
+              <span>생성일</span><span id="i_create">${issuedata.i_date }</span>
             </div>
             <div class="reporter">
-            <span>보고자</span><span id="i_reporter">${boarddata.board_name}</span>
+            <span>보고자</span><span id="i_reporter">${issuedata.i_name}</span>
           </div>
           <div class="assign">
             <span>담당자</span><span id="i_assign">${i_assign}</span>
@@ -82,7 +82,7 @@
         <div class="board_desc">
           <span>내용</span>
           <div class="issue_content">
-          <span class="i_content">${boarddata.board_content}</span>
+          <span class="i_content">${issuedata.i_content}</span>
   
           <br><br><br><br>
           

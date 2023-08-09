@@ -22,7 +22,7 @@
           <option>하위작업</option>
         </select>
         <hr>
-        <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="issue_title" maxlength="100" required><br>
+        <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="i_title" maxlength="100" required><br>
         <p>내용<span class="req">*</span></p><textarea id="summernote" name="editordata"></textarea>
         <hr>
         <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" <%-- value="${name}" readonly --%>><br>

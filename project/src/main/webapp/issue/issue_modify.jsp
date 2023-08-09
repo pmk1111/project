@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<button id="openModalBtn">Open Modal</button>
 
   <div id="modal_overlay"></div>
   <div id="issue_modal">
     <form action="BoardModifyAction.bo" method="post" enctype="multipart/form-data">
-             	 <input type="hidden" name="board_num" value="${boarddata.board_num}">
+             	 <input type="hidden" name="board_num" value="${issuedata.i_seq}">
       <div id="issue_content">
         <p>프로젝트<span class="req">*</span></p>
         <select id="select_project">
@@ -28,11 +27,11 @@
           <option>하위작업</option>
         </select>
         <hr>
-        <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="issue_title" value="${boarddata.board_subject}"  required><br>
+        <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="issue_title" value="${issuedata.i_title}"  required><br>
         <p>내용<span class="req">*</span></p>
-        <textarea id="summernote" name="editordata">${boarddata.board_content}</textarea>
+        <textarea id="summernote" name="editordata">${issuedata.i_content}</textarea>
         <hr>
-        <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" value="${boarddata.board_name}" readOnly><br>
+        <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" value="${issuedata.i_name}" readOnly><br>
         <p>담당자<span class="req">*</span></p>
         <select id="issue_manager">
           <option>직원 1</option>

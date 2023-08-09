@@ -8,8 +8,8 @@ i_title		VARCHAR2(100),
 i_content	VARCHAR2(4000),
 i_status	VARCHAR2(50),
 i_file		VARCHAR2(50),
-i_created	TIMESTAMP,
-i_modified	TIMESTAMP,
+i_created	DATE DEFAULT sysdate,
+i_modified	DATE,
 i_reporter	VARCHAR2(50),
 i_assign	VARCHAR2(50),
 i_related	VARCHAR2(50),
@@ -19,6 +19,7 @@ i_readcount  number
 select *
 from issue;
 
+delete from issue;
 create sequence i_seq;
 
 INSERT INTO ISSUE (i_num, p_num)
