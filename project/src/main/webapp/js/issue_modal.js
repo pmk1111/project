@@ -33,7 +33,7 @@ $('#summernote').summernote('redo');
 
 
 let isModalOpen = false; // Flag to track if the modal is open
-
+	
   function resetModalScrollPosition() {
     const modal = $("#issue_modal");
     modal.find(".modal-content").scrollTop(0);

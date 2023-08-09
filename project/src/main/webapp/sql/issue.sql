@@ -8,6 +8,7 @@ i_title		VARCHAR2(100),
 i_content	VARCHAR2(4000),
 i_status	VARCHAR2(50),
 i_file		VARCHAR2(50),
+i_type		VARCHAR2(50),
 i_created	DATE DEFAULT sysdate,
 i_modified	DATE,
 i_reporter	VARCHAR2(50),
@@ -20,7 +21,10 @@ select *
 from issue;
 
 delete from issue;
+
 create sequence i_seq;
+
+DROP SEQUENCE I_SEQ;
 
 INSERT INTO ISSUE (i_num, p_num)
 VALUES ((SELECT NVL(max(i_num)+1, 1) FROM issue WHERE p_num = 1),1);
