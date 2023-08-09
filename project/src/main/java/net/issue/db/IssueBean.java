@@ -1,4 +1,4 @@
-package net.board.db;
+package net.issue.db;
 
 public class IssueBean {
 	

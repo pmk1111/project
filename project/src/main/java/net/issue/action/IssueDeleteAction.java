@@ -1,4 +1,4 @@
-package net.board.action;
+package net.issue.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.board.db.IssueDAO;
+import net.issue.db.IssueDAO;
 
 public class IssueDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)

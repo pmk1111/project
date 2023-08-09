@@ -1,4 +1,4 @@
-package net.board.db;
+package net.issue.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -177,6 +177,7 @@ public class IssueDAO {
 
 				// DB에서 가져온 데이터를 issueBean에 담습니다.
 				if (rs.next()) {
+					
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setI_name(rs.getString("I_name"));
 					issue.setI_title(rs.getString("I_TITLE"));

@@ -1,4 +1,4 @@
-package net.board.action;
+package net.issue.action;
 
 import java.io.IOException;
 
