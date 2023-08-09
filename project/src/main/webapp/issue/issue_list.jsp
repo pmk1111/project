@@ -182,7 +182,7 @@ li {
 														<c:out value="${i.i_title}" />
 													</c:if>
 
-												</a>[${i.cnt}]
+												</a>
 											</div>
 										</td>
 										<td>${i.i_create }</td>
