@@ -39,7 +39,7 @@ public class IssueDetailAction implements Action {
 		System.out.println("상세보기 성공");
 		
 		//boarddata 객체를 request객체에 저장합니다.
-		request.setAttribute("boarddata", issuedata);
+		request.setAttribute("issuedata", issuedata);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
