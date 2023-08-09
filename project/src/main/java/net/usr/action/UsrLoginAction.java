@@ -18,8 +18,9 @@ public class UsrLoginAction implements Action {
 		if (cookies != null) {
 			for (int i = 0; i < cookies.length; i++) {
 				if (cookies[i].getName().equals("id")) {
-				id = cookies[i].getValue();
+					id = cookies[i].getValue();
 				}
+
 			}
 		}
 
