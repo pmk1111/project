@@ -43,7 +43,7 @@ public class IssueDetailAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("issue/board_detail.jsp");//글 내용 보기 페이지로 이동하기 위해 경로를 설정합니다.
+		forward.setPath("issue/issue_detail.jsp");//글 내용 보기 페이지로 이동하기 위해 경로를 설정합니다.
 		return forward;
 		
 	}
