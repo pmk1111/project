@@ -88,15 +88,27 @@
           
         </div>
                    
-        </div>
+    </div> <%--issue content end --%>
 
-        <div class="reply_textarea">
-          <textarea id="summernote_comm" name="editordata"></textarea>
+	<div class = "reply-area">
+		<div class = "reply-order">
+		  <ul class="comment-order-list">
+		  </ul>
+		</div>
+		<ul class="reply-list">
+		</ul>
+		<div class="reply-write"> <%-- 댓글창에 등록 --%>
+          <div class="reply_textarea">
+            <b class="reply-write-area-name">${id}</b>
+            <textarea id="summernote_comm" name="editordata" maxLength="200"></textarea>
+          </div>
+          
           <div class="re_sub_cancel">
-          <button type="submit" class="re_submit" name="re_submit">댓글달기</button>
-          <button type="submit" class="re_cancel" name="re_cancel">취소</button>
-        </div>
-        </div>
+             <button type="submit" class="re_submit" name="re_submit">댓글달기</button>
+             <button type="submit" class="re_cancel" name="re_cancel">취소</button>
+          </div>
+        </div> <%--reply-write end --%>
+      </div> <%--reply-area end --%>
         <br><br><br>
       </div>
 
