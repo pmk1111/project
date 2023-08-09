@@ -68,7 +68,7 @@ label[for="policy"] {
 <script>
 
 $(document).ready(function () {
-	
+
     $(".id_check").on('click', function () {
         const pattern = /^\w{5,12}$/;
         const id = $("input:eq(0)").val();
@@ -175,6 +175,7 @@ $(document).ready(function () {
 
   });
   
+
 function chkAuthMailNum() {
 	  var inAuthMailNum = $("input[name=verify]").val();
 	  const $verifyMessage = $("#verify_message");
@@ -191,6 +192,8 @@ function chkAuthMailNum() {
 	    alert("인증실패");
 	  }
 	}
+
+
 
 
 </script>
@@ -216,10 +219,12 @@ function chkAuthMailNum() {
 			placeholder="이메일을 입력하세요" required> 
 		<button  id="emailAuthBtn" type="button" class="send_verify" name="send_verify">인증번호 받기</button>
 		<span id="email_message"></span>
+
 		<b>인증번호 입력</b> <input id="verify" type="text" class="verify" name="verify"
 			maxLength="6" placeholder="인증번호를 입력하세요" required> 
 		<button onclick ="chkAuthMailNum()" type="button" id="verify_check" class="verify_check" name="verify">인증번호
 			확인</button><span id="verify_message"></span>
+
 		<input type="hidden" id = "authRandNum" name = "authRandNum" />
 
 		<label> <input type="checkbox" id="policy" class="policy"

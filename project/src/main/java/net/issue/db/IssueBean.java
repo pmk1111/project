@@ -9,18 +9,20 @@ public class IssueBean {
 	private String i_content;//글 내용
 	private String i_status;//이슈의 진행 상태
 	private String i_file;   //첨부될 파일의 이름
-	private String i_create;
+	private String i_created;
 	private String i_modified;
 	private String i_reporter;
 	private String i_assign;
 	private String i_related;
+	private int    i_readcount;//글의 조회수
+	
 	public String getI_related() {
 		return i_related;
 	}
 	public void setI_related(String i_related) {
 		this.i_related = i_related;
 	}
-	private int    i_readcount;//글의 조회수
+	
 	public int getI_seq() {
 		return i_seq;
 	}
@@ -63,11 +65,11 @@ public class IssueBean {
 	public void setI_file(String i_file) {
 		this.i_file = i_file;
 	}
-	public String getI_create() {
-		return i_create;
+	public String getI_created() {
+		return i_created;
 	}
-	public void setI_create(String i_create) {
-		this.i_create = i_create;
+	public void setI_created(String i_created) {
+		this.i_created = i_created;
 	}
 	public String getI_modified() {
 		return i_modified;
