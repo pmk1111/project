@@ -25,9 +25,12 @@ public class IssueDAO {
 	}
 
 	// 글의갯수 구하기
-	public int getListCount() {
-		String sql = "select count(*) from issue";
+	public int getListCount(int pnum) {
+		
+		String sql = "select count(*) from issue where p_num = "+ pnum;
+		
 		int x = 0;
+		
 		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 
 			try (ResultSet rs = pstmt.executeQuery()) {
@@ -45,38 +48,31 @@ public class IssueDAO {
 	}// getListCount()end
 
 	// 글 목록 보기
-	public List<IssueBean> getIssuedList(int page, int limit) {
+	public List<IssueBean> getIssuedList(int pnum, int page, int limit) {
 
 		// page : 페이지
 		// limit : 페이지 당 목록의 수
 		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
 		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
 
-
-
-
+		// 프로젝트 넘버
 		List<IssueBean> list = new ArrayList<IssueBean>();
 		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
-		String issue_list_sql = "SELECT * FROM (" 
-				+ "SELECT ROWNUM rnum, j.* FROM ("
-				+ "    SELECT issue.*, NVL(cnt, 0) cnt "
-				+ "    FROM issue "
-				+ "    LEFT OUTER JOIN ("
-				+ "        SELECT comment_i_num, COUNT(*) cnt " 
-				+ "        FROM comm "
-				+ "        GROUP BY comment_i_num"
-				+ "    ) ON i_num = comment_i_num "
-				+ "		 and p_num = 23"
-				+ "    ORDER BY i_seq DESC" 
-				+ ") j WHERE ROWNUM <= ?"
-				+ ") WHERE rnum >= ? AND rnum <= ?";
+		String issue_list_sql = "SELECT * "
+							  + " FROM ( SELECT ROWNUM rnum, i.* "
+							  + "		 FROM issue i "
+							  + "    	 join project p on i.p_num = p.p_num "
+							  + "		 where p.p_num = ?"
+							  + "		 order by i.i_seq desc "
+							  + "		) "
+							  + "WHERE rnum BETWEEN ? AND ?";
 		//해당 프로젝트에 해당하는 게시글만 가져오기 위해 p_num을 넣어야 하는데, 어디에 넣느냐
 
 		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
 		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호 (1 11 21 31 ...
 		int endrow = startrow + limit - 1; // 읽을 마지막 row 번호 (10 20 30 40 ...
 		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(issue_list_sql);) {
-			pstmt.setInt(1, endrow);
+			pstmt.setInt(1, pnum);
 			pstmt.setInt(2, startrow);
 			pstmt.setInt(3, endrow);
 
@@ -92,7 +88,7 @@ public class IssueDAO {
 					issue.setI_status(rs.getString("I_STATUS"));
 					issue.setI_file(rs.getString("I_FILE"));
 					
-					issue.setI_create(rs.getString("I_CREATE"));
+					issue.setI_created(rs.getString("I_CREATED"));
 					issue.setI_modified(rs.getString("I_MODIFIED"));
 					issue.setI_reporter(rs.getString("I_NAME"));
 					//우선 글 작성자가 담당자가 되도록 설정
@@ -113,43 +109,32 @@ public class IssueDAO {
 	}
 
 	public boolean issueInsert(IssueBean issuedata, String name, int projectNum) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
+		
+		String sql = "INSERT INTO issue "
+		           + "(i_seq, i_NAME, i_title, i_CONTENT, i_readcount, p_num)"
+		           + " values(i_seq.nextval, ?, ?, ?, ?, ?)";
+
 		int result = 0;
-
-		String sql = "INSERT INTO issue " 
-		           + "(i_seq, i_NAME, i_title, i_CONTENT, issue_READCOUNT, p_num)" 
-		           + " values( i_seq.nextval, " + name + ", ?, ?, ?, " + projectNum + ")";
-
-
-
-		//String sql="INSERT INTO testissue (issue_TITLE) VALUES(?)";
-		/*
-		 * String sql = "INSERT INTO ISSUE "
-		 * +"(I_NUM,I_TITLE,WRITER,I_CONTENT,I_STATUS,"
-		 */
-
+		
 		try {
-			con = ds.getConnection();
+		    Connection con = ds.getConnection();
+		    PreparedStatement pstmt = con.prepareStatement(sql);
 
-			pstmt = con.prepareStatement(sql);
+		    pstmt.setString(1, name);
+		    pstmt.setString(2, issuedata.getI_title());
+		    pstmt.setString(3, issuedata.getI_content());
+		    pstmt.setInt(4, 0);
+		    pstmt.setInt(5, projectNum);
 
+		    result = pstmt.executeUpdate();
 
-
-			pstmt.setString(1, issuedata.getI_title());
-			pstmt.setString(2, issuedata.getI_content());
-			//pstmt.setString(5, issuedata.getissue_file());
-			pstmt.setInt(3, 0);
-			pstmt.setInt(4, 23);
-
-			result = pstmt.executeUpdate();
-			if (result == 1) {
-				System.out.println("데이터 삽입이 모두 완료되었습니다.");
-				return true;
-			}
+		    if (result == 1) {
+		        System.out.println("데이터 삽입이 모두 완료되었습니다.");
+		        return true;
+		    }
 		} catch (Exception ex) {
-			System.out.println("IssueInsert()에러: " + ex);
-			ex.printStackTrace();
+		    System.out.println("IssueInsert()에러: " + ex);
+		    ex.printStackTrace();
 		}
 		return false;
 
@@ -183,7 +168,7 @@ public class IssueDAO {
 					issue.setI_status(rs.getString("I_STATUS"));
 					issue.setI_file(rs.getString("I_FILE"));
 					
-					issue.setI_create(rs.getString("I_CREATE"));
+					issue.setI_created(rs.getString("I_CREATED"));
 					issue.setI_modified(rs.getString("I_MODIFIED"));
 					issue.setI_reporter(rs.getString("I_NAME"));
 					//우선 글 작성자가 담당자가 되도록 설정
