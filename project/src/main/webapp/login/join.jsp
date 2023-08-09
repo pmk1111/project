@@ -66,9 +66,15 @@ label[for="policy"] {
 }
 </style>
 <script>
+function redirectToGoogleLogin() {
+    window.location.href = 'https://accounts.google.com/'; 
+}
+
+function redirectToKakaoLogin() {
+    window.location.href = 'https://accounts.kakao.com/'; 
+}
 
 $(document).ready(function () {
-	
     $(".id_check").on('click', function () {
         const pattern = /^\w{5,12}$/;
         const id = $("input:eq(0)").val();
@@ -103,101 +109,99 @@ $(document).ready(function () {
         });
     });
 
-    $(".pw").on('keyup', function () {
-      const pass = $(this).val();
-      const passwd = $(".pw_check").val();
-      const $passMessage = $("#pw_message");
-      const $passwdMessage = $("#pw_check_message");
+    $(".pw, .pw_check").on('keyup', function () {
+        const pass = $(".pw").val();
+        const passwd = $(".pw_check").val();
+        const $passMessage = $("#pw_message");
+        const $passwdMessage = $("#pw_check_message");
 
-      if (pass !== '' && passwd !== '' && pass !== passwd) {
-        $passwdMessage.addClass('message error').html("비밀번호가 다릅니다.").css('color', 'red');
-      } else {
-        $passwdMessage.removeClass('message error').empty();
-      }
+        if (pass !== '' && passwd !== '' && pass !== passwd) {
+            $passwdMessage.addClass('message error').html("비밀번호가 다릅니다.").css('color', 'red');
+        } else {
+            $passwdMessage.removeClass('message error').empty();
+        }
     });
 
-    $(".pw_check").on('keyup', function () {
-      const pass = $(".pw").val();
-      const passwd = $(this).val();
-      const $passMessage = $("#pw_message");
-      const $passwdMessage = $("#pw_check_message");
+ 
 
-      if (pass !== '' && passwd !== '' && pass !== passwd) {
-        $passwdMessage.addClass('message error').html("비밀번호가 다릅니다.").css('color', 'red');
-      } else {
-        $passwdMessage.removeClass('message error').empty();
-      }
+    const form = document.join;
+
+    function emailValCheck(email) {
+        if (email === '') return "empty";
+        const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        return emailPattern.test(email) ? "valid" : "invalid";
+    }
+    
+    var emailAuthTimer;
+
+    $("#emailAuthBtn").on("click", function () {
+        const email = $("input[name=email]").val();
+        const $message = $("#email_message");
+        const emailCheckResult = emailValCheck(email);
+
+        if (emailCheckResult === "empty") {
+            $message.addClass("message error").html("이메일을 입력하세요.").css("color", "red");
+            return false;
+        } else if (emailCheckResult === "invalid") {
+            $message.addClass("message error").html("이메일 형식에 맞게 입력하세요.").css("color", "red");
+            return false;
+        } else {
+            $message.removeClass("message error").empty();
+        }
+
+        var url = "confirmEmail.net";
+        alert("인증번호가 발송되었습니다.");
+
+        $.ajax({
+            url: url,
+            data: { email: email },
+            success: function (resp) {
+                $("#authRandNum").val(resp);
+            },
+        });
+
+        // 이메일 인증 버튼을 비활성화하고 타이머를 시작합니다.
+        $("#emailAuthBtn").prop("disabled", true);
+        $message.css("color", "red").html("1분 후 다시 발송가능합니다.");
+
+        // 타이머를 시작합니다. 초(60000ms) 후에 버튼을 다시 활성하고 텍스트를 변경합니다.
+        clearTimeout(emailAuthTimer);
+        emailAuthTimer = setTimeout(function () {
+            $("#emailAuthBtn").prop("disabled", false);
+            $message.css("color", "#7869e6").html("이메일 발송 가능합니다.");
+        }, 60000);
     });
-  
-  
- 	function redirectToGoogleLogin() {
-	    window.location.href = 'https://accounts.google.com/'; 
-	  }
 
-	function redirectToKakaoLogin() {
-	    window.location.href = 'https://accounts.kakao.com/'; 
-	  }
-	
-	const form = document.join;
+    $("#verifyBtn").on("click", function () {
+        chkAuthMailNum();
+    });
+    
+    
+});
 
-	function emailValCheck(email){
-	    if (email === '') return "empty";
-	    const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	    return emailPattern.test(email) ? "valid" : "invalid";
-	  }
-
-	  $("#emailAuthBtn").on('click', function () {
-	    const email = $("input[name=email]").val();
-	    const $message = $("#email_message");
-	    const emailCheckResult = emailValCheck(email);
-
-	    if (emailCheckResult === "empty") {
-	      $message.addClass('message error').html("이메일을 입력하세요.").css('color','red');
-	      return false;
-	    } else if (emailCheckResult === "invalid") {
-	      $message.addClass('message error').html("이메일 형식에 맞게 입력하세요.").css('color','red');
-	      return false;
-	    } else {
-	      $message.removeClass('message error').empty();
-	    }
-			
-		 var url = "confirmEmail.net";
-		 alert('인증번호가 발송되었습니다.');
-		 
-		  $.ajax({
-		        url: url,
-		        data: { "email": email }, 
-		        success: function (resp) {
-		        	$("#authRandNum").val(resp);
-		        }
-		      });	 
-     });
-
-  });
-  
 function chkAuthMailNum() {
-	  var inAuthMailNum = $("input[name=verify]").val();
-	  const $verifyMessage = $("#verify_message");
+    var inAuthMailNum = $("input[name=verify]").val();
+    const $verifyMessage = $("#verify_message");
 
-	  if (inAuthMailNum === '') {
-	    $verifyMessage.addClass('message error').html('인증번호를 입력하세요.').css('color', 'red');
-	    return;
-	  }
+    if (inAuthMailNum === '') {
+        $verifyMessage.addClass('message error').html('인증번호를 입력하세요.').css('color', 'red');
+        return;
+    }
 
-	  if (inAuthMailNum == $("#authRandNum").val()) {
-	    alert("인증성공");
-	    $verifyMessage.removeClass('message error').empty(); 
-	  } else {
-	    alert("인증실패");
-	  }
-	}
-
+    if (inAuthMailNum == $("#authRandNum").val()) {
+        alert("인증성공");
+        $verifyMessage.removeClass('message error').empty(); 
+    } else {
+        alert("인증실패");
+    }
+}
 
 </script>
+
 </head>
 <body>
 
-	<form name="joinform" action="joinProcess.net" method="post">
+	<form name="joinform" action="joinProcess.net" method="post" onsubmit="return ValidationCheck();">
 		<h1>회원가입</h1>
 		<br>
 		<br>

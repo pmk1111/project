@@ -162,4 +162,33 @@ public class ProjectDAO {
 		return list;
 	}
 
+	public Project getDetail(int p_num) {
+	    String sql = "SELECT P_NUM, P_NAME, P_STATUS, P_START, P_CLOSING, P_CREATED, P_FILE FROM PROJECT WHERE P_NUM = ?";
+
+	    Project project = null;
+
+	    try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+	        pstmt.setInt(1, p_num);
+
+	        try (ResultSet rs = pstmt.executeQuery()) {
+	            if (rs.next()) {
+	                project = new Project();
+	                project.setP_num(rs.getInt("P_NUM"));
+	                project.setP_name(rs.getString("P_NAME"));
+	                project.setP_status(rs.getString("P_STATUS"));
+	                project.setP_start(rs.getString("P_START"));
+	                project.setP_closing(rs.getString("P_CLOSING"));
+	                project.setP_created(rs.getString("P_CREATED"));
+	                project.setP_file(rs.getString("P_FILE"));
+	            }
+	        } catch (SQLException ex) {
+	            ex.printStackTrace();
+	        }
+	    } catch (Exception ex) {
+	        System.out.println("getDetail() 에러:" + ex);
+	    }
+	    return project;
+	}
+
+
 }
