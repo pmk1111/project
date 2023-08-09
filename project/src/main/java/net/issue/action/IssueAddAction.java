@@ -23,10 +23,8 @@ public class IssueAddAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		String realFolder="";
-		
 		//webapp아래에 꼭 폴더 생성하세요
 		String saveFolder="issueupload";
-		
 		int fileSize = 5*1024*1024; //업로드할 파일의 최대 사이즈 5MB
 		
 		//실제 저장 경로 지정
@@ -46,7 +44,12 @@ public class IssueAddAction implements Action {
 			issuedata.setI_name(multi.getParameter("i_name"));
 			//issuedata.setBoard_pass(multi.getParameter("board_pass"));
 			issuedata.setI_title(multi.getParameter("i_title"));
-			issuedata.setI_content(multi.getParameter("editordata"));
+			issuedata.setI_content(multi.getParameter("i_content"));
+			issuedata.setI_status(multi.getParameter("i_status"));
+			issuedata.setI_type(multi.getParameter("i_type"));
+			issuedata.setI_reporter(multi.getParameter("issue_reporter"));
+			issuedata.setI_assign(multi.getParameter("i_assign"));
+			issuedata.setI_related(multi.getParameter("related_issue"));
 			
 			//시스템 상에 업로드된 실제 파일명을 얻어옵니다.
 		//	String filename=multi.getFilesystemName("board_file");

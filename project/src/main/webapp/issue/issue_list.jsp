@@ -10,7 +10,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="../js/list.js"></script>
+<script src="js/list.js"></script>
 
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -220,11 +220,7 @@ li {
 						</div>
 					</c:if>
 
-
-
 				</div>
-
-
 
 				<c:if test="${listcount ==0 }">
 					<h3>등록 된 글이 없습니다.</h3>
@@ -235,8 +231,5 @@ li {
 		<!-- </div> -->
 
 	</main>
-
-	<jsp:include page="/issue/create_issue.jsp" />
-	<script src="js/issue_modal.js"></script>
 </body>
 </html>
