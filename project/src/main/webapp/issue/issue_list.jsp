@@ -119,7 +119,8 @@ li {
 						<strong>전체이슈</strong>
 					</div>
 
-					<c:if test="${listcount>0 }">
+					<c:if test="${listcount > 0 }">
+					
 						<div class="selector">
 							<label>필터</label> <label> 유형: <select class="numbers">
 									<option value="1">모두</option>
@@ -140,8 +141,7 @@ li {
 
 							</select>
 							</label>
-
-						</div>
+						</div> <!-- selector end -->
 
 
 						<table class="issue_list">
@@ -155,9 +155,10 @@ li {
 
 							<tbody>
 								<c:set var="num" value="${listcount-(page-1)*limit}" />
+								
 								<c:forEach var="i" items="${issuelist}">
 									<tr>
-										<td>${i.i_name }</td>
+										<td>${i.i_name}</td>
 
 										<td>
 											<div>
@@ -175,8 +176,9 @@ li {
 
 											</c:if> --%>
 
-												<a href="IssueDetailAction.bo?num=${i.i_seq }"> <c:if
-														test="${i.i_title.length()>=20 }">
+													<a href="IssueDetailAction.bo?num=${i.i_seq }"> 
+												
+													<c:if test="${i.i_title.length()>=20 }">
 														<c:out value="${i.i_title.substring(0,20) }..." />
 													</c:if> <c:if test="${i.i_title.length()<20 }">
 														<c:out value="${i.i_title}" />
@@ -186,7 +188,6 @@ li {
 											</div>
 										</td>
 										<td>${i.i_created }</td>
-
 
 									</tr>
 								</c:forEach>
