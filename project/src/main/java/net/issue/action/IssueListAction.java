@@ -1,4 +1,4 @@
-package net.board.action;
+package net.issue.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import net.board.db.IssueBean;
-import net.board.db.IssueDAO;
+import net.issue.db.IssueBean;
+import net.issue.db.IssueDAO;
 
 public class IssueListAction implements Action {
 

@@ -1,4 +1,4 @@
-package net.board.action;
+package net.issue.action;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import net.board.db.IssueBean;
-import net.board.db.IssueDAO;
+import net.issue.db.IssueBean;
+import net.issue.db.IssueDAO;
 
 public class IssueAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)

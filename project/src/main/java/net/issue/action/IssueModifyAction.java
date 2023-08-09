@@ -1,9 +1,7 @@
 //글 수정 처리
-package net.board.action;
+package net.issue.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import net.board.db.IssueBean;
-import net.board.db.IssueDAO;
+import net.issue.db.IssueBean;
+import net.issue.db.IssueDAO;
 
 public class IssueModifyAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)

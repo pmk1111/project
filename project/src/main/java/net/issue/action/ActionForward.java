@@ -1,4 +1,4 @@
-package net.board.action;
+package net.issue.action;
 
 //ActionForward클래스는 Action 인터페이스에서 명령을 수행하고 결과 값을 가지고 이동 할 때 사용되는 클래스 입니다.
 //이 클래스는 redirect 여부 값과 포워딩할 페이지의 위치를 가지고 있습니다.
