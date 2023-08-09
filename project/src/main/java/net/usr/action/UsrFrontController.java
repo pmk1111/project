@@ -27,6 +27,9 @@ public class UsrFrontController extends javax.servlet.http.HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		System.out.println("command="+command);
 		
+		String uri = request.getRequestURI();
+		String conPath = request.getContextPath();
+		
 		
 		ActionForward forward = null;
 		Action action = null;
@@ -68,6 +71,9 @@ public class UsrFrontController extends javax.servlet.http.HttpServlet {
 			
 		case "/usrInfo.net":
 			action = new UsrInfoAction();
+			break;
+		case "/confirmEmail.net":
+			action = new ConfirmEmailAction();
 			break;
 		
 		}//switch end
