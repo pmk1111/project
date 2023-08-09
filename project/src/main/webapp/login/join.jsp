@@ -66,38 +66,39 @@ label[for="policy"] {
 }
 </style>
 <script>
-  $(document).ready(function () {
+$(document).ready(function () {
     $(".id_check").on('click', function () {
-      const pattern = /^\w{5,12}$/;
-      const id = $("input:eq(0)").val();
-      const $message = $("#id_message");
-      if (!id) {
-          $message.addClass('message error').html("아이디를 입력하세요.").css('color','red');
-          checkid = false;
-          return;
-        }
-      
-      if (!pattern.test(id)) {
-        $message.addClass('message error').html("영문자 숫자 _ 로 5~12자 가능합니다.").css('color','red');
-        checkid = false;
-        return;
-      }
+        const pattern = /^\w{5,12}$/;
+        const id = $("input:eq(0)").val();
+        const $message = $("#id_message");
 
-      $message.removeClass('message error').empty(); // 초기 메시지 제거
-
-      $.ajax({
-        url: "idcheck.net",
-        data: { "id": id },
-        success: function (resp) {
-          if (resp == -1) {
-            $message.addClass('message success').html("사용 가능한 아이디입니다.");
-            checkid = true;
-          } else {
-            $message.addClass('message error').html("사용 중인 아이디입니다.");
+        if (!id) {
+            $message.removeClass('message success').addClass('message error').html("아이디를 입력하세요.").css('color', 'red');
             checkid = false;
-          }
+            return;
         }
-      });
+
+        if (!pattern.test(id)) {
+            $message.removeClass('message success').addClass('message error').html("영문자 숫자 _ 로 5~12자 가능합니다.").css('color', 'red');
+            checkid = false;
+            return;
+        }
+
+        $message.removeClass('message error success').empty(); // 초기 메시지 제거
+
+        $.ajax({
+            url: "idcheck.net",
+            data: { "id": id },
+            success: function (resp) {
+                if (resp == -1) {
+                    $message.removeClass('message error').addClass('message success').html("사용 가능한 아이디입니다.");
+                    checkid = true;
+                } else {
+                    $message.removeClass('message success').addClass('message error').html("사용 중인 아이디입니다.");
+                    checkid = false;
+                }
+            }
+        });
     });
 
     $(".pw").on('keyup', function () {
@@ -138,20 +139,29 @@ label[for="policy"] {
 	const form = document.join;
 
 	function emailValCheck(email){
-		var emailPattern= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	    return true;
-	}
-	
-	
-	 $("#emailAuthBtn").on('click', function () {
-		 var email = $("input[name=email]").val();
-		 if (!emailValCheck(email)) {
-			alert("유효하지 않은 이메일 주소입니다.");
-			return false;
-		}
+	    if (email === '') return "empty";
+	    const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	    return emailPattern.test(email) ? "valid" : "invalid";
+	  }
+
+	  $("#emailAuthBtn").on('click', function () {
+	    const email = $("input[name=email]").val();
+	    const $message = $("#email_message");
+	    const emailCheckResult = emailValCheck(email);
+
+	    if (emailCheckResult === "empty") {
+	      $message.addClass('message error').html("이메일을 입력하세요.").css('color','red');
+	      return false;
+	    } else if (emailCheckResult === "invalid") {
+	      $message.addClass('message error').html("이메일 형식에 맞게 입력하세요.").css('color','red');
+	      return false;
+	    } else {
+	      $message.removeClass('message error').empty();
+	    }
 			
 		 var url = "confirmEmail.net";
 		 alert('인증번호가 발송되었습니다.');
+		 
 		  $.ajax({
 		        url: url,
 		        data: { "email": email }, 
@@ -171,7 +181,8 @@ label[for="policy"] {
 		}else{
 			alert("인증실패");
 		}
-	}	
+	}
+
 </script>
 </head>
 <body>
@@ -179,22 +190,22 @@ label[for="policy"] {
 	<form name="joinform" action="joinProcess.net" method="post">
 		<h1>회원가입</h1>
 		<br>
-		<br> <b>아이디</b> <input type="text" id="id"
-			placeholder="아이디를 입력하세요" name="id" maxLength="12" required> <span
-			id="id_message"></span>
-
+		<br>
+			 <b>아이디</b> <input type="text" id="id"
+			placeholder="아이디를 입력하세요" name="id" maxLength="12" required> 
 		<button type="button" class="id_check" name="id_check">중복검사</button>
-
-		<b>비밀번호</b> <span id="pw_message"></span> <input type="password"
-			placeholder="비밀번호를 입력하세요" class="pw" name="pass" required> <b>비밀번호
-			확인</b> <span id="pw_check_message"></span> <input type="password"
-			placeholder="비밀번호를 한번 더 입력하세요" class="pw_check" name="passwd"
-			required> <b>이름</b> <input type="text" class="name"
+			<span id="id_message"></span>
+			<b>비밀번호</b>  <input type="password"	placeholder="비밀번호를 입력하세요" class="pw" name="pass" required>
+			<span id="pw_message"></span>
+			 <b>비밀번호 확인</b>  <input type="password"
+			placeholder="비밀번호를 한번 더 입력하세요" class="pw_check" name="passwd"	required>
+			<span id="pw_check_message"></span>
+			 <b>이름</b> <input type="text" class="name"
 			name="name" placeholder="이름을 입력하세요" maxLength="5" required> <b>이메일
 			주소</b> <input type="text" class="email" name="email" maxLength="30"
-			placeholder="이메일을 입력하세요" required> <span id="email_message"></span>
+			placeholder="이메일을 입력하세요" required> 
 		<button  id="emailAuthBtn" type="button" class="send_verify" name="send_verify">인증번호 받기</button>
-
+		<span id="email_message"></span>
 		<b>인증번호 입력</b> <input type="text" class="verify" name="verify"
 			maxLength="6" placeholder="인증번호를 입력하세요" required> <span
 			id="verify_message"></span>

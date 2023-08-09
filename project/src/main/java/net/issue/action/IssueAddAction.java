@@ -60,7 +60,8 @@ public class IssueAddAction implements Action {
 			String usrname = (String) session.getAttribute("usrName");
 			
 			// 해당 프로젝트 넘버
-			int projectNum = Integer.parseInt(request.getParameter("p_num"));
+			int projectNum = (int) session.getAttribute("p_num");
+			System.out.println("IssueAddAction projectNum= " + projectNum);
 			
 			
 			result=issuedao.issueInsert(issuedata, usrname, projectNum);
