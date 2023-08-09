@@ -20,16 +20,18 @@
           <option>하위작업</option>
         </select>
         <hr>
-        <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="issue_title" required><br>
+        <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="issue_title" maxlength="100" required><br>
         <p>내용<span class="req">*</span></p><textarea id="summernote" name="editordata"></textarea>
         <hr>
-        <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" required><br>
+        <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" <%-- value="${name}" readonly --%>><br>
+        <!-- 보고자는 글을 작성한 유저의 이름을 가져온다 -->
         <p>담당자<span class="req">*</span></p>
         <select id="issue_manager">
           <option>직원 1</option>
           <option>직원 2</option>
           <option>직원 4</option>
         </select><br>
+        <!-- 추후 해당 프로젝트에 참여 중인 인원을 표시할 수 있게 한다 -->
         <p>상태<span class="req">*</span></p>
         <select id="issue_status">
           <option></option>
@@ -38,6 +40,7 @@
           <option>Done</option>
         </select><br>
         <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" required><br>
+        <!-- 추후 같은 프로젝트 내의 이슈들을 불러와 선택할 수 있게 한다 -->
         <hr>
       </div>
       <div id="issue_btn">

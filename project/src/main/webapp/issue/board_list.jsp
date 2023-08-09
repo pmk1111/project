@@ -148,7 +148,7 @@ top:-2.5px;
 						
 								<tbody>
 								 <c:set var="num" value="${listcount-(page-1)*limit}"/>
-								<c:forEach var="b" items="${boardlist}">
+								<c:forEach var="i" items="${boardlist}">
 								<tr>
 								<td>${b.board_name }</td>
 								
