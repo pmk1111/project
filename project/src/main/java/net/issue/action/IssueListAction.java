@@ -1,4 +1,4 @@
-package net.board.action;
+package net.issue.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,17 +12,17 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import net.board.db.BoardBean;
-import net.board.db.BoardDAO;
+import net.issue.db.IssueBean;
+import net.issue.db.IssueDAO;
 
-public class BoardListAction implements Action {
+public class IssueListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		BoardDAO boarddao =new BoardDAO();
-		List<BoardBean> boardlist = new ArrayList<BoardBean>();
+		IssueDAO issuedao =new IssueDAO();
+		List<IssueBean> issuelist = new ArrayList<IssueBean>();
 		
 		//로그인 성공시 파라미터 page가 없음. 그래서 초기값 필요
 		int page = 1; //보여줄 page
@@ -39,10 +39,10 @@ public class BoardListAction implements Action {
 		System.out.println("넘어온 limit = " + limit);
 		
 		//총 리스트 수를 받아옵니다.
-		int listcount = boarddao.getListCount();
+		int listcount = issuedao.getListCount();
 		
 		//리스트를 받아옵니다.
-		boardlist = boarddao.getBoardList(page, limit);
+		issuelist = issuedao.getIssuedList(page, limit);
 		
 		/*
 		 * 총 페이지 수
@@ -100,15 +100,15 @@ public class BoardListAction implements Action {
 			request.setAttribute("listcount",listcount); //총 글의 수
 			
 			//해당 페이지의 글 목록을 갖고 있는 리스트
-			request.setAttribute("boardlist",boardlist);
+			request.setAttribute("issuelist",issuelist);
 			
 			request.setAttribute("limit",limit);
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);
 			
 			//글 목록 페이지로 이동하기 위해 경로를 설정합니다.
-			forward.setPath("issue/board_list.jsp");
-			return forward; //BoardFrontController.java로 리턴합니다.
+			forward.setPath("issue/issue_list.jsp");
+			return forward; //issueFrontController.java로 리턴합니다.
 			
 			
 		}else {
@@ -128,9 +128,9 @@ public class BoardListAction implements Action {
 			//List형식을 JsonElement로 바꾸어 주어야 object에 저장할 수 있습니다.
 			
 			//list => JsonElement
-			JsonElement je = new Gson().toJsonTree(boardlist);
-			System.out.println("boardlist="+je.toString());
-			object.add("boardlist",je);
+			JsonElement je = new Gson().toJsonTree(issuelist);
+			System.out.println("issuelist="+je.toString());
+			object.add("issuelist",je);
 			
 			response.setContentType("application/json;charset=utf-8");
 			response.getWriter().print(object);

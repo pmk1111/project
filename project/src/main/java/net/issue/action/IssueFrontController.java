@@ -1,4 +1,4 @@
-package net.board.action;
+package net.issue.action;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("*.bo")
-public class BoardFrontController extends javax.servlet.http.HttpServlet {
+public class IssueFrontController extends javax.servlet.http.HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -41,22 +41,17 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 		Action action = null;
 
 		switch (command) {
-		case "/BoardList.bo":
-			action = new BoardListAction();
+		case "/IssueList.bo":
+			action = new IssueListAction();
 			break;
-		case "/BoardAddAction.bo":
-			action = new BoardAddAction();
+		case "/IssueAddAction.bo":
+			action = new IssueAddAction();
 			break;
-		case "/BoardDetailAction.bo":
-			action = new BoardDetailAction();
+		case "/IssueDetailAction.bo":
+			action = new IssueDetailAction();
 			break;
-			//				
-			//			case "issue/BoardModifyView.bo":
-			//				action = new BoardModifyView();
-			//				break;	
-			//				
-		case "/BoardModifyAction.bo":
-			action = new BoardModifyAction();
+		case "/IssueModifyAction.bo":
+			action = new IssueModifyAction();
 			break;
 			//				
 			//			case "/BoardReplyView.bo":
@@ -68,7 +63,7 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet {
 			//				break;	
 			//			
 		case "/BoardDeleteAction.bo":
-			action = new BoardDeleteAction();
+			action = new IssueDeleteAction();
 			break;	
 			//			
 			//			case "/BoardFileDown.bo":

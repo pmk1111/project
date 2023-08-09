@@ -1,4 +1,4 @@
-package net.board.action;
+package net.issue.action;
 
 import java.io.IOException;
 
@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import net.board.db.BoardBean;
-import net.board.db.BoardDAO;
+import net.issue.db.IssueBean;
+import net.issue.db.IssueDAO;
 
-public class BoardAddAction implements Action {
+public class IssueAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		BoardDAO boarddao = new BoardDAO();
-		BoardBean boarddata = new BoardBean();
+		IssueDAO issuedao = new IssueDAO();
+		IssueBean issuedata = new IssueBean();
 		ActionForward forward = new ActionForward();
 		
 		String realFolder="";
@@ -41,18 +41,18 @@ public class BoardAddAction implements Action {
 					"utf-8",
 					new DefaultFileRenamePolicy());
 			//BoardBean 객체에 글 등록 폼에서 입력 받은 정보들을 저장합니다.
-			boarddata.setBoard_name(multi.getParameter("issue_reporter"));
-			//boarddata.setBoard_pass(multi.getParameter("board_pass"));
-			boarddata.setBoard_subject(multi.getParameter("issue_title"));
-			boarddata.setBoard_content(multi.getParameter("editordata"));
+			issuedata.setI_name(multi.getParameter("i_name"));
+			//issuedata.setBoard_pass(multi.getParameter("board_pass"));
+			issuedata.setI_title(multi.getParameter("i_title"));
+			issuedata.setI_content(multi.getParameter("editordata"));
 			
 			//시스템 상에 업로드된 실제 파일명을 얻어옵니다.
 		//	String filename=multi.getFilesystemName("board_file");
-		//	boarddata.setBoard_file(filename);
+		//	issuedata.setBoard_file(filename);
 			
 			//글 등록 처리를 위해 DAO의 boardInsert()메서드를 호출합니다.
-			//글 등록 폼에서 입력한 정보가 저장되어 있는 boarddata객체를 전달합니다.
-			result=boarddao.boardInsert(boarddata);
+			//글 등록 폼에서 입력한 정보가 저장되어 있는 issuedata객체를 전달합니다.
+			result=issuedao.issueInsert(issuedata);
 			
 			//글 등록에 실패한 경우 false 반환합니다.
 			if(result==false) {
