@@ -213,6 +213,7 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 </head>
 <body>
 
+
 	<header>
 		<jsp:include page="/menu_bar/navbar.jsp" />
 	</header>

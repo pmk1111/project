@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import net.board.db.BoardBean;
-import net.board.db.BoardDAO;
+import net.board.db.IssueBean;
+import net.board.db.IssueDAO;
 
-public class BoardModifyAction implements Action {
+public class IssueModifyAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BoardDAO boarddao = new BoardDAO();
-		BoardBean boarddata = new BoardBean();
+		IssueDAO boarddao = new IssueDAO();
+		IssueBean boarddata = new IssueBean();
 		ActionForward forward = new ActionForward();
 		String realFolder = "";
 		
@@ -41,7 +41,7 @@ public class BoardModifyAction implements Action {
 									"utf-8",
 									new DefaultFileRenamePolicy());
 			
-			  int num = Integer.parseInt(multi.getParameter("board_num"));
+			  int seq = Integer.parseInt(multi.getParameter("i_seq"));
 			 
 		/* String pass=multi.getParameter("board_pass"); */
 		
@@ -62,12 +62,12 @@ public class BoardModifyAction implements Action {
 		
 		//비밀번호가 일치하는 경우 수정 내용을 설정합니다.
 		//BoardBean 객체에 글 등록 폼에서 입력 받은 정보들을 저장합니다.
-		boarddata.setBoard_num(num); 
+		boarddata.setI_seq(seq); 
 	
-		boarddata.setBoard_name(multi.getParameter("issue_reporter"));
+		boarddata.setI_name(multi.getParameter("i_reporter"));
 	
-		boarddata.setBoard_subject(multi.getParameter("issue_title"));
-		boarddata.setBoard_content(multi.getParameter("editordata"));
+		boarddata.setI_title(multi.getParameter("i_title"));
+		boarddata.setI_content(multi.getParameter("editordata"));
 		
 		/*
 		 * String check = multi.getParameter("check"); System.out.println("check= " +
@@ -77,7 +77,7 @@ public class BoardModifyAction implements Action {
 		 */
 		
 		//DAO에서 수정 메서드 호출하여 수정합니다.
-		result = boarddao.boardModify(boarddata);
+		result = boarddao.issueModify(boarddata);
 		
 		//수정에 실패한 경우
 		if(result == false) {
@@ -92,7 +92,7 @@ public class BoardModifyAction implements Action {
 		
 		forward.setRedirect(true);
 		//수정한 글 내용을 보여주기 위해 글 내용 보기 페이지로 이동하기위해 경로를 설정합니다.
-		forward.setPath("BoardDetailAction.bo?num=" + boarddata.getBoard_num());
+		forward.setPath("BoardDetailAction.bo?num=" + boarddata.getI_seq());
 		return forward;
 		
 		}catch (IOException e) {

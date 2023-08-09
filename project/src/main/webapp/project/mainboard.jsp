@@ -75,7 +75,7 @@
 
         <div class="board_list_brief">
           <div class="see_all">
-          <h2>모든 이슈</h2><a href="BoardList.bo"><sub>전체 보기</sub>
+          <h2>모든 이슈</h2><a href="IssueList.bo"><sub>전체 보기</sub>
             <img src="img/add.svg" alt="전체보기" style="position: relative; width: 12px; height: 12px; top: 5px;"></a>
         </div>
           <table class="brief">
