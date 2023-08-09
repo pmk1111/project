@@ -56,12 +56,12 @@ public class ProjectFrontController extends javax.servlet.http.HttpServlet {
 //	         case "/BoardDetailAction.bo":
 //	        	 action = new BoardDetailAction();
 //	            break;
-//	         case "/BoardModifyView.bo":
-//	        	 action = new BoardModifyView();
-//	            break;
-//	         case "/BoardModifyAction.bo":
-//	        	 action = new BoardModifyAction();
-//	            break;
+	         case "/ProjectModifyView.pro":
+	        	 action = new ProjectModifyView();
+	            break;
+	         case "/ProjectModifyAction.bo":
+	        	 action = new ProjectModifyAction();
+	            break;
 //	         case "/BoardReplyView.bo":
 //	        	 action = new BoardReplyView();
 //	            break;

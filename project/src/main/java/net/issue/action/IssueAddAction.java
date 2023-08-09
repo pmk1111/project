@@ -42,6 +42,7 @@ public class IssueAddAction implements Action {
 			
 			//BoardBean 객체에 글 등록 폼에서 입력 받은 정보들을 저장합니다.
 			issuedata.setI_name(multi.getParameter("i_name"));
+			//issuedata.setBoard_pass(multi.getParameter("board_pass"));
 			issuedata.setI_title(multi.getParameter("i_title"));
 			issuedata.setI_content(multi.getParameter("i_content"));
 			issuedata.setI_status(multi.getParameter("i_status"));
@@ -58,14 +59,16 @@ public class IssueAddAction implements Action {
 			//글 등록 폼에서 입력한 정보가 저장되어 있는 issuedata객체를 전달합니다.
 			
 			// 세션에있는 유저 이름
-			HttpSession session = request.getSession();
-			String usrname = (String) session.getAttribute("usrName");
-
-			// 해당 프로젝트 넘버
-			int projectNum = (int) session.getAttribute("p_num");
-			System.out.println("IssueAddAction projectNum= " + projectNum);
-			
-			result=issuedao.issueInsert(issuedata, usrname, projectNum);
+						HttpSession session = request.getSession();
+						String usrname = (String) session.getAttribute("usrName");
+						System.out.println("IssueAddAction usrname = " + usrname);
+						
+						// 해당 프로젝트 넘버
+						int projectNum = (int) session.getAttribute("p_num");
+						System.out.println("IssueAddAction projectNum= " + projectNum);
+						
+						
+						result=issuedao.issueInsert(issuedata, usrname, projectNum);
 			
 			//글 등록에 실패한 경우 false 반환합니다.
 			if(result==false) {
