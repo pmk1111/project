@@ -176,9 +176,8 @@ li {
 
 											</c:if> --%>
 
-													<a href="IssueDetailAction.bo?num=${i.i_seq }"> 
-												
-													<c:if test="${i.i_title.length()>=20 }">
+												<a href="IssueDetailAction.bo?num=${i.i_seq }"> 
+												<c:if test="${i.i_title.length()>=20 }">
 														<c:out value="${i.i_title.substring(0,20) }..." />
 													</c:if> <c:if test="${i.i_title.length()<20 }">
 														<c:out value="${i.i_title}" />
@@ -187,7 +186,8 @@ li {
 												</a>
 											</div>
 										</td>
-										<td>${i.i_create }</td>
+										<td>${i.i_created }</td>
+
 
 									</tr>
 								</c:forEach>
