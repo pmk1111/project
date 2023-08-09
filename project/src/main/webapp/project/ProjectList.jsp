@@ -236,7 +236,7 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 								<div class="col-sm-4">
 
 									<div class="thumbnail">
-										<img src="projectupload/${p.p_file}" alt="Paris" width="200"
+										<img src="projectupload/${p.p_file}" width="200"
 											height="150">
 										<p>
 											<strong> <c:if test="${p.p_name.length() >= 20 }">
