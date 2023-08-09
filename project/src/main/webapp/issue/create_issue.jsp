@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
     
 <div id="modal_overlay"></div>
   <div id="issue_modal">
@@ -12,6 +12,8 @@
           <option>프로젝트2</option>
           <option>프로젝트3</option>
         </select>
+        <!-- 생성된 프로젝트 값들이 option에 추가되어야 한다 -->
+        
         <br>
         <p>유형<span class="req">*</span></p>
         <select id="select_issue_type">

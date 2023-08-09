@@ -140,7 +140,7 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 						<td>
 							<div>
 								<!-- 이름 클릭시 p_num에 해당하는 프로젝트로 이동 -->
-								<a href="ProjectDetailAction.pro?p_num=${p.p_num }"> 
+								<a href="ProjectMainboard.pro?p_num=${p.p_num }"> 
 									
 									<!-- 이름 길이 나타내는 방법 -->
 									<c:if test="${p.p_name.length() >= 20 }">
