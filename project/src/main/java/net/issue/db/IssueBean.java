@@ -14,8 +14,15 @@ public class IssueBean {
 	private String i_reporter;
 	private String i_assign;
 	private String i_related;
+	private String i_type;
 	private int    i_readcount;//글의 조회수
 	
+	public String getI_type() {
+		return i_type;
+	}
+	public void setI_type(String i_type) {
+		this.i_type = i_type;
+	}
 	public String getI_related() {
 		return i_related;
 	}
