@@ -185,7 +185,7 @@ li {
 												</a>
 											</div>
 										</td>
-										<td>${i.i_created }</td>
+										<td>${i.i_create }</td>
 
 
 									</tr>

@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -39,17 +38,11 @@ public class IssueListAction implements Action {
 		}
 		System.out.println("넘어온 limit = " + limit);
 		
-		// 세션에 저장된 projectNum
-		HttpSession session = request.getSession();
-		int pnum = (int) session.getAttribute("p_num");
-		System.out.println("ListAction : " + pnum);
-		
 		//총 리스트 수를 받아옵니다.
-		int listcount = issuedao.getListCount(pnum);
-		System.out.println("pnum : " + listcount);
+		int listcount = issuedao.getListCount();
 		
 		//리스트를 받아옵니다.
-		issuelist = issuedao.getIssuedList(pnum, page, limit);
+		issuelist = issuedao.getIssuedList(page, limit);
 		
 		/*
 		 * 총 페이지 수

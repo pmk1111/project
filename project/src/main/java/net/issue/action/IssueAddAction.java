@@ -58,11 +58,9 @@ public class IssueAddAction implements Action {
 			// 세션에있는 유저 이름
 			HttpSession session = request.getSession();
 			String usrname = (String) session.getAttribute("usrName");
-			System.out.println("IssueAddAction usrname = " + usrname);
 			
 			// 해당 프로젝트 넘버
-			int projectNum = (int) session.getAttribute("p_num");
-			System.out.println("IssueAddAction projectNum= " + projectNum);
+			int projectNum = Integer.parseInt(request.getParameter("p_num"));
 			
 			
 			result=issuedao.issueInsert(issuedata, usrname, projectNum);
