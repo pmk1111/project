@@ -31,11 +31,15 @@ public class UsrloginProcessAction implements Action {
 	 		// UserDao를 사용하여 사용자의 num 값을 가져옵니다.
 	 		UsrDAO dao = new UsrDAO();
 	 		
+	 		// 세션에 usrnum 저장
 	 		int usrNum = dao.getUserNum(id);
-	 		
 	 		System.out.println("usrNum = " + usrNum);
-	 		
 	 		session.setAttribute("usrNum", usrNum);
+	 		
+	 		// 세션에 usrname 저장
+	 		String usrName = dao.getUserName(id);
+	 		System.out.println("usrName = " + usrName);
+	 		session.setAttribute("usrName", usrName);
 	         
 	         forward.setRedirect(true);
 	         forward.setPath("ProjectList.pro");
