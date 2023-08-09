@@ -16,6 +16,11 @@
   <link rel="stylesheet" href="css/main.css">
 
 <style>
+
+main {
+	overflow : "auto";
+}
+
  @keyframes fade_in{
       0%{opacity: 0; top:-15px;}
       100%{opacity: 100%; top: 0px;}
@@ -94,7 +99,7 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 	<c:if test="${listcount > 0 }">
 
 		<div class="rows">
-		
+		<br>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -188,6 +193,8 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 			</ul>
 		</div>
 	</c:if> <!-- listcount>0 end -->
+		<br>
+	<br>
 
 	<c:if test="${listcount == 0 }">
 		<h3 style="text-align: center">프로젝트를 생성해 주세요.</h3>
