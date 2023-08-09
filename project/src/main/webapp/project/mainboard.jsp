@@ -6,12 +6,19 @@
 <meta charset="UTF-8">
 <title>메인보드</title>
 
-<link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="../css/leftbar.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/mainboard.css">
+<link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/leftbar.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/mainboard.css">
   
   <style>
+   @keyframes fade_in{
+      0%{opacity: 0; top:-15px;}
+      100%{opacity: 100%; top: 0px;}
+    }
+   	body{animation: fade_in 0.4s linear;}
+   	.content{animation: fade_in 0.6s linear;}
+  .header-search-btn{justify-content:center;}
   ul {list-style-type: none;}
     li {font-size: 10px}
     a {text-decoration: none; color: #8D52A9;}
@@ -68,8 +75,8 @@
 
         <div class="board_list_brief">
           <div class="see_all">
-          <h2>모든 이슈</h2><a href="#"><sub>전체 보기</sub>
-            <img src="../img/add.svg" alt="전체보기" style="position: relative; width: 12px; height: 12px; top: 5px;"></a>
+          <h2>모든 이슈</h2><a href="BoardList.bo"><sub>전체 보기</sub>
+            <img src="img/add.svg" alt="전체보기" style="position: relative; width: 12px; height: 12px; top: 5px;"></a>
         </div>
           <table class="brief">
             <tr>

@@ -38,6 +38,8 @@ li{list-style: none;}
   border-radius: 5px;
   color: white;
   background-color: #7C00B6;
+  font-size:14px;
+  text-align:center;
 }
 
 .header-search+.header-search-btn {
