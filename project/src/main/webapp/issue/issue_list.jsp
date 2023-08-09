@@ -175,14 +175,14 @@ li {
 
 											</c:if> --%>
 
-												<a href="BoardDetailAction.bo?num=${i.i_num }"> <c:if
+												<a href="IssueDetailAction.bo?num=${i.i_seq }"> <c:if
 														test="${i.i_title.length()>=20 }">
 														<c:out value="${i.i_title.substring(0,20) }..." />
 													</c:if> <c:if test="${i.i_title.length()<20 }">
 														<c:out value="${i.i_title}" />
 													</c:if>
 
-												</a>[${i.cnt}]
+												</a>
 											</div>
 										</td>
 										<td>${i.i_created }</td>

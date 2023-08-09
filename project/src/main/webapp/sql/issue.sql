@@ -30,6 +30,9 @@ VALUES ((SELECT NVL(max(i_num)+1, 1) FROM issue WHERE p_num = 2),2);
 INSERT INTO ISSUE (i_seq, i_num, p_num)
 VALUES (i_seq.nextval, (SELECT NVL(max(i_num)+1, 1) FROM issue WHERE p_num = 3),3);
 
+INSERT INTO ISSUE (i_seq, p_num)
+VALUES (i_seq.nextval, 21);
+
 
 
 SELECT * FROM ( 
