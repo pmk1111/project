@@ -26,18 +26,9 @@ function ajax(sdata){
 				let num = data.listcount - (data.page -1) * data.limit;
 				console.log(num)
 				let output = "<tbody>";
-				$(data.boardlist).each(
+				$(data.issuedlist).each(
 					function(index,item){
 
-						/*const blank_count = item.board_re_lev  + 2 +1;
-						let blank='&nbsp;';
-						for(let i=0; i<blank_count; i++){
-							blank +='&nbsp;&nbsp;';
-						}*/
-					    /*let img="";
-						if(item.board_re_lev > 0){
-							img="<img src='image/line.gif'>";
-						}*/
 						
 						let title = item.i_title;
 						if(title.length>=20){
@@ -47,10 +38,9 @@ function ajax(sdata){
 						output +='<tr><td>' +item.i_name+'</td>'
 						output += "<td>" +blank+img
 						output += '<a href=IssueDetailAction.bo?num='+item.i_seq+'">'
-						output += title.replace(/</g,'&lt;').replace(/>/g,'&gt;')
-						  		+'</a></td>';
+             				   + title.replace(/</g,'&lt;').replace(/>/g,'&gt;')
+             				   + '</a></td>';
 						  		
-					/*	output +='<td>' +item.board_subject+'</td>'*/
 						output +='<td>'+item.i_date+'</td>'
 						output += '</tr>'
 					})
@@ -84,7 +74,6 @@ function ajax(sdata){
 					if(data.page < data.maxpage){
 						href = 'href=javascript:go('+(data.page+1)+')';
 					}
-					/*output +=setPaging(href,digit);*/
 					$('.issue_page').append(output)
 				
 			}//if

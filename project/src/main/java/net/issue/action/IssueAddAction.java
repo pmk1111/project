@@ -44,7 +44,6 @@ public class IssueAddAction implements Action {
 			
 			//BoardBean 객체에 글 등록 폼에서 입력 받은 정보들을 저장합니다.
 			issuedata.setI_name(multi.getParameter("i_name"));
-			//issuedata.setBoard_pass(multi.getParameter("board_pass"));
 			issuedata.setI_title(multi.getParameter("i_title"));
 			issuedata.setI_content(multi.getParameter("editordata"));
 			
