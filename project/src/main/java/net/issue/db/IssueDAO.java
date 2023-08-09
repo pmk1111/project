@@ -112,16 +112,14 @@ public class IssueDAO {
 		return list;
 	}
 
-	public boolean issueInsert(IssueBean issuedata) {
+	public boolean issueInsert(IssueBean issuedata, String name, int projectNum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String max_sql = "(select nvl(max(i_num),0)+1 from issue)";
 
-
-		String sql = "INSERT INTO issue " + "(i_NUM, i_NAME, i_title,"
-				+ " i_CONTENT, issue_READCOUNT, p_num)" + " values(" + max_sql +
-				",?,?,?,?,?)";
+		String sql = "INSERT INTO issue " 
+		           + "(i_seq, i_NAME, i_title, i_CONTENT, issue_READCOUNT, p_num)" 
+		           + " values( i_seq.nextval, " + name + ", ?, ?, ?, " + projectNum + ")";
 
 
 
@@ -138,12 +136,11 @@ public class IssueDAO {
 
 
 
-			pstmt.setString(1, issuedata.getI_name());
-			pstmt.setString(2, issuedata.getI_title());
-			pstmt.setString(3, issuedata.getI_content());
+			pstmt.setString(1, issuedata.getI_title());
+			pstmt.setString(2, issuedata.getI_content());
 			//pstmt.setString(5, issuedata.getissue_file());
-			pstmt.setInt(4, 0);
-			pstmt.setInt(5, 23);
+			pstmt.setInt(3, 0);
+			pstmt.setInt(4, 23);
 
 			result = pstmt.executeUpdate();
 			if (result == 1) {
@@ -168,9 +165,10 @@ public class IssueDAO {
 	 */
 
 	public IssueBean getDetail(int num) {
-		IssueBean issue = null;
+		
+		IssueBean issue =  new IssueBean();;
 		String sql = "	select * from issue" 
-				+ "		where i_num =?";
+				   + "	where i_seq =?";
 		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 			pstmt.setInt(1, num);
 			try (ResultSet rs = pstmt.executeQuery()) {

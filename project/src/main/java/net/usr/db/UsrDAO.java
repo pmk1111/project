@@ -45,6 +45,29 @@ public class UsrDAO {
 
 		return num;
 	}
+	
+	public String getUserName(String id) {
+		
+		String name = null;
+
+		String sql = "SELECT name FROM USR WHERE ID = ?";
+
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setString(1, id);
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					name = rs.getString("name");
+					return name;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return name;
+	}
 
 	public Usr usr_info(String id) {
 		Usr u = null;

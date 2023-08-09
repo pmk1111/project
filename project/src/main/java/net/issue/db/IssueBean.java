@@ -14,13 +14,15 @@ public class IssueBean {
 	private String i_reporter;
 	private String i_assign;
 	private String i_related;
+	private int    i_readcount;//글의 조회수
+	
 	public String getI_related() {
 		return i_related;
 	}
 	public void setI_related(String i_related) {
 		this.i_related = i_related;
 	}
-	private int    i_readcount;//글의 조회수
+	
 	public int getI_seq() {
 		return i_seq;
 	}
