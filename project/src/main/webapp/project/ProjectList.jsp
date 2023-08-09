@@ -8,90 +8,32 @@
 <meta charset="UTF-8">
 
 <title>내 프로젝트 리스트</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/leftbar.css">
 <link rel="stylesheet" href="css/main.css">
 
 <style>
+
 main {
-	overflow: "auto";
+overflow: "auto";
 }
 
-@
-keyframes fade_in { 0%{
-	opacity: 0;
-	top: -15px;
+@keyframes fade_in { 
+
+0%{
+opacity: 0;
+top: -15px;
 }
 
-100
-
-
-
-
-
-
-
-
-%
-{
-opacity
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-100
-
-
-
-
-
-
-%;
-top
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-0px
-
-
-
-
-
-
-;
+100%{
+opacity : 100%;
+top : 0px;
 }
+
 }
+
 body {
 	animation: fade_in 0.4s linear;
 }
@@ -134,40 +76,8 @@ select.form-control {
 	display: inline-block
 }
 
-.rows {
-	text-align: right;
-}
-
 .gray {
 	color: gray;
-}
-
-body>div>table>thead>tr:nth-child(2)>th:nth-child(1) {
-	width: 5%;
-}
-
-body>div>table>thead>tr:nth-child(2)>th:nth-child(2) {
-	width: 20%;
-}
-
-body>div>table>thead>tr:nth-child(2)>th:nth-child(3) {
-	width: 30%;
-}
-
-body>div>table>thead>tr:nth-child(2)>th:nth-child(4) {
-	width: 10%;
-}
-
-body>div>table>thead>tr:nth-child(2)>th:nth-child(5) {
-	width: 10%;
-}
-
-body>div>table>thead>tr:nth-child(2)>th:nth-child(6) {
-	width: 10%;
-}
-
-body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
-	width: 15%;
 }
 
 /* Remove rounded borders from list */
@@ -209,10 +119,60 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 	background-color: #fff;
 	color: #000;
 }
+
+/* 프로젝트 테이블 */
+.row {
+  display: inline-block;
+  font-size: 16px;
+  width: calc(25% - 30px);
+  margin: 0 5px 20px;
+  box-sizing: border-box;
+  vertical-align: top;
+  weidth : 210px;
+}
+
+.project_item {
+	margin-top : 70px;
+	top : 50%;
+	trasform : translate(-50%, 0%);
+	margin-left : 100px;
+}
+
+
+
+/*
+body>div>table>thead>tr:nth-child(2)>th:nth-child(1) {
+	width: 5%;
+}
+
+body>div>table>thead>tr:nth-child(2)>th:nth-child(2) {
+	width: 20%;
+}
+
+body>div>table>thead>tr:nth-child(2)>th:nth-child(3) {
+	width: 30%;
+}
+
+body>div>table>thead>tr:nth-child(2)>th:nth-child(4) {
+	width: 10%;
+}
+
+body>div>table>thead>tr:nth-child(2)>th:nth-child(5) {
+	width: 10%;
+}
+
+body>div>table>thead>tr:nth-child(2)>th:nth-child(6) {
+	width: 10%;
+}
+
+body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
+	width: 15%;
+}
+*/
+
 </style>
 </head>
 <body>
-
 
 	<header>
 		<jsp:include page="/menu_bar/navbar.jsp" />
@@ -224,24 +184,22 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 		<div class="content">
 
 			<div class="board-content">
-
-				<div class="container">
+				<div class ="project_item">
 					<c:if test="${listcount > 0 }">
-
 
 						<!-- 가져온 projectlist 정의 -->
 						<c:forEach var="p" items="${projectlist}">
 
 							<div class="row text-center">
 								<div class="col-sm-4">
-
 									<div class="thumbnail">
-										<img src="projectupload/${p.p_file}" width="200"
-											height="150">
+										<img src="projectupload/${p.p_file}" width="200" height="150">
 										<p>
-											<strong> <c:if test="${p.p_name.length() >= 20 }">
+											<strong> 
+												<c:if test="${p.p_name.length() >= 20 }">
 													<c:out value="${p.p_name.substring(0,20)}..." />
-												</c:if> <c:if test="${p.p_name.length() < 20 }">
+												</c:if> 
+												    <c:if test="${p.p_name.length() < 20 }">
 													<c:out value="${p.p_name }" />
 												</c:if>
 											</strong>
@@ -251,9 +209,7 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 									</div>
 								</div>
 							</div>
-
 						</c:forEach>
-
 
 						<div class="center-block">
 							<ul class="pagination justify-content-center">
@@ -285,6 +241,7 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 						</div>
 					</c:if>
 					<!-- listcount>0 end -->
+					</div>
 					<br> <br>
 
 					<c:if test="${listcount == 0 }">
@@ -294,7 +251,6 @@ body>div>table>thead>tr:nth-child(2)>th:nth-child(7) {
 				</div>
 			</div>
 
-		</div>
 	</main>
 </body>
 </html>
