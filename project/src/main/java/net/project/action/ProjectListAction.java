@@ -24,7 +24,7 @@ public class ProjectListAction implements Action {
 		List<Project> projectlist = new ArrayList<Project>();
 		  
 		int page = 1;
-		int limit = 6;
+		int limit = 8;
 		  
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));

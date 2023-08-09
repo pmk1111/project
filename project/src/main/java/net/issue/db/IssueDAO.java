@@ -23,6 +23,28 @@ public class IssueDAO {
 			System.out.println("DB 연결 실패 :" + ex);
 		}
 	}
+	
+	public String getProjectName(int pnum) {
+		String sql = "select p_name from project where p_num = "+ pnum;
+		
+		String x = "";
+		
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					x = rs.getString(1);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("getListCount()에러 " + ex);
+		}
+		return x;
+	}
+
 
 	// 글의갯수 구하기
 	public int getListCount(int pnum) {

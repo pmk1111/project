@@ -75,6 +75,10 @@ function redirectToKakaoLogin() {
 }
 
 $(document).ready(function () {
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'main' of https://github.com/pmk1111/project.git
     $(".id_check").on('click', function () {
         const pattern = /^\w{5,12}$/;
         const id = $("input:eq(0)").val();
@@ -179,6 +183,45 @@ $(document).ready(function () {
     
 });
 
+<<<<<<< HEAD
+=======
+	function emailValCheck(email){
+	    if (email === '') return "empty";
+	    const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	    return emailPattern.test(email) ? "valid" : "invalid";
+	  }
+
+	  $("#emailAuthBtn").on('click', function () {
+	    const email = $("input[name=email]").val();
+	    const $message = $("#email_message");
+	    const emailCheckResult = emailValCheck(email);
+
+	    if (emailCheckResult === "empty") {
+	      $message.addClass('message error').html("이메일을 입력하세요.").css('color','red');
+	      return false;
+	    } else if (emailCheckResult === "invalid") {
+	      $message.addClass('message error').html("이메일 형식에 맞게 입력하세요.").css('color','red');
+	      return false;
+	    } else {
+	      $message.removeClass('message error').empty();
+	    }
+			
+		 var url = "confirmEmail.net";
+		 alert('인증번호가 발송되었습니다.');
+		 
+		  $.ajax({
+		        url: url,
+		        data: { "email": email }, 
+		        success: function (resp) {
+		        	$("#authRandNum").val(resp);
+		        }
+		      });	 
+     });
+
+  });
+  
+
+>>>>>>> branch 'main' of https://github.com/pmk1111/project.git
 function chkAuthMailNum() {
     var inAuthMailNum = $("input[name=verify]").val();
     const $verifyMessage = $("#verify_message");
@@ -195,6 +238,8 @@ function chkAuthMailNum() {
         alert("인증실패");
     }
 }
+
+
 
 </script>
 
@@ -220,10 +265,12 @@ function chkAuthMailNum() {
 			placeholder="이메일을 입력하세요" required> 
 		<button  id="emailAuthBtn" type="button" class="send_verify" name="send_verify">인증번호 받기</button>
 		<span id="email_message"></span>
+
 		<b>인증번호 입력</b> <input id="verify" type="text" class="verify" name="verify"
 			maxLength="6" placeholder="인증번호를 입력하세요" required> 
 		<button onclick ="chkAuthMailNum()" type="button" id="verify_check" class="verify_check" name="verify">인증번호
 			확인</button><span id="verify_message"></span>
+
 		<input type="hidden" id = "authRandNum" name = "authRandNum" />
 
 		<label> <input type="checkbox" id="policy" class="policy"

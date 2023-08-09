@@ -41,13 +41,13 @@
 		<div class="content">
       <div class="board-content">
         <div id="board_title_info">
-          <span class="pj_board_name" name="pj_board_name">프로젝트 / ${p_name} /	${boarddata.board_subject} </span>
+          <span class="pj_board_name" name="pj_board_name">프로젝트 / ${p_name} /	${issuedata.i_title} </span>
           <h2 style="font-size: 1.5em;">${i_title}</h2>
         </div>
 
         <div class="fav_ed_del">
           <!-- <div class="fav"> -->
-            <img id="fav_icon" name="fav" src="../img/star_grey.jpeg">
+            <img id="fav_icon" name="fav" src="img/star_grey.jpeg">
             <label for="fav" class="fav_label">즐겨찾기</label>
           <!-- </div> -->
           <div class="ed_del_dropdown">
@@ -56,7 +56,7 @@
             <div class="ed_del-dropdown_item">
               <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#" >수정</a>
      
-              <a class="del_issue" name="del_issue" href="BoardDeleteAction.bo?num=${boarddata.board_num }" >삭제</a>
+              <a class="del_issue" name="del_issue" href="IssueDeleteAction.bo?num=${issuedata.i_seq }" >삭제</a>
             </div>
           </div>
 
@@ -64,16 +64,16 @@
             <span>상세 정보</span>
             <hr>
             <div class="create">
-              <span>생성일</span><span id="i_create">${boarddata.board_date }</span>
+              <span>생성일</span><span id="i_create">${issuedata.i_created }</span>
             </div>
             <div class="reporter">
-            <span>보고자</span><span id="i_reporter">${boarddata.board_name}</span>
+            <span>보고자</span><span id="i_reporter">${issuedata.i_name}</span>
           </div>
           <div class="assign">
-            <span>담당자</span><span id="i_assign">${i_assign}</span>
+            <span>담당자</span><span id="i_assign">${issuedata.i_assign}</span>
           </div>
           <div class="status">
-            <span>진행상태</span><span id="i_status">${i_statue}</span>
+            <span>진행상태</span><span id="i_status">${issuedata.i_status}</span>
           </div>
           </div>
         </div>
@@ -82,21 +82,33 @@
         <div class="board_desc">
           <span>내용</span>
           <div class="issue_content">
-          <span class="i_content">${boarddata.board_content}</span>
+          <span class="i_content">${issuedata.i_content}</span>
   
           <br><br><br><br>
           
         </div>
                    
-        </div>
+    </div> <%--issue content end --%>
 
-        <div class="reply_textarea">
-          <textarea id="summernote_comm" name="editordata"></textarea>
+	<div class = "reply-area">
+		<div class = "reply-order">
+		  <ul class="comment-order-list">
+		  </ul>
+		</div>
+		<ul class="reply-list">
+		</ul>
+		<div class="reply-write"> <%-- 댓글창에 등록 --%>
+          <div class="reply_textarea">
+            <b class="reply-write-area-name">${id}</b>
+            <textarea id="summernote_comm" name="editordata" maxLength="200"></textarea>
+          </div>
+          
           <div class="re_sub_cancel">
-          <button type="submit" class="re_submit" name="re_submit">댓글달기</button>
-          <button type="submit" class="re_cancel" name="re_cancel">취소</button>
-        </div>
-        </div>
+             <button type="submit" class="re_submit" name="re_submit">댓글달기</button>
+             <button type="submit" class="re_cancel" name="re_cancel">취소</button>
+          </div>
+        </div> <%--reply-write end --%>
+      </div> <%--reply-area end --%>
         <br><br><br>
       </div>
 
