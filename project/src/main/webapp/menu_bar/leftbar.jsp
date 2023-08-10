@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 
    <div class="left-bar">
@@ -17,15 +17,16 @@
       </div>
       <div class="left-bar-items">
           <img id="issue_all" class="left-menu-icon" src="img/issueall.png">
-          <label for="issue_all"><a href="IssueList.bo">전체 이슈</a></label>
+          <label for="issue_all"><a href="IssueList.bo?num=${p_num }">전체 이슈</a></label>
       </div>
 
 
       <h5>일정</h5>
       <div class="left-bar-items">
           <img id="main_board" class="left-menu-icon" src="img/mainboard.png">
-          <label for="main_board"><a href="ProjectMainboard.pro">메인보드</a></label>
+          <label for="main_board"><a href="ProjectMainboard.pro?num=${p_num }">메인보드</a></label>
       </div>
+      
       <div class="left-bar-items">
           <img id="pj_status" class="left-menu-icon" src="img/projectstatus.png">
           <label for="pj_status">프로젝트 현황</label>

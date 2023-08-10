@@ -10,7 +10,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="../js/list.js"></script>
+<script src="js/list.js"></script>
 
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/board_list.css">
 <style>
+
 ul {
 	list-style-type: none;
 }
@@ -62,6 +63,13 @@ li {
 .navbar {
 	margin-bottom: 0px;
 }
+.issue_list_wrap > h2{display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;}
 </style>
 
 <!-- <script>
@@ -116,7 +124,7 @@ li {
 
 
 					<div class="issue_title">
-						<strong>전체이슈</strong>
+						<h2>전체이슈</h2>
 					</div>
 
 					<c:if test="${listcount > 0 }">

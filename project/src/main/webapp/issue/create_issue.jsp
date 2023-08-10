@@ -25,7 +25,7 @@
         <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="i_title" maxlength="100" required><br>
         <p>내용<span class="req">*</span></p><textarea id="summernote" name="editordata"></textarea>
         <hr>
-        <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" value="${i_name}" readonly><br>
+        <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" <%-- value="${i_name}" readonly --%>><br>
         <!-- 보고자는 글을 작성한 유저의 이름을 가져온다 -->
         <p>담당자<span class="req">*</span></p>
         <select id="issue_manager">
