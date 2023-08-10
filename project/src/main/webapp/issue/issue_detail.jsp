@@ -38,6 +38,7 @@
 
 	<main>
 		<jsp:include page="/menu_bar/leftbar.jsp" />
+		<input type="hidden" id="loginid" value="${id}" name="loginid"><%--view.js에서 사용예정 --%>
 		<div class="content">
       <div class="board-content">
         <div id="board_title_info">
@@ -56,7 +57,7 @@
             <div class="ed_del-dropdown_item">
               <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#" >수정</a>
      
-              <a class="del_issue" name="del_issue" href="IssueDeleteAction.bo?num=${issuedata.i_seq }" >삭제</a>
+              <a class="del_issue" name="del_issue" href="BoardDeleteAction.bo?num=${issuedata.p_num }" >삭제</a>
             </div>
           </div>
 
@@ -64,10 +65,10 @@
             <span>상세 정보</span>
             <hr>
             <div class="create">
-              <span>생성일</span><span id="i_create">${issuedata.i_date }</span>
+              <span>생성일</span><span id="i_create">${issuedata.i_created }</span>
             </div>
             <div class="reporter">
-            <span>보고자</span><span id="i_reporter">${issuedata.i_name}</span>
+            <span>보고자</span><span id="i_reporter">${issuedata.i_reporter}</span>
           </div>
           <div class="assign">
             <span>담당자</span><span id="i_assign">${i_assign}</span>
@@ -89,10 +90,11 @@
         </div>
                    
     </div> <%--issue content end --%>
-
+	<input type="hidden" name="num" value="${param.num}"
+	                       id="reply_issue_num"> <%--주소값을 가져오기 --%>
 	<div class = "reply-area">
 		<div class = "reply-order">
-		  <ul class="comment-order-list">
+		  <ul class="reply-order-list">
 		  </ul>
 		</div>
 		<ul class="reply-list">
