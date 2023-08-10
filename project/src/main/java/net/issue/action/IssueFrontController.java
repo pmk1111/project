@@ -44,9 +44,6 @@ public class IssueFrontController extends javax.servlet.http.HttpServlet {
 		case "/IssueList.bo":
 			action = new IssueListAction();
 			break;
-		case "/IssueModal.bo":
-			action = new IssueModalAction();
-			break;
 		case "/IssueAddAction.bo":
 			action = new IssueAddAction();
 			break;

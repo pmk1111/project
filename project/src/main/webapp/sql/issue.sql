@@ -38,6 +38,7 @@ VALUES (i_seq.nextval, (SELECT NVL(max(i_num)+1, 1) FROM issue WHERE p_num = 3),
 INSERT INTO ISSUE (i_seq, p_num)
 VALUES (i_seq.nextval, 21);
 
+select * from issue where i_status = 'To Do';
 
 
 SELECT * FROM ( 
@@ -48,8 +49,9 @@ SELECT * FROM (
 				        SELECT comment_i_num, COUNT(*) cnt  
 				        FROM comm 
 				        GROUP BY comment_i_num
-				    ) ON i_num = comment_i_num 
+				    ) ON i_seq = comment_i_num 
 						 and p_num = 3
 				    ORDER BY i_seq DESC
 				) j WHERE ROWNUM <= 2
-				) WHERE rnum >= 1 AND rnum <= 2;
+				) WHERE rnum >= 1 AND rnum <= 2
+				  and i_status = 'To Do';

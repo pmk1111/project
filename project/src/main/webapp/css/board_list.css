@@ -1,18 +1,21 @@
 @charset "UTF-8";
 
 
-html {
+/* html {
     font-size: 10px;
 }
-
+ */
 .issue_list_wrap{
-    margin-top: 60px;
+    margin-top: 70px;
+    margin-right:70px;
+    margin-left: 70px;
 }
-
 /*select*/
 .selector{
-    padding-bottom: 30px;
-    margin:auto;
+	position:relative;
+	left:-18px;
+    padding-bottom: 20px;
+    margin:50px 0px 10px 0px;
     font-size: 12px;
     color: gray;
 
@@ -39,15 +42,11 @@ html {
 .numbers select:focus {
     outline: 0;
 }
-.board_title {
-    margin-bottom: 15px;
-    margin-left: 20px;
-}
 
 .board_title strong {
     font-size: 3rem;
 }
-tr,td{
+th,td{
     padding: 10px;
 }
 
@@ -68,8 +67,8 @@ tr,td{
 .title{
     color: black;
 }
-
-.board_list {
+.title:hover{text-decoration: none;  transition:0.3s; color:#7C00B6;}
+table {
     width: 100%;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -80,7 +79,9 @@ tr,td{
  tr{
     border-bottom: 1px solid lightgray;
 }
-
+.issue_list tr {
+	height: 50px;
+}
 .issue_list > td {
     padding: 15px 0;
     text-align: center;
@@ -130,15 +131,31 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
     padding-top: 11px;
 }
 
-
 .issue_page a:hover {
     background: #7C00B6;
     color: #fff;
+    text-decoration: none;
+    transition:0.4s;
 }
 
- @keyframes fade_in{
-      0%{opacity: 0; top:-15px;}
-      100%{opacity: 100%; top: 0px;}
-    }
-   	body{animation: fade_in 0.4s linear;}
-   	.content{animation: fade_in 0.6s linear;}
+@keyframes fade_in { 
+
+0%{
+opacity: 0;
+top: -15px;
+}
+
+100%{
+opacity : 100%;
+top : 0px;
+}
+
+}
+
+body {
+	animation: fade_in 0.4s linear;
+}
+
+.content {
+	animation: fade_in 0.6s linear;
+}

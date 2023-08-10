@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script src="js/issue_modal.js"></script>
-    
 <div id="modal_overlay"></div>
   <div id="issue_modal">
     <form method="post" action ="IssueAddAction.bo" enctype = "multipart/form-data">
@@ -25,6 +23,7 @@
         <p>내용<span class="req">*</span></p><textarea id="summernote" name="i_content"></textarea>
         
         <hr>
+
         <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" value="${usrname}" readonly><br>
         <!-- 보고자는 글을 작성한 유저의 이름을 가져온다 -->
         <p>담당자<span class="req">*</span></p>

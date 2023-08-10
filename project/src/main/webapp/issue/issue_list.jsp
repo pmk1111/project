@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이슈 게시판</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -62,6 +62,16 @@ li {
 .navbar {
 	margin-bottom: 0px;
 }
+
+.issue_list_wrap>h2 {
+	display: block;
+	font-size: 1.5em;
+	margin-block-start: 0.83em;
+	margin-block-end: 0.83em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
 </style>
 
 <!-- <script>
@@ -116,11 +126,11 @@ li {
 
 
 					<div class="issue_title">
-						<strong>전체이슈</strong>
+						<h2>전체이슈</h2>
 					</div>
 
 					<c:if test="${listcount > 0 }">
-					
+
 						<div class="selector">
 							<label>필터</label> <label> 유형: <select class="numbers">
 									<option value="1">모두</option>
@@ -141,7 +151,8 @@ li {
 
 							</select>
 							</label>
-						</div> <!-- selector end -->
+						</div>
+						<!-- selector end -->
 
 
 						<table class="issue_list">
@@ -156,15 +167,15 @@ li {
 
 							<tbody>
 								<c:set var="num" value="${listcount-(page-1)*limit}" />
-								
+
 								<c:forEach var="i" items="${issuelist}">
 									<tr>
 										<td>${i.i_name}</td>
 										<td>
 											<div>
 
-												<a class="title" href="IssueDetailAction.bo?num=${i.i_seq }"> 
-												<c:if test="${i.i_title.length()>=20 }">
+												<a class="title" href="IssueDetailAction.bo?num=${i.i_seq }">
+													<c:if test="${i.i_title.length()>=20 }">
 														<c:out value="${i.i_title.substring(0,20) }..." />
 													</c:if> <c:if test="${i.i_title.length()<20 }">
 														<c:out value="${i.i_title}" />
@@ -173,6 +184,7 @@ li {
 												</a>
 											</div>
 										</td>
+
 										<td>${i.i_created }</td>
 										<td>${i.i_readcount}</td>
 
@@ -183,8 +195,9 @@ li {
 						</table>
 					</c:if>
 					<%-- </c:if> --%>
-					<c:if test="${listcount !=0 }">
-						<div class="issue_page">
+					<div class="issue_page">
+						<c:if test="${listcount !=0 }">
+
 
 							<c:if test="${page <= 1 }">
 								<a href="#" class="bt first">&lt;&lt;</a>
@@ -196,8 +209,6 @@ li {
 								<a href="#" class="bt prev">&lt;</a>
 
 							</c:if>
-
-
 
 							<c:forEach var="a" begin="${startpage }" end="${endpage }">
 								<c:if test="${a==page}">
@@ -217,19 +228,23 @@ li {
 								<a href="#" class="bt next">&gt;</a>
 								<a href="#" class="bt last">&gt;&gt;</a>
 							</c:if>
-						</div>
-					</c:if>
 
+						</c:if>
+						<c:if test="${listcount ==0 }">
+					<h3 style="color:lightgrey;">등록 된 글이 없습니다.</h3>
+				</c:if>
+						<button id="openModalBtn" class="write">글쓰기</button>
+					</div>
 				</div>
 
-				<c:if test="${listcount ==0 }">
-					<h3>등록 된 글이 없습니다.</h3>
-				</c:if>
-				<button id="openModalBtn" class="write">글쓰기</button>
+
 			</div>
 		</div>
-		<!-- </div> -->
 
 	</main>
+
+	<jsp:include page="create_issue.jsp" />
+	<script src="js/issue_modal.js"></script>
+
 </body>
 </html>
