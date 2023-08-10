@@ -168,7 +168,7 @@ $(document).ready(function () {
         clearTimeout(emailAuthTimer);
         emailAuthTimer = setTimeout(function () {
             $("#emailAuthBtn").prop("disabled", false);
-            $message.css("color", "#7869e6").html("이메일 발송 가능합니다.");
+            $message.css("color", "blue").html("이메일 발송 가능합니다.");
         }, 60000);
     });
 
@@ -244,7 +244,7 @@ function chkAuthMailNum() {
 			계정으로 가입하기</button>
 
 		<div class="clearfix">
-			<button type="submit" class="submitbtn">가입하기</button>
+			<button type="submit" class="submitbtn" onclick="validationcheck()">가입하기</button>
 
 		</div>
 	</form>
