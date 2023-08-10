@@ -27,13 +27,17 @@
         <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" value="${usrname}" readonly><br>
         <!-- 보고자는 글을 작성한 유저의 이름을 가져온다 -->
         <p>담당자<span class="req">*</span></p>
+
         
         <!-- 빡쌔요 -->
-        <select id="issue_manager" name="i_assign">
+    <!--    <select id="issue_manager" name="i_assign">
           <option>직원 1</option>
           <option>직원 2</option>
           <option>직원 4</option>
-        </select><br>
+        </select> -->
+        <input type="text" id="issue_manager" name="i_assign" value="${usrname}" readonly>
+        <!-- 담당자는 현재 프로젝트에 참여한 인원을 표시한다(최종) / 일단은 보고자로 세팅-->
+        <br>
         
         <!-- 추후 해당 프로젝트에 참여 중인 인원을 표시할 수 있게 한다 -->
         <p>상태<span class="req">*</span></p>

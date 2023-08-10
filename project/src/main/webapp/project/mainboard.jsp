@@ -13,20 +13,49 @@
 <link rel="stylesheet" href="css/mainboard.css">
 <script src="js/list_mainboard.js"></script>
 <style>
-@keyframes fade_in { 
-
-0%{
-opacity: 0;
-top: -15px;
+@
+keyframes fade_in { 0%{
+	opacity: 0;
+	top: -15px;
 }
 
-100%{
-opacity : 100%;
-top : 0px;
-}
+100
 
-}
 
+
+
+%
+{
+opacity
+
+
+
+
+:
+
+
+
+
+100
+
+
+%;
+top
+
+
+
+
+:
+
+
+
+
+0px
+
+
+;
+}
+}
 body {
 	animation: fade_in 0.4s linear;
 }
@@ -73,6 +102,7 @@ a {
 						<p>To Do</p>
 						<div class="todo_list">
 							<table class="todo_item">
+								<!-- <tbody>
 								<tr>
 									<td><a href="#">test1</a></td>
 								</tr>
@@ -82,6 +112,27 @@ a {
 								<tr>
 									<td><a href="#">test1</a></td>
 								</tr>
+								</tbody> -->
+
+								<c:set var="num" value="${listcount-(page-1)*limit}" />
+
+								<c:forEach var="i2" items="${issuelist2}">
+
+									<tr>
+										<td>
+											<div>
+												<a class="title" href="IssueDetailAction.bo?num=${i2.i_seq }">
+													<c:if test="${i2.i_title.length()>=10 }">
+														<c:out value="${i2.i_title.substring(0,10) }..." />
+													</c:if> <c:if test="${i2.i_title.length()<10 }">
+														<c:out value="${i2.i_title}" />
+													</c:if>
+												</a>
+											</div>
+										</td>
+
+									</tr>
+								</c:forEach>
 							</table>
 						</div>
 					</div>
@@ -90,15 +141,17 @@ a {
 						<p>In Progress</p>
 						<div class="progress_list">
 							<table class="progress_item">
-								<tr>
-									<td><a href="#">test1</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">test1</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">test1</a></td>
-								</tr>
+								<tbody>
+									<tr>
+										<td><a href="#">test1</a></td>
+									</tr>
+									<tr>
+										<td><a href="#">test1</a></td>
+									</tr>
+									<tr>
+										<td><a href="#">test1</a></td>
+									</tr>
+								</tbody>
 							</table>
 						</div>
 					</div>
@@ -107,15 +160,17 @@ a {
 						<p>Done</p>
 						<div class="done_list">
 							<table class="done_item">
-								<tr>
-									<td><a href="#">test1</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">test1</a></td>
-								</tr>
-								<tr>
-									<td><a href="#">test1</a></td>
-								</tr>
+								<tbody>
+									<tr>
+										<td><a href="#">test1</a></td>
+									</tr>
+									<tr>
+										<td><a href="#">test1</a></td>
+									</tr>
+									<tr>
+										<td><a href="#">test1</a></td>
+									</tr>
+								</tbody>
 							</table>
 						</div>
 					</div>
@@ -130,60 +185,47 @@ a {
 							alt="전체보기"
 							style="position: relative; width: 12px; height: 12px; top: 5px;"></a>
 					</div>
+					<%-- <c:if test="${listcount > 0 }"> --%>
 					<table class="brief">
-						<!-- <tr>
-              <td>admin</td>
-              <td>글 제목이 표시됩니다.</td>
-              <td>2023-08-07</td>
-              <td>25</td>
-            </tr>
-            <tr>
-              <td>admin</td>
-              <td>글 제목이 표시됩니다.</td>
-              <td>2023-08-07</td>
-              <td>25</td>
-            </tr>
-            <tr>
-              <td>admin</td>
-              <td>글 제목이 표시됩니다.</td>
-              <td>2023-08-07</td>
-              <td>25</td>
-            </tr>
-            <tr>
-              <td>admin</td>
-              <td>글 제목이 표시됩니다.</td>
-              <td>2023-08-07</td>
-              <td>25</td>
-            </tr> -->
+						<thead>
+							<tr>
+								<td>작성자</td>
+								<td>제목</td>
+								<td>작성일</td>
+								<td>조회수</td>
 
+							</tr>
+						</thead>
 						<tbody>
-								<c:set var="num" value="${listcount-(page-1)*limit}" />
-								
-								<c:forEach var="i" items="${issuelist}">
-									<tr>
-										<td>${i.i_name}</td>
-										<td>
-											<div>
+							<c:set var="num" value="${listcount-(page-1)*limit}" />
 
-												<a class="title" href="IssueDetailAction.bo?num=${i.i_seq }"> 
+							<c:forEach var="i" items="${issuelist1}">
+
+								<tr>
+									<td>${i.i_name}</td>
+									<td>
+										<div>
+
+											<a class="title" href="IssueDetailAction.bo?num=${i.i_seq }">
 												<c:if test="${i.i_title.length()>=20 }">
-														<c:out value="${i.i_title.substring(0,20) }..." />
-													</c:if> <c:if test="${i.i_title.length()<20 }">
-														<c:out value="${i.i_title}" />
-													</c:if>
+													<c:out value="${i.i_title.substring(0,20) }..." />
+												</c:if> <c:if test="${i.i_title.length()<20 }">
+													<c:out value="${i.i_title}" />
+												</c:if>
 
-												</a>
-											</div>
-										</td>
-										
-										<td>${i.i_created }</td>
-										<td>${i.i_readcount}</td>
+											</a>
+										</div>
+									</td>
 
-									</tr>
-								</c:forEach>
-							</tbody>
+									<td>${i.i_created }</td>
+									<td>${i.i_readcount}</td>
+
+								</tr>
+							</c:forEach>
+						</tbody>
 
 					</table>
+					<%-- </c:if> --%>
 				</div>
 
 				<br> <br>

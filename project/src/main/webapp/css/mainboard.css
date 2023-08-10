@@ -26,9 +26,16 @@
     .todo_item td a, .progress_item td a, .done_item td a{padding-left: 10px; border-radius: 3px; color: black;}
     .todo_item a:active, .progress_item a:active, .done_item a:active{opacity: 0.6;}
     .board_list_brief{margin: 50px 0px 0px 70px; width: 100%; min-width: 800px;}
+    .brief{color:black; margin-top:20px;}
     .see_all{width: 180px;}
     .see_all > h2{display: inline-block;}
     .see_all > a{font-size: 13px; float: right; margin-top: 32px; color: black;}
     .brief{width: 100%; border-collapse: collapse;}
+    thead td{font-weight: bold;}
     .brief td{border-bottom: 2px solid lightgray; padding: 8px;}
     .see_all > a:active{opacity: 0.6;}
+    
+    .title{color:black;}
+    .title:hover{text-decoration: none;  transition:0.3s; color:#7C00B6;}
+    
+    
