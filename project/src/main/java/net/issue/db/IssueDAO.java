@@ -374,7 +374,7 @@ public class IssueDAO {
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setI_name(rs.getString("I_name"));
 					issue.setI_title(rs.getString("I_TITLE"));
-					issue.setI_content(rs.getString("I_CONTENT"));
+					issue.setI_content(rs.getString("i_content"));
 					issue.setI_status(rs.getString("I_STATUS"));
 					issue.setI_file(rs.getString("I_FILE"));
 					

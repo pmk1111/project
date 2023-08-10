@@ -21,7 +21,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-<link rel="stylesheet" href="css/view.css" type="text/css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/leftbar.css">
 <link rel="stylesheet" href="css/main.css">
@@ -117,7 +116,6 @@
 	</main>
 	
 	<jsp:include page="issue_modify.jsp"/>
-	<script src="js/issue_modal.js"></script>
-
+	
 </body>
 </html>
