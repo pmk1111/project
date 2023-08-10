@@ -1,45 +1,61 @@
+function go(page){
+	const limit = $('#viewcount').val(5);
+	/*const data = 'limit = ${limit}&state=ajax&page=${page}';*/
+	const data = {limit:limit, state:"ajax", page: page}
+	ajax(data);
+	
+}
+
 function ajax(sdata){
 	console.log(sdata)
 	
 	$.ajax({
 		type : "POST",
 		data : sdata,
-		url : "BoardList.bo",
+		url : "ProjectMainboard.pro",
 		dataType : "json",
 		cache : false,
 		success : function(data){
-			$('viewcount').val(data.limit);
-			$("thead").find("span").text("글 개수 : " + data.listcount);
 			
-			if(data.listcount > 0){ // 글 개수가 0보다 클 경우
-				$("tbody").remove(); // 기존의 tbody 내용을 다 지워버린다
-				let num = data.listcount - (data.page - 1) * data.limit;
+			if(data.listcount >0){
+				
+				$("tbody").remove();
+				let num = data.listcount - (data.page -1) * data.limit;
 				console.log(num)
 				let output = "<tbody>";
-				$(data.boardlist).each(
-					function(index, item){
+				$(data.issuedlist).each(
+					function(index,item){
+
 						
-						
-						let subject = item.board_subject;
-						if(subject.length>=20){
-							subject = subject.substr(0,20) + "...";
+						let title = item.i_title;
+						if(title.length>=20){
+							title=title.substr(0,20)+"....";
 						}
-						output += '<tr><td>' + item.board_name + '</td>'
-						output += "<td>" + blank + img
-						output += '<a href="BoardDetailAction.bo?num=' + item.board_num + '">'
-						output += subject.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-								+ '</td>'
-						output += '<td><' + item.board_date + '</td>'
-						output += '<td>' + item.board_readcount + '</td></tr>'
+						
+						output +='<tr><td>' +item.i_name+'</td>'
+						output += "<td>" +blank+img
+						output += '<a href=IssueDetailAction.bo?num='+item.i_seq+'">'
+             				   + title.replace(/</g,'&lt;').replace(/>/g,'&gt;')
+             				   + '</a></td>';
+						  		
+						output +='<td>'+item.i_date+'</td>'
+						output += '</tr>'
 					})
-					output += "</tbody>"
-					$('.brief').append(output) // table 완성
-					
-					
-			} // if(data.listcount)>0 end
+					output +="</tbody>"
+					$('.brief').append(output)//table 완성
+				
+			}//if
 		}, //success end
 		error : function(){
 			
 		}
 	}) // ajax end
 } // function end
+
+/*$(function(){
+	
+	$("#viewcount").change(function(){
+		go(1);
+	});
+	
+})*/
