@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script src="js/issue_modal.js"></script>
-    
 <div id="modal_overlay"></div>
   <div id="issue_modal">
     <form method="post" action ="IssueAddAction.bo" enctype = "multipart/form-data">

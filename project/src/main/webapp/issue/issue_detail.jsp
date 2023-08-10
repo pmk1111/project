@@ -115,11 +115,8 @@
     </div>
 	</main>
 	
-	<!-- 이상한애임 -->
 	<jsp:include page="issue_modify.jsp"/>
 	<script src="js/issue_modal.js"></script>
-
-
 
 </body>
 </html>

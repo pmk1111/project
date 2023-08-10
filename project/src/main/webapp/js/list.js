@@ -90,11 +90,7 @@ function ajax(sdata){
 }//function
 
 $(function(){
-	
-   $("button").click(function(){
-      location.href="IssueModal.bo";
-   })
-	
+
 	$("#viewcount").change(function(){
 		go(1);
 	});
