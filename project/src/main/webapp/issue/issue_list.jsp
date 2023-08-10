@@ -181,6 +181,7 @@ li {
 												</a>
 											</div>
 										</td>
+										
 										<td>${i.i_created }</td>
 										<td>${i.i_readcount}</td>
 
@@ -205,8 +206,6 @@ li {
 
 							</c:if>
 
-
-
 							<c:forEach var="a" begin="${startpage }" end="${endpage }">
 								<c:if test="${a==page}">
 									<a class="num">${a}</a>
@@ -228,11 +227,7 @@ li {
 						</div>
 					</c:if>
 
-
-
 				</div>
-
-
 
 				<c:if test="${listcount ==0 }">
 					<h3>등록 된 글이 없습니다.</h3>
@@ -240,11 +235,11 @@ li {
 				<button id="openModalBtn" class="write">글쓰기</button>
 			</div>
 		</div>
-		<!-- </div> -->
 
 	</main>
-
-	<jsp:include page="/issue/create_issue.jsp" />
-	<script src="js/issue_modal.js"></script>
+	
+		<jsp:include page="create_issue.jsp"/>
+			<script src="js/issue_modal.js"></script>
+			
 </body>
 </html>

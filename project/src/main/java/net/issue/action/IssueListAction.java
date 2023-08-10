@@ -42,19 +42,20 @@ public class IssueListAction implements Action {
 		// 세션에 저장된 projectNum
 		HttpSession session = request.getSession();
 		int pnum = (int) session.getAttribute("p_num");
-		System.out.println("ListAction : " + pnum);
-		
+		System.out.println("ListAction : " + pnum);	
 		
 		String usrname = (String) session.getAttribute("usrName");
 		System.out.println("유저 이름: " + usrname);
-		
-		// 총 리스트 수를 받아옵니다.
-		int listcount = issuedao.getListCount(pnum);
-		System.out.println("pnum : " + listcount);
+		session.setAttribute("usrname", usrname);
 		
 		// 프로젝트 명을 세션에 저장합니다.
 		String pname = issuedao.getProjectName(pnum);
-		session.setAttribute("panme", pname);
+		session.setAttribute("pname", pname);
+			
+	
+		// 총 리스트 수를 받아옵니다.
+		int listcount = issuedao.getListCount(pnum);
+		System.out.println("pnum : " + listcount);
 		
 		//리스트를 받아옵니다.
 		issuelist = issuedao.getIssuedList(pnum, page, limit);

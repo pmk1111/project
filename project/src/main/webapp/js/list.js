@@ -90,7 +90,7 @@ function ajax(sdata){
 }//function
 
 $(function(){
-	
+
 	$("#viewcount").change(function(){
 		go(1);
 	});

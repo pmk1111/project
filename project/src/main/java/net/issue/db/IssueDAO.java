@@ -133,8 +133,8 @@ public class IssueDAO {
 	public boolean issueInsert(IssueBean issuedata, String name, int projectNum) {
 		
 		String sql = "INSERT INTO issue "
-		           + "(i_seq, i_NAME, i_title, i_CONTENT, i_readcount, p_num)"
-		           + " values(i_seq.nextval, ?, ?, ?, ?, ?)";
+		           + "(i_seq, i_NAME, i_title, i_CONTENT, i_readcount, p_num, i_status, i_type, i_reporter, i_assign, i_related)"
+		           + " values(i_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		int result = 0;
 		
@@ -147,6 +147,11 @@ public class IssueDAO {
 		    pstmt.setString(3, issuedata.getI_content());
 		    pstmt.setInt(4, 0);
 		    pstmt.setInt(5, projectNum);
+		    pstmt.setString(6, issuedata.getI_status());
+		    pstmt.setString(7, issuedata.getI_type());
+		    pstmt.setString(8, issuedata.getI_reporter());
+		    pstmt.setString(9, issuedata.getI_assign());
+		    pstmt.setString(10, issuedata.getI_related());
 
 		    result = pstmt.executeUpdate();
 

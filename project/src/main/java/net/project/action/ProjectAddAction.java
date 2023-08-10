@@ -45,7 +45,6 @@ public class ProjectAddAction implements Action {
 			
 //			 세션에있는 유저 넘버
 			HttpSession session = request.getSession();
-			
 			int usrnum = (int) session.getAttribute("usrNum");
 			
 			// 임시 번호

@@ -41,8 +41,9 @@
 		<div class="content">
       <div class="board-content">
         <div id="board_title_info">
-          <span class="pj_board_name" name="pj_board_name">프로젝트 / ${p_name} /	${issuedata.i_title} </span>
-          <h2 style="font-size: 1.5em;">${issuedata.i_title}</h2>
+
+          <span class="pj_board_name" name="pj_board_name">프로젝트 / ${pName} /	${issuedata.i_title} </span>
+          <h2 style="font-size: 1.5em;">${i_title}</h2>
         </div>
 
         <div class="fav_ed_del">
@@ -117,8 +118,6 @@
 	
 	<jsp:include page="issue_modify.jsp"/>
 	<script src="js/issue_modal.js"></script>
-
-
 
 </body>
 </html>
