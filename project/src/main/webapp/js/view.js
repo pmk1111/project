@@ -104,11 +104,13 @@ $(function(){
 	$('.reply-area').on('keyup','#summernote_comm',function(){
 		const length = $(this).val().length;
 		$(this).prev().text(length+'/200');
-	})//.reply-area end
+	});//.reply-area end
 	
 	//댓글 등록
-	$('ul+.reply-write .re_submit').click(function(){
-		const content=$('#summernote_comm').val();
+	$('.re_submit').click(function(){
+		
+		const content =$('.reply').val();
+		
 		if(!content){//내용없이 등록 클릭시
 			alert("댓글을 입력하세요");
 			return;

@@ -23,7 +23,9 @@ public class CommentAdd implements Action{
 		co.setC_content(request.getParameter("c_content"));
 		co.setComment_i_num(Integer.parseInt(request.getParameter("comment_i_num")));
 		//co.setComment_p_num(Integer.parseInt(request.getParameter("comment_p_num")));
+		
 		System.out.println("content="+co.getC_content());
+		
 		int ok = dao.commentsInsert(co);
 		response.getWriter().print(ok);
 		return null;

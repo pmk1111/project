@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="css/board_detail.css">
 <link rel="stylesheet" href="css/create_issue.css">
 <script src="js/board_detail.js"></script>
+<script src="js/view.js"></script>
 
 
 </head>
@@ -90,6 +91,7 @@
         </div>
                    
     </div> <%--issue content end --%>
+    
 	<input type="hidden" name="num" value="${param.num}"
 	                       id="comment_i_num"> <%--주소값을 가져오기 --%>
 	<div class = "reply-area">
@@ -102,12 +104,12 @@
 		<div class="reply-write"> <%-- 댓글창에 등록 --%>
           <div class="reply_textarea">
             <b class="reply-write-area-name">${id}</b>
-            <textarea id="summernote_comm" name="editordata" maxLength="200"></textarea>
+            <textarea class = "reply" id="summernote_comm" name="editordata" maxLength="200"></textarea>
           </div>
           
           <div class="re_sub_cancel">
              <button type="submit" class="re_submit" name="re_submit">댓글달기</button>
-             <button type="submit" class="re_cancel" name="re_cancel">취소</button>
+             <button type="reset" class="re_cancel" name="re_cancel">취소</button>
           </div>
         </div> <%--reply-write end --%>
       </div> <%--reply-area end --%>
@@ -118,6 +120,7 @@
 	</main>
 	
 	<jsp:include page="issue_modify.jsp"/>
+		<script src="js/issue_modal2.js"></script>
 	
 </body>
 </html>
