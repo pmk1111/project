@@ -26,8 +26,8 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/board_detail.css">
 <link rel="stylesheet" href="css/create_issue.css">
+<script src="js/comm.js"></script>
 <script src="js/board_detail.js"></script>
-<script src="js/view.js"></script>
 
 
 </head>
@@ -94,33 +94,44 @@
     
 	<input type="hidden" name="num" value="${param.num}"
 	                       id="comment_i_num"> <%--주소값을 가져오기 --%>
-	<div class = "reply-area">
-		<div class = "reply-order">
-		  <ul class="reply-order-list">
-		  </ul>
-		</div>
-		<ul class="reply-list">
-		</ul>
-		<div class="reply-write"> <%-- 댓글창에 등록 --%>
-          <div class="reply_textarea">
+	                       <div class="reply_textarea">
             <b class="reply-write-area-name">${id}</b>
             <textarea class = "reply" id="summernote_comm" name="editordata" maxLength="200"></textarea>
           </div>
+          
+          <div class="reply-write"> <%-- 댓글창에 등록 --%>
+          
           
           <div class="re_sub_cancel">
              <button type="submit" class="re_submit" name="re_submit">댓글달기</button>
              <button type="reset" class="re_cancel" name="re_cancel">취소</button>
           </div>
         </div> <%--reply-write end --%>
+	<div class = "reply-area" style =  "clear:both">
+		<div class = "reply-order">
+		  <ul class="reply-order-list">
+		  </ul>
+		</div>
+		<ul class="reply-list">
+		</ul>
+		
       </div> <%--reply-area end --%>
         <br><br><br>
       </div>
 
-    </div>
+    </div><%--reply-area end --%>
 	</main>
 	
 	<jsp:include page="issue_modify.jsp"/>
 		<script src="js/issue_modal2.js"></script>
-	
+	<script>
+	  $("body").on('keyup'
+			  , 'div.note-editable'
+			  , function(){
+				  //console.log('a')
+				  //console.log($(this).text())
+				  
+			  })
+	</script>
 </body>
 </html>

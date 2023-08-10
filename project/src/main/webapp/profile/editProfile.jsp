@@ -77,7 +77,7 @@
 
 	
 		// 전화번호 형식 확인	
-		let checktel = false;
+		let checktel = true;
 
         $(".tel").on("keyup", function() {
 				const pattern =/^(010)(\d{4})(\d{4})$/;
