@@ -29,7 +29,7 @@
         <hr>
         <p>제목<span class="req">*</span></p><input type="text" id="issue_title" name="issue_title" value="${issuedata.i_title}"  required><br>
         <p>내용<span class="req">*</span></p>
-        <textarea id="summernote" name="editordata">${issuedata.i_content}</textarea>
+        <textarea id="summernote" name="i_content">${issuedata.i_content}</textarea>
         <hr>
         <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" value="${issuedata.i_name}" readOnly><br>
         <p>담당자<span class="req">*</span></p>

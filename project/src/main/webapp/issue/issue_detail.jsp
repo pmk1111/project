@@ -42,13 +42,14 @@
 		<div class="content">
       <div class="board-content">
         <div id="board_title_info">
-          <span class="pj_board_name" name="pj_board_name">프로젝트 / ${p_name} /	${issuedata.i_title} </span>
-          <h2 style="font-size: 1.5em;">${i_title}</h2>
+
+          <span class="pj_board_name" name="pj_board_name">프로젝트 / ${pName} /	${issuedata.i_title} </span>
+          <h2 style="font-size: 1.5em;">${issuedata.i_title}</h2>
         </div>
 
         <div class="fav_ed_del">
           <!-- <div class="fav"> -->
-            <img id="fav_icon" name="fav" src="../img/star_grey.jpeg">
+            <img id="fav_icon" name="fav" src="img/star_grey.jpeg">
             <label for="fav" class="fav_label">즐겨찾기</label>
           <!-- </div> -->
           <div class="ed_del_dropdown">
@@ -71,10 +72,10 @@
             <span>보고자</span><span id="i_reporter">${issuedata.i_reporter}</span>
           </div>
           <div class="assign">
-            <span>담당자</span><span id="i_assign">${i_assign}</span>
+            <span>담당자</span><span id="i_assign">${issuedata.i_assign}</span>
           </div>
           <div class="status">
-            <span>진행상태</span><span id="i_status">${i_statue}</span>
+            <span>진행상태</span><span id="i_status">${issuedata.i_status}</span>
           </div>
           </div>
         </div>
@@ -119,8 +120,6 @@
 	
 	<jsp:include page="issue_modify.jsp"/>
 	<script src="js/issue_modal.js"></script>
-
-
 
 </body>
 </html>

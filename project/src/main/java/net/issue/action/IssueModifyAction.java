@@ -20,9 +20,10 @@ public class IssueModifyAction implements Action {
 		IssueDAO boarddao = new IssueDAO();
 		IssueBean boarddata = new IssueBean();
 		ActionForward forward = new ActionForward();
+		
 		String realFolder = "";
 		
-		String saveFolder="boardupload";
+		String saveFolder="issueupload";
 		
 		int fileSize = 5*1024*1024; //업로드할 파일의 최대 사이즈 5MB
 		
