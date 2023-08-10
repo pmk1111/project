@@ -130,6 +130,189 @@ public class IssueDAO {
 		return list;
 	}
 
+	public List<IssueBean> getToDoList(int pnum, int page, int limit) {
+
+		// page : 페이지
+		// limit : 페이지 당 목록의 수
+		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
+		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
+
+		// 프로젝트 넘버
+		List<IssueBean> list = new ArrayList<IssueBean>();
+		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
+		String issue_list_sql = "SELECT * "
+							  + " FROM ( SELECT ROWNUM rnum, i.* "
+							  + "		 FROM issue i "
+							  + "    	 join project p on i.p_num = p.p_num "
+							  + "		 where p.p_num = ?"
+							  + "		 order by i.i_seq desc "
+							  + "		) "
+							  + "WHERE rnum BETWEEN ? AND ?"
+							  + "and i_status = 'To Do'";
+		//해당 프로젝트에 해당하는 게시글만 가져오기 위해 p_num을 넣어야 하는데, 어디에 넣느냐
+
+		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
+		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호 (1 11 21 31 ...
+		int endrow = startrow + limit - 1; // 읽을 마지막 row 번호 (10 20 30 40 ...
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(issue_list_sql);) {
+			pstmt.setInt(1, pnum);
+			pstmt.setInt(2, startrow);
+			pstmt.setInt(3, endrow);
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+
+				// DB에서 가져온 데이터를 issueBean에 담습니다.
+				while (rs.next()) {
+					IssueBean issue = new IssueBean();
+					issue.setI_seq(rs.getInt("I_SEQ")); 
+					issue.setI_name(rs.getString("I_name"));
+					issue.setI_title(rs.getString("I_TITLE"));
+					issue.setI_content(rs.getString("I_CONTENT"));
+					issue.setI_status(rs.getString("I_STATUS"));
+					issue.setI_file(rs.getString("I_FILE"));
+					
+					issue.setI_created(rs.getString("I_CREATED"));
+					issue.setI_modified(rs.getString("I_MODIFIED"));
+					issue.setI_reporter(rs.getString("I_NAME"));
+					//우선 글 작성자가 담당자가 되도록 설정
+					issue.setI_assign(rs.getString("I_ASSIGN"));
+					issue.setI_related(rs.getString("I_RELATED"));
+					issue.setI_readcount(rs.getInt("I_READCOUNT")); 
+
+					list.add(issue); // 값을 담은 객체를 리스트에 저장합니다.
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("getListCount()에러 " + ex);
+		}
+		return list;
+	} // getToDoList end
+	
+	public List<IssueBean> getInProgressList(int pnum, int page, int limit) {
+
+		// page : 페이지
+		// limit : 페이지 당 목록의 수
+		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
+		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
+
+		// 프로젝트 넘버
+		List<IssueBean> list = new ArrayList<IssueBean>();
+		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
+		String issue_list_sql = "SELECT * "
+							  + " FROM ( SELECT ROWNUM rnum, i.* "
+							  + "		 FROM issue i "
+							  + "    	 join project p on i.p_num = p.p_num "
+							  + "		 where p.p_num = ?"
+							  + "		 order by i.i_seq desc "
+							  + "		) "
+							  + "WHERE rnum BETWEEN ? AND ?"
+							  + "and i_status = 'In Progress'";
+		//해당 프로젝트에 해당하는 게시글만 가져오기 위해 p_num을 넣어야 하는데, 어디에 넣느냐
+
+		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
+		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호 (1 11 21 31 ...
+		int endrow = startrow + limit - 1; // 읽을 마지막 row 번호 (10 20 30 40 ...
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(issue_list_sql);) {
+			pstmt.setInt(1, pnum);
+			pstmt.setInt(2, startrow);
+			pstmt.setInt(3, endrow);
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+
+				// DB에서 가져온 데이터를 issueBean에 담습니다.
+				while (rs.next()) {
+					IssueBean issue = new IssueBean();
+					issue.setI_seq(rs.getInt("I_SEQ")); 
+					issue.setI_name(rs.getString("I_name"));
+					issue.setI_title(rs.getString("I_TITLE"));
+					issue.setI_content(rs.getString("I_CONTENT"));
+					issue.setI_status(rs.getString("I_STATUS"));
+					issue.setI_file(rs.getString("I_FILE"));
+					
+					issue.setI_created(rs.getString("I_CREATED"));
+					issue.setI_modified(rs.getString("I_MODIFIED"));
+					issue.setI_reporter(rs.getString("I_NAME"));
+					//우선 글 작성자가 담당자가 되도록 설정
+					issue.setI_assign(rs.getString("I_ASSIGN"));
+					issue.setI_related(rs.getString("I_RELATED"));
+					issue.setI_readcount(rs.getInt("I_READCOUNT")); 
+
+					list.add(issue); // 값을 담은 객체를 리스트에 저장합니다.
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("getListCount()에러 " + ex);
+		}
+		return list;
+	} // getInProgressList end
+	
+	public List<IssueBean> getDoneList(int pnum, int page, int limit) {
+
+		// page : 페이지
+		// limit : 페이지 당 목록의 수
+		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
+		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
+
+		// 프로젝트 넘버
+		List<IssueBean> list = new ArrayList<IssueBean>();
+		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
+		String issue_list_sql = "SELECT * "
+							  + " FROM ( SELECT ROWNUM rnum, i.* "
+							  + "		 FROM issue i "
+							  + "    	 join project p on i.p_num = p.p_num "
+							  + "		 where p.p_num = ?"
+							  + "		 order by i.i_seq desc "
+							  + "		) "
+							  + "WHERE rnum BETWEEN ? AND ?"
+							  + "and i_status = 'Done'";
+		//해당 프로젝트에 해당하는 게시글만 가져오기 위해 p_num을 넣어야 하는데, 어디에 넣느냐
+
+		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
+		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호 (1 11 21 31 ...
+		int endrow = startrow + limit - 1; // 읽을 마지막 row 번호 (10 20 30 40 ...
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(issue_list_sql);) {
+			pstmt.setInt(1, pnum);
+			pstmt.setInt(2, startrow);
+			pstmt.setInt(3, endrow);
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+
+				// DB에서 가져온 데이터를 issueBean에 담습니다.
+				while (rs.next()) {
+					IssueBean issue = new IssueBean();
+					issue.setI_seq(rs.getInt("I_SEQ")); 
+					issue.setI_name(rs.getString("I_name"));
+					issue.setI_title(rs.getString("I_TITLE"));
+					issue.setI_content(rs.getString("I_CONTENT"));
+					issue.setI_status(rs.getString("I_STATUS"));
+					issue.setI_file(rs.getString("I_FILE"));
+					
+					issue.setI_created(rs.getString("I_CREATED"));
+					issue.setI_modified(rs.getString("I_MODIFIED"));
+					issue.setI_reporter(rs.getString("I_NAME"));
+					//우선 글 작성자가 담당자가 되도록 설정
+					issue.setI_assign(rs.getString("I_ASSIGN"));
+					issue.setI_related(rs.getString("I_RELATED"));
+					issue.setI_readcount(rs.getInt("I_READCOUNT")); 
+
+					list.add(issue); // 값을 담은 객체를 리스트에 저장합니다.
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("getListCount()에러 " + ex);
+		}
+		return list;
+	} // getDoneList end
+	
 	public boolean issueInsert(IssueBean issuedata, String name, int projectNum) {
 		
 		String sql = "INSERT INTO issue "
@@ -191,7 +374,7 @@ public class IssueDAO {
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setI_name(rs.getString("I_name"));
 					issue.setI_title(rs.getString("I_TITLE"));
-					issue.setI_content(rs.getString("I_CONTENT"));
+					issue.setI_content(rs.getString("i_content"));
 					issue.setI_status(rs.getString("I_STATUS"));
 					issue.setI_file(rs.getString("I_FILE"));
 					
@@ -213,27 +396,7 @@ public class IssueDAO {
 		return issue;
 	}//getDetail()메서드 end
 
-	//	public boolean isissueWriter(int num, String pass) {
-	//		boolean result = false;
-	//		String issue_sql = "select issue_pass from issue where issue_num=?";
-	//		try(Connection con = ds.getConnection();
-	//			PreparedStatement pstmt = con.prepareStatement(issue_sql);) {
-	//			pstmt.setInt(1, num);
-	//		   try (ResultSet rs = pstmt.executeQuery()){
-	//			   if(rs.next()) {
-	//				   if(pass.equals(rs.getString("issue_pass"))) {
-	//				   result=true;
-	//			   }
-	//		   	}
-	//		   }catch (SQLException e) {
-	//			   e.printStackTrace();
-	//		   }
-	//		}catch(SQLException ex) {
-	//			System.out.println("isissueWriter()에러 : " + ex);
-	//		}
-	//		return result;
-	//	}//isissueWriter end
-	//
+	
 	public boolean issueModify(IssueBean modifyissue) {
 		/*
 		 * String sql = "update issue " +

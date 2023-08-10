@@ -157,30 +157,31 @@ a {
             </tr> -->
 
 						<tbody>
-							<c:set var="num" value="${listcount-(page-1)*limit}" />
+								<c:set var="num" value="${listcount-(page-1)*limit}" />
+								
+								<c:forEach var="i" items="${issuelist}">
+									<tr>
+										<td>${i.i_name}</td>
+										<td>
+											<div>
 
-							<c:forEach var="i" items="${issuelist}">
-								<tr>
-									<td>${i.i_name}</td>
-									<td>
-										<div>
-
-											<a class="title" href="IssueDetailAction.bo?num=${i.i_seq }">
+												<a class="title" href="IssueDetailAction.bo?num=${i.i_seq }"> 
 												<c:if test="${i.i_title.length()>=20 }">
-													<c:out value="${i.i_title.substring(0,20) }..." />
-												</c:if> <c:if test="${i.i_title.length()<20 }">
-													<c:out value="${i.i_title}" />
-												</c:if>
+														<c:out value="${i.i_title.substring(0,20) }..." />
+													</c:if> <c:if test="${i.i_title.length()<20 }">
+														<c:out value="${i.i_title}" />
+													</c:if>
 
-											</a>
-										</div>
-									</td>
-									<td>${i.i_created }</td>
-									<td>${i.i_readcount}</td>
+												</a>
+											</div>
+										</td>
+										
+										<td>${i.i_created }</td>
+										<td>${i.i_readcount}</td>
 
-								</tr>
-							</c:forEach>
-						</tbody>
+									</tr>
+								</c:forEach>
+							</tbody>
 
 					</table>
 				</div>
