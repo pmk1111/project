@@ -26,7 +26,7 @@ function getList(state){//현재 선택한 댓글 정렬방식을 저장합니�
             
           if(rdata.boardlist.length>0){
              
-                  output += '<li class="comment-order-item ' + red1 + '" >'
+                 output += '<li class="comment-order-item ' + red1 + '" >'
                         +  '   <a href="javascript:getList(1)" class="comment-order-button">등록순</a>'
                         +  '</li>'
                         +  '<li class="comment-order-item ' + red2 + '" >'
@@ -224,7 +224,7 @@ $(function() {
    });// keyup','.comment-write-area-text', function() {
    
    //댓글 등록을 클릭하면 데이터베이스에 저장 -> 저장 성공 후에 리스트 불러옵니다.
-   $('ul+.comment-write .re_submit').click(function() {
+	$('.reply-write .re_submit').click(function() {
       const content=$('.comment-write-area-text').val();
       if(!content){//내용없이 등록 클릭한 경우
          alert("댓글을 입력하세요");

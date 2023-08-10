@@ -12,9 +12,9 @@
         <br>
         <p>유형<span class="req">*</span></p>
         <select id="select_issue_type" name = "i_type">
-          <option>버그</option>
-          <option>작업</option>
-          <option>하위작업</option>
+          <option value="버그" >버그</option>
+          <option value="작업" >작업</option>
+          <option value="하위작업" >하위작업</option>
         </select>
         
         <hr>
