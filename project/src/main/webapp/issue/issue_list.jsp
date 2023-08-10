@@ -173,6 +173,7 @@ li {
 												</a>
 											</div>
 										</td>
+										
 										<td>${i.i_created }</td>
 										<td>${i.i_readcount}</td>
 
@@ -196,8 +197,6 @@ li {
 								<a href="#" class="bt prev">&lt;</a>
 
 							</c:if>
-
-
 
 							<c:forEach var="a" begin="${startpage }" end="${endpage }">
 								<c:if test="${a==page}">
@@ -228,8 +227,11 @@ li {
 				<button id="openModalBtn" class="write">글쓰기</button>
 			</div>
 		</div>
-		<!-- </div> -->
 
 	</main>
+	
+		<jsp:include page="create_issue.jsp"/>
+			<script src="js/issue_modal.js"></script>
+			
 </body>
 </html>
