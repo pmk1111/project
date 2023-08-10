@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 
    <div class="left-bar">
-      <h3 class="project_name">L3_Semi</h3>
+      <%-- <h3 class="project_name">${pname}</h3> --%>
       
       <h5>프로젝트</h5>
       <div class="left-bar-items">
