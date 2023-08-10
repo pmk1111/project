@@ -11,113 +11,16 @@
 <link rel="stylesheet" href="css/leftbar.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/edit_profile.css">
+<style>
+ #tel_message, #email_message {
+      font-size: 12px;
+      margin-left: 140px;
+    }
+</style>
 <script src="js/jquery-3.7.0.min.js"></script>
+<script>
 
-</head>
-<body>
-	<header>
-		<jsp:include page="/menu_bar/navbar.jsp" />
-
-	</header>
-
-	<main>
-		<jsp:include page="/menu_bar/leftbar.jsp" />
-		<form name="editform" action="usrEditProcess.net" method="post"
-			enctype="multipart/form-data">
-			<div class="content">
-				<div class="board-content">
-					<div class="edit_pf">
-						<h2 class="edit_pf_text">프로필 수정</h2>
-						<br>
-						<div class="filebox bs3-primary">
-
-
-							<!-- <img src="img/profile2.png" class="profile_img" name="profile_img"> -->
-							<!--  프로필 사진 수정 -->
-							<span id="showImage"> 
-							<c:if test='${empty usrinfo.pic}'>
-									<c:set var='src' value='img/profile3.png' />
-								</c:if> <c:if test='${!empty usrinfo.pic}'>
-									<c:set var='src' value='${"usrupload/"}${usrinfo.pic}' />
-									<input type="hidden" name="check" value="${usrinfo.pic}">
-								</c:if> <img src="${src}" width="185px" alt="profile">
-							</span> <br> <br> <input class="upload-name" value="파일선택"
-								disabled="disabled"> <span id="filename"></span> <label
-								for="ex_filename">업로드</label> <input type="file"
-								id="ex_filename" class="upload-hidden" name="pic"
-								accept="image/*">
-						</div>
-
-
-						<div class="edit">
-							<div class="p_id">
-								<p>아이디</p>
-								<input type="text" class="id" name="id" value="${usrinfo.id}"
-									readOnly>
-							</div>
-
-							<div class="p_pass">
-								<p>비밀번호</p>
-								<input type="password" class="pass" name="pass"
-									value="${usrinfo.pass}">
-							</div>
-
-							<div class="p_email">
-								<p>이메일</p>
-								<input type="text" class="email" name="email"
-									value="${usrinfo.email}">
-							</div>
-							<%--       <input style="width: 130px;" type="text" class="mail" name="mail" value="${usrinfo.email}"> @
-        	  <input style="width: 130px; margin:0;" type=text name=domain id=domain>
-      		  <select name=sel id=sel >
-            		<option value="">직접입력</option>
-            		<option value="naver.com">naver.com</option>
-            		<option value="daum.net">daum.net</option>
-            		<option value="nate.com">nate.com</option>
-            		<option value="gmail.com">gmail.com</option>
-     		  </select>
-     		   --%>
-							<div class="p_name">
-								<p>이름</p>
-								<input type="text" class="name" name="name"
-									value="${usrinfo.name}">
-							</div>
-
-							<div class="p_tel">
-								<p>전화번호</p>
-								<input type="tel" class="tel" name="tel" value="${usrinfo.tel}"
-								  pattern="/^[0-9]{2,3}[0-9]{4}[0-9]{4}$/" maxlength="13">
-							</div>
-						</div>
-						<br> <br>
-
-						<div class="change_withdraw">
-							<input type="submit" class="change_submit" value="수정하기">
-							<input type="button" class="withdraw" name="withdraw"
-								value="탈퇴하기">
-						</div>
-
-
-						<!-- 파이널때 수정할 것 
-            <div class="poition">
-              <p>직책</p><input type="text" class="position" name="position">
-            </div>
-            <div class="dept">
-              <p>부서</p><input type="text" class="dept" name="dept">
-            </div>
-            <div class="company">
-              <p>회사</p><input type="text" class="company" name="company">
-            </div>
-              -->
-
-
-						<br> <br>
-					</div>
-				</div>
-			</div>
-		</form>
-	</main>
-	<script>
+	$(document).ready(function () {
 		$('input[type=file]').change(function(event) {
 			const inputfile = $(this).val().split('\\');
 			const filename = inputfile[inputfile.length - 1];
@@ -154,16 +57,64 @@
 	 });
 	--%>
 	
-		// 전화번호 형식 확인
-		$("input[type=tel]").on('keyup',
-				function(){
-		const patt = /^[0-9]{2,3}[0-9]{4}[0-9]{4}$/
-		const res = patt.test( $(".tel").val());
+		//이메일 형식 확인
+		 let chekemail=false;
+		
+		 $(".email").on('keyup',function(){
+  		  		const pattern = /^\w+@\w+[.]\w{3}$/;
+  		  		const email_value=$(this).val();
+  		  		
+  		  		if(!pattern.test(email_value)){
+  		  			$("#email_message").css('color','red')
+  		  						 .html("이메일 형식이 맞지 않습니다.");
+  		  			checkemail=false;
+  		  		
+  		  		}else{
+  		  			$("#email_message").html("");
+  	  				checkemail=true;
+  		  		}
+  		  }); 
 
 	
-		})
-		//회원탈퇴 구현
+		// 전화번호 형식 확인	
+		let checktel = false;
 
+        $(".tel").on("keyup", function() {
+				const pattern =/^(010)(\d{4})(\d{4})$/;
+				const telNo = $(this).val()
+                    					.replace(/[^0-9]/g, "");
+                    					//.replace(/^(010)(\d{4})(\d{4})$/;, "$1-$2-$3");
+                    
+                //$(this).val(telNo); //입력값을 telNo 형식으로 변경
+                if (!pattern.test(telNo)) {
+                	$("#tel_message").html("전화번호 형식에 맞게 입력하세요").css('color','red');
+                    checktel = false;
+                
+                  } else{
+                	  $("#tel_message").html("");
+                	  checktel = true;
+                  }
+                  
+            });
+       
+        $('form').submit(function(){
+        	if(!checkemail){
+  				alert("이메일 형식을 확인하세요.");
+  				$(".email").focus();
+  				return false;
+  			}
+        	if(!checktel){
+  				alert("전화번호 형식을 확인하세요.");
+  				$(".tel").focus();
+  				return false;
+  			}
+        	
+        	
+        });//submit
+        
+	
+		
+		//회원탈퇴 구현
 		$(".withdraw").click(function() {
 			const pass = $('.pass');
 			const pass_value = pass.val();
@@ -194,7 +145,124 @@
 			}
 
 		})//function end
+	})
 	</script>
 
+</head>
+<body>
+	<header>
+		<jsp:include page="/menu_bar/navbar.jsp" />
+
+	</header>
+
+	<main>
+		<jsp:include page="/menu_bar/leftbar.jsp" />
+		<form name="editform" action="usrEditProcess.net" method="post"
+			enctype="multipart/form-data">
+			<div class="content">
+				<div class="board-content">
+					<div class="edit_pf">
+						<h2 class="edit_pf_text">프로필 수정</h2>
+						<br>
+						<div class="filebox bs3-primary">
+
+
+							<!-- <img src="img/profile2.png" class="profile_img" name="profile_img"> -->
+							<!--  프로필 사진 수정 -->
+							<span id="showImage"> 
+							<c:if test='${empty usrinfo.pic}'>
+									<c:set var='src' value='img/profile3.png' />
+								</c:if> 
+								<c:if test='${!empty usrinfo.pic}'>
+									<c:set var='src' value='${"usrupload/"}${usrinfo.pic}' />
+									<input type="hidden" name="check" value="${usrinfo.pic}">
+								</c:if> 
+								<img src="${src}" width="185px" alt="profile">
+							</span> 
+							<br> <br> 
+							<input class="upload-name" value="파일선택" disabled="disabled"> 
+							<span id="filename"></span> 
+							<label for="ex_filename">업로드</label> 
+							<input type="file" id="ex_filename" class="upload-hidden" name="pic"
+								accept="image/*">
+						</div>
+
+
+						<div class="edit">
+							<div class="p_id">
+								<p>아이디</p>
+								<input type="text" class="id" name="id" value="${usrinfo.id}"
+									readOnly>
+							</div>
+
+							<div class="p_pass">
+								<p>비밀번호</p>
+								<input type="password" class="pass" name="pass"
+									value="${usrinfo.pass}">
+							</div>
+
+							<div class="p_email">
+								<p>이메일</p>
+								<input type="text" class="email" name="email"
+									value="${usrinfo.email}">
+									<br>
+								<span id="email_message" ></span>
+							</div>
+							
+						
+	<%--       <input style="width: 130px;" type="text" class="mail" name="mail" value="${usrinfo.email}"> @
+               <input style="width: 130px; margin:0;" type=text name=domain id=domain>
+      		   <select name=sel id=sel >
+            		<option value="">직접입력</option>
+            		<option value="naver.com">naver.com</option>
+            		<option value="daum.net">daum.net</option>
+            		<option value="nate.com">nate.com</option>
+            		<option value="gmail.com">gmail.com</option>
+     		   </select>
+     		              --%>
+							
+							<div class="p_name">
+								<p>이름</p>
+								<input type="text" class="name" name="name"
+									value="${usrinfo.name}">
+							</div>
+
+							<div class="p_tel">
+								<p>전화번호</p>
+								<input type="text" class="tel" name="tel" value="${usrinfo.tel}"
+								   maxlength="11">
+								   <br>
+								<span id="tel_message" ></span>
+							</div>
+						</div>
+						<br> <br>
+
+						<div class="change_withdraw">
+							<input type="submit" class="change_submit" value="수정하기">
+							<input type="button" class="withdraw" name="withdraw"
+								value="탈퇴하기">
+						</div>
+
+
+						<!-- 파이널때 수정할 것 
+            <div class="poition">
+              <p>직책</p><input type="text" class="position" name="position">
+            </div>
+            <div class="dept">
+              <p>부서</p><input type="text" class="dept" name="dept">
+            </div>
+            <div class="company">
+              <p>회사</p><input type="text" class="company" name="company">
+            </div>
+              -->
+
+
+						<br> <br>
+					</div>
+				</div>
+			</div>
+		</form>
+	</main>
+	
 </body>
 </html>
