@@ -1,31 +1,7 @@
 $(document).ready(function () {
 	
-  $('#summernote').summernote({
-    height: 300,
-    minHeight: null,
-    maxHeight: null,
-    focus: true,
-    lang: "ko-KR",
-    placeholder: '최대 2048자까지 쓸 수 있습니다'
-  });
-
- // 서머노트에 text 쓰기
- $('#summernote').summernote('insertText', 'sample Text');
-
-// 서머노트 쓰기 비활성화
-$('#summernote').summernote('disable');
-
-// 서머노트 쓰기 활성화
-$('#summernote').summernote('enable');
-
-// 서머노트 리셋
-$('#summernote').summernote('reset');
-
-// 마지막으로 한 행동 취소 ( 뒤로가기 )
-$('#summernote').summernote('undo');
-
-// 앞으로가기
-$('#summernote').summernote('redo');
+  $('#summernote').summernote();
+  $('#summernote').summernote('codeview.set', '${issuedata.i_content}');
 
 let isModalOpen = false; // Flag to track if the modal is open
 	
