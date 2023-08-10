@@ -53,6 +53,13 @@
   border: 1px solid rgb(208, 208, 208);
   border-radius: 3px;
 }
+
+#issue_manager{
+	width: 470px; height: 35px; display: inline; 
+  border: 1px solid rgb(208, 208, 208); border-radius: 3px;
+}
+/*추후 셀렉트 박스로 바뀔 예정*/
+
 #issue_content>p:first-child{width: 80px; margin-top: 40px; display: inline-block;}
 #issue_content>p{width: 80px; margin-top: 30px; display: inline-block;}
 /* #issue_content > p+#select_project, p+#select_issue_type, p+#issue_title{

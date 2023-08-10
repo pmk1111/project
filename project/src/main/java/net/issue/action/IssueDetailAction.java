@@ -32,6 +32,9 @@ public class IssueDetailAction implements Action {
 		String projectname = (String) session.getAttribute("pname");
 		request.setAttribute("pName", projectname);
 
+		//게시글 조회수 업데이트 
+		issuedao.setReadCountUpdate(num);
+		
 		//글의 내용을 DAO에서 읽은 후 얻은 결과를 boarddata 객체에 저장합니다.
 		issuedata=issuedao.getDetail(num);
 		

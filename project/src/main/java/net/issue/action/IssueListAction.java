@@ -44,6 +44,10 @@ public class IssueListAction implements Action {
 		int pnum = (int) session.getAttribute("p_num");
 		System.out.println("ListAction : " + pnum);	
 		
+		// 세션에있는 유저 아이디
+		String id = (String) session.getAttribute("id");
+		System.out.println("유저 id = " + id);
+		
 		String usrname = (String) session.getAttribute("usrName");
 		System.out.println("유저 이름: " + usrname);
 		session.setAttribute("usrname", usrname);
@@ -58,7 +62,7 @@ public class IssueListAction implements Action {
 		System.out.println("pnum : " + listcount);
 		
 		//리스트를 받아옵니다.
-		issuelist = issuedao.getIssuedList(pnum, page, limit);
+		issuelist = issuedao.getIssueList(pnum, page, limit);
 		
 		/*
 		 * 총 페이지 수

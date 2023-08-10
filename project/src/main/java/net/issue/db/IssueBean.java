@@ -4,6 +4,7 @@ public class IssueBean {
 	
 	private int    i_seq;
 	private int    p_num;    //프로젝트 번호
+	private String i_id;   //글 작성자 아이디
 	private String i_name;   //글 작성자
 	private String i_title;   //글 제목
 	private String i_content;//글 내용
@@ -17,6 +18,13 @@ public class IssueBean {
 	private String i_type;
 	private int    i_readcount;//글의 조회수
 	
+	
+	public String getI_id() {
+		return i_id;
+	}
+	public void setI_id(String i_id) {
+		this.i_id = i_id;
+	}
 	public String getI_type() {
 		return i_type;
 	}
