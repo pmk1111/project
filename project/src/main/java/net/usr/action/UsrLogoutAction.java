@@ -14,7 +14,7 @@ public class UsrLogoutAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	     // 세션을 가져오기
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
         session.invalidate();
      
 

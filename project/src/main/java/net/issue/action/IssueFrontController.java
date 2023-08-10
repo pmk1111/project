@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.comment.action.CommentAdd;
+import net.comment.action.CommentList;
+
 
 
 @WebServlet("*.bo")
@@ -70,13 +73,13 @@ public class IssueFrontController extends javax.servlet.http.HttpServlet {
 			//				action = new BoardFileDownAction();
 			//				break;	
 
-			//			case "/CommentAdd.bo":
-			//				action = new CommentAdd();
-			//				break;
-			//				
-			//			case "/CommentList.bo":
-			//				action = new CommentList();
-			//				break;
+						case "/CommentAdd.bo":
+							action = new CommentAdd();
+							break;
+							
+						case "/CommentList.bo":
+							action = new CommentList();
+							break;
 			//			
 			//			case "/CommentDelete.bo":
 			//				action = new CommentDelete();

@@ -25,7 +25,7 @@
             <img class="nav_img" src="img/usericon.png">
             <div class="uicon-dropdown-item">
               <a id="mypage" href="usrEdit.net">마이페이지</a>
-              <a id="logout" href="home.net">로그아웃</a>
+              <a id="logout" href="logout.net">로그아웃</a>
             </div>
           </div>
         </li>

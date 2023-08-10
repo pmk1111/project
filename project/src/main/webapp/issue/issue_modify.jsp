@@ -8,8 +8,6 @@
 </head>
 <body>
 
-	<script src="js/issue_modal2.js"></script>
-
   <div id="modal_overlay"></div>
   <div id="issue_modal">
     <form action="BoardModifyAction.bo" method="post" enctype="multipart/form-data">
