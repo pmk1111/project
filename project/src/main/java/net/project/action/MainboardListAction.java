@@ -54,7 +54,7 @@ public class MainboardListAction implements Action {
 		
 		// 프로젝트 명을 세션에 저장합니다.
 		String pname = issuedao.getProjectName(pnum);
-		session.setAttribute("panme", pname);
+		session.setAttribute("pname", pname);
 		
 		//리스트를 받아옵니다.
 		issuelist = issuedao.getIssuedList(pnum, page, limit);
