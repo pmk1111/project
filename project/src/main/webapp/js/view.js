@@ -5,7 +5,7 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
 		$.ajax({
 			type:"post",
 			url:"CommentList.bo",
-			data: {"comment_issue_num" : $("#comment_issue_num").val(), state:state},
+			data: {"comment_i_num" : $("#comment_i_num").val(), state:state},
 			dataType:"Json",
 			success:function(rdata){
 				let red1 = 'red';
@@ -37,7 +37,7 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
 					 }else if(lev==2){
 						 comment_reply=' reply-list-item--reply lev2';
 					 }
-					 const profile = this.usrflie;
+					 const profile = this.pic;
 					 let src = 'image/profile3.png';
 					 if(profile){
 						 src='usrupload/' + profile;
@@ -119,7 +119,7 @@ $(function(){
 		data : {
 			id : $("#loginid").val(),
 			content : content,
-			reply_issue_num : $("#reply_issue_num").val()
+			comment_i_num : $("#comment_i_num").val()
 		},
 		type:'post',
 		success : function(rdata){

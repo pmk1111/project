@@ -103,7 +103,11 @@
   				$(".email").focus();
   				return false;
   			}
-        	
+        	if(!checktel){
+  				alert("전화번호 형식을 확인하세요.");
+  				$(".tel").focus();
+  				return false;
+  			}
         	
         	
         });//submit

@@ -23,12 +23,12 @@ public class CommentList implements Action {
 		
 		net.comment.db.CommentDAO dao = new net.comment.db.CommentDAO();
 		
-		int comment_issue_num = Integer.parseInt(request.getParameter("c_num"));
-		System.out.println(comment_issue_num);
+		int comment_i_num = Integer.parseInt(request.getParameter("comment_i_num"));
+		System.out.println(comment_i_num);
 		int state = Integer.parseInt(request.getParameter("state"));
 		
-		int listcount = dao.getListCount(comment_issue_num);
-		JsonArray jarray = dao.getCommentList(comment_issue_num, state);
+		int listcount = dao.getListCount(comment_i_num);
+		JsonArray jarray = dao.getCommentList(comment_i_num, state);
 		
 		JsonObject object = new JsonObject();
 		object.addProperty("listcount", listcount);

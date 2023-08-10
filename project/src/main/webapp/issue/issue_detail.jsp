@@ -92,7 +92,7 @@
                    
     </div> <%--issue content end --%>
 	<input type="hidden" name="num" value="${param.num}"
-	                       id="reply_issue_num"> <%--주소값을 가져오기 --%>
+	                       id="comment_i_num"> <%--주소값을 가져오기 --%>
 	<div class = "reply-area">
 		<div class = "reply-order">
 		  <ul class="reply-order-list">
