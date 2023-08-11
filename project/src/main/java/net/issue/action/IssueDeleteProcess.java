@@ -22,7 +22,7 @@ public class IssueDeleteProcess implements Action {
 
         if (result == 0) {
             // 삭제 처리 실패 시 에러 페이지로 이동하거나 처리 방식을 정의하세요.
-        	  System.out.println("게시판 삭제 실패");
+             System.out.println("게시판 삭제 실패");
               ActionForward forward = new ActionForward();
               forward.setRedirect(false);
               request.setAttribute("message", "데이터를 삭제하지 못했습니다.");

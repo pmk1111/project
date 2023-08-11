@@ -61,7 +61,7 @@ public class MemberDAO {
 				   + "		 FROM member m " 
 				   + "		 JOIN project p ON m.p_num = p.p_num "
 				   + "		 WHERE p.p_num = ? "
-				   + "		 ORDER BY m.num DESC "
+				   + "		 ORDER BY m.num desc "
 				   + "		) "
 				   + "WHERE rnum BETWEEN ? AND ? ";
 

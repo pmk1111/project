@@ -449,6 +449,7 @@ public class IssueDAO {
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setP_num(rs.getInt("P_NUM"));
 					issue.setI_id(rs.getString("I_ID"));
+					issue.setI_type(rs.getString("I_type"));
 					issue.setI_name(rs.getString("I_name"));
 					issue.setI_title(rs.getString("I_TITLE"));
 					issue.setI_content(rs.getString("i_content"));
@@ -474,68 +475,73 @@ public class IssueDAO {
 	}//getDetail()메서드 end
 
 	
-	public boolean issueModify(IssueBean modifyissue) {
-		/*
-		 * String sql = "update issue " +
-		 * "set issue_subject=?, issue_content=?, issue_file=? " + "where issue_num=? ";
-		 */
-
-		String sql = "update issue "
-				+ "set issue_subject=?, issue_content=? "
-				+ "where issue_num=? ";
-		try(Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);) {
-			pstmt.setString(1, modifyissue.getI_title());
-			pstmt.setString(2, modifyissue.getI_content());
-			/* pstmt.setString(3, modifyissue.getissue_file()); */
-			pstmt.setInt(3, modifyissue.getI_seq());
-			int result = pstmt.executeUpdate();
-			if(result==1) {
-				System.out.println("성공 업데이트");
-				return true;
-			}
-
-		}catch (Exception e) {
-			System.out.println("issueModift()에러: " + e);
-		}
+	public boolean issueModify(IssueBean issuedata) {
+	      
+	      String sql = "update issue "
+	             + "set i_title=?, i_content=?, i_status=?, i_type=?, i_assign=?, i_related=?, i_created=sysdate "
+	             + "where i_seq=?";
 
 
-		return false;
-	}
+	      try(Connection con = ds.getConnection();
+	            PreparedStatement pstmt = con.prepareStatement(sql);) {
+	   
+	         
+	         
+	         
+	          pstmt.setString(1, issuedata.getI_title());
+	          pstmt.setString(2, issuedata.getI_content());
+	         pstmt.setString(3, issuedata.getI_status());
+	          pstmt.setString(4, issuedata.getI_type());
+	   
+	      
+	          pstmt.setString(5, issuedata.getI_assign());
+	          pstmt.setString(6, issuedata.getI_related());
+	          pstmt.setInt(7, issuedata.getI_seq());
+	   
+	         int result = pstmt.executeUpdate();
+	         if(result==1) {
+	            System.out.println("성공 업데이트");
+	            return true;
+	         }
+
+	      }catch (Exception e) {
+	         System.out.println("issueModift()에러: " + e);
+	      }
+
+
+	      return false;
+	   }
+	
 	public int issueDelete(int num) {
-		String select_sql = "select * from issue "
-				+ " where I_NUM=? and p_num = ?";
+        String issue_delete_sql = "DELETE FROM issue WHERE i_seq = ? ";
+        
+         
+         int result_check = 0;
 
-		String issue_delete_sql = "delete from issue " 
-				+ " where issue_NUM=? and p_num = ?";
-		//답글이 없으니, issue num에 해당하는 값과, 해당 글이 속한 프로젝트에 있는 게시글을 지운다
-		int result_check = 0;
+        
+        try(Connection con = ds.getConnection();
+           PreparedStatement pstmt = con.prepareStatement(issue_delete_sql);)
+        { //1
+           // issue 테이블에서 삭제
+           
+           pstmt.setInt(1, num);
+         
+           result_check = pstmt.executeUpdate();
 
-		try(Connection con = ds.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(select_sql);){ //1
 
-			pstmt.setInt(1, num);
-			try(ResultSet rs = pstmt.executeQuery();){//2
-				if(rs.next()) {
-					try(PreparedStatement pstmt2 = con.prepareStatement(issue_delete_sql)){//3
-						pstmt2.setInt(1, rs.getInt("I_num"));
-						pstmt2.setInt(2, rs.getInt("p_num"));
-						pstmt2.setInt(3, rs.getInt("I_num"));
-						pstmt2.setInt(4, rs.getInt("p_num"));
-						
-						int count = pstmt2.executeUpdate();
-						if(count >=1)
-							result_check = 1; //삭제가 안될 경우 false 반환
+           //삭제 성공 유무
+           if(result_check == 0){
+              System.out.println("삭제 실패");
+           }else{
+              System.out.println("삭제 성공");
+           }
 
-					}//try 3
-				}//if (rs.next()) {
-			}//try 2
-
-		}catch(Exception e){
-			System.out.println("issueDelete()에러 : " +  e);
-			e.printStackTrace();
-		}
-		return result_check;
-	}//issueDelete()메서드 end
+         } catch (Exception e) {
+             System.out.println("issueDelete() 에러: " + e);
+             e.printStackTrace();
+         }
+         
+         return result_check;
+  }
 
 }//class end
