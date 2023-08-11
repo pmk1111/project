@@ -26,16 +26,18 @@ public class CommentDAO {
 	public int commentsInsert(Comment co) {
 		int result = 0;
 		String sql = "insert into comm "
-				   + " values(com_seq.nextval,?,?,?,sysdate,?,?,0,0,com_seq.nextval)";
+				   + "(c_num, c_id, c_content, reg_date, comment_i_num, "
+				   + "comment_re_lev, comment_re_seq, comment_re_ref)"
+				   + " values(com_seq.nextval,?,?,sysdate,?,0,0,com_seq.nextval)";
 		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
 			
-			pstmt.setInt(1, co.getNum());
-			pstmt.setString(2, co.getC_id());
-			pstmt.setString(3, co.getC_content());
-			pstmt.setInt(4, co.getComment_i_num());
-			pstmt.setInt(5, co.getComment_p_num());
+//			pstmt.setInt(1, co.getNum());
+			pstmt.setString(1, co.getC_id());
+			pstmt.setString(2, co.getC_content());
+			pstmt.setInt(3, co.getComment_i_num());
+//			pstmt.setInt(4, co.getComment_p_num());
 			result = pstmt.executeUpdate();
 			if(result ==1) {
 				System.out.println("데이터 삽입 완료");
@@ -75,7 +77,7 @@ public class CommentDAO {
 		if(state==2) {//최신순
 			sort = "desc";
 		}
-		String sql = " select c_num, comm.num, comm.c_id, comm.c_content, reg_date, comment_i_num, comment_re_lev, "
+		String sql = " select c_num, comm.c_id, comm.c_content, reg_date, comment_i_num, comment_re_lev, "
 				+ "		  comment_re_seq,"
 				+ "		  comment_re_ref, usr.pic"
 				+ "	from  comm join usr"
@@ -93,15 +95,15 @@ public class CommentDAO {
 				while(rs.next()) {
 					JsonObject object = new JsonObject();
 					object.addProperty("c_num", rs.getInt(1));
-					object.addProperty("num", rs.getInt(2));
-					object.addProperty("c_id", rs.getString(3));
-					object.addProperty("c_content", rs.getString(4));
-					object.addProperty("reg_date", rs.getString(5));
-					object.addProperty("comment_i_num", rs.getInt(6));
-					object.addProperty("comment_re_lev", rs.getInt(7));
-					object.addProperty("comment_re_seq", rs.getInt(8));
-					object.addProperty("comment_re_ref", rs.getInt(9));
-					object.addProperty("pic", rs.getString(10));
+//					object.addProperty("num", rs.getInt(2));
+					object.addProperty("c_id", rs.getString(2));
+					object.addProperty("c_content", rs.getString(3));
+					object.addProperty("reg_date", rs.getString(4));
+					object.addProperty("comment_i_num", rs.getInt(5));
+					object.addProperty("comment_re_lev", rs.getInt(6));
+					object.addProperty("comment_re_seq", rs.getInt(7));
+					object.addProperty("comment_re_ref", rs.getInt(8));
+					object.addProperty("pic", rs.getString(9));
 					array.add(object);
 				}
 			}
