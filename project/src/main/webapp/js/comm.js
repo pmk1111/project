@@ -1,3 +1,45 @@
+$(document).ready(function () {
+  //여기 아래 부분
+  $('#summernote_comm').summernote({
+
+    height: 100,                 // 에디터 높이
+    minHeight: null,             // 최소 높이
+    maxHeight: null,             // 최대 높이
+    focus: false,                  // 에디터 로딩후 포커스를 맞출지 여부
+    lang: "ko-KR",					// 한글 설정
+    placeholder: '최대 200자까지 쓸 수 있습니다'	//placeholder 설정
+
+  });
+
+  // 서머노트에 text 쓰기
+  // $('#summernote_comm').summernote('insertText', '');
+
+  // 서머노트 쓰기 비활성화
+  $('#summernote_comm').summernote('disable');
+
+  // 서머노트 쓰기 활성화
+  $('#summernote_comm').summernote('enable');
+
+  // 서머노트 리셋
+  $('#summernote_comm').summernote('reset');
+
+  // 마지막으로 한 행동 취소 ( 뒤로가기 )
+  $('#summernote_comm').summernote('undo');
+  // 앞으로가기
+  $('#summernote_comm').summernote('redo');
+
+  //필요없는 서머노트 기능 및 디자인 제거, 변경
+  $('.note-view').remove();
+  $('.note-insert').remove();
+  $('.note-resizebar').remove();
+  $('.note-statusbar').remove();
+  $('.note-editable').css('height', '100px');
+
+
+});
+
+
+
 let option=1;
 
 function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=최신순
@@ -47,14 +89,44 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
 						 src='usrupload/' + profile;
 						 
 					 }
+					 
+					 
+					 
+				 //게시글 작성 시간 구하기
+  				const createdAt = new Date(this.reg_date);
+  				function displayedAt(createdAt) {
+    				const milliSeconds = new Date() - createdAt
+    				const seconds = milliSeconds / 1000
+    				if (seconds < 60) return `방금 전`
+    				const minutes = seconds / 60
+    				if (minutes < 60) return `${Math.floor(minutes)}분 전`
+    				const hours = minutes / 60
+    				if (hours < 24) return `${Math.floor(hours)}시간 전`
+    				const days = hours / 24
+    				if (days < 7) return `${Math.floor(days)}일 전`
+    				const weeks = days / 7
+    				if (weeks < 5) return `${Math.floor(weeks)}주 전`
+    				const months = days / 30
+    				if (months < 12) return `${Math.floor(months)}개월 전`
+    				const years = days / 365
+    				return `${Math.floor(years)}년 전`
+  				}
+  				const timeAgo = displayedAt(createdAt);
+  				console.log(timeAgo);
+  				//$('.re-create').text(timeAgo);
+					 
+					 
+					 
+					 
+					 
                   
-                  output += '<li id="' + this.num + '" class="reply-list-item' + comment_reply + '">'
+                  output += '<li id="' + this.c_num + '" class="reply-list-item' + comment_reply + '">'
                         + '   <div class="reply-nick-area">'
-                        + '    <img  src="' + src +'" alt="프로필 사진" width="36" height="36">'
+                        + '    <img class="usr_img" src="' + src +'" alt="프로필 사진" width="36" height="36">'
                         + '    <div class="reply-box">'
                         + '      <div class="reply-nick-box">'
                         + '            <div class="reply-nick-info">'
-                        + '               <div class="reply-nickname">' + this.c_id  + '</div>'
+                        + '               <div class="reply-nickname">' + this.c_id + '<span class="reply-info-date">' + timeAgo + '</span></div>'
                         + '            </div>' //comment-nick-info                  
                         + '       </div>'  // comment-nick-box
                         + '    </div>'   //comment-box
@@ -63,30 +135,27 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
                         + '         <span class="text-comment">' + this.c_content + '</span>'
                         + '       </p>'
                         + '    </div>' //comment-text-box
-                        + '    <div class="reply-info-box">'
-                        + '      <span class="reply-info-date">' + this.reg_date + '</span>';
+                        + '    <div class="reply-info-box">';
                   
                   // 원문글에서 2레벨까지만 답글쓰기가 가능함.
                   if(lev<2){
-                          output += '  <a href="javascript:replyform(' + this.num +',' 
+                          output += '  <a href="javascript:replyform(' + this.c_num +',' 
                                  + lev + ',' + this.comment_re_seq +',' 
-                                 + this.comment_re_ref +')"  class="reply-info-button">답글쓰기</a>'
+                                 + this.comment_re_ref +')"  class="reply-info-button">답글쓰기&nbsp;&nbsp</a>'
                         }
                   output += '   </div>' //comment-info-box;
                   
                   // 글쓴사람에게만 수정과 삭제 권한을 줌. // 어드민을 제외해두었으니 필요하면 추가      
-                   if($("#loginid").val()==this.id){  
+                   if($("#loginid").val()==this.c_id){  
                    output +=  '<div class="comment-tool">'
-                        + '    <div title="더보기" class="reply-tool-button">'
-                        + '       <div>&#46;&#46;&#46;</div>' 
+                        + '    <div title="더보기" class="reply-tool-button">' 
                         + '    </div>'
-                        + '    <div id="reply-list-item-layer' +  this.num + '"  class="LayerMore">' //스타일에서 display:none; 설정함
-                        + '     <ul class="layer-list">'                        
-                        + '      <li class="layer-item">'
-                        + '       <a href="javascript:updateForm(' + this.num + ')"'
+                        + '    <div id="reply-list-item-layer' +  this.c_num + '"  class="LayerMore">' //스타일에서 display:none; 설정함
+                  
+                        + '       <a href="javascript:updateForm(' + this.c_num + ')"'
                         + '          class="layer-button">수정</a>&nbsp;&nbsp;'
-                        + '       <a href="javascript:del(' + this.num + ')"'
-                        + '          class="layer-button">삭제</a></li></ul>'
+                        + '       <a href="javascript:del(' + this.c_num + ')"'
+                        + '          class="layer-button">삭제</a>'
                         + '    </div>'//LayerMore
                         + '   </div>'//comment-tool
                     }
@@ -112,7 +181,7 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
    
    
 //더보기-수정 클릭한 경우에 수정 폼을 보여줍니다.
-function updateForm(num){ //num : 수정할 댓글 글번호
+function updateForm(c_num){ //num : 수정할 댓글 글번호
 
     //수정 폼이 있는 상태에서 더보기를 클릭할 수 없도록 더 보기 영역을 숨겨요
    $(".comment-tool").hide();
@@ -120,46 +189,46 @@ function updateForm(num){ //num : 수정할 댓글 글번호
    //수정 삭제 영역도 숨겨요
    $(".LayerMore").hide(); // 수정 삭제 영역도 숨겨요
    
-   let $num = $('#'+num);
+   let $c_num = $('#'+c_num);
    
    //선택한 내용을 구합니다.
-   const content = $num.find('.text-comment').text();
+   const content = $c_num.find('.text-comment').text();
    
-   const selector = '#'+num + '> .comment-nick-area'
+   const selector = '#'+c_num + '> .comment-nick-area'
    //selector 영역 숨겨요-수정에서 취소를 선택하면 보여줄 예정입니다.
    $(selector).hide();
    
    //$('.comment-list+.comment-write').clone() : 기본 글쓰기 영역 복사합니다.
    //글이 있던 영역에 글을 수정할 수 있는 폼으로 바꿉니다.
-   $num.append($('.comment-list+.comment-write').clone());
+   $c_num.append($('.comment-list+.comment-write').clone());
    
    
    //수정 폼의 <textarea>에 내용을 나타냅니다.
-   $num.find('textarea').val(content);
+   $c_num.find('textarea').val(content);
    
    //'.btn-register' 영역에 수정할 글 번호를 속성 'data-id'에 나타내고 클래스 'update'를 추가합니다.
-   $num.find('.re_submit').attr('data-id', num).addClass('update').text('수정완료');
+   $c_num.find('.re_submit').attr('data-id', c_num).addClass('update').text('수정완료');
    
    //폼에서 취소를 사용할 수 있도록 보이게 합니다.
-   $num.find('.re_cancel').css('display', 'block');
+   $c_num.find('.re_cancel').css('display', 'block');
    
    const count=content.length;
-   $num.find('.comment-write-area-count').text(count+"/200");
+   $c_num.find('.comment-write-area-count').text(count+"/200");
    
 }//function(updateForm) end
 
    
    
 //더보기 -> 삭제 클릭한 경우 실행하는 함수
-function del(num){//num : 댓글 번호
+function del(c_num){//num : 댓글 번호
      if(!confirm('정말 삭제하시겠습니까')){
-        $('#comment-list-item-layer' + num).hide(); //'수정 삭제' 영역 숨겨요
+        $('#comment-list-item-layer' + c_num).hide(); //'수정 삭제' 영역 숨겨요
         return;
      }
         
         $.ajax({
            url:'CommentDelete.bo',
-           data:{num:num},
+           data:{c_num:c_num},
             success:function(rdata){
                if(rdata==1){
             getList(option);   
@@ -171,32 +240,32 @@ function del(num){//num : 댓글 번호
 
 
 //답글 달기 폼
-function replyform(num,lev,seq,ref){
+function replyform(c_num,lev,seq,ref){
    //수정 삭제 영역 선택 후 답글쓰기를 클릭한 경우
    $(".LayerMore").hide(); //수정 삭제 영역 숨겨요
    
    let output = '<li class="comment-list-item comment-list-item--reply lev'  +  lev + '"></li>' 
-   const $num =    $('#'+num);            
+   const $c_num =    $('#'+c_num);            
    //선택한 글 뒤에 답글 폼을 추가합니다.
-   $num.after(output);
+   $c_num.after(output);
    
    //글쓰기 영역 복사합니다.
    output=$('.comment-list+.comment-write').clone();
    
-   const $num_next = $num.next();
+   const $c_num_next = $c_num.next();
    //선택한 글 뒤에 답글 폼 생성합니다.
-   $num_next.html(output);
+   $c_num_next.html(output);
    
    //답글 폼의  <textarea>의 속성 'placeholder'를 '답글을 남겨보세요'로 바꾸어 줍니다.
-   $num_next.find('textarea').attr('placeholder', '답글을 남겨보세요');
+   $c_num_next.find('textarea').attr('placeholder', '답글을 남겨보세요');
    
    //답글 폼의  '.btn-cancel'을 보여주고 클래스 'reply-cancel'를 추가합니다.
-   $num_next.find('.re_cancel').css('display', 'block').addClass('reply-cancel');
+   $c_num_next.find('.re_cancel').css('display', 'block').addClass('reply-cancel');
    
    //답글 폼의 '.btn-register'에  클래스 'reply' 추가합니다.
    //속성 'data-ref'에 ref, 'data-lev'에 lev, 'data-seq'에 seq값을 설정합니다.
    //등록을 답글 완료로 변경합니다.
-   $num_next.find('.re_submit').addClass('reply')
+   $c_num_next.find('.re_submit').addClass('reply')
                .attr('data-ref', ref).attr('data-lev', lev).attr('data-seq', seq).text('답글완료');
 
 }//function(replyform) end
@@ -219,7 +288,8 @@ $(function() {
    });// keyup','.comment-write-area-text', function() {
    
    //댓글 등록을 클릭하면 데이터베이스에 저장 -> 저장 성공 후에 리스트 불러옵니다.
-   $('.reply-write .re_submit').click(function() {
+   //상속 영역 수정
+   $('.re_sub_cancel .re_submit').click(function() {
       const content=$('div.note-editable').html();
       console.log(content)
       if(!content){//내용없이 등록 클릭한 경우
@@ -242,7 +312,7 @@ $(function() {
 		}
 	})//ajax end
       
-    $('.reply-write-area-text').val(''); //textarea 초기화
+    $('div.note-editable').text(''); //textarea 초기화
 	$('.reply-write-area-count').text('0/200'); //입력한 글 카운트 초기화
       
    })// $('.btn-register').click(function(){
@@ -265,11 +335,11 @@ $(function() {
          return;
       }   
       
-      const num = $(this).attr('data-id');
+      const c_num = $(this).attr('data-id');
       
       $.ajax({
          url:'CommentUpdate.bo',
-         data:{ num:num, content:content },
+         data:{ c_num:c_num, content:content },
          success:function(rdata){
             if(rdata==1){
                getList(option);
@@ -283,8 +353,8 @@ $(function() {
    $('.reply_textarea').on('click','.re_cancel',function(){
       
       //댓글 번호를 구합니다.
-      const num = $(this).next().attr('data-id');
-      const selector='#' +num;  
+      const c_num = $(this).next().attr('data-id');
+      const selector='#' +c_num;  
       
       //.comment-write 영역 삭제 합니다.
       $(selector + ' .comment-write').remove();
