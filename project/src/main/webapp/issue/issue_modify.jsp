@@ -51,7 +51,7 @@
           <option>In Progress</option>
           <option>Done</option>
         </select><br>
-        <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" required><br>
+        <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" value="${issuedata.i_related }" required><br>
         <hr>
       </div>
       <button id="issue_submit_btn" type="submit">작성하기</button>
