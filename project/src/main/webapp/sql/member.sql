@@ -4,8 +4,15 @@ CREATE TABLE MEMBER (
 p_num				NUMBER 		  REFERENCES PROJECT(P_NUM) on delete cascade,	-- 프로젝트 식별번호
 num					NUMBER		  REFERENCES USR(NUM),			-- 유저 식별번호
 grade				varchar2(50)  REFERENCES role(grade),		-- 유저 권한
+p_name      		VARCHAR2(100),
+id					VARCHAR2(50),
+name				VARCHAR2(50),
+pic					VARCHAR2(50),
+tel					VARCHAR2(50),
+email				VARCHAR2(50),
 PRIMARY KEY(p_num, num, grade)
-)
+);
+
 
 SELECT *
 FROM MEMBER;

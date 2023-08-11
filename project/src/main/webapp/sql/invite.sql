@@ -2,7 +2,7 @@ DROP TABLE INVITE CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE INVITE (
 p_num            NUMBER         REFERENCES PROJECT(P_NUM) on delete cascade,   -- 프로젝트 식별번호
-num               NUMBER        REFERENCES USR(NUM),      -- 유저 식별번호
+num               NUMBER        REFERENCES USR(NUM) on delete cascade,      -- 유저 식별번호
 i_status         VARCHAR2(20),                        -- 초대 현황
 PRIMARY KEY(p_num, num)
 );
