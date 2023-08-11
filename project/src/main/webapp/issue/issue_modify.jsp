@@ -22,6 +22,7 @@
         <br>
         <p>유형<span class="req">*</span></p>
          <select name="i_type" id="select_issue_type">
+          <option selected>${issuedata.i_type}</option>
           <option>버그</option>
           <option>작업</option>
           <option>하위작업</option>

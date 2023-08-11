@@ -61,7 +61,7 @@
                      <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#">수정</a>
 
                      <a class="del_issue" name="del_issue"
-                        href="BoardDeleteAction.bo?num=${issuedata.p_num }">삭제</a>
+                        href="IssueDeleteAction.bo?num=${issuedata.i_seq }">삭제</a>
                   </div>
                </div>
 

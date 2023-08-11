@@ -113,6 +113,7 @@ li {
 								<c:set var="num" value="${listcount-(page-1)*limit}" />
 
 								<c:forEach var="m" items="${memberlist}">
+								<input type = "checkbox">
 									<tr>
 										<td>${m.grade}</td>
 										<td>${m.name}</td>
@@ -165,7 +166,7 @@ li {
 						<c:if test="${listcount ==0 }">
 					<h3 style="color:lightgrey;">등록 된 글이 없습니다.</h3>
 				</c:if>
-						<button id="openModalBtn" class="write">글쓰기</button>
+						<button id="openModalBtn" class="write"></button>
 					</div>
 				</div>
 
