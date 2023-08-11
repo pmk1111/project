@@ -217,5 +217,18 @@ public class ProjectDAO {
 	    return result;
 	}
 
+	public int delete(String p_num) {
+	    int result = 0;
+	    String sql = "DELETE FROM project WHERE p_num = ?";
+	    try (Connection con = ds.getConnection();
+	         PreparedStatement pstmt = con.prepareStatement(sql);) {
+	    	 pstmt.setString(1, p_num);
+	    	 result = pstmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return result;
+	}
+
 
 }

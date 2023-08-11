@@ -46,18 +46,19 @@ public class Project {
 	public void setP_created(String p_created) {
 		this.p_created = p_created.substring(0,10);
 	}
-	public String getP_file() {
-		if(p_file==null) {
-			  p_file="img/pj_file.png";
-		}else {
-			this.p_file = "projectupload/"+p_file;
-		}
-		
+	public String getP_file() {			
 		return p_file;
 	}
 	public void setP_file(String p_file) {
 		this.p_file = p_file;
 	}
 	
-	
+	public String getP2_file() {
+		if (p_file ==null) {
+			return "img/pj_file.png";
+		}else {
+			return "projectupload/"+p_file;
+		}
+		
+	}
 }
