@@ -22,3 +22,12 @@ VALUES (USR_SEQ.NEXTVAL, 'admin', '1', 'admin@naver.com', 'admin', 'admin.png', 
 
 INSERT INTO USR
 VALUES (USR_SEQ.NEXTVAL, 'admin27', '1', 'admin@naver.com', 'admin', 'admin.png', '010-1111-2222', 0);
+
+insert into usr
+VALUES (USR_SEQ.NEXTVAL, 'admin2', '1', 'hong@test.com', '홍길동', '', '010-1234-5678', 0);
+
+insert into usr
+VALUES (USR_SEQ.NEXTVAL, 'admin3', '1', 'hong@test.com', '박서준', '', '010-1111-2222', 0);
+
+insert into usr
+VALUES (USR_SEQ.NEXTVAL, 'admin4', '1', 'lee@test.com', '이지은', '', '010-1234-5678', 0);
