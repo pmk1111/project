@@ -2,7 +2,6 @@ package net.comment.db;
 
 public class Comment {
 private int c_num;
-private int num;
 private String c_id;
 private String c_content;
 private String reg_date;
@@ -17,12 +16,7 @@ public int getC_num() {
 public void setC_num(int c_num) {
 	this.c_num = c_num;
 }
-public int getNum() {
-	return num;
-}
-public void setNum(int num) {
-	this.num = num;
-}
+
 public String getC_id() {
 	return c_id;
 }

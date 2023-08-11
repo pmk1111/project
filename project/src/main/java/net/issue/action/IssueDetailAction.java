@@ -18,7 +18,7 @@ public class IssueDetailAction implements Action {
 		
 		//글번호 파라미터 값을 num변수에 저장합니다.
 		int num = Integer.parseInt(request.getParameter("num"));
-		
+		System.out.println("선택한 게시글 번호: " + num);
 		/*
 		 * //내용을 확인할 글의 조회수를 증가시킵니다. boarddao.setReadCountUpdate(num);
 		 */
