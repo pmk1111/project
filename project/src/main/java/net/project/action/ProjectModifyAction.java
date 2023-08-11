@@ -37,7 +37,6 @@ public class ProjectModifyAction implements Action {
 			String p_start=multi.getParameter("p_start");
 			String p_closing=multi.getParameter("p_closing");
 			String p_file = multi.getFilesystemName("p_file");
-			System.out.println("넘어온 p_file =>  "+p_file);
 			String p_num = multi.getParameter("p_num");
 			
 			Project p = new Project();
