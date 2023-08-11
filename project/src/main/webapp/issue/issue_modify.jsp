@@ -55,8 +55,10 @@
         <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" value="${issuedata.i_related }" required><br>
         <hr>
       </div>
-      <button id="issue_submit_btn" type="submit">작성하기</button>
-      <button id="close_modal_btn">취소</button>
+      <div id="issue_btn">
+      <button id="issue_submit_btn" type="submit">수정하기</button>
+      <button type="button" id="close_modal_btn">취소</button>
+    </div>
     </form>
     <br>
   </div>
