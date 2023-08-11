@@ -3,6 +3,7 @@ DROP TABLE ISSUE CASCADE CONSTRAINTS PURGE;
 CREATE TABLE ISSUE (
 i_seq 		number			primary key,						
 p_num		NUMBER			REFERENCES PROJECT (p_num),
+i_id		VARCHAR2(50),
 i_name		VARCHAR2(50),
 i_title		VARCHAR2(100),
 i_content	VARCHAR2(4000),
@@ -17,8 +18,7 @@ i_related	VARCHAR2(50),
 i_readcount  number
 );
 
-select *
-from issue;
+select * from issue;
 
 delete from issue;
 
@@ -54,4 +54,5 @@ SELECT * FROM (
 				    ORDER BY i_seq DESC
 				) j WHERE ROWNUM <= 2
 				) WHERE rnum >= 1 AND rnum <= 2
-				  and i_status = 'To Do';
+				  and i_status = 'To Do'
+				  and i_assign = '고길동';

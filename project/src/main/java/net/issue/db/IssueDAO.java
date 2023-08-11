@@ -68,9 +68,23 @@ public class IssueDAO {
 		}
 		return x;
 	}// getListCount()end
+	
+	//게시글 조회수 업데이트
+	public void setReadCountUpdate(int num) {
+		String sql = "update issue "
+				+ "set i_readcount = i_readcount+1 "
+				+ "where i_seq = ?";
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);) {
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (SQLException ex) {
+			System.out.println("setReadCountUpdate() 에러: " + ex);
+		}
+	}
 
 	// 글 목록 보기
-	public List<IssueBean> getIssuedList(int pnum, int page, int limit) {
+	public List<IssueBean> getIssueList(int pnum, int page, int limit) {
 
 		// page : 페이지
 		// limit : 페이지 당 목록의 수
@@ -104,6 +118,7 @@ public class IssueDAO {
 				while (rs.next()) {
 					IssueBean issue = new IssueBean();
 					issue.setI_seq(rs.getInt("I_SEQ")); 
+					issue.setI_id(rs.getString("I_id"));
 					issue.setI_name(rs.getString("I_name"));
 					issue.setI_title(rs.getString("I_TITLE"));
 					issue.setI_content(rs.getString("I_CONTENT"));
@@ -130,13 +145,14 @@ public class IssueDAO {
 		return list;
 	}
 
-	public List<IssueBean> getToDoList(int pnum, int page, int limit) {
+	public List<IssueBean> getToDoList(String id, String usrname, int pnum, int page, int limit) {
 
 		// page : 페이지
 		// limit : 페이지 당 목록의 수
 		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
 		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
-
+		
+		String todo = "To Do";
 		// 프로젝트 넘버
 		List<IssueBean> list = new ArrayList<IssueBean>();
 		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
@@ -148,7 +164,9 @@ public class IssueDAO {
 							  + "		 order by i.i_seq desc "
 							  + "		) "
 							  + "WHERE rnum BETWEEN ? AND ?"
-							  + "and i_status = 'To Do'";
+							  + "and i_assign = ?"
+							  + "and i_id = ?"
+							  + "and i_status = " + todo;
 		//해당 프로젝트에 해당하는 게시글만 가져오기 위해 p_num을 넣어야 하는데, 어디에 넣느냐
 
 		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
@@ -158,6 +176,8 @@ public class IssueDAO {
 			pstmt.setInt(1, pnum);
 			pstmt.setInt(2, startrow);
 			pstmt.setInt(3, endrow);
+			pstmt.setString(4, id);
+			pstmt.setString(5, usrname);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 
@@ -166,6 +186,7 @@ public class IssueDAO {
 					IssueBean issue = new IssueBean();
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setI_name(rs.getString("I_name"));
+					issue.setI_id(rs.getString("I_id"));
 					issue.setI_title(rs.getString("I_TITLE"));
 					issue.setI_content(rs.getString("I_CONTENT"));
 					issue.setI_status(rs.getString("I_STATUS"));
@@ -191,13 +212,13 @@ public class IssueDAO {
 		return list;
 	} // getToDoList end
 	
-	public List<IssueBean> getInProgressList(int pnum, int page, int limit) {
+	public List<IssueBean> getInProgressList(String id, String usrname, int pnum, int page, int limit) {
 
 		// page : 페이지
 		// limit : 페이지 당 목록의 수
 		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
 		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
-
+		String progress = "In Progress";
 		// 프로젝트 넘버
 		List<IssueBean> list = new ArrayList<IssueBean>();
 		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
@@ -209,7 +230,9 @@ public class IssueDAO {
 							  + "		 order by i.i_seq desc "
 							  + "		) "
 							  + "WHERE rnum BETWEEN ? AND ?"
-							  + "and i_status = 'In Progress'";
+							  + "and i_assign = ?"
+							  + "and i_id = ?"
+							  + "and i_status = " + progress;
 		//해당 프로젝트에 해당하는 게시글만 가져오기 위해 p_num을 넣어야 하는데, 어디에 넣느냐
 
 		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
@@ -219,6 +242,8 @@ public class IssueDAO {
 			pstmt.setInt(1, pnum);
 			pstmt.setInt(2, startrow);
 			pstmt.setInt(3, endrow);
+			pstmt.setString(4, id);
+			pstmt.setString(5, usrname);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 
@@ -227,6 +252,7 @@ public class IssueDAO {
 					IssueBean issue = new IssueBean();
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setI_name(rs.getString("I_name"));
+					issue.setI_id(rs.getString("I_id"));
 					issue.setI_title(rs.getString("I_TITLE"));
 					issue.setI_content(rs.getString("I_CONTENT"));
 					issue.setI_status(rs.getString("I_STATUS"));
@@ -252,16 +278,17 @@ public class IssueDAO {
 		return list;
 	} // getInProgressList end
 	
-	public List<IssueBean> getDoneList(int pnum, int page, int limit) {
+	public List<IssueBean> getDoneList(String id, String usrname, int pnum, int page, int limit) {
 
 		// page : 페이지
 		// limit : 페이지 당 목록의 수
 		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
 		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
-
+		String done = "Done";
 		// 프로젝트 넘버
 		List<IssueBean> list = new ArrayList<IssueBean>();
 		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
+		
 		String issue_list_sql = "SELECT * "
 							  + " FROM ( SELECT ROWNUM rnum, i.* "
 							  + "		 FROM issue i "
@@ -270,7 +297,9 @@ public class IssueDAO {
 							  + "		 order by i.i_seq desc "
 							  + "		) "
 							  + "WHERE rnum BETWEEN ? AND ?"
-							  + "and i_status = 'Done'";
+							  + "and i_assign = ?"
+							  + "and i_id = ?"
+							  + "and i_status = " + done;
 		//해당 프로젝트에 해당하는 게시글만 가져오기 위해 p_num을 넣어야 하는데, 어디에 넣느냐
 
 		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
@@ -280,6 +309,8 @@ public class IssueDAO {
 			pstmt.setInt(1, pnum);
 			pstmt.setInt(2, startrow);
 			pstmt.setInt(3, endrow);
+			pstmt.setString(4, id);
+			pstmt.setString(5, usrname);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 
@@ -288,6 +319,7 @@ public class IssueDAO {
 					IssueBean issue = new IssueBean();
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setI_name(rs.getString("I_name"));
+					issue.setI_id(rs.getString("I_id"));
 					issue.setI_title(rs.getString("I_TITLE"));
 					issue.setI_content(rs.getString("I_CONTENT"));
 					issue.setI_status(rs.getString("I_STATUS"));
@@ -313,11 +345,11 @@ public class IssueDAO {
 		return list;
 	} // getDoneList end
 	
-	public boolean issueInsert(IssueBean issuedata, String name, int projectNum) {
+	public boolean issueInsert(IssueBean issuedata, String name, int projectNum, String id) {
 		
 		String sql = "INSERT INTO issue "
-		           + "(i_seq, i_NAME, i_title, i_CONTENT, i_readcount, p_num, i_status, i_type, i_reporter, i_assign, i_related)"
-		           + " values(i_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		           + "(i_seq, i_NAME, i_title, i_CONTENT, i_readcount, p_num, i_status, i_type, i_reporter, i_assign, i_related, i_id)"
+		           + " values(i_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		int result = 0;
 		
@@ -335,6 +367,7 @@ public class IssueDAO {
 		    pstmt.setString(8, issuedata.getI_reporter());
 		    pstmt.setString(9, issuedata.getI_assign());
 		    pstmt.setString(10, issuedata.getI_related());
+		    pstmt.setString(11, id);
 
 		    result = pstmt.executeUpdate();
 

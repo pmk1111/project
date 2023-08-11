@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="css/board_detail.css">
 <link rel="stylesheet" href="css/create_issue.css">
 <script src="js/board_detail.js"></script>
+<script src="js/view.js"></script>
 
 
 </head>
@@ -37,6 +38,7 @@
 
 	<main>
 		<jsp:include page="/menu_bar/leftbar.jsp" />
+		<input type="hidden" id="loginid" value="${id}" name="loginid"><%--view.js에서 사용예정 --%>
 		<div class="content">
       <div class="board-content">
         <div id="board_title_info">
@@ -56,7 +58,7 @@
             <div class="ed_del-dropdown_item">
               <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#" >수정</a>
      
-              <a class="del_issue" name="del_issue" href="IssueDeleteAction.bo?num=${issuedata.i_seq }" >삭제</a>
+              <a class="del_issue" name="del_issue" href="BoardDeleteAction.bo?num=${issuedata.p_num }" >삭제</a>
             </div>
           </div>
 
@@ -67,7 +69,7 @@
               <span>생성일</span><span id="i_create">${issuedata.i_created }</span>
             </div>
             <div class="reporter">
-            <span>보고자</span><span id="i_reporter">${issuedata.i_name}</span>
+            <span>보고자</span><span id="i_reporter">${issuedata.i_reporter}</span>
           </div>
           <div class="assign">
             <span>담당자</span><span id="i_assign">${issuedata.i_assign}</span>
@@ -89,10 +91,12 @@
         </div>
                    
     </div> <%--issue content end --%>
-
+    
+	<input type="hidden" name="num" value="${param.num}"
+	                       id="comment_i_num"> <%--주소값을 가져오기 --%>
 	<div class = "reply-area">
 		<div class = "reply-order">
-		  <ul class="comment-order-list">
+		  <ul class="reply-order-list">
 		  </ul>
 		</div>
 		<ul class="reply-list">
@@ -100,12 +104,12 @@
 		<div class="reply-write"> <%-- 댓글창에 등록 --%>
           <div class="reply_textarea">
             <b class="reply-write-area-name">${id}</b>
-            <textarea id="summernote_comm" name="editordata" maxLength="200"></textarea>
+            <textarea class = "reply" id="summernote_comm" name="editordata" maxLength="200"></textarea>
           </div>
           
           <div class="re_sub_cancel">
              <button type="submit" class="re_submit" name="re_submit">댓글달기</button>
-             <button type="submit" class="re_cancel" name="re_cancel">취소</button>
+             <button type="reset" class="re_cancel" name="re_cancel">취소</button>
           </div>
         </div> <%--reply-write end --%>
       </div> <%--reply-area end --%>
@@ -116,6 +120,7 @@
 	</main>
 	
 	<jsp:include page="issue_modify.jsp"/>
+		<script src="js/issue_modal2.js"></script>
 	
 </body>
 </html>
