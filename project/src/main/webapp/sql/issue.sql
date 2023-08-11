@@ -20,6 +20,12 @@ i_readcount  number
 
 select * from issue;
 
+delete from issue;
+
+create sequence i_seq;
+
+DROP SEQUENCE I_SEQ;
+
 select max(i_seq) from issue;
 select max(i_seq)-3 from issue;
 
@@ -39,12 +45,6 @@ select * from
 	 left join (select * from issue)
 	 			where 
 where rownum <= 3;
-
-delete from issue;
-
-create sequence i_seq;
-
-DROP SEQUENCE I_SEQ;
 
 INSERT INTO ISSUE (i_num, p_num)
 VALUES ((SELECT NVL(max(i_num)+1, 1) FROM issue WHERE p_num = 1),1);
