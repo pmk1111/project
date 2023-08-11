@@ -1,91 +1,86 @@
-let option=1;  //선택한 등록순과 최신순을 수정, 삭제, 추가 후에도 유지되도록 하기위한 변수로 사용됩니다.
+let option=1;
 
-function getList(state){//현재 선택한 댓글 정렬방식을 저장합니다. 1=>등록순, 2=>최신순
-       console.log(state)
-       option=state;
-      $.ajax({
-         type:"post",
-         url:"CommentList.bo",
-         data : {"comment_board_num" : $("#comment_board_num").val(), state:state},
-         dataType:"json",
-         
-         // DAO에서 가져온 값을 rdata로 가져오게 됨
-         success:function(rdata){
+function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=최신순
+		option = state;
+		$.ajax({
+			type:"post",
+			url:"CommentList.bo",
+			data: {"comment_i_num" : $("#comment_i_num").val(), state:state},
+			dataType:"Json",
+			success:function(rdata){
+				let red1 = 'red';
+				let red2 = 'red';
+				if(state==1){
+					red2='gray'
+				}else if(state==2){
+					red1 = 'gray';
+				}
+				
+				let output = "";
             
-            $('#count').text(rdata.listcount).css('font-family','arial, sans-serif')
-            
-            let red1='red'; 
-            let red2='red';
-            if(state==1){
-               red2='gray';
-            } else if (state==2) {
-               red1='gray';
-            }
-            
-            let output="";
-            
-          if(rdata.boardlist.length>0){
+          if(rdata.issuelist.length>0){
              
-                 output += '<li class="comment-order-item ' + red1 + '" >'
-                        +  '   <a href="javascript:getList(1)" class="comment-order-button">등록순</a>'
+                  output += '<li class="reply-order-item ' + red1 + '" >'
+                        +  '   <a href="javascript:getList(1)" class="reply-order-button">등록순</a>'
                         +  '</li>'
-                        +  '<li class="comment-order-item ' + red2 + '" >'
-                        +  '   <a href="javascript:getList(2)" class="comment-order-button">최신순</a>'
+                        +  '<li class="reply-order-item ' + red2 + '" >'
+                        +  '   <a href="javascript:getList(2)" class="reply-order-button">최신순</a>'
                         +  '</li>';
                         
-                  $('.comment-order-list').html(output);
+                  $('.reply-order-list').html(output);
                    
                 output='';
                 
-               $(rdata.boardlist).each(function(){
+               $(rdata.issuelist).each(function(){
                   
                   const lev = this.comment_re_lev;
                   let comment_reply='';
                   if(lev==1){
-                     comment_reply = ' comment-list-item--reply lev1';
+                     comment_reply = ' reply-list-item--reply lev1';
                   } else if (lev==2) {
-                     comment_reply = ' comment-list-itme--reply lev2';
+                     comment_reply = ' reply-list-itme--reply lev2';
                   }
                   
-                  const profile = this.memberfile;
-                     let src='img/profile.png';
-                  if(profile){
-                     src='memberupload/'+profile;
-                  }
+                  const profile = this.pic;
+					 let src = 'img/profile3.png';
+					 if(profile){
+						 src='usrupload/' + profile;
+						 
+					 }
                   
-                  output += '<li id="' + this.num + '" class="comment-list-item' + comment_reply + '">'
-                        + '   <div class="comment-nick-area">'
+                  output += '<li id="' + this.num + '" class="reply-list-item' + comment_reply + '">'
+                        + '   <div class="reply-nick-area">'
                         + '    <img  src="' + src +'" alt="프로필 사진" width="36" height="36">'
-                        + '    <div class="comment-box">'
-                        + '      <div class="comment-nick-box">'
-                        + '            <div class="comment-nick-info">'
-                        + '               <div class="comment-nickname">' + this.id  + '</div>'
+                        + '    <div class="reply-box">'
+                        + '      <div class="reply-nick-box">'
+                        + '            <div class="reply-nick-info">'
+                        + '               <div class="reply-nickname">' + this.c_id  + '</div>'
                         + '            </div>' //comment-nick-info                  
                         + '       </div>'  // comment-nick-box
                         + '    </div>'   //comment-box
-                        + '    <div class="comment-text-box">'
-                        + '       <p class="comment-text-view">'
-                        + '         <span class="text-comment">' + this.content + '</span>'
+                        + '    <div class="reply-text-box">'
+                        + '       <p class="reply-text-view">'
+                        + '         <span class="text-comment">' + this.c_content + '</span>'
                         + '       </p>'
                         + '    </div>' //comment-text-box
-                        + '    <div class="comment-info-box">'
-                        + '      <span class="comment-info-date">' + this.reg_date + '</span>';
+                        + '    <div class="reply-info-box">'
+                        + '      <span class="reply-info-date">' + this.reg_date + '</span>';
                   
                   // 원문글에서 2레벨까지만 답글쓰기가 가능함.
                   if(lev<2){
                           output += '  <a href="javascript:replyform(' + this.num +',' 
                                  + lev + ',' + this.comment_re_seq +',' 
-                                 + this.comment_re_ref +')"  class="comment-info-button">답글쓰기</a>'
+                                 + this.comment_re_ref +')"  class="reply-info-button">답글쓰기</a>'
                         }
                   output += '   </div>' //comment-info-box;
                   
                   // 글쓴사람에게만 수정과 삭제 권한을 줌. // 어드민을 제외해두었으니 필요하면 추가      
                    if($("#loginid").val()==this.id){  
                    output +=  '<div class="comment-tool">'
-                        + '    <div title="더보기" class="comment-tool-button">'
+                        + '    <div title="더보기" class="reply-tool-button">'
                         + '       <div>&#46;&#46;&#46;</div>' 
                         + '    </div>'
-                        + '    <div id="comment-list-item-layer' +  this.num + '"  class="LayerMore">' //스타일에서 display:none; 설정함
+                        + '    <div id="reply-list-item-layer' +  this.num + '"  class="LayerMore">' //스타일에서 display:none; 설정함
                         + '     <ul class="layer-list">'                        
                         + '      <li class="layer-item">'
                         + '       <a href="javascript:updateForm(' + this.num + ')"'
@@ -100,15 +95,15 @@ function getList(state){//현재 선택한 댓글 정렬방식을 저장합니�
                         + '</li>'// li.comment-list-item
                })//each end
                
-                $('.comment-list').html(output);
+                $('.reply-list').html(output);
           }//if(rdata.boardlist.length>0)
           
           else{ 
              
              //댓글 1개가 있는 상태에서 삭제하는 경우 갯수는 0이라  if문을 수행하지 않고 이곳으로 옵니다.
              //이곳에서 아래의 두 영역을 없앱니다.
-             $('.comment-list').empty();
-             $('.comment-order-list').empty();
+             $('.reply-list').empty();
+             $('.reply-order-list').empty();
              
           }
          }//success end
@@ -167,8 +162,8 @@ function del(num){//num : 댓글 번호
            data:{num:num},
             success:function(rdata){
                if(rdata==1){
-				getList(option);   
-			   }
+            getList(option);   
+            }
                
             }
         })
@@ -202,7 +197,7 @@ function replyform(num,lev,seq,ref){
    //속성 'data-ref'에 ref, 'data-lev'에 lev, 'data-seq'에 seq값을 설정합니다.
    //등록을 답글 완료로 변경합니다.
    $num_next.find('.re_submit').addClass('reply')
-   				.attr('data-ref', ref).attr('data-lev', lev).attr('data-seq', seq).text('답글완료');
+               .attr('data-ref', ref).attr('data-lev', lev).attr('data-seq', seq).text('답글완료');
 
 }//function(replyform) end
 
@@ -224,33 +219,31 @@ $(function() {
    });// keyup','.comment-write-area-text', function() {
    
    //댓글 등록을 클릭하면 데이터베이스에 저장 -> 저장 성공 후에 리스트 불러옵니다.
-	$('.reply-write .re_submit').click(function() {
-      const content=$('.comment-write-area-text').val();
+   $('.reply-write .re_submit').click(function() {
+      const content=$('div.note-editable').html();
+      console.log(content)
       if(!content){//내용없이 등록 클릭한 경우
          alert("댓글을 입력하세요");
          return;
       }
       
-      $.ajax({
-         url : 'CommentAdd.bo',  //원문 등록
-         data : {
-            id : $("#loginid").val(),
-            content : content,
-            comment_board_num : $("#comment_board_num").val()
-         },
-         type : 'post',
-         success : function(rdata) {
-            if (rdata == 1) {
-               getList(option);
-            }
-         }
-      })//ajax
+     $.ajax({
+		url : 'CommentAdd.bo',
+		data : {
+			id : $("#loginid").val(),
+			content : content,
+			comment_i_num : $("#comment_i_num").val()
+		},
+		type:'post',
+		success : function(rdata){
+			if(rdata ==1){
+				getList(option);
+			}
+		}
+	})//ajax end
       
-      // textarea 초기화
-      $('.comment-write-area-text').val('');
-      
-      // 입력한 글 카운트 초기화
-      $('.comment-write-area-count').val('0/200');
+    $('.reply-write-area-text').val(''); //textarea 초기화
+	$('.reply-write-area-count').text('0/200'); //입력한 글 카운트 초기화
       
    })// $('.btn-register').click(function(){
    
@@ -361,6 +354,4 @@ $(function() {
          event.preventDefault();         
       }
    })//답글쓰기 클릭 후 계속 누르는 것을 방지하기 위한 작업
-   
-   
 })//ready

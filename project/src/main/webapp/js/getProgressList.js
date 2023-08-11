@@ -23,7 +23,7 @@ function ajax(sdata){
 				let num = data.listcount - (data.page -1) * data.limit;
 				console.log(num)
 				let output = "<tbody>";
-				$(data.issuedlist).each(
+				$(data.issuelist).each(
 					function(index,item){
 
 						
@@ -39,7 +39,7 @@ function ajax(sdata){
 
 					})
 					output +="</tbody>"
-					$('.todo_item').append(output)//table 완성
+					$('.progress_item').append(output)//table 완성
 				
 			}//if
 		}, //success end
