@@ -447,6 +447,8 @@ public class IssueDAO {
 				if (rs.next()) {
 					
 					issue.setI_seq(rs.getInt("I_SEQ")); 
+					issue.setP_num(rs.getInt("P_NUM"));
+					issue.setI_id(rs.getString("I_ID"));
 					issue.setI_name(rs.getString("I_name"));
 					issue.setI_title(rs.getString("I_TITLE"));
 					issue.setI_content(rs.getString("i_content"));
