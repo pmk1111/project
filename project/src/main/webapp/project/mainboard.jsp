@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/mainboard.css">
 <script src="js/list_mainboard.js"></script>
+<script src="js/getToDoList.js"></script>
+<script src="js/getProgressList.js"></script>
+<script src="js/getDoneList.js"></script>
 <style>
 @
 keyframes fade_in { 0%{
@@ -117,7 +120,7 @@ a {
 								<c:set var="num" value="${listcount-(page-1)*limit}" />
 
 								<c:forEach var="i2" items="${issuelist2}">
-
+									<tbody>
 									<tr>
 										<td>
 											<div>
@@ -132,6 +135,7 @@ a {
 										</td>
 
 									</tr>
+									</tbody>
 								</c:forEach>
 							</table>
 						</div>
@@ -141,17 +145,26 @@ a {
 						<p>In Progress</p>
 						<div class="progress_list">
 							<table class="progress_item">
-								<tbody>
+								<c:set var="num" value="${listcount-(page-1)*limit}" />
+
+								<c:forEach var="i3" items="${issuelist3}">
+									<tbody>
 									<tr>
-										<td><a href="#">test1</a></td>
+										<td>
+											<div>
+												<a class="title" href="IssueDetailAction.bo?num=${i3.i_seq }">
+													<c:if test="${i3.i_title.length()>=10 }">
+														<c:out value="${i3.i_title.substring(0,10) }..." />
+													</c:if> <c:if test="${i3.i_title.length()<10 }">
+														<c:out value="${i3.i_title}" />
+													</c:if>
+												</a>
+											</div>
+										</td>
+
 									</tr>
-									<tr>
-										<td><a href="#">test1</a></td>
-									</tr>
-									<tr>
-										<td><a href="#">test1</a></td>
-									</tr>
-								</tbody>
+									</tbody>
+								</c:forEach>
 							</table>
 						</div>
 					</div>
@@ -160,17 +173,26 @@ a {
 						<p>Done</p>
 						<div class="done_list">
 							<table class="done_item">
-								<tbody>
+								<c:set var="num" value="${listcount-(page-1)*limit}" />
+
+								<c:forEach var="i4" items="${issuelist4}">
+									<tbody>
 									<tr>
-										<td><a href="#">test1</a></td>
+										<td>
+											<div>
+												<a class="title" href="IssueDetailAction.bo?num=${i4.i_seq }">
+													<c:if test="${i4.i_title.length()>=10 }">
+														<c:out value="${i4.i_title.substring(0,10) }..." />
+													</c:if> <c:if test="${i4.i_title.length()<10 }">
+														<c:out value="${i4.i_title}" />
+													</c:if>
+												</a>
+											</div>
+										</td>
+
 									</tr>
-									<tr>
-										<td><a href="#">test1</a></td>
-									</tr>
-									<tr>
-										<td><a href="#">test1</a></td>
-									</tr>
-								</tbody>
+									</tbody>
+								</c:forEach>
 							</table>
 						</div>
 					</div>
