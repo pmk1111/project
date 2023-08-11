@@ -113,14 +113,12 @@ li {
 								<c:set var="num" value="${listcount-(page-1)*limit}" />
 
 								<c:forEach var="m" items="${memberlist}">
-								<input type = "checkbox">
 									<tr>
 										<td>${m.grade}</td>
 										<td>${m.name}</td>
 										<td>${m.pic}</td>
 										<td>${m.tel}</td>
 										<td>${m.email}</td>
-
 									</tr>
 								</c:forEach>
 							</tbody>
