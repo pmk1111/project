@@ -10,8 +10,8 @@
 
   <div id="modal_overlay"></div>
   <div id="issue_modal">
-    <form action="BoardModifyAction.bo" method="post" enctype="multipart/form-data">
-             	 <input type="hidden" name="board_num" value="${issuedata.i_seq}">
+    <form action="IssueModifyAction.bo" method="post" enctype="multipart/form-data">
+             	 <input type="hidden" name="i_seq" value="${issuedata.i_seq}">
       <div id="issue_content">
         <p>프로젝트<span class="req">*</span></p>
         <select id="select_project">
@@ -21,7 +21,7 @@
         </select>
         <br>
         <p>유형<span class="req">*</span></p>
-        <select id="select_issue_type">
+         <select name="i_type" id="select_issue_type">
           <option>버그</option>
           <option>작업</option>
           <option>하위작업</option>
@@ -35,19 +35,23 @@
         <hr>
         <p>보고자<span class="req">*</span></p><input type="text" id="issue_reporter" name="issue_reporter" value="${issuedata.i_name}" readOnly><br>
         <p>담당자<span class="req">*</span></p>
-        <select id="issue_manager">
+     <!-- 빡쌔요 -->
+    <!--    <select id="issue_manager" name="i_assign">
           <option>직원 1</option>
           <option>직원 2</option>
           <option>직원 4</option>
-        </select><br>
+        </select> -->
+        <input type="text" id="issue_manager" name="i_assign" value="${issuedata.i_name}" readonly>
+        <!-- 담당자는 현재 프로젝트에 참여한 인원을 표시한다(최종) / 일단은 보고자로 세팅-->
+        <br>
         <p>상태<span class="req">*</span></p>
-        <select id="issue_status">
-          <option></option>
+        <select name = "i_status" id="issue_status">
+          <option selected>${issuedata.i_status}</option>
           <option>To Do</option>
           <option>In Progress</option>
           <option>Done</option>
         </select><br>
-        <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" required><br>
+        <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" value="${issuedata.i_related }" required><br>
         <hr>
       </div>
       <button id="issue_submit_btn" type="submit">작성하기</button>

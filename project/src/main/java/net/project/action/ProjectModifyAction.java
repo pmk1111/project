@@ -19,11 +19,9 @@ public class ProjectModifyAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//multipart request 4개 p_file		p_name		p_start		p_closing
 		String realFolder ="";
 		
-		//webapp아래 꼭 폴더 생성하세요
-		String savfolder = "";
+		String savfolder = "projectupload";
 		
 		int fileSize = 5*1024*1024; // 업로드할 파일의 최대 사이즈입니다.5BM
 		
@@ -39,7 +37,7 @@ public class ProjectModifyAction implements Action {
 			String p_start=multi.getParameter("p_start");
 			String p_closing=multi.getParameter("p_closing");
 			String p_file = multi.getFilesystemName("p_file");
-			System.out.println(p_file);
+			System.out.println("넘어온 p_file =>  "+p_file);
 			String p_num = multi.getParameter("p_num");
 			
 			Project p = new Project();

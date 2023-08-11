@@ -8,7 +8,25 @@
 <title>프로젝트 수정</title>
 <jsp:include page ="header.jsp"/>
 <link rel="stylesheet" href="css/create_pj.css">
-<script src = "js/createform.js"></script>
+
+<script src="js/createform.js"></script>
+<script>
+ const urlSearchParams = new URLSearchParams(window.location.search);
+  const p_num = urlSearchParams.get('num');
+  </script>
+<script>
+  function modifyProject() {
+    document.projectform.action = "ProjectModifyAction.pro";
+    document.projectform.submit();
+  }
+
+  function deleteProject() {
+    if (confirm("정말 프로젝트를 삭제하시겠습니까?")) {
+      location.href="ProjectDeleteAction.pro?p_num=${projectdata.p_num }"
+    }
+  }
+</script>
+
 </head>
 <body>
 
@@ -20,7 +38,7 @@
       		<h1>프로젝트 수정</h1>
       
       		<div id="pj_upload" class="pj_upload">
-        		<img class="pj_file" id="pj_file" name="pj_file" src="${projectdata.p_file}" alt="">
+        		<img class="pj_file" id="pj_file" name="pj_file" src="${projectdata.p2_file}" alt="">
       		</div> 
 
       		<div class="filebox bs3-primary">
@@ -52,7 +70,11 @@
         		</div>
         
         		<div class="pj_submit">
-          			<button type="submit" class="create_pj_btn">수정하기</button>
+          			<button type="submit" class="create_pj_btn" onclick="modifyProject();">수정하기</button>
+        		</div> 
+        		
+        		<div class="pj_submit">
+          			<button type="button" class="delete_pj_btn" onclick="deleteProject();">삭제하기</button>
         		</div> 
         		
     		</div> 

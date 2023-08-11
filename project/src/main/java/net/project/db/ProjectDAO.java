@@ -196,11 +196,11 @@ public class ProjectDAO {
  
 	    try (Connection con = ds.getConnection();
 	         PreparedStatement pstmt = con.prepareStatement(sql);) {
-	    	System.out.println("넘어온값"+p.getP_name());
-			System.out.println("넘어온값"+p.getP_start());
-			System.out.println("넘어온값"+p.getP_closing());
-			System.out.println("넘어온값"+p.getP_file());
-			System.out.println("넘어온값"+p.getP_num());
+	    	System.out.println("넘어온P_name"+p.getP_name());
+			System.out.println("넘어온P_start"+p.getP_start());
+			System.out.println("넘어온P_closing"+p.getP_closing());
+			System.out.println("넘어온P_file"+p.getP_file());
+			System.out.println("넘어온P_num"+p.getP_num());
 			
 	        pstmt.setString(1, p.getP_name());
 	        pstmt.setString(2, p.getP_start());
@@ -214,6 +214,19 @@ public class ProjectDAO {
 	        e.printStackTrace();
 	    }
 
+	    return result;
+	}
+
+	public int delete(String p_num) {
+	    int result = 0;
+	    String sql = "DELETE FROM project WHERE p_num = ?";
+	    try (Connection con = ds.getConnection();
+	         PreparedStatement pstmt = con.prepareStatement(sql);) {
+	    	 pstmt.setString(1, p_num);
+	    	 result = pstmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	    return result;
 	}
 
