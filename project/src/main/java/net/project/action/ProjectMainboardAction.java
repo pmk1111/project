@@ -22,9 +22,9 @@ public class ProjectMainboardAction implements Action {
 		//1번: 메인보드에서 전체 이슈 요약
 		List<IssueBean> issuelist1 = new ArrayList<IssueBean>();
 
-		//		List<IssueBean> issuelist2= new ArrayList<IssueBean>();
-		//		List<IssueBean> issuelist3 = new ArrayList<IssueBean>();
-		//		List<IssueBean> issuelist4 = new ArrayList<IssueBean>();
+		List<IssueBean> issuelist2= new ArrayList<IssueBean>();
+		List<IssueBean> issuelist3 = new ArrayList<IssueBean>();
+		List<IssueBean> issuelist4 = new ArrayList<IssueBean>();
 
 		HttpSession session = request.getSession();
 		//요청으로부터 프로젝트 넘버를 가져온 후 세션에 저장
@@ -46,15 +46,18 @@ public class ProjectMainboardAction implements Action {
 		session.setAttribute("usrname", usrname);
 
 		//모든 이슈를 가져오는 작업
-		issuelist1 = issuedao.getIssueList(pnum, 1, 4);
+		issuelist1 = issuedao.getMainboardList(pnum);
 
 		//본인이 담당자인 이슈를 status 별로 가져온다.
-		//		issuelist2 = issuedao.getToDoList(id, usrname, pnum, 1, 3);
-		//		issuelist3 = issuedao.getInProgressList(id, usrname, pnum, p_num, pnum);
-		//		issuelist4 = issuedao.getDoneList(id, usrname, pnum, p_num, pnum);
+		issuelist2 = issuedao.getToDoList(id, usrname, pnum);
+		issuelist3 = issuedao.getInProgressList(id, usrname, pnum);
+		issuelist4 = issuedao.getDoneList(id, usrname, pnum);
 
 
 		request.setAttribute("issuelist1",issuelist1);
+		request.setAttribute("issuelist2",issuelist2);
+		request.setAttribute("issuelist3",issuelist3);
+		request.setAttribute("issuelist4",issuelist4);
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

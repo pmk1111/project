@@ -23,27 +23,23 @@ function ajax(sdata){
 				let num = data.listcount - (data.page -1) * data.limit;
 				console.log(num)
 				let output = "<tbody>";
-				$(data.issuedlist).each(
-					
+				$(data.issuelist).each(
 					function(index,item){
 
+						
 						let title = item.i_title;
-						if(title.length>=20){
-							title=title.substr(0,20)+"....";
+						if(title.length>=10){
+							title=title.substr(0,10)+"....";
 						}
 						
-						output +='<tr><td>' +item.i_name+'</td>'
-						output += "<td>" +blank+img
+						output +='<tr><td>'
 						output += '<a href=IssueDetailAction.bo?num='+item.i_seq+'">'
              				   + title.replace(/</g,'&lt;').replace(/>/g,'&gt;')
-             				   + '</a></td>';
-						  		
-						output +='<td>'+item.i_date+'</td>'
-						output += '</tr>'
-						
+             				   + '</a></td></tr>';
+
 					})
 					output +="</tbody>"
-					$('.brief').append(output)//table 완성
+					$('.done_item').append(output)//table 완성
 				
 			}//if
 		}, //success end
