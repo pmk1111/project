@@ -17,23 +17,14 @@ PRIMARY KEY(p_num, num, grade)
 SELECT *
 FROM MEMBER;
 
-insert into member 
-values ( 1, 1, 'master');
+INSERT INTO MEMBER (p_num, num, grade, p_name, id, name, pic, tel, email)
+VALUES (2, 3, 'master', '프로젝트1', 'admin2', '홍길동', '', '010-1234-5678', 'hong@test.com');
 
-insert into member 
-values ( 2, 1, 'master');
+INSERT INTO MEMBER (p_num, num, grade, p_name, id, name, pic, tel, email)
+VALUES (2, 4, 'sub', '프로젝트1', 'admin3', '박서준', '', '010-1111-2222', '');
 
-insert into member 
-values ( 3, 1, 'master');
-
-insert into member 
-values ( 4, 1, 'master');
-
-insert into member 
-values ( 5, 1, 'master');
-
-insert into member 
-values ( 7, 1, 'master');
+INSERT INTO MEMBER (p_num, num, grade, p_name, id, name, pic, tel, email)
+VALUES (2, 5, 'normal', '프로젝트1', 'admin4', '이지은', '', '', 'lee@test.com');
 
 SELECT P.*
 FROM PROJECT P
@@ -58,3 +49,19 @@ WHERE rnum BETWEEN 1 AND 9
 
 insert into member
 values ()
+
+-- memberlsit
+SELECT COUNT(*)
+FROM member
+WHERE p_num = 2
+
+-- 페이지에 맞게 멤버select
+SELECT *
+FROM (
+SELECT ROWNUM rnum, m.*
+FROM member m
+JOIN project p ON m.p_num = p.p_num
+WHERE p.p_num = 2
+ORDER BY p.p_num DESC
+)
+WHERE rnum BETWEEN 1 AND 9

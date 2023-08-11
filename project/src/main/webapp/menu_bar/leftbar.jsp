@@ -53,6 +53,12 @@
           <img id="pj_setting" class="left-menu-icon" src="img/settings.png">
           <label for="pj_setting"><a href="ProjectModifyView.pro?num=${p_num }">프로젝트 설정</a></label>
       </div>
+      
+      <div class = "lieft-bar-items">
+      	<img id = "pj_setting" class= "left-menu-icon" src = "img/.png">
+      	<label for="pj_member"><a href = "MemberList.mem?num=${p_num }">프로젝트 멤버</a></label>
+      </div>
+      
       <div class="left-bar-items">
           <img id="add_team" class="left-menu-icon" src="img/person-add.png">
           <label for="add_team">팀원 초대하기</label>
