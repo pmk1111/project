@@ -190,5 +190,32 @@ public class ProjectDAO {
 	    return project;
 	}
 
+	public int update(Project p) {
+	    int result = 0;
+	    String sql = "UPDATE project SET p_name = ? , p_start = ? , p_closing = ?, p_file = ?  WHERE p_num = ? ";
+ 
+	    try (Connection con = ds.getConnection();
+	         PreparedStatement pstmt = con.prepareStatement(sql);) {
+	    	System.out.println("넘어온값"+p.getP_name());
+			System.out.println("넘어온값"+p.getP_start());
+			System.out.println("넘어온값"+p.getP_closing());
+			System.out.println("넘어온값"+p.getP_file());
+			System.out.println("넘어온값"+p.getP_num());
+			
+	        pstmt.setString(1, p.getP_name());
+	        pstmt.setString(2, p.getP_start());
+	        pstmt.setString(3, p.getP_closing());
+	        pstmt.setString(4, p.getP_file());
+	        pstmt.setInt(5, p.getP_num());
+
+	        result = pstmt.executeUpdate();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return result;
+	}
+
 
 }

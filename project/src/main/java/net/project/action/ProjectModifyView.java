@@ -17,7 +17,7 @@ public class ProjectModifyView implements Action {
         Project projectdata = new Project();
         ActionForward forward = new ActionForward();
 
-        int p_num = Integer.parseInt(request.getParameter("p_num"));
+        int p_num = Integer.parseInt(request.getParameter("num"));
 
         projectdata = projectdao.getDetail(p_num);
 
@@ -34,7 +34,7 @@ public class ProjectModifyView implements Action {
 
         request.setAttribute("projectdata", projectdata);
         forward.setRedirect(false);
-        forward.setPath("project/modifypj.jsp");
+        forward.setPath("project/modifyview.jsp");
         return forward;
     }
 }
