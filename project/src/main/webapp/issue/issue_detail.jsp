@@ -107,7 +107,7 @@
              <button type="reset" class="re_cancel" name="re_cancel">취소</button>
           </div>
         </div> <%--reply-write end --%>
-	<div class = "reply-area" style =  "clear:both">
+	<div class = "reply-area" style =  "clear:both" >
 		<div class = "reply-order">
 		  <ul class="reply-order-list">
 		  </ul>
