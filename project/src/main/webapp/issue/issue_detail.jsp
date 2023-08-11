@@ -52,15 +52,19 @@
             <img id="fav_icon" name="fav" src="img/star_grey.jpeg">
             <label for="fav" class="fav_label">즐겨찾기</label>
           <!-- </div> -->
+                   
+              
+             <c:if test="${issuedata.i_id == id || id =='admin' }">
           <div class="ed_del_dropdown">
             <img class="ed_del_dropdown_icon" src="img/favorite.png"
               style="position: relative; width: 18px; height: 18px; top: 3.2px;">
             <div class="ed_del-dropdown_item">
               <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#" >수정</a>
      
-              <a class="del_issue" name="del_issue" href="BoardDeleteAction.bo?num=${issuedata.p_num }" >삭제</a>
+              <a class="del_issue" name="del_issue" href="IssueDeleteAction.bo?num=${issuedata.i_seq }" >삭제</a>
             </div>
           </div>
+          </c:if>
 
           <div class="board_info">
             <span>상세 정보</span>
