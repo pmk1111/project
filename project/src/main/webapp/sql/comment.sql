@@ -20,3 +20,25 @@ create sequence com_seq;
 delete comm;
 
 select * from comm;
+select * from usr;
+update usr 
+set id = 'admin13' 
+where num = 13;
+
+
+ select c_num, comm.num, comm.c_id, comm.c_content, reg_date, comment_i_num, comment_re_lev, 
+					  comment_re_seq,
+						  comment_re_ref, usr.pic
+					from  comm join usr
+					on    comm.c_id=usr.id 
+				 where comment_i_num = 2
+				 order by comment_re_ref asc,
+					 	  comment_re_seq asc;
+					 	  
+					 	  
+	select * from comm;				 	  
+
+
+delete from comm;
+
+
