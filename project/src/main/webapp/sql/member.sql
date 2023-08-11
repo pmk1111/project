@@ -1,7 +1,7 @@
 DROP TABLE MEMBER CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE MEMBER (
-p_num				NUMBER 		  REFERENCES PROJECT(P_NUM),	-- 프로젝트 식별번호
+p_num				NUMBER 		  REFERENCES PROJECT(P_NUM) on delete cascade,	-- 프로젝트 식별번호
 num					NUMBER		  REFERENCES USR(NUM),			-- 유저 식별번호
 grade				varchar2(50)  REFERENCES role(grade),		-- 유저 권한
 PRIMARY KEY(p_num, num, grade)

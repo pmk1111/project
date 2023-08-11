@@ -2,7 +2,7 @@ DROP TABLE ISSUE CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE ISSUE (
 i_seq 		number			primary key,						
-p_num		NUMBER			REFERENCES PROJECT (p_num),
+p_num		NUMBER			REFERENCES PROJECT (p_num) on delete cascade,
 i_id		VARCHAR2(50), --게시글 작성자 아이디
 i_name		VARCHAR2(50), -- 게시글 작성자 이름
 i_title		VARCHAR2(100), -- 게시글 제목
