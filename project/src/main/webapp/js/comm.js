@@ -354,6 +354,4 @@ $(function() {
          event.preventDefault();         
       }
    })//답글쓰기 클릭 후 계속 누르는 것을 방지하기 위한 작업
-   
-   
 })//ready

@@ -27,10 +27,6 @@ public class UsrFrontController extends javax.servlet.http.HttpServlet {
 		String command = RequestURI.substring(contextPath.length());
 		System.out.println("command="+command);
 		
-		String uri = request.getRequestURI();
-		String conPath = request.getContextPath();
-		
-		
 		ActionForward forward = null;
 		Action action = null;
 		
@@ -54,7 +50,7 @@ public class UsrFrontController extends javax.servlet.http.HttpServlet {
 	         action = new UsrloginProcessAction();
 	         break;
 	      case "/logout.net":
-	      action = new UsrLogoutAction();
+	    	  action = new UsrLogoutAction();
 	         break;
 		 case "/usrEdit.net":
 	 		action = new UsrEditAction();

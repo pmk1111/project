@@ -24,9 +24,9 @@ function ajax(sdata){
 				console.log(num)
 				let output = "<tbody>";
 				$(data.issuedlist).each(
+					
 					function(index,item){
 
-						
 						let title = item.i_title;
 						if(title.length>=20){
 							title=title.substr(0,20)+"....";
@@ -40,6 +40,7 @@ function ajax(sdata){
 						  		
 						output +='<td>'+item.i_date+'</td>'
 						output += '</tr>'
+						
 					})
 					output +="</tbody>"
 					$('.brief').append(output)//table 완성
