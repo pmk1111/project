@@ -51,7 +51,7 @@
       </div>
       <div class="left-bar-items">
           <img id="pj_setting" class="left-menu-icon" src="img/settings.png">
-          <label for="pj_setting"><a href="ProjectModifyView.pro">프로젝트 설정</a></label>
+          <label for="pj_setting"><a href="ProjectModifyView.pro?num=${p_num }">프로젝트 설정</a></label>
       </div>
       <div class="left-bar-items">
           <img id="add_team" class="left-menu-icon" src="img/person-add.png">

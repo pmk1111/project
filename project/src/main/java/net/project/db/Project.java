@@ -47,6 +47,12 @@ public class Project {
 		this.p_created = p_created.substring(0,10);
 	}
 	public String getP_file() {
+		if(p_file==null) {
+			  p_file="img/pj_file.png";
+		}else {
+			this.p_file = "projectupload/"+p_file;
+		}
+		
 		return p_file;
 	}
 	public void setP_file(String p_file) {

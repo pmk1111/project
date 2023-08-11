@@ -194,6 +194,7 @@ function chkAuthMailNum() {
     } else {
         alert("인증실패");
     }
+    
 }
 
 </script>
