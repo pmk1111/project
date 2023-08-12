@@ -42,7 +42,7 @@
         <!-- 추후 해당 프로젝트에 참여 중인 인원을 표시할 수 있게 한다 -->
         <p>상태<span class="req">*</span></p>
         <select id="issue_status" name="i_status">
-          <option></option>
+          <option>-</option>
           <option>To Do</option>
           <option>In Progress</option>
           <option>Done</option>
