@@ -3,7 +3,7 @@ drop table project cascade constraints purge;
 CREATE TABLE PROJECT (
     p_num       NUMBER          PRIMARY KEY,
     p_name      VARCHAR2(100),
-    p_status    VARCHAR2(50) DEFAULT '계획중', -- 디폴트 값 추가
+    p_status    VARCHAR2(50) 	DEFAULT '계획중', -- 디폴트 값 추가
     p_start     VARCHAR2(50),
     p_closing   VARCHAR2(50),
     p_created   DATE DEFAULT sysdate, -- 디폴트 값 추가

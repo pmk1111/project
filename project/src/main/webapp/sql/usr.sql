@@ -31,3 +31,5 @@ VALUES (USR_SEQ.NEXTVAL, 'admin3', '1', 'hong@test.com', '박서준', '', '010-1
 
 insert into usr
 VALUES (USR_SEQ.NEXTVAL, 'admin4', '1', 'lee@test.com', '이지은', '', '010-1234-5678', 0);
+
+delete from usr where num = 1
