@@ -14,11 +14,7 @@
              	 <input type="hidden" name="i_seq" value="${issuedata.i_seq}">
       <div id="issue_content">
         <p>프로젝트<span class="req">*</span></p>
-        <select id="select_project">
-          <option>프로젝트1</option>
-          <option>프로젝트2</option>
-          <option>프로젝트3</option>
-        </select>
+        <input type="text" id="select_project" value="${pname}" readonly>
         <br>
         <p>유형<span class="req">*</span></p>
          <select name="i_type" id="select_issue_type">
