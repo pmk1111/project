@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="css/board_detail.css">
 <link rel="stylesheet" href="css/create_issue.css">
 <script src="js/comm.js"></script>
-<script src="js/board_detail.js"></script>
+
 
 
 </head>

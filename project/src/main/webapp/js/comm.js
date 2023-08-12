@@ -180,42 +180,60 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
    }//function(getList) end
    
    
-//더보기-수정 클릭한 경우에 수정 폼을 보여줍니다.
-function updateForm(c_num){ //num : 수정할 댓글 글번호
+function updateForm(c_num) {
+	
+    let $c_num = $('#' + c_num);
 
-    //수정 폼이 있는 상태에서 더보기를 클릭할 수 없도록 더 보기 영역을 숨겨요
-   $(".comment-tool").hide();
-   
-   //수정 삭제 영역도 숨겨요
-   $(".LayerMore").hide(); // 수정 삭제 영역도 숨겨요
-   
-   let $c_num = $('#'+c_num);
-   
-   //선택한 내용을 구합니다.
-   const content = $c_num.find('.text-comment').text();
-   
-   const selector = '#'+c_num + '> .comment-nick-area'
-   //selector 영역 숨겨요-수정에서 취소를 선택하면 보여줄 예정입니다.
-   $(selector).hide();
-   
-   //$('.comment-list+.comment-write').clone() : 기본 글쓰기 영역 복사합니다.
-   //글이 있던 영역에 글을 수정할 수 있는 폼으로 바꿉니다.
-   $c_num.append($('.comment-list+.comment-write').clone());
-   
-   
-   //수정 폼의 <textarea>에 내용을 나타냅니다.
-   $c_num.find('textarea').val(content);
-   
-   //'.btn-register' 영역에 수정할 글 번호를 속성 'data-id'에 나타내고 클래스 'update'를 추가합니다.
-   $c_num.find('.re_submit').attr('data-id', c_num).addClass('update').text('수정완료');
-   
-   //폼에서 취소를 사용할 수 있도록 보이게 합니다.
-   $c_num.find('.re_cancel').css('display', 'block');
-   
-   const count=content.length;
-   $c_num.find('.comment-write-area-count').text(count+"/200");
-   
-}//function(updateForm) end
+    // 선택한 내용을 구합니다.
+    const content = $c_num.find('div.note-editable').html();
+
+    const selector = '#' + c_num + '> .comment-nick-area';
+    // selector 영역 숨깁니다. 수정에서 취소를 선택하면 보여줄 예정입니다.
+    $(selector).hide();
+
+    // 수정할 대댓글 폼을 생성합니다.
+    const replyForm = $('#summernote_comm').clone();
+
+    // 대댓글 작성 폼 내용 초기화
+    replyForm.find('.note-editable').html(content);
+
+    // '.btn-register' 영역에 수정할 글 번호를 속성 'data-id'에 나타내고 클래스 'update'를 추가합니다.
+    $c_num.find('.re_submit').attr('data-id', c_num).addClass('update').text('수정완료');
+
+    // 폼에서 취소를 사용할 수 있도록 보이게 합니다.
+    $c_num.find('.re_cancel').css('display', 'block');
+
+    // 수정할 대댓글 폼을 해당 대댓글 아래에 추가합니다.
+    $c_num.append(replyForm);
+
+    // "수정완료" 버튼 클릭 이벤트 핸들러
+    $c_num.find('.update').on('click', function() {
+        const commentId = $(this).attr('data-id');
+        // 대댓글 수정을 처리하는 함수 호출
+        // handleReplyUpdate(commentId);
+    });
+}
+
+function addDeleteButton(c_num) {
+    const deleteButton = $('<button>', {
+        text: '삭제',
+        class: 'comment-delete-button',
+        'data-comment-id': c_num,
+        click: function() {
+            // 대댓글 삭제를 처리하는 함수 호출
+            // handleReplyDelete(c_num);
+        }
+    });
+
+    $('#' + c_num).append(deleteButton);
+}
+
+// 대댓글 수정 및 삭제 버튼 추가
+$('.comment-more-button').on('click', function() {
+    const commentId = $(this).data('comment-id');
+    updateForm(commentId);
+    addDeleteButton(commentId);
+});
 
    
    
@@ -318,14 +336,7 @@ $(function() {
    })// $('.btn-register').click(function(){
    
    
-   //더보기를 클릭한 경우
-   $(".comment-list").on('click', '.comment-tool-button', function() {              
-   //더보기를 클릭하면 수정과 삭제 영역이 나타나고 다시 클릭하면 사라져요
-      $(this).next().toggle();
-      
-      //클릭 한 곳만 수정 삭제 영역이 나타나도록 합니다.
-      $(".comment-tool-button").not(this).next().hide(); 
-   })
+   
    
    //수정 후 수정완료를 클릭한 경우
    $('.reply_textarea').on('click','.update',function(){

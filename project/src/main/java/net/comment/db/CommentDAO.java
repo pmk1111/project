@@ -3,6 +3,7 @@ package net.comment.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -113,6 +114,81 @@ public class CommentDAO {
 		return array;
 	}//getCommentList()메서드 end
 
+	public int commentsUpdate(Comment co) {
+		int result =0;
+		String sql = "update comm "
+				   + " set c_content= ? "
+				   + "where comment_i_num =? ";
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, co.getC_content());
+			pstmt.setInt(2, co.getComment_i_num());
+			
+			result = pstmt.executeUpdate();
+			if(result == 1)
+				System.out.println("데이터 수정 되었습니다.");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}//commentsUpdate()메서드
+	
+	public int commentsReply(Comment co) {
+		int result =0;
+		
+		try(Connection con = ds.getConnection();){
+			con.setAutoCommit(false);
+			
+			try { 
+				reply_update(con, co.getComment_re_ref(), co.getComment_re_seq());
+				result=reply_insert(con, co);
+				con.commit();
+				con.setAutoCommit(true);
+			}
+			catch(Exception e) {
+				if(con !=null) {
+					try {
+						con.rollback();//rollback합니다
+					} catch(SQLException ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	
+	private int reply_insert(Connection con, Comment co) throws Exception {
+		int result = 0;
+		String sql = "insert into comm "
+				   + " values(com_seq.nextval, ?, ?, sysdate, ?,?,?,?)";
+		try(PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, co.getC_id());
+			pstmt.setString(2, co.getC_content());
+			pstmt.setInt(3, co.getComment_i_num());
+			pstmt.setInt(4, co.getComment_re_lev()+1);
+			pstmt.setInt(5, co.getComment_re_seq()+1);
+			pstmt.setInt(6, co.getComment_re_ref());
+			result = pstmt.executeUpdate();
+		}
+		return result;
+	}
+	
+	private void reply_update(Connection con, int comment_re_ref, int comment_re_seq)throws Exception {
+		String update_sql = "update comm "
+		          + "set     comment_re_seq=comment_re_seq+1 "
+		          + "where   comment_re_ref = ? "
+		          + "and     comment_re_seq > ? ";
+		try(PreparedStatement pstmt = con.prepareStatement(update_sql);){
+			pstmt.setInt(1, comment_re_ref);
+			pstmt.setInt(2, comment_re_seq);
+			pstmt.executeUpdate();
+		}
+		
+	}
 
 	public int commentsDelete(int c_num) {
 		int result = 0;

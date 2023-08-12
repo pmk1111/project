@@ -22,3 +22,4 @@ VALUES (USR_SEQ.NEXTVAL, 'admin', '1', 'admin@naver.com', 'admin', 'admin.png', 
 
 INSERT INTO USR
 VALUES (USR_SEQ.NEXTVAL, 'admin27', '1', 'admin@naver.com', 'admin', 'admin.png', '010-1111-2222', 0);
+
