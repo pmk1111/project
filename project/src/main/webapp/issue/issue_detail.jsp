@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="css/board_detail.css">
 <link rel="stylesheet" href="css/create_issue.css">
 <script src="js/comm.js"></script>
-<script src="js/board_detail.js"></script>
+<!-- <script src="js/board_detail.js"></script> -->
 
 <script>
 /* 상세보기 드롭다운 아이템 클릭 시, info_dropdown_item의 display none 해제 */
