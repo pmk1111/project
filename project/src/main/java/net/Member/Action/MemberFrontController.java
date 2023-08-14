@@ -42,7 +42,12 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 	         case "/MemberList.mem":
 	        	 action = new MemberListAction();
 	        	 break;
-	         
+	         case "/MemberInvite.mem":
+	        	 action = new MemberInviteAction();
+	        	 break;
+	         case "/MemberInviteProcess.mem":
+	        	 action = new MemberInviteProcessAction();
+	        	 break;
 
 	      } //switch end
 	      

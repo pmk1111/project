@@ -4,13 +4,11 @@ public class Member {
 	private int p_num;
 	private int num;
 	private String grade;
-	private String p_name;
-	private String id;
-	private String name;
-	private String pic;
-	private String tel;
-	private String email;
-	
+	private String M_id;
+	private String M_name;
+	private String M_pic;
+	private String M_tel;
+	private String M_email;
 	public int getP_num() {
 		return p_num;
 	}
@@ -29,42 +27,37 @@ public class Member {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public String getP_name() {
-		return p_name;
+	public String getM_id() {
+		return M_id;
 	}
-	public void setP_name(String p_name) {
-		this.p_name = p_name;
+	public void setM_id(String m_id) {
+		M_id = m_id;
 	}
-	public String getId() {
-		return id;
+	public String getM_name() {
+		return M_name;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setM_name(String m_name) {
+		M_name = m_name;
 	}
-	public String getName() {
-		return name;
+	public String getM_pic() {
+		return M_pic;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setM_pic(String m_pic) {
+		M_pic = m_pic;
 	}
-	public String getPic() {
-		return pic;
+	public String getM_tel() {
+		return M_tel;
 	}
-	public void setPic(String pic) {
-		this.pic = pic;
+	public void setM_tel(String m_tel) {
+		M_tel = m_tel;
 	}
-	public String getTel() {
-		return tel;
+	public String getM_email() {
+		return M_email;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setM_email(String m_email) {
+		M_email = m_email;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 
 	
 }

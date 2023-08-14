@@ -60,11 +60,11 @@
       <div class = "left-bar-items">
       	<img id = "pj_setting" class= "left-menu-icon" src = "img/people.svg">
       	<label for="pj_member"><a href = "MemberList.mem?num=${p_num }">프로젝트 멤버</a></label>
-      </div>
+      </div>  
       
       <div class="left-bar-items">
           <img id="add_team" class="left-menu-icon" src="img/person-add.svg">
-          <label for="add_team">팀원 초대하기</label>
+          <label for="add_team"><a href = "MemberInvite.mem?num=${p_num }">팀원 초대하기</a></label>
       </div>
       <br><br>
     </div>

@@ -8,11 +8,54 @@
 <jsp:include page="header.jsp" />
 <link rel="stylesheet" href="css/create_pj.css">
 <script src="js/createform.js"></script>
+<script>
+
+function validateStartDate() {
+  const startDateInput = document.getElementById('p_start');
+  
+  if (!startDateInput.value) {
+    alert('프로젝트 시작일을 입력하세요.');
+    return false;
+  }
+  
+  return true;
+}
+
+function validateEndDate() {
+  const endDateInput = document.getElementById('p_closing');
+  
+  if (!endDateInput.value) {
+    alert('프로젝트 종료일을 입력하세요.');
+    return false;
+  }
+  
+  return true;
+}
+
+function validateForm() {
+  const projectNameInput = document.querySelector('.p_name');
+  
+  if (!projectNameInput.value.trim()) {
+    alert('프로젝트명을 입력하세요.');
+    return false;
+  }
+  
+  if (!validateStartDate() || !validateEndDate()) {
+    return false;
+  }
+  
+  return true;
+}
+
+
+
+</script>
 
 </head>
 <body>
 		<form action="ProjectAddAction.pro" method="post"
-			enctype="multipart/form-data" name="projectform">
+      enctype="multipart/form-data" name="projectform" onsubmit="return validateForm();">
+
 			<div class="create_pj_content">
 
 				<h1>프로젝트 생성하기</h1>
@@ -25,7 +68,7 @@
 
 				<div class="filebox bs3-primary">
 					&nbsp;&nbsp; <input id="filevalue" class="upload-name" value="파일선택"
-						disabled="disabled"> <label> 업로드 <input
+						disabled="disabled"> <label style="margin-bottom: 0px;"> 업로드 <input
 						type="file" class="upload-hidden" id="upfile" name="p_file">
 					</label>
 					<!-- 사진업로드 -->
@@ -83,5 +126,7 @@ function selectProjectStartDate() {
 
 
   </script>
+
+
 </body>
 </html>
