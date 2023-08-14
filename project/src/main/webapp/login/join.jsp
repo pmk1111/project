@@ -65,196 +65,178 @@ label[for="policy"] {
    top: -2.5px;
 }
 </style>
-<script>
-function redirectToGoogleLogin() {
-    window.location.href = 'https://accounts.google.com/'; 
-}
-
-function redirectToKakaoLogin() {
-    window.location.href = 'https://accounts.kakao.com/'; 
-}
-
+<script type= "text/javascript">
 $(document).ready(function () {
-	const $policyCheckbox = $("#policy");
-    let isChkPolicy = false;
-    $policyCheckbox.on("change", function () {
-        if ($policyCheckbox.is(":checked")) {
-            // 체크박스가 선택되었을 때
-            isChkPolicy = true;
-            $("#chkPolicy").val("Y");
-        } else {
-            // 체크박스가 선택되지 않았을 때
-            isChkPolicy = false;
-            alert("이용약관 동의는 필수입니다.")
-            $("#chkPolicy").val("N");
-        }
-    });
     $(".id_check").on('click', function () {
-        const pattern = /^\w{5,12}$/;
+        const pattern = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{5,12}$/;
         const id = $("input:eq(0)").val();
         const $message = $("#id_message");
-
+        
         if (!id) {
             $message.removeClass('message success').addClass('message error').html("아이디를 입력하세요.").css('color', 'red');
-            checkid = false;
+            $("#isChkId").val("N");
             return;
         }
 
         if (!pattern.test(id)) {
-            $message.removeClass('message success').addClass('message error').html("영문자 숫자 _ 로 5~12자 가능합니다.").css('color', 'red');
-            checkid = false;
+            $message.removeClass('message success').addClass('message error').html("영문, 숫자 조합하여 5~12글자까지 가능합니다.").css('color', 'red');
+            $("#isChkId").val("N");
             return;
         }
 
-        $message.removeClass('message error success').empty(); // 초기 메시지 제거
+        $message.removeClass('message error success').empty();
 
         $.ajax({
             url: "idcheck.net",
             data: { "id": id },
             success: function (resp) {
                 if (resp == -1) {
-                    $message.removeClass('message error').addClass('message success').html("사용 가능한 아이디입니다.");
-                    checkid = true;
+                    $message.removeClass('message error').addClass('message success').html("사용 가능한 아이디입니다.").css('color', 'blue');
+                    $("#isChkId").val("Y");
                 } else {
-                    $message.removeClass('message success').addClass('message error').html("사용 중인 아이디입니다.");
-                    checkid = false;
+                    $message.removeClass('message success').addClass('message error').html("사용 중인 아이디입니다.").css('color', 'green');
+                    $("#isChkId").val("N");
                 }
             }
         });
     });
 
+    $("#password").on('focusout', function () {
+        const pass = $("#password").val();
+        const $message = $("#pw_message");
+        const pattern = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{5,12}$/;
+
+        if (!pattern.test(pass)) {
+            $message.removeClass('message success').addClass('message error').html("영문자 숫자로 5~12자 가능합니다.").css('color', 'red');
+            $("#isChkPassword").val("N");
+        } else {
+            $message.removeClass('message error').addClass('message success').html("사용 가능한 비밀번호입니다.").css('color', 'blue');
+            $("#isChkPassword").val("Y");
+        }
+    });
+
+    $("#userName").on('keyup', function () {
+        const name = $("#userName").val();
+        const pattern = /^[가-힣a-zA-Z]+$/;
+        const $message = $("#name_message");
+
+        if (!pattern.test(name)) {
+            $message.removeClass('message success').addClass('message error').html("한글 2~4자 또는 영문 2~10자 가능합니다").css('color', 'red');
+            $("#isChkName").val("N");
+        } else {
+            $message.removeClass('message error').addClass('message success').html("사용 가능한 이름입니다.").css('color', 'blue');
+            $("#isChkName").val("Y");
+        }
+    });
+
     $(".pw, .pw_check").on('keyup', function () {
-        const pass = $(".pw").val();
-        const passwd = $(".pw_check").val();
-        const $passMessage = $("#pw_message");
+        const pass = $("#password").val();
+        const passwd = $("#confirmPassword").val();
         const $passwdMessage = $("#pw_check_message");
 
         if (pass !== '' && passwd !== '' && pass !== passwd) {
             $passwdMessage.addClass('message error').html("비밀번호가 다릅니다.").css('color', 'red');
+            $("#isChkPassword2").val("N");
         } else {
             $passwdMessage.removeClass('message error').empty();
+            $("#isChkPassword2").val("Y");
         }
     });
 
- 
-
-    const form = document.join;
-
-    function emailValCheck(email) {
-        if (email === '') return "empty";
-        const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        return emailPattern.test(email) ? "valid" : "invalid";
-    }
+    const createButton = document.querySelector('.create_pj_btn');
     
-    var emailAuthTimer;
-
-    $("#emailAuthBtn").on("click", function () {
-        const email = $("input[name=email]").val();
-        const $message = $("#email_message");
-        const emailCheckResult = emailValCheck(email);
-
-        if (emailCheckResult === "empty") {
-            $message.addClass("message error").html("이메일을 입력하세요.").css("color", "red");
-            return false;
-        } else if (emailCheckResult === "invalid") {
-            $message.addClass("message error").html("이메일 형식에 맞게 입력하세요.").css("color", "red");
-            return false;
+    createButton.addEventListener('click', function() {
+        if (!validateForm()) {
+            alert('프로젝트 생성 조건을 만족하지 않습니다.');
         } else {
-            $message.removeClass("message error").empty();
+            document.projectform.submit();
+        }
+    });
+    
+    function validateForm() {
+        const isChkId = $("#isChkId").val();
+        const isChkPassword = $("#isChkPassword").val();
+        const isChkName = $("#isChkName").val();
+        const isChkPassword2 = $("#isChkPassword2").val();
+        
+        if (isChkId !== "Y") {
+            alert('아이디를 확인하세요.');
+            return false;
+        }
+        
+        if (isChkPassword !== "Y") {
+            alert('비밀번호를 확인하세요.');
+            return false;
         }
 
-        var url = "confirmEmail.net";
-        alert("인증번호가 발송되었습니다.");
-
-        $.ajax({
-            url: url,
-            data: { email: email },
-            success: function (resp) {
-                $("#authRandNum").val(resp);
-            },
-        });
-
-        // 이메일 인증 버튼을 비활성화하고 타이머를 시작합니다.
-        $("#emailAuthBtn").prop("disabled", true);
-        $message.css("color", "red").html("1분 후 다시 발송가능합니다.");
-
-        // 타이머를 시작합니다. 초(60000ms) 후에 버튼을 다시 활성하고 텍스트를 변경합니다.
-        clearTimeout(emailAuthTimer);
-        emailAuthTimer = setTimeout(function () {
-            $("#emailAuthBtn").prop("disabled", false);
-            $message.css("color", "blue").html("이메일 발송 가능합니다.");
-        }, 60000);
-    });
-
-    $("#verifyBtn").on("click", function () {
-        chkAuthMailNum();
-    });
-    
-    
+        if (isChkName !== "Y") {
+            alert('이름을 확인하세요.');
+            return false;
+        }
+        
+        if (isChkPassword2 !== "Y") {
+            alert('비밀번호를 다시 확인하세요.');
+            return false;
+        }
+        
+        return true;
+    }
 });
 
-function chkAuthMailNum() {
-    var inAuthMailNum = $("input[name=verify]").val();
-    const $verifyMessage = $("#verify_message");
-
-    if (inAuthMailNum === '') {
-        $verifyMessage.addClass('message error').html('인증번호를 입력하세요.').css('color', 'red');
-        return;
-    }
-
-    if (inAuthMailNum == $("#authRandNum").val()) {
-        alert("인증성공");
-        $verifyMessage.removeClass('message error').empty(); 
-    } else {
-        alert("인증실패");
-    }
-    
-}
-
 </script>
+
 
 </head>
 <body>
    <main>
-   <form name="joinform" action="joinProcess.net" method="post" onsubmit="return ValidationCheck();">
+   <form name="joinform" action="joinProcess.net" method="post">
       <h1>회원가입</h1>
       <br>
       <br>
-          <b>아이디</b> <input type="text" id="id"
-         placeholder="아이디를 입력하세요" name="id" maxLength="12" required> 
-      <button type="button" class="id_check" name="id_check">중복검사</button>
-         <span id="id_message"></span>
-         <b>비밀번호</b>  <input type="password"   placeholder="비밀번호를 입력하세요" class="pw" name="pass" required>
-         <span id="pw_message"></span>
-          <b>비밀번호 확인</b>  <input type="password"
-         placeholder="비밀번호를 한번 더 입력하세요" class="pw_check" name="passwd"   required>
-         <span id="pw_check_message"></span>
-          <b>이름</b> <input type="text" class="name"
-         name="name" placeholder="이름을 입력하세요" maxLength="5" required> <b>이메일
-         주소</b> <input type="text" class="email" name="email" maxLength="30"
-         placeholder="이메일을 입력하세요" required> 
-      <button  id="emailAuthBtn" type="button" class="send_verify" name="send_verify">인증번호 받기</button>
-      <span id="email_message"></span>
-      <b>인증번호 입력</b> <input id="verify" type="text" class="verify" name="verify"
-         maxLength="6" placeholder="인증번호를 입력하세요" required> 
-      <button onclick ="chkAuthMailNum()" type="button" id="verify_check" class="verify_check" name="verify">인증번호
-         확인</button><span id="verify_message"></span>
-      <input type="hidden" id = "authRandNum" name = "authRandNum" />
+          <b>아이디</b>
+           <input type="text" id="userId"  placeholder="아이디를 입력하세요" name="id" maxLength="12" required> 
+     		 <button type="button" class="id_check" name="id_check">중복검사</button>
+         		<span id="id_message"></span>
+          <b>비밀번호</b>
+           <input type="password" id="password" placeholder="비밀번호를 입력하세요" class="pw" name="pass" required>
+         		<span id="pw_message"></span>
+          <b>비밀번호 확인</b>
+           <input type="password" id="confirmPassword"  placeholder="비밀번호를 한번 더 입력하세요" class="pw_check" name="passwd"   required>
+        		 <span id="pw_check_message"></span>
+          <b>이름</b>
+           <input type="text" id="userName" class="name"  name="name" placeholder="이름을 입력하세요" maxLength="20" required>
+           		 <span id="name_message"></span>
+          <b>이메일 주소</b>
+           <input type="text" id="email"  class="email" name="email" maxLength="30"  placeholder="이메일을 입력하세요" required> 
+    		  <button  id="emailAuthBtn" type="button" class="send_verify" name="send_verify">인증번호 받기</button>
+    			  <span id="email_message"></span>
+    	  <b>인증번호 입력</b>
+    	   <input id="verify" type="text" class="verify" name="verify" maxLength="6" placeholder="인증번호를 입력하세요" required> 
+     		 <button onclick ="chkAuthMailNum()" type="button" id="verify_check" class="verify_check" name="verify"> 인증번호 확인</button>
+     		 <span id="verify_message"></span>
+     	  
 
-      <label> <input type="checkbox" id="policy" class="policy"
-         name="policy" value="필수"> <label for="policy"><span
-            class=required>&nbsp;&nbsp;(필수)&nbsp;</span>서비스 이용약관,개인정보 처리방침</label><br> <input
-         type="checkbox" id="benefits" class="benefits" name="benefits"
-         value="선택"> <label for="benefits">&nbsp;&nbsp;(선택)&nbsp;혜택
-            수신에 동의</label>
+      <label>
+       <input type="checkbox" id="policy" class="policy" name="policy" value="필수">
+        <label for="policy">  <span class=required>&nbsp;&nbsp;(필수)&nbsp;</span>
+            서비스 이용약관,개인정보 처리방침</label>
+            <br>
+            <input type="checkbox" id="benefits" class="benefits" name="benefits" value="선택">
+             <label for="benefits">&nbsp;&nbsp;(선택)&nbsp;혜택 수신에 동의</label>
       </label>
-
-
       <div class="clearfix">
          <button type="submit" class="submitbtn" onclick="validationcheck()">가입하기</button>
-
       </div>
    </form>
+    <input type="hidden" id = "authRandNum" name = "authRandNum" />
+    
+    <input type="hidden" id ="isChkId" name = "isChkId" value="N"/>
+	<input type="hidden" id ="isChkPassword" name = "isChkPassword" value="N"/>
+	<input type="hidden" id ="isChkPassword2" name = "isChkPassword2" value="N"/>
+	<input type="hidden" id ="isChkName" name = "isChkName" value="N"/>
+	<input type="hidden" id ="isChkEmail" name = "isChkEmail" value="N"/>
+	<input type="hidden" id ="isChkverify" name = "isChkverify" value="N"/>
+	<input type="hidden" id ="isChkpolicy" name = "isChkpolicy" value="N"/>
    </main>
 </body>
 </html>
