@@ -64,7 +64,7 @@
       
       <div class="left-bar-items">
           <img id="add_team" class="left-menu-icon" src="img/person-add.svg">
-          <label for="add_team">팀원 초대하기</label>
+          <label for="add_team"><a href = "MemberInvite.mem?num=${p_num }">팀원 초대하기</a></label>
       </div>
       <br><br>
     </div>

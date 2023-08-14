@@ -115,10 +115,10 @@ li {
 								<c:forEach var="m" items="${memberlist}">
 									<tr>
 										<td>${m.grade}</td>
-										<td>${m.name}</td>
-										<td>${m.pic}</td>
-										<td>${m.tel}</td>
-										<td>${m.email}</td>
+										<td>${m.m_name}</td>
+										<td>${m.m_pic}</td>
+										<td>${m.m_tel}</td>
+										<td>${m.m_email}</td>
 									</tr>
 								</c:forEach>
 							</tbody>

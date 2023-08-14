@@ -2,17 +2,14 @@ DROP TABLE MEMBER CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE MEMBER (
 
-p_num				NUMBER 		  REFERENCES PROJECT(P_NUM) on delete cascade,	-- 프로젝트 식별번호
-num					NUMBER		  REFERENCES USR(NUM),			-- 유저 식별번호
-grade				varchar2(50)  REFERENCES role(grade),		-- 유저 권한
-M_p_name      		VARCHAR2(100),
+p_num				NUMBER,	-- 프로젝트 식별번호
+num					NUMBER,			-- 유저 식별번호
+grade				varchar2(50),		-- 유저 권한
 M_id				VARCHAR2(50),
 M_name				VARCHAR2(50),
 M_pic				VARCHAR2(50),
 M_tel				VARCHAR2(50),
-M_email				VARCHAR2(50),
-PRIMARY KEY(p_num, num, grade)
-
+M_email				VARCHAR2(50)
 );
 
 
@@ -68,7 +65,7 @@ ORDER BY p.p_num DESC
 )
 WHERE rnum BETWEEN 1 AND 9
 
-DELETE FROM MEMBER WHERE num = 3 AND p_num = 111
+DELETE FROM MEMBER WHERE num = 23
 
 
 INSERT INTO MEMBER (p_num, num, grade)
@@ -81,3 +78,7 @@ INSERT INTO MEMBER (p_num, num, grade)
 VALUES (125, 25, 'master');
 
 DELETE FROM MEMBER WHERE num = 22 AND p_num = 124
+
+INSERT INTO MEMBER
+(p_num, num, m_id, M_name, M_pic, M_tel, M_email) 
+SELECT 173, 23, id, name, pic, tel, email FROM USR WHERE num=23
