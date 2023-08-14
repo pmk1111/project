@@ -86,14 +86,8 @@ public class IssueDAO {
 	// 글 목록 보기
 	public List<IssueBean> getIssueList(int pnum, int page, int limit) {
 
-		// page : 페이지
-		// limit : 페이지 당 목록의 수
-		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
-		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
-
 		// 프로젝트 넘버
 		List<IssueBean> list = new ArrayList<IssueBean>();
-		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
 		String issue_list_sql = "SELECT * "
 							  + " FROM ( SELECT ROWNUM rnum, i.* "
 							  + "		 FROM issue i "
@@ -102,8 +96,6 @@ public class IssueDAO {
 							  + "		 order by i.i_seq desc "
 							  + "		) "
 							  + "WHERE rnum BETWEEN ? AND ?";
-		//해당 프로젝트에 해당하는 게시글만 가져오기 위해 p_num을 넣어야 하는데, 어디에 넣느냐
-
 		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
 		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호 (1 11 21 31 ...
 		int endrow = startrow + limit - 1; // 읽을 마지막 row 번호 (10 20 30 40 ...
@@ -120,6 +112,7 @@ public class IssueDAO {
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setI_id(rs.getString("I_id"));
 					issue.setI_name(rs.getString("I_name"));
+					issue.setI_type(rs.getString("I_TYPE"));					
 					issue.setI_title(rs.getString("I_TITLE"));
 					issue.setI_content(rs.getString("I_CONTENT"));
 					issue.setI_status(rs.getString("I_STATUS"));
@@ -147,11 +140,6 @@ public class IssueDAO {
 	
 	public List<IssueBean> getMainboardList(int pnum) {
 
-		// page : 페이지
-		// limit : 페이지 당 목록의 수
-		// issue_re_ref desc, issue_re_seq asc에 의해 정렬한 것을
-		// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
-
 		// 프로젝트 넘버
 		List<IssueBean> list = new ArrayList<IssueBean>();
 		// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지...
@@ -164,15 +152,8 @@ public class IssueDAO {
 							  + "where rownum <= 4";
 
 		//해당 프로젝트의 글을 최신 순으로 4개를 가져오는 쿼리문 작성 
-
-		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
-//		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호 (1 11 21 31 ...
-//		int endrow = startrow + limit - 1; // 읽을 마지막 row 번호 (10 20 30 40 ...
 		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(issue_list_sql);) {
 			pstmt.setInt(1, pnum);
-//			pstmt.setInt(2, pnum);
-//			pstmt.setInt(2, startrow);
-//			pstmt.setInt(3, endrow);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 
@@ -182,6 +163,7 @@ public class IssueDAO {
 					issue.setI_seq(rs.getInt("I_SEQ")); 
 					issue.setI_id(rs.getString("I_id"));
 					issue.setI_name(rs.getString("I_name"));
+					issue.setI_type(rs.getString("I_TYPE"));	
 					issue.setI_title(rs.getString("I_TITLE"));
 					issue.setI_content(rs.getString("I_CONTENT"));
 					issue.setI_status(rs.getString("I_STATUS"));

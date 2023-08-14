@@ -3,6 +3,11 @@
 
 body{margin: 0; min-width: 900px;}
 
+@keyframes fade_in {
+	0%{opacity: 0;}
+	100%{opacity:1;}
+}
+
 a{text-decoration: none;}
 .nav_bar{
   display: flex;
@@ -12,6 +17,8 @@ a{text-decoration: none;}
   background-color: white;
   padding: 0px 20px 0px 12px;
   box-shadow: 0px 0px 0.2em rgb(159, 159, 159);
+  margin-bottom: 0px;
+  animation: fade_in 0.7s linear;
 }
 /* :root{--navbar-height: 60px;} */
 li{list-style: none;}
@@ -28,16 +35,16 @@ li{list-style: none;}
   width: 340px;
   height: 25px;
   border: 1.5px solid #bfbfbf;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .header-search-btn {
   width: 80px;
-  height: 28px;
+  height: 30px;
   border-style: none;
-  border-radius: 5px;
+  border-radius: 3px;
   color: white;
-  background-color: #7C00B6;
+  background-color: #8D52A9;
   font-size:14px;
   text-align:center;
 }

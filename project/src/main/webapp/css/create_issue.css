@@ -8,13 +8,12 @@
   transform: translate(-50%, -50%);
   border: 1px solid rgb(151, 151, 151);
   border-radius: 10px;
-  width: 60em;
-  height: 40em;
+  width: 800px;
+  height: 600px;
   overflow: auto;
   z-index: 10000;
   background-color: white;
   padding: 20px;
-  animation: slide_fade 0.35s linear;
 }
 
 #modal_overlay {
@@ -27,26 +26,12 @@
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 9999;
 }
-/* #issue_modal {
- 
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgb(151, 151, 151);
-  border-radius: 10px;
-  width: 50em;
-  height: 30em;
-  overflow: auto;
-} */
+
 #issue_content{
   width: 600px;
   margin: 0 auto;
 }
 
-@keyframes slide_fade {
-  0% { opacity: 0; margin-top: -40px; }
-  100% { opacity: 1; margin-top: 0; }
-}
 #select_project, #select_issue_type, #issue_title, #issue_reporter, #issue_manager, #related_issue, #issue_status{
   width: 470px; height: 35px; 
   display: inline; 

@@ -72,40 +72,16 @@ li {
 	margin-inline-end: 0px;
 	font-weight: bold;
 }
+
+@keyframes modal_slide_fade { 
+	0% {opacity: 0;margin-top: -30px;}
+	100%{opacity:1;margin-top:0;}
+}
+#issue_modal {
+	animation: modal_slide_fade .5s linear;
+}
 </style>
 
-<!-- <script>
-	$(document).ready(function() {
-
-		$('#summernote').summernote({
-			height : 300,
-			minHeight : null,
-			maxHeight : null,
-			focus : true,
-			lang : "ko-KR",
-			placeholder : '최대 2048자까지 쓸 수 있습니다'
-		});
-
-		// 서머노트에 text 쓰기
-		$('#summernote').summernote('insertText', 'sample Text');
-
-		// 서머노트 쓰기 비활성화
-		$('#summernote').summernote('disable');
-
-		// 서머노트 쓰기 활성화
-		$('#summernote').summernote('enable');
-
-		// 서머노트 리셋
-		$('#summernote').summernote('reset');
-
-		// 마지막으로 한 행동 취소 ( 뒤로가기 )
-		$('#summernote').summernote('undo');
-		// 앞으로가기
-		$('#summernote').summernote('redo');
-
-	});
-</script>
- -->
 </head>
 <body>
 
@@ -156,15 +132,16 @@ li {
 
 
 						<table class="issue_list">
+							<thead>
+								<tr>
+									<th>작성자</th>
+									<th>제목</th>
+									<th>타입</th>
+									<th>작성일</th>
+									<th>조회수</th>
 
-							<tr>
-								<th>작성자</th>
-								<th>제목</th>
-								<th>작성일</th>
-								<th>조회수</th>
-
-							</tr>
-
+								</tr>
+							</thead>
 							<tbody>
 								<c:set var="num" value="${listcount-(page-1)*limit}" />
 
@@ -175,16 +152,16 @@ li {
 											<div>
 
 												<a class="title" href="IssueDetailAction.bo?num=${i.i_seq }">
-													<c:if test="${i.i_title.length()>=20 }">
-														<c:out value="${i.i_title.substring(0,20) }..." />
-													</c:if> <c:if test="${i.i_title.length()<20 }">
+													<c:if test="${i.i_title.length()>=30 }">
+														<c:out value="${i.i_title.substring(0,30) }..." />
+													</c:if> <c:if test="${i.i_title.length()<30 }">
 														<c:out value="${i.i_title}" />
 													</c:if>
 
 												</a>
 											</div>
 										</td>
-
+										<td><img class="issue_type_img" src="">${i.i_type}</td>
 										<td>${i.i_created }</td>
 										<td>${i.i_readcount}</td>
 
@@ -231,9 +208,9 @@ li {
 
 						</c:if>
 						<c:if test="${listcount ==0 }">
-					<h3 style="color:lightgrey;">등록 된 글이 없습니다.</h3>
-				</c:if>
-						<button id="openModalBtn" class="write">글쓰기</button>
+							<h3 style="color: lightgrey;">등록 된 글이 없습니다.</h3>
+						</c:if>
+						<button class="openModalBtn write">글쓰기</button>
 					</div>
 				</div>
 

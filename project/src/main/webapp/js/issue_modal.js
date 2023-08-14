@@ -40,8 +40,8 @@ let isModalOpen = false; // Flag to track if the modal is open
       const modalOverlay = $("#modal_overlay");
       modal.css("display", "block");
       modalOverlay.css("display", "block");
-      window.scrollTo(0, 0); // Scroll the page to the top
-      isModalOpen = true; // Set the flag to true since the modal is open
+      window.scrollTo(0, 0); 
+      isModalOpen = true; 
     }
   }
 
@@ -50,10 +50,10 @@ let isModalOpen = false; // Flag to track if the modal is open
     const modalOverlay = $("#modal_overlay");
     modal.css("display", "none");
     modalOverlay.css("display", "none");
-    isModalOpen = false; // Set the flag to false since the modal is closed
+    isModalOpen = false; 
   }
 
-  const openModalBtn = $("#openModalBtn");
+  const openModalBtn = $(".openModalBtn");
   openModalBtn.on("click", showModal);
 
   const closeModalBtn = $("#close_modal_btn");

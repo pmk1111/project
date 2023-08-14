@@ -26,7 +26,6 @@
     padding-right: 20px;
 }
 .numbers{
-
     color: gray;
     border-style: none;
     appearance: none;
@@ -34,8 +33,6 @@
     outline: none;
     -webkit-appearance: none;
     font-size: 12px;
-
-
 }
 
 
@@ -49,25 +46,23 @@
 th,td{
     padding: 10px;
 }
-
-
-
 /*혜원*/
 .write{
-    width: 100px;
+    width: 80px;
     height: 30px;
     border: none;
-    background-color:#7C00B6;
-    border-radius: 5px;
+    background-color:#8D52A9;
+    border-radius: 3px;
     color: #fff;
     float: right;
 }
+.write:hover{opacity:0.7; cursor: pointer; transition:.4s;}
 .go_modal{display: inline-block;}
 
 .title{
     color: black;
 }
-.title:hover{text-decoration: none;  transition:0.3s; color:#7C00B6;}
+.title:hover{transition:0.3s; color:black} 
 table {
     width: 100%;
     border-top: 1px solid #000;
@@ -77,10 +72,11 @@ table {
 }
 
  tr{
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1.2px solid lightgray;
 }
+thead tr{border-top:1.2px solid black; border-bottom:1.2px solid black;}
 .issue_list tr {
-	height: 50px;
+	height: 60px;
 }
 .issue_list > td {
     padding: 15px 0;
@@ -122,34 +118,33 @@ table {
     letter-spacing: -1px;
 }
 .issue_page a {
-    padding-top: 10px;
+    padding-top: 9px;
     font-size: 1.4rem;
     border-style: none;
+    border-radius:3px;
 }
 a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
     border-style: none;
-    padding-top: 11px;
+    padding-top: 9px;
 }
 
 .issue_page a:hover {
-    background: #7C00B6;
+    background: #8D52A9;
     color: #fff;
     text-decoration: none;
     transition:0.4s;
 }
-
-@keyframes fade_in { 
-
-0%{
-opacity: 0;
-top: -15px;
+.issue_type_img{
+	position:relative;
+	top:-2.2px;
+	margin-right:5px;
 }
 
-100%{
-opacity : 100%;
-top : 0px;
-}
+tbody tr:hover{background: #F2EFF3; transition:.6s;}
+/* @keyframes fade_in { 
 
+0%{opacity: 0; top: -15px;}
+100%{opacity : 100%;top : 0px;}
 }
 
 body {
@@ -158,4 +153,4 @@ body {
 
 .content {
 	animation: fade_in 0.6s linear;
-}
+} */
