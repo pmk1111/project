@@ -201,7 +201,7 @@ function chkAuthMailNum() {
 
 </head>
 <body>
-
+	<main>
 	<form name="joinform" action="joinProcess.net" method="post" onsubmit="return ValidationCheck();">
 		<h1>회원가입</h1>
 		<br>
@@ -229,25 +229,18 @@ function chkAuthMailNum() {
 
 		<label> <input type="checkbox" id="policy" class="policy"
 			name="policy" value="필수"> <label for="policy"><span
-				class=required>&nbsp;&nbsp;(필수)</span>서비스 이용약관,개인정보 처리방침</label><br> <input
+				class=required>&nbsp;&nbsp;(필수)&nbsp;</span>서비스 이용약관,개인정보 처리방침</label><br> <input
 			type="checkbox" id="benefits" class="benefits" name="benefits"
-			value="선택"> <label for="benefits">&nbsp;&nbsp;(선택)혜택
+			value="선택"> <label for="benefits">&nbsp;&nbsp;(선택)&nbsp;혜택
 				수신에 동의</label>
 		</label>
-		<div class="hr">
-			<span>또는</span>
-		</div>
 
-		<button type="button" class="google" onclick="redirectToGoogleLogin()">Google
-			계정으로 가입하기</button>
-		<br>
-		<button type="button" class="kakao" onclick="redirectToKakaoLogin()">Kakao
-			계정으로 가입하기</button>
 
 		<div class="clearfix">
 			<button type="submit" class="submitbtn" onclick="validationcheck()">가입하기</button>
 
 		</div>
 	</form>
+	</main>
 </body>
 </html>
