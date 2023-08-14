@@ -25,6 +25,13 @@
       location.href="ProjectDeleteAction.pro?p_num=${projectdata.p_num }"
     }
   }
+  
+  function outproject(projectNum, userNum) {
+	    if (confirm("해당 프로젝트를 나가시겠습니까?")) {
+	       
+	        location.href = "ProjectoutAction.pro";
+	    }
+	}
 </script>
 
 </head>
@@ -75,6 +82,10 @@
         		
         		<div class="pj_submit">
           			<button type="button" class="delete_pj_btn" onclick="deleteProject();">삭제하기</button>
+        		</div> 
+        		<!-- 혜원(8/12) -->
+        		<div class="pj_submit">
+          			<button type="button" class="p_out" onclick="outproject();">프로젝트 나가기</button>
         		</div> 
         		
     		</div> 
