@@ -60,7 +60,7 @@
       <div class = "left-bar-items">
       	<img id = "pj_setting" class= "left-menu-icon" src = "img/.png">
       	<label for="pj_member"><a href = "MemberList.mem?num=${p_num }">프로젝트 멤버</a></label>
-      </div>
+      </div>  
       
       <div class="left-bar-items">
           <img id="add_team" class="left-menu-icon" src="img/person-add.png">

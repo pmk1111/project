@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.comment.action.CommentAdd;
 import net.comment.action.CommentDeleteAction;
 import net.comment.action.CommentList;
+import net.comment.action.CommentReply;
+import net.comment.action.CommentUpdate;
 
 
 
@@ -73,8 +75,17 @@ public class IssueFrontController extends javax.servlet.http.HttpServlet {
 		case "/CommentList.bo":
 			action = new CommentList();
 			break;
+			
 		case "/CommentDelete.bo": 
 			action = new CommentDeleteAction();
+			break;
+		
+		case "/CommentUpdate.bo": 
+			action = new CommentUpdate();
+			break;
+			
+		case "/CommentReply.bo":
+			action = new CommentReply();
 			break;
 
 		}//switch end

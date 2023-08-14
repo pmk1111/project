@@ -118,11 +118,11 @@ public class CommentDAO {
 		int result =0;
 		String sql = "update comm "
 				   + " set c_content= ? "
-				   + "where comment_i_num =? ";
+				   + "where c_num=? ";
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setString(1, co.getC_content());
-			pstmt.setInt(2, co.getComment_i_num());
+			pstmt.setInt(2, co.getC_num());
 			
 			result = pstmt.executeUpdate();
 			if(result == 1)
