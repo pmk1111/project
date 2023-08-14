@@ -14,11 +14,7 @@
              	 <input type="hidden" name="i_seq" value="${issuedata.i_seq}">
       <div id="issue_content">
         <p>프로젝트<span class="req">*</span></p>
-        <select id="select_project">
-          <option>프로젝트1</option>
-          <option>프로젝트2</option>
-          <option>프로젝트3</option>
-        </select>
+        <input type="text" id="select_project" value="${pname}" readonly>
         <br>
         <p>유형<span class="req">*</span></p>
          <select name="i_type" id="select_issue_type">
@@ -55,8 +51,10 @@
         <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" value="${issuedata.i_related }" required><br>
         <hr>
       </div>
-      <button id="issue_submit_btn" type="submit">작성하기</button>
-      <button id="close_modal_btn">취소</button>
+      <div id="issue_btn">
+      <button id="issue_submit_btn" type="submit">수정하기</button>
+      <button type="button" id="close_modal_btn">취소</button>
+    </div>
     </form>
     <br>
   </div>
