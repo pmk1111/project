@@ -97,32 +97,44 @@
 	border:1.5px solid lightgrey; border-radius:0px 0px 3px 3px; padding:14px 0px 0px 15px
 }
 
-.reply_textarea{ clear: both; min-width: 350px; width: 400px; margin: 50px 0px 0px 70px ;}
-.reply-area{box-sizing:borderbox; margin-left:70px;}
-.re_sub_cancel{float: right; margin-bottom: 30px;}
-.reply-order-list, .reply-list{padding:0px}
-.re_submit{width: 85px; height: 27px; background-color: #7C00B6; border-style: none; border-radius: 3px; color: white; font-size: 13px;}
+/*댓글 */
+
+.comment-area{ clear: both;  width: 400px; margin: 50px 0px 0px 70px ;
+box-sizing:borderbox; margin-left:70px;}
+textarea.form-control {
+	resize: none
+}
+.comment-write-area{height: 200px; } /*textarea부모요소 높이 지정 후 textarea % 지정*/
+.comment-write-area-name {font-size: small;}
+textarea.comment-write-area-text {width:100%; height:90%;border:1px solid black;} 
+.re_sub_cancel{float: right; width:200px; display: flex;} /*flex로 하여 답글달기,취소 위아래로 붙는 것 방지 */
+.re_submit{width: 85px; height: 27px; background-color: #7C00B6;
+ border-style: none; border-radius: 3px; color: white; font-size: 13px;}
 .re_cancel{width: 85px; height: 27px; background-color: white; border:1px solid #7C00B6; border-radius: 3px; color: #7C00B6; font-size: 13px;}
 .re_submit:hover, .re_cancel:hover{
   cursor: pointer;
   opacity: 0.7;
   transition: 0.4s;
 }
-.reply-order-list{margin-bottom:25px;}
-.reply-order-list li{display:inline-block;}
-.reply-order-list li+li{margin-left:17px;}
+.comment-order{margin-top:10%;}
+.comment-order-list, .comment-list{padding:0px}
+.comment-order-list{margin-bottom:7%;}
+.comment-order-list li{display:inline-block;}
+.comment-order-list li+li{margin-left:5%;}
 .re_submit + .re_cancel{margin-left: 10px;}
 .usr_img{width:25px; height: 25px; display: inline-block;}
-.reply-box{display:inline-block; padding-left:7px; font-size:13px;}
-.reply-info-box{display:inline-block;}
+.comment-box{display:inline-block; padding-left:7px; }
+.comment-info-box{display:inline-block; font-size:10px;}
 .comment-tool{display:inline-block;}
-.reply-info-box, .comment-tool, .reply-order-list >li>a{color: ligthgrey;}
-.reply-text-view p{font-size:14px;}
-.reply-info-box:hover, .comment-tool:hover{text-decoration: none;} 
-.reply-info-date{position:relative; top:-5px; padding-left:10px; zoom:0.8; font-size:10px; color:lightgray;}
-.reply-nick-area{margin-bottom:28px;}
+.comment-nick-area { border-bottom: 1px solid #ccc; /* 아래쪽 선 스타일 */}
+.comment-list-item.comment-list-item--reply.lev1{margin-left:30px;}
+.comment-list-item.comment-list-item--reply.lev2{margin-left:60px;}
+.comment-text-view{font-size:small; margin: 5px 0px;}
+.comment-info-box:hover, .comment-tool:hover{text-decoration: none;} 
+.comment-info-date{position:relative; top:-5px; padding-left:10px; zoom:0.8; font-size:10px; color:lightgray;}
+.comment-nick-area{margin-bottom:28px;}
 
-/* 서머노트 디자인 변경 */
+
 
 .btn-group-sm>.btn,
 .btn-sm {padding: 2px 5px;font-size: 8px;}

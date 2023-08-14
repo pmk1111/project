@@ -40,7 +40,10 @@ where num = 13;
 					 	  
 					 	  
 	select * from comm;				 	  
-
+insert into comm 
+				(c_num, c_id, c_content, reg_date, comment_i_num, 
+				comment_re_lev, comment_re_seq, comment_re_ref)
+				 values(com_seq.nextval,'admin','ㅜㅜ',sysdate,18,0,0,com_seq.nextval);
 
 delete from comm;
 

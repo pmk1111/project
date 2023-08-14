@@ -1,14 +1,18 @@
-.edit_pf{padding-left: 50px; min-width: 800px;}
-.edit_pf_text{margin-top: 60px;}
+.edit_pf{padding-left: 100px; min-width: 1000px;}
+.edit_pf_text{margin-top: 15%;}
 .profile_img{
   width: 185px;
   height: 185px;
 }
+.filebox bs3-primary {margin-top:5%;}
 
 .pf_img input{
   display: inline-block;
 }
-
+#tel_message, #email_message, #pass_message {
+      font-size: 12px;
+      margin-left: 140px;
+    }
 
 .filebox{
   float: left;
@@ -80,7 +84,7 @@
 .edit p{display: inline-block; width: 100px;}
 .id{background-color: rgb(234, 234, 234);}
 .edit > div > input{
-  width: 300px; height: 35px;
+  width: 400px; height: 35px;
   padding-left: 10px;
   margin-left: 2em;
   border: 1.2px solid rgb(140, 140, 140);
