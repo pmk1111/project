@@ -28,16 +28,44 @@
     color: #929292;
 }
 
-.board_desc{float: left; width:55%; font-size: 20px; margin:40px 0px 0px 60px; min-width: 500px}
+.board_desc{width: 90%; font-size: 20px; margin:40px 0px 0px 60px; min-width: 500px}
 .discription{
-	font-size:14px; padding-left:15px; height:35px;
+	font-size:14px; padding-left:15px; height:40px;
 	margin:15px 0px 0px; border:1.5px solid lightgray; border-radius:3px 3px 0px 0px; 
 	background-color: #F2EFF3; color: #929292;
 	display: block;
 }
-.discription span{position:relative; top:6px;}
+.discription span{position:relative; top:9px;}
 
-.fav_ed_del{float: right; margin-top: 25.9px; margin-right: 30px}
+.info_text{font-size:14px; padding-left:15px; width:90%; height:40px;
+	margin:40px 0px 0px 60px; border:1.5px solid lightgray; border-radius:3px 3px 0px 0px; 
+	background-color: #F2EFF3; color: #929292;
+	display: block;}
+.info_text > span{position:relative; top:9px;}
+.board_info{    
+	position: relative;
+    top: -1.5px;
+    width: 90%;
+    margin:0px 0px 0px 60px;
+    letter-spacing: 0.7px;
+    font-size: 12.5px;
+    border: 1.5px solid lightgrey;
+    border-radius: 0px 0px 3px 3px;
+    }
+.info_down_wrap{position:relative; width:90%; margin-left: 60px;}
+.info_down{float:right; position:relative; top:20px; border:1px solid #F2EFF3; border-radius: 3px}
+.info_down:hover{cursor: pointer;}
+.info_dropdown_item{clear:both; display:none;}
+
+.fav_ed_del{
+	position: relative;
+	float: right;     
+	display: inline-block;
+    margin-top: 0px;
+    top: 6.8px;
+    }
+.fav{display:inline-block;}
+
 #fav_icon {
   width: 12px;
   height: 12px;
@@ -49,18 +77,23 @@
   color: rgb(193, 193, 193);
   top: 1px;
 }
-.ed_del_dropdown_icon{margin-left: 190px;}
+.ed-del_dropdown{width:50px;}
+.ed_del_dropdown_icon{margin:0px 10px 0px 50px; display:inline-block; position: relative;
+    width: 18px;
+    height: 18px;
+    top: 1px}
 /* span: 인라인 요소라 size, margin 안먹히니 인라인 블록으로 변경 */
-
-/* .board_info{min-width: 270px; width: 100%; height: 15.8em; border: 1px solid #7C00B6; border-radius: 5px; font-weight: 600; font-size: 13px;}
-.board_info>span{display: inline-block; margin:12.5px 0px 10px 10px;} */
+.ed_del_dropdown_icon:hover{cursor: pointer}
 #i_create, #i_reporter, #i_assign, #i_status{ float: right; padding-right: 15px;}
 .board_info > hr{margin: 0;}
 .create, .assign, .status{margin:14px 0px 15px 14px; color:#5b5b5b; font-size:13.5px; font-weight:500;}
 
 .issue_content{
 	position:relative; top:-1.5px;
-	min-width: 480px; width: 100%; letter-spacing: 0.7px; font-size: 15px;
+	min-width: 480px; width: 100%; /* letter-spacing: 0.4px; font-size: 14px; */
+	color: #5b5b5b;
+    font-size: 13.5px;
+    font-weight: 500;
 	border:1.5px solid lightgrey; border-radius:0px 0px 3px 3px; padding:14px 0px 0px 15px
 }
 
@@ -106,7 +139,7 @@
       right: -200px;
       width: 100px;
       height: 82px;
-      border: 1px solid #7C00B6;
+      border: 1px solid lightgrey;
       background-color: white;
       border-radius: 3px;
       position: absolute;
@@ -128,15 +161,16 @@
     .ed_del-dropdown_item a:hover {
       cursor: pointer;
       text-decoration: none;
-      background-color: #E9D2F4;
+      background-color: #F2EFF3;
       transition: .5s;
     }
 
-    .ed_del_dropdown:hover .ed_del-dropdown_item {
+.ed_del_dropdown:hover .ed_del-dropdown_item {
       display: block;
-      margin-right: 200px;
+      top:-1.5px;
+      margin-right: 199px;
       animation: slide .3s linear;
-    }
+    } 
 
     @keyframes slide {
       0% {
