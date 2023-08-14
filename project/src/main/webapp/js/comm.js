@@ -84,32 +84,37 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
 							   + '         <span class="text-comment">' + this.c_content + '</span>'
 							   + '       </p>'
 							   + '    </div>' //comment-text-box
+							   
 							   + '    <div class="comment-info-box">';
+							  
+							   
 							   
                   
                   // 원문글에서 2레벨까지만 답글쓰기가 가능함.
                   if(lev<2){
                           output += '  <a href="javascript:replyform(' + this.c_num +',' 
                                  + lev + ',' + this.comment_re_seq +',' 
-                                 + this.comment_re_ref +')"  class="comment-info-button">답글쓰기&nbsp;&nbsp</a>'
+                                 + this.comment_re_ref +')"  class="comment-info-button" style="color: #959292">답글쓰기&nbsp;&nbsp</a>'
                         }
                   output += '   </div>' //comment-info-box;
                   
                   // 글쓴사람에게만 수정과 삭제 권한을 줌. // 어드민을 제외해두었으니 필요하면 추가      
                    if($("#loginid").val()==this.c_id){  
-                   output +=  '<div class="comment-tool">'
+                   output +=  '<div class="comment-tool" >'
                         + '    <div id="comment-list-item-layer' +  this.c_num + '"  class="LayerMore">' //스타일에서 display:none; 설정함
                   
                         + '       <a href="javascript:updateForm(' + this.c_num + ')"'
-                        + '          class="layer-button">수정</a>'
+                        + '          class="layer-button" style="color: #959292">수정</a>'
                         + '       <a href="javascript:del(' + this.c_num + ')"'
-                        + '          class="layer-button">삭제</a>'
+                        + '          class="layer-button" style="color: #959292">삭제</a>'
                         + '    </div>'//LayerMore
                         + '   </div>'//comment-tool
+                        
                     }
                         
                   output += '</div>'// comment-nick-area
                         + '</li>'// li.comment-list-item
+                        + ' <hr> '; 
                         
                })//each end
                

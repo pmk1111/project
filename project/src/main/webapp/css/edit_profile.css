@@ -65,8 +65,8 @@
 
 .filebox.bs3-primary label {
   color: #fff;
-  background-color: #7C00B6;
-  border-color: #7C00B6;
+  background-color: #8D52A9;
+  border-color: #8D52A9;
 }
 
 
@@ -98,14 +98,14 @@
   width: 120px; height: 35px;
   color: white;
   border-style: none; border-radius: 3px;
-  background-color: #7C00B6;
+  background-color: #8D52A9;
 }
 
 .withdraw{
   display: inline-block;
   width: 120px; height: 35px;
-  color: #7C00B6;
-  border: 1px solid #7C00B6; border-radius: 3px;
+  color: #8D52A9;
+  border: 1px solid #8D52A9; border-radius: 3px;
   background-color: white;
 }
 .change_submit:hover, .withdraw:hover{

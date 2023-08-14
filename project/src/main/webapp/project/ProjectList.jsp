@@ -26,7 +26,7 @@ overflow: "auto";
 }
 
 body {animation: fade_in 0.4s linear;}
-.content {animation: fade_in 0.6s linear;}
+.content {animation: fade_in 0.6s linear; width:100%;}
 .header-search-btn {position: relative;top: -1px;}
 .header-search {box-sizing: content-box;}
 .left-bar-items>label {position: relative;top: 2.5px;}
@@ -102,7 +102,7 @@ margin:10px 0px;
   display: inline-block;
   font-size: 16px;
   min-width:210px;
-  width: calc(25% - 30px); height:280px;
+  width: calc(25% - 50px); height:280px;
   margin: 0 5px 20px;
   box-sizing: border-box;
   vertical-align: top;
@@ -110,10 +110,10 @@ margin:10px 0px;
 }
 
 .project_item {
-	margin-top : 70px;
+	margin : 70px 70px 0px 70px;
 	top : 50%;
 	trasform : translate(-50%, 0%);
-	margin-left : 100px;
+
 }
 
 
@@ -182,7 +182,6 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
 	</header>
 
 	<main>
-		<jsp:include page="/menu_bar/leftbar.jsp" />
 
 		<div class="content">
 
