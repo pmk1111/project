@@ -8,6 +8,7 @@
 <jsp:include page="header.jsp" />
 <link rel="stylesheet" href="css/create_pj.css">
 <script src="js/createform.js"></script>
+
 </head>
 <body>
 		<form action="ProjectAddAction.pro" method="post"
@@ -41,7 +42,7 @@
 
 					<div class="pj_begin">
 						<p>프로젝트 시작일</p>
-						<input type="date" id="p_start" name="p_start">
+						<input type="date" id="p_start" name="p_start" onchange="updateEndDateMin()">
 					</div>
 					<!-- p_start -->
 
@@ -61,6 +62,26 @@
 			</div>
 			<!-- create_pj_content -->
 		</form>
+<script>
 
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('p_start').setAttribute('min', today);
+document.getElementById('p_closing').setAttribute('min', today);
+
+function updateEndDateMin() {
+  const startDateInput = document.getElementById('p_start');
+  const endDateInput = document.getElementById('p_closing');
+
+  const selectedStartDate = new Date(startDateInput.value);
+  endDateInput.setAttribute('min', selectedStartDate.toISOString().split('T')[0]);
+}
+
+function selectProjectStartDate() {
+  const startDate = document.querySelector("#p_start").value;
+  console.log(startDate);
+}
+
+
+  </script>
 </body>
 </html>

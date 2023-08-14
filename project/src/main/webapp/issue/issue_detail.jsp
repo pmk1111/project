@@ -34,16 +34,17 @@
 .left-bar-items > label{position:relative; top:2.2px;}
 .left-bar-items a:hover{color:#8D52A9;text-decoration: none}
 
-.info_text{font-size:14px; margin:15px 0px 0px; padding-left:15px; height:35px;
-	margin-top:5px; border:1.5px solid lightgray; border-radius:3px 3px 0px 0px; 
+.info_text{font-size:14px; padding-left:15px; width:90%; height:40px;
+	margin:40px 0px 0px 60px; border:1.5px solid lightgray; border-radius:3px 3px 0px 0px; 
 	background-color: #F2EFF3; color: #929292;
 	display: block;}
-.info_text > span{position:relative; top:5px;}
+.info_text > span{position:relative; top:9px;}
 .board_info{    
-	position: relative;
-    top: -1.5px;
+	/* position: relative; */
+    /* top: -1.5px; */
     /* min-width: 270px; */
-    width: 100%;
+    width: 90%;
+    margin:10px 0px 0px 60px;
     letter-spacing: 0.7px;
     font-size: 12.5px;
     border: 1.5px solid lightgrey;
@@ -77,42 +78,23 @@
             	value="보고자&nbsp;:&nbsp;${issuedata.i_reporter}"readonly>         
             </div>
 			
-            <div class="fav_ed_del">
+            <%-- <div class="fav_ed_del">
                <!-- <div class="fav"> -->
                <img id="fav_icon" name="fav" src="img/star_grey.jpeg"> <label
                   for="fav" class="fav_label">즐겨찾기</label>
                <!-- </div> -->
                <div class="ed_del_dropdown">
-                  <img class="ed_del_dropdown_icon" src="img/vertical.svg"
-                     style="position: relative; width: 18px; height: 18px; top: 3.2px;">
+                  <img class="ed_del_dropdown_icon" src="img/contentSetting.svg"
+                     style="position: relative; width: 18px; height: 18px; top: 2.5px;">
                   <div class="ed_del-dropdown_item">
                      <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#">수정</a>
 
                      <a class="del_issue" name="del_issue"
                         href="IssueDeleteAction.bo?num=${issuedata.i_seq }">삭제</a>
                   </div>
-               </div>
+               </div> --%>
 
                
-               	<div class="info_text">
-                  	<span>상세 정보</span>
-                  </div>
-                  
-                  <div class="board_info">
-                  <div class="create">
-                     <span>생성일</span><span id="i_create">${issuedata.i_created }</span>
-                  </div>
-                  <%-- <div class="reporter">
-                     <span>보고자</span><span id="i_reporter">${issuedata.i_reporter}</span>
-                  </div> --%>
-                  <div class="assign">
-                     <span>담당자</span><span id="i_assign">${issuedata.i_assign}</span>
-                  </div>
-                  <div class="status">
-                     <span>진행상태</span><span id="i_status">${issuedata.i_status}</span>
-                  </div>
-               </div>
-            </div>
 
 
             <div class="board_desc">
@@ -127,6 +109,25 @@
 
             </div>
             <%--issue content end --%>
+            
+            	<div class="info_text">
+                  	<span>상세 정보</span>
+                  </div>
+                  
+               <div class="board_info">
+                  <div class="create">
+                     <span>생성일</span><span id="i_create">${issuedata.i_created }</span>
+                  </div>
+                  <div class="assign">
+                     <span>담당자</span><span id="i_assign">${issuedata.i_assign}</span>
+                  </div>
+                  <div class="status">
+                     <span>진행상태</span><span id="i_status">${issuedata.i_status}</span>
+                  </div>
+               </div>
+ 
+            
+            
 
             <input type="hidden" name="num" value="${param.num}"
                id="comment_i_num">
