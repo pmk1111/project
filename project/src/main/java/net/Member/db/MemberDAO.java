@@ -102,6 +102,22 @@ public class MemberDAO {
 
 	return list;
 	}
+
+	/* 혜원 */
+	public int outproject(int userNum, int projectNum) {
+	    int result = 0;
+	    String sql = "DELETE FROM MEMBER WHERE num = ? AND p_num = ?";
+	    try (Connection con = ds.getConnection();
+	         PreparedStatement pstmt = con.prepareStatement(sql);) {
+	         pstmt.setInt(1, userNum);
+	         pstmt.setInt(2, projectNum);
+	         result = pstmt.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return result;
+	}
+
 	
 	
 	

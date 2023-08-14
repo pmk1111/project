@@ -1,22 +1,29 @@
 @charset "UTF-8";
 
 * {
-	margin: 0
+	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
 	width: 100%;
 	height: 100vh;
 }
+form {
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	width: 600px;
+	padding: 16px;
+	border: none;
+}
+main{animation: slide_fade .7s linear;}
+@keyframes slide_fade {
+0% { opacity: 0; margin-top: -5px;}
+
+100% {opacity: 1; margin-top: 0px;}
+}
 
 #home_nav {
-	/* position: relative;
-display:flex;
-width: 100%; 
-background-color: white;
-box-shadow: 0px 0px 0.2rem rgba(0, 0, 0, 0.2);
-overflow:auto;
-z-index: 10; */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -26,14 +33,42 @@ z-index: 10; */
 	box-shadow: 0px 0px 0.2em rgb(159, 159, 159);
 }
 
+.header_login_btn, .header_join_btn {
+	display: inline-block;
+	width: 90px;
+	height: 27px;
+	border-radius: 3px;
+}
+
+.header_login_btn:hover, .header_join_btn:hover {
+	cursor: pointer;
+	opacity: 0.8;
+	transition: 0.5s;
+}
+
+.header_login_btn {
+	border: 1px solid #8D52A9;
+	background-color: #8D52A9;
+	color: white;
+}
+
+.header_join_btn {
+	border: 1px solid #8D52A9;
+	background-color: white;
+	color: #8D52A9;
+}
+
 .home_logo {
 	width: 120px;
 	height: 45px;
 }
 
-#join_login_btn > ul > li > a{
-width: 100px; height: 30px;
-/* text-align: center; */}
+#join_login_btn>ul>li>a {
+	width: 100px;
+	height: 30px;
+	/* text-align: center; */
+}
+
 #login_text {
 	margin-bottom: 30px;
 }
@@ -105,6 +140,15 @@ h1 {
 	cursor: pointer;
 }
 
+.social-login-group {
+	position: absolute;
+	width: 340px;
+	display: inline-block;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	padding-bottom: 25px;
+}
+
 .google, .kakao {
 	padding: 10px 30px;
 	margin: 8px 0;
@@ -114,6 +158,32 @@ h1 {
 	height: 50px
 }
 
+.kakao-login-btn-img {
+	width: 340px;
+	height: 51px;
+}
+
+div .abcRioButton {
+	height: 51px !important;
+	width: 340px !important;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+
+.abcRioButtonSvg {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	top: 12.5px;
+}
+
+.abcRioButtonContents {
+	position: absolute;
+	top: 50%;
+	left: 49.5%;
+	transform: translate(-50%, -50%);
+}
+.abcRioButtonContents{font-size:16px !important; color:black !important; font-weight: normal !important}
 button:hover {
 	opacity: 0.8;
 }
@@ -135,12 +205,11 @@ button:hover {
 	margin: 0px 3px;
 }
 
-span {
+/* span {
 	color: #8D52A9;
-}
+} */
 
 * {
-	box-sizing: border-box
 }
 
 /* input[type=text], input[type=password] {
@@ -149,15 +218,14 @@ span {
 	margin: 5px 0 22px 0;
 	display: inline-block;
 } */
-
 input[type=text], input[type=password] {
-    width: 100%;
-    height:50px;
-    padding: 10px;
-    margin: 5px 0 15px 0;
-    display: inline-block;
-    border: 0.8px solid #8D52A9;
-    border-radius: 3px;
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	margin: 5px 0 15px 0;
+	display: inline-block;
+	border: 0.8px solid #8D52A9;
+	border-radius: 3px;
 }
 
 input[type=text]:focus, input[type=password]:focus {
@@ -169,14 +237,22 @@ a {
 	color: white;
 	text-decoration: none;
 }
-.find_pw{margin:5px 0px 15px 0px; color:#8D52A9;}
-.auto_login_text{display:inline-block; margin:5px 0px 10px 0px; color:#8D52A9;}
-.auto_login{border-color:#8D52A9; margin-left:10px;}
 
-form {
-	background-color: #fefefe;
-	margin: 5% auto 15% auto;
-	width: 600px;
-	padding: 16px;
-	border: none;
+.find_pw {
+	margin: 5px 0px 15px 0px;
+	color: #8D52A9;
+	font-size:13px;
 }
+
+.auto_login_text {
+	display: inline-block;
+	margin: 5px 0px 3px 0px;
+	color: #8D52A9;
+	font-size: 13px;
+}
+
+.auto_login {
+	border-color: #8D52A9;
+	margin-left: 10px;
+}
+

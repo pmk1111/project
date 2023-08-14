@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>프로젝트 수정</title>
 <jsp:include page ="header.jsp"/>
-<link rel="stylesheet" href="css/create_pj.css">
+<link rel="stylesheet" href="css/modify_pj.css">
 
 <script src="js/createform.js"></script>
 <script>
@@ -25,6 +25,13 @@
       location.href="ProjectDeleteAction.pro?p_num=${projectdata.p_num }"
     }
   }
+  
+  function outproject(projectNum, userNum) {
+	    if (confirm("해당 프로젝트를 나가시겠습니까?")) {
+	       
+	        location.href = "ProjectoutAction.pro";
+	    }
+	}
 </script>
 
 </head>
@@ -45,8 +52,7 @@
         		&nbsp;&nbsp; 
         		<input id="filevalue" class="upload-name" value="파일선택" disabled="disabled">
         
-        		<label>
-        			업로드
+        		<label style="margin-bottom: 0px;">업로드
         			<input type="file" class="upload-hidden" id="upfile" name="p_file">
         			<input type="hidden" name="check" value="${projectdata.p_file}">
         		</label> 
@@ -68,13 +74,21 @@
           			<p>프로젝트 종료일</p>
           			<input type="date" id="p_closing" name="p_closing" value="${projectdata.p_closing}">
         		</div>
-        
-        		<div class="pj_submit">
-          			<button type="submit" class="create_pj_btn" onclick="modifyProject();">수정하기</button>
-        		</div> 
         		
-        		<div class="pj_submit">
-          			<button type="button" class="delete_pj_btn" onclick="deleteProject();">삭제하기</button>
+        		<div class="pj_status">
+          			<p>프로젝트 현황</p>
+          			<select name="p_status" style=" width: 580px;    height: 45px;    padding-left: 10px;    border: 1px solid #e2e2e2;    border-radius: 3px;">
+          			 <option selected>${projectdata.p_status}</option>
+          			<option>계획중</option>
+          			<option>진행중</option>
+          			<option>완료</option>
+        		</select>
+        		</div>
+        
+    	 		<div class="pj_submit">
+   				 <button type="submit" class="create_pj_btn" onclick="modifyProject();" style="display: inline-block;">수정하기</button>
+    			 <button type="button" class="delete_pj_btn" onclick="deleteProject();" style="display: inline-block;">삭제하기</button>
+    			 <button type="button" class="p_out" onclick="deleteProject();" style="display: inline-block;">프로젝트 나가기</button>
         		</div> 
         		
     		</div> 

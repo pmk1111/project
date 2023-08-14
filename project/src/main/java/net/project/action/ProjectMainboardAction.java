@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import net.issue.db.IssueBean;
 import net.issue.db.IssueDAO;
+import net.project.db.ProjectDAO;
 
 public class ProjectMainboardAction implements Action {
 
@@ -19,9 +20,9 @@ public class ProjectMainboardAction implements Action {
 			throws ServletException, IOException {
 
 		IssueDAO issuedao =new IssueDAO();
+		ProjectDAO projectDAO = new ProjectDAO();
 		//1번: 메인보드에서 전체 이슈 요약
 		List<IssueBean> issuelist1 = new ArrayList<IssueBean>();
-
 		List<IssueBean> issuelist2= new ArrayList<IssueBean>();
 		List<IssueBean> issuelist3 = new ArrayList<IssueBean>();
 		List<IssueBean> issuelist4 = new ArrayList<IssueBean>();
@@ -34,7 +35,11 @@ public class ProjectMainboardAction implements Action {
 
 		//저장한 프로젝트 넘버를 가져온다
 		int pnum = (int) session.getAttribute("p_num");
-
+		
+		String pname = projectDAO.getProjectName(pnum);
+		session.setAttribute("pname", pname);
+		System.out.println("프로젝트 명: " + pname);
+		
 		//세션을 통해 유저아이디를 가져온다
 		String id = (String) session.getAttribute("id");
 		System.out.println("유저 아이디: " + id);

@@ -1,4 +1,8 @@
 main{width: 100%; height: calc(100vh - 60px);}
+@keyframes slide_fade {
+	0%{opacity: 0; top: -15px;}
+	100%{opacity:1; top:0px;}
+}
 
 .content {
   position: relative;
@@ -6,6 +10,7 @@ main{width: 100%; height: calc(100vh - 60px);}
   width: calc(100% - 260px);
   height: calc(100vh - 60px);
   overflow: auto;
+  animation: slide_fade 0.8s linear;
 }
 
 .board-content {

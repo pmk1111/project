@@ -69,7 +69,7 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
   				//$('.re-create').text(timeAgo);
 					 
 				//댓글 달려요	                  
-      output += '<div> <li id="' + this.c_num + '" class="comment-list-item' + comment_reply + '">'
+      output += ' <li id="' + this.c_num + '" class="comment-list-item' + comment_reply + '">'
 							   + '   <div class="comment-nick-area">'
 							   + '    <img  src="' + src +'" alt="프로필 사진" width="36" height="36">'
 							   + '    <div class="comment-box">'
@@ -110,7 +110,7 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
                         
                   output += '</div>'// comment-nick-area
                         + '</li>'// li.comment-list-item
-                        + '</div>'// list-item + comment-info-box + comment-tool 닫아주기
+                        
                })//each end
                
               $('.comment-list').html(output);
