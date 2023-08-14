@@ -8,6 +8,7 @@
 <jsp:include page="header.jsp" />
 <link rel="stylesheet" href="css/create_pj.css">
 <script src="js/createform.js"></script>
+
 </head>
 <body>
 		<form action="ProjectAddAction.pro" method="post"
@@ -16,23 +17,20 @@
 
 				<h1>프로젝트 생성하기</h1>
 
-      		<div class="filebox bs3-primary">
-        		&nbsp;&nbsp; 
-        		<input id="filevalue" class="upload-name" value="파일선택" disabled="disabled">
-        
-        		<label style="margin-bottom: 0px;">
-        			업로드
-        			<input type="file" class="upload-hidden" id="upfile" name="p_file">
-        		</label> <!-- 사진업로드 -->
-      		</div> <!-- filebox -->
 				<div id="pj_upload" class="pj_upload">
 					<img class="pj_file" id="pj_file" name="pj_file"
 						src="img/pj_file.png" alt="">
 				</div>
 				<!-- 기본사진 -->
 
-
-			
+				<div class="filebox bs3-primary">
+					&nbsp;&nbsp; <input id="filevalue" class="upload-name" value="파일선택"
+						disabled="disabled"> <label> 업로드 <input
+						type="file" class="upload-hidden" id="upfile" name="p_file">
+					</label>
+					<!-- 사진업로드 -->
+				</div>
+				<!-- filebox -->
 
 				<div class="edit">
 
@@ -44,7 +42,7 @@
 
 					<div class="pj_begin">
 						<p>프로젝트 시작일</p>
-						<input type="date" id="p_start" name="p_start">
+						<input type="date" id="p_start" name="p_start" onchange="updateEndDateMin()">
 					</div>
 					<!-- p_start -->
 
@@ -64,6 +62,26 @@
 			</div>
 			<!-- create_pj_content -->
 		</form>
+<script>
 
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('p_start').setAttribute('min', today);
+document.getElementById('p_closing').setAttribute('min', today);
+
+function updateEndDateMin() {
+  const startDateInput = document.getElementById('p_start');
+  const endDateInput = document.getElementById('p_closing');
+
+  const selectedStartDate = new Date(startDateInput.value);
+  endDateInput.setAttribute('min', selectedStartDate.toISOString().split('T')[0]);
+}
+
+function selectProjectStartDate() {
+  const startDate = document.querySelector("#p_start").value;
+  console.log(startDate);
+}
+
+
+  </script>
 </body>
 </html>

@@ -88,13 +88,7 @@
     	 		<div class="pj_submit">
    				 <button type="submit" class="create_pj_btn" onclick="modifyProject();" style="display: inline-block;">수정하기</button>
     			 <button type="button" class="delete_pj_btn" onclick="deleteProject();" style="display: inline-block;">삭제하기</button>
-				</div>
-        		<div class="pj_submit">
-          			<button type="button" class="delete_pj_btn" onclick="deleteProject();">삭제하기</button>
-        		</div> 
-        		<!-- 혜원(8/12) -->
-        		<div class="pj_submit">
-          			<button type="button" class="p_out" onclick="outproject();">프로젝트 나가기</button>
+    			 <button type="button" class="p_out" onclick="deleteProject();" style="display: inline-block;">프로젝트 나가기</button>
         		</div> 
         		
     		</div> 

@@ -122,7 +122,9 @@ function kakaoLogout() {
 						로그아웃</span>
 			</a></li>
 		</ul> -->
-		<button type="button" class="kakao" onclick="redirectToKakaoLogin()">Kakao계정으로 가입하기</button> —>
+		<!-- 카카오 스크립트 -->
+		<!--<button type="button" class="kakao" onclick="redirectToKakaoLogin()">Kakao
+			계정으로 가입하기</button> -->
 	</form>
 
 </main>
