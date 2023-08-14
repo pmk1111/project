@@ -15,7 +15,7 @@ public class ProjectDeleteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ProjectDAO pdao = new ProjectDAO();
-		String p_num = request.getParameter("p_num");
+		int p_num = Integer.parseInt(request.getParameter("p_num"));
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		int result = pdao.delete(p_num);

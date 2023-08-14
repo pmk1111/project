@@ -161,7 +161,32 @@ public class ProjectDAO {
 
 		return list;
 	}
+	
+	public String getProjectName(int pnum) {
+		String sql = "select p_name from project where p_num = ?";
+		
+		String result = "";
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 
+			pstmt.setInt(1, pnum);
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					result = rs.getString(1);
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				System.out.println("getListCountByUser() 에러: " + ex);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getListCountByUser() 에러: " + e);
+		}
+
+		return result;
+	}
+
+	
 	public Project getDetail(int p_num) {
 	    String sql = "SELECT P_NUM, P_NAME, P_STATUS, P_START, P_CLOSING, P_CREATED, P_FILE FROM PROJECT WHERE P_NUM = ?";
 
@@ -213,18 +238,36 @@ public class ProjectDAO {
 	    return result;
 	}
 
-	public int delete(String p_num) {
-	    int result = 0;
-	    String sql = "DELETE FROM project WHERE p_num = ?";
+	public int delete(int p_num) {
+	    
+		int EU1 = 0;
+		int EU2 = 0;
+		
+		int result = 0;
+	    
+		String sql = "DELETE FROM project WHERE p_num = ?";
+	    
+	    String memsql = "DELETE FROM MEMBER WHERE P_NUM = ?";
 	    try (Connection con = ds.getConnection();
-	         PreparedStatement pstmt = con.prepareStatement(sql);) {
-	    	 pstmt.setString(1, p_num);
-	    	 result = pstmt.executeUpdate();
+	         PreparedStatement pstmt = con.prepareStatement(sql);
+	    	 PreparedStatement mempstmt = con.prepareStatement(memsql);) {
+	    	
+	    	 pstmt.setInt(1, p_num);
+	    	 EU1 = pstmt.executeUpdate();
+	    	 
+	    	 mempstmt.setInt(1, p_num);
+	    	 EU2 = mempstmt.executeUpdate();
+	    	 
+	    	 if(EU1 == 1 && EU2 == 1 ) {
+	    		 result = 1;
+	    	 }
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
 	    return result;
 	}
+
+
 
 
 }

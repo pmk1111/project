@@ -7,6 +7,13 @@ float: right;
 margin-right: 2rem;
 }
 
+main{animation: slide_fade .8s linear;}
+@keyframes slide_fade {
+0% { opacity: 0; margin-top: -20px;}
+
+100% {opacity: 1; margin-top: 0px;}
+}
+
 ul {
    margin: 0;
    padding-left: 0;
@@ -117,7 +124,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 button:hover {
 	opacity: 0.8;
-	cursor: pointer; /* �հ��� Ŀ�� ��� */
+	cursor: pointer; 
 }
 
 button:focus {
@@ -134,6 +141,8 @@ b+div {
 }
 
 /* Clear floats */
+.submitbtn{border-radius: 3px}
+.clearfix{margin: 20px 0px 20px 0px; }
 .clearfix::after {
 	content: "";
 	clear: both;
@@ -188,7 +197,7 @@ input[type="checkbox"]::after {
   width: 15%;
 }
 input[type="checkbox"]:checked {
-  background: #7C00B6;
+  background: #8D52A9;;
 }
 input[type="checkbox"]:checked::after {
   display: block;
@@ -203,6 +212,7 @@ input[type="checkbox"]:checked::after {
 	background-color:#8D52A9;
 	color:white;
 }
+
 
 /* .id + .id_check, .mail + .send_verify, .verify + .verify_check{
 	margin-left:10px;

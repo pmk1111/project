@@ -42,13 +42,12 @@
         <!-- 추후 해당 프로젝트에 참여 중인 인원을 표시할 수 있게 한다 -->
         <p>상태<span class="req">*</span></p>
         <select id="issue_status" name="i_status">
-          <option>-</option>
           <option>To Do</option>
           <option>In Progress</option>
           <option>Done</option>
         </select><br>
         
-        <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue" required><br>
+        <!-- <p>관련이슈<span class="req">*</span></p><input type="text" id="related_issue" name="related_issue"><br> -->
         <!-- 추후 같은 프로젝트 내의 이슈들을 불러와 선택할 수 있게 한다 -->
         <hr>
       </div>

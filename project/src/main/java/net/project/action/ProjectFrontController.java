@@ -65,6 +65,10 @@ public class ProjectFrontController extends javax.servlet.http.HttpServlet {
 	         case "/ProjectDeleteAction.pro":
 	        	 action = new ProjectDeleteAction();
 	        	 break;
+				/* 혜원(8/12) */
+	         case "/ProjectoutAction.pro":
+	        	 action = new ProjectoutAction();
+	        	 break;
 //	         case "/BoardReplyView.bo":
 //	        	 action = new BoardReplyView();
 //	            break;
