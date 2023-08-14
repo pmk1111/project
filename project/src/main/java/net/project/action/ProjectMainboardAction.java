@@ -21,7 +21,6 @@ public class ProjectMainboardAction implements Action {
 		IssueDAO issuedao =new IssueDAO();
 		//1번: 메인보드에서 전체 이슈 요약
 		List<IssueBean> issuelist1 = new ArrayList<IssueBean>();
-
 		List<IssueBean> issuelist2= new ArrayList<IssueBean>();
 		List<IssueBean> issuelist3 = new ArrayList<IssueBean>();
 		List<IssueBean> issuelist4 = new ArrayList<IssueBean>();

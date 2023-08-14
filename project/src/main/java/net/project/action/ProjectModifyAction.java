@@ -38,11 +38,12 @@ public class ProjectModifyAction implements Action {
 			String p_closing=multi.getParameter("p_closing");
 			String p_file = multi.getFilesystemName("p_file");
 			String p_num = multi.getParameter("p_num");
+			String p_status = multi.getParameter("p_status");
 			
 			Project p = new Project();
 			
 			p.setP_name(p_name); p.setP_start(p_start); p.setP_closing(p_closing); p.setP_num(Integer.parseInt(p_num));
-			
+			p.setP_status(p_status);
 			if(p_file !=null) { //파일을 선택한 경우
 				p.setP_file(p_file);
 			}
@@ -59,7 +60,8 @@ public class ProjectModifyAction implements Action {
 			// 삽입이 된 경우
 			if(result ==1) {
 				out.println("alert('수정되었습니다.');");
-				out.println("location.href='ProjectList.pro';");
+				String hrefStr = "ProjectMainboard.pro?num="+p_num;
+				out.println("location.href='"+hrefStr+"'");
 			}else {
 				out.println("alert('프로젝트 수정에 실패했습니다.');");
 				out.println("history.back()");//비밀번호를 제외한 다른 데이터는 유지되어 있습니다.

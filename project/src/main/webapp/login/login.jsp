@@ -36,14 +36,13 @@ function onSignIn(googleUser) {
 			<input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="pass" maxlength="20" required>
 	   	    <p class="find_pw">비밀번호 찾기</p>
             <button type="submit" class="login_submit" name="login_submit">로그인</button>
-			<p class="auto_login_text">자동 로그인</p><input type="checkbox" class="auto_login" name="auto_login">
+			<p class="auto_login_text">아이디 기억하기</p><input type="checkbox" class="auto_login" name="auto_login">
 			<div class="hr"><span>또는</span> </div>
 			
 
 <meta name="google-signin-client_id" content="625666498826-vv7f0001u0rk3v8pc18on0icn71vro2e.apps.googleusercontent.com">
 
 <div class="g-signin2" data-onsuccess="onSignIn"></div>	
-<a href="#" onclick="signOut();">Sign out</a>
 <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -52,18 +51,11 @@ function onSignIn(googleUser) {
     });
   }
 </script>	
-
-            <button type="button" class="google" onclick="redirectToGoogleLogin()">Google 계정으로 가입하기</button>
   			<br>
   			<ul>
 	<li onclick="kakaoLogin();">
       <a href="javascript:void(0)">
           <span>카카오 로그인</span>
-      </a>
-	</li>
-	<li onclick="kakaoLogout();">
-      <a href="javascript:void(0)">
-          <span>카카오 로그아웃</span>
       </a>
 	</li>
 </ul>
@@ -91,23 +83,9 @@ function kakaoLogin() {
       },
     })
   }
-//카카오로그아웃  
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-        	console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
-    }
-  }  
+ 
 </script>
-  			 <button type="button" class="kakao" onclick="redirectToKakaoLogin()">Kakao 계정으로 가입하기</button>
+  		
 	    	
 			
 	 </form>

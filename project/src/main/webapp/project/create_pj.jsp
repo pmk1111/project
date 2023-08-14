@@ -25,7 +25,7 @@
         		&nbsp;&nbsp; 
         		<input id="filevalue" class="upload-name" value="파일선택" disabled="disabled">
         
-        		<label>
+        		<label style="margin-bottom: 0px;">
         			업로드
         			<input type="file" class="upload-hidden" id="upfile" name="p_file">
         		</label> <!-- 사진업로드 -->
