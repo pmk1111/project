@@ -28,8 +28,8 @@ function ajax(sdata){
 
 						
 						let title = item.i_title;
-						if(title.length>=10){
-							title=title.substr(0,10)+"....";
+						if(title.length>=15){
+							title=title.substr(0,15)+"....";
 						}
 						
 						output +='<tr><td>'

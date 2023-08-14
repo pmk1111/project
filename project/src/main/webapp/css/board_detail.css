@@ -1,18 +1,43 @@
 #board_title_info {
-  width: 80%;
-  height: 120px;
-  margin: 70px 50px 40px 70px;
+  width: 90%;
+  height: 110px;
+  padding-left:15px;
+  margin: 70px 50px 20px 60px;
+  border:1.5px solid lightgrey;
+  border-radius: 3px 3px 0px 0px;
 }
 
 .pj_board_name {
   display: inline-block;
   color: rgb(193, 193, 193);
-  margin-bottom: 20px;
-  font-size: 0.8em;
+  margin-top:15px; margin-bottom: 10px;
+  font-size: 0.9em;
   font-weight:bold;
 }
 
-.fav_ed_del{float: right; margin-top: 40px;}
+.reporter{
+    position: relative;
+    top: -22px;
+    margin-left: 60px;
+    padding-left: 15px;
+    border: 1.5px solid lightgrey;
+    border-radius: 0px 0px 3px 3px;
+    width: 90%;
+    height: 40px;
+    background-color: #F2EFF3;
+    color: #929292;
+}
+
+.board_desc{float: left; width:55%; font-size: 20px; margin:40px 0px 0px 60px; min-width: 500px}
+.discription{
+	font-size:14px; padding-left:15px; height:35px;
+	margin:15px 0px 0px; border:1.5px solid lightgray; border-radius:3px 3px 0px 0px; 
+	background-color: #F2EFF3; color: #929292;
+	display: block;
+}
+.discription span{position:relative; top:6px;}
+
+.fav_ed_del{float: right; margin-top: 25.9px; margin-right: 30px}
 #fav_icon {
   width: 12px;
   height: 12px;
@@ -27,17 +52,17 @@
 .ed_del_dropdown_icon{margin-left: 190px;}
 /* span: 인라인 요소라 size, margin 안먹히니 인라인 블록으로 변경 */
 
-.board_info{min-width: 270px; width: 100%; height: 15.8em; border: 1px solid #7C00B6; border-radius: 5px; font-weight: 600; font-size: 13px;}
-.board_info>span{display: inline-block; margin:12.5px 0px 10px 10px;}
-#i_create, #i_reporter, #i_assign, #i_status{ float: right; padding-right: 10px;}
+/* .board_info{min-width: 270px; width: 100%; height: 15.8em; border: 1px solid #7C00B6; border-radius: 5px; font-weight: 600; font-size: 13px;}
+.board_info>span{display: inline-block; margin:12.5px 0px 10px 10px;} */
+#i_create, #i_reporter, #i_assign, #i_status{ float: right; padding-right: 15px;}
 .board_info > hr{margin: 0;}
-.create, .reporter, .assign, .status{margin:18px 0px 10px 10px;}
+.create, .assign, .status{margin:14px 0px 15px 14px; color:#5b5b5b; font-size:13.5px; font-weight:500;}
 
-
-.board_desc{float: left; font-size: 20px; margin-left: 70px; }
-.board_desc>span:nth-child(1){display: block; color: rgb(193, 193, 193); margin-bottom: 32px; font-size: 0.8em;}
-
-.issue_content{min-width: 350px; width: 400px; letter-spacing: 0.7px; font-size: 13px;}
+.issue_content{
+	position:relative; top:-1.5px;
+	min-width: 480px; width: 100%; letter-spacing: 0.7px; font-size: 15px;
+	border:1.5px solid lightgrey; border-radius:0px 0px 3px 3px; padding:14px 0px 0px 15px
+}
 
 .reply_textarea{ clear: both; min-width: 350px; width: 400px; margin: 50px 0px 0px 70px ;}
 .reply-area{box-sizing:borderbox; margin-left:70px;}

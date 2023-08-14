@@ -161,7 +161,32 @@ public class ProjectDAO {
 
 		return list;
 	}
+	
+	public String getProjectName(int pnum) {
+		String sql = "select p_name from project where p_num = ?";
+		
+		String result = "";
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 
+			pstmt.setInt(1, pnum);
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					result = rs.getString(1);
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				System.out.println("getListCountByUser() 에러: " + ex);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getListCountByUser() 에러: " + e);
+		}
+
+		return result;
+	}
+
+	
 	public Project getDetail(int p_num) {
 	    String sql = "SELECT P_NUM, P_NAME, P_STATUS, P_START, P_CLOSING, P_CREATED, P_FILE FROM PROJECT WHERE P_NUM = ?";
 

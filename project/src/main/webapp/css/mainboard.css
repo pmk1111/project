@@ -1,6 +1,6 @@
  ul {list-style-type: none;}
     li {font-size: 10px}
-    /* a {text-decoration: none; color: #8D52A9;} */
+   
     .navbar{margin-bottom: 0px;}
 
 
@@ -16,26 +16,33 @@
     } 
 
     .main{min-width: 1000px;}
-
+	.my_work_text{margin-bottom: 30px}
     .statue{width: 100%; min-width: 1000px; margin: 70px 0px 0px 70px;}
     .my_work_status{display: inline-block; width: 250px; height: 200px;}
     .my_work_status > p{margin-bottom: 5px; font-size: 14px;}
-    .todo_list, .progress_list, .done_list{width: 250px; height: 140px; background-color: lightgray; border-radius: 10px;}
+    .todo_list, .progress_list, .done_list{width: 250px; height: 140px; background-color: rgb(240, 240, 240); border-radius: 3px;}
     .todo_item, .progress_item, .done_item{border-collapse: separate; border-spacing: 0px 6px; position:relative; width: 220px; margin-left: 15px; top: 10px;}
     .todo_item tr, .progress_item tr, .done_item tr{background-color: white; height: 32px;}
-    .todo_item td a, .progress_item td a, .done_item td a{padding-left: 10px; border-radius: 3px; color: black;}
+    .todo_item td, .progress_item td, .done_item td{padding-left: 10px; border-radius: 3px; color: black;}
+    .todo_item td:hover, .progress_item td:hover, .done_item td:hover{background-color: rgb(220, 220, 220); transition:.5s;}
     .todo_item a:active, .progress_item a:active, .done_item a:active{opacity: 0.6;}
-    .board_list_brief{margin: 50px 0px 0px 70px; width: 100%; min-width: 800px;}
-    .brief{color:black; margin-top:20px;}
+    .board_list_brief{margin: 30px 0px 0px 70px; width: 100%; min-width: 800px;}
+    .brief{color:black; margin-top:10px;}
+    .brief tr{height:50px;}
     .see_all{width: 180px;}
     .see_all > h2{display: inline-block;}
     .see_all > a{font-size: 13px; float: right; margin-top: 32px; color: black;}
     .brief{width: 100%; border-collapse: collapse;}
     thead td{font-weight: bold;}
+    tbody tr:hover{background: #F2EFF3; transition:.6s;}
     .brief td{border-bottom: 2px solid lightgray; padding: 8px;}
+    .see_all > a:hover{text-decoration: none; opacity:0.8;}
     .see_all > a:active{opacity: 0.6;}
     
     .title{color:black;}
-    .title:hover{text-decoration: none;  transition:0.3s; color:#7C00B6;}
+	.title:hover{cursor:pointer; color:black;} 
+	
+	.plusicon{position:relative; display:inline-block; width: 22px; height: 22px; padding-right:5px; top:-0.3px;}
+	.openModalText{position:relative; top:1.5px; color:#000000B5;}
     
     

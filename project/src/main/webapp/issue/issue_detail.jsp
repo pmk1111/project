@@ -29,7 +29,27 @@
 <script src="js/comm.js"></script>
 <script src="js/board_detail.js"></script>
 
+<style>
+.header-search{box-sizing: content-box;}
+.left-bar-items > label{position:relative; top:2.2px;}
+.left-bar-items a:hover{color:#8D52A9;text-decoration: none}
 
+.info_text{font-size:14px; margin:15px 0px 0px; padding-left:15px; height:35px;
+	margin-top:5px; border:1.5px solid lightgray; border-radius:3px 3px 0px 0px; 
+	background-color: #F2EFF3; color: #929292;
+	display: block;}
+.info_text > span{position:relative; top:5px;}
+.board_info{    
+	position: relative;
+    top: -1.5px;
+    /* min-width: 270px; */
+    width: 100%;
+    letter-spacing: 0.7px;
+    font-size: 12.5px;
+    border: 1.5px solid lightgrey;
+    border-radius: 0px 0px 3px 3px;
+    }
+</style>
 </head>
 <body>
    <header>
@@ -44,18 +64,26 @@
          <div class="board-content">
             <div id="board_title_info">
 
-               <span class="pj_board_name" name="pj_board_name">프로젝트 /
-                  ${pName} / ${issuedata.i_title} </span>
-               <h2 style="font-size: 1.5em; font-weight: bold;">${issuedata.i_title}</h2>
+               <span class="pj_board_name" name="pj_board_name">프로젝트&nbsp;&nbsp;/&nbsp;
+               ${pName}&nbsp;&nbsp;/&nbsp;<c:if test="${issuedata.i_title.length()>=20 }">
+               									<c:out value="${issuedata.i_title.substring(0,20)}..." />
+												</c:if><c:if test="${issuedata.i_title.length()<20}">
+												<c:out value="${issuedata.i_title}"/></c:if></span>
+               <h2 style="font-size: 25px; font-weight: 500; margin-top:10px;">${issuedata.i_title}</h2>
+               <!-- <hr style="margin-top:23px; border:0.9px solid lightgrey;"> -->
             </div>
-
+			<div>
+            	<input class="reporter" type="text" 
+            	value="보고자&nbsp;:&nbsp;${issuedata.i_reporter}"readonly>         
+            </div>
+			
             <div class="fav_ed_del">
                <!-- <div class="fav"> -->
                <img id="fav_icon" name="fav" src="img/star_grey.jpeg"> <label
                   for="fav" class="fav_label">즐겨찾기</label>
                <!-- </div> -->
                <div class="ed_del_dropdown">
-                  <img class="ed_del_dropdown_icon" src="img/favorite.png"
+                  <img class="ed_del_dropdown_icon" src="img/vertical.svg"
                      style="position: relative; width: 18px; height: 18px; top: 3.2px;">
                   <div class="ed_del-dropdown_item">
                      <a id="openModalBtn" class="ed_issue" name="ed_issue" href="#">수정</a>
@@ -65,15 +93,18 @@
                   </div>
                </div>
 
-               <div class="board_info">
-                  <span>상세 정보</span>
-                  <hr>
+               
+               	<div class="info_text">
+                  	<span>상세 정보</span>
+                  </div>
+                  
+                  <div class="board_info">
                   <div class="create">
                      <span>생성일</span><span id="i_create">${issuedata.i_created }</span>
                   </div>
-                  <div class="reporter">
+                  <%-- <div class="reporter">
                      <span>보고자</span><span id="i_reporter">${issuedata.i_reporter}</span>
-                  </div>
+                  </div> --%>
                   <div class="assign">
                      <span>담당자</span><span id="i_assign">${issuedata.i_assign}</span>
                   </div>
@@ -85,11 +116,11 @@
 
 
             <div class="board_desc">
-               <span>내용</span>
+            <div class="discription">
+               <span>설명</span>
+               </div>
                <div class="issue_content">
                   <span class="i_content">${issuedata.i_content}</span> <br>
-                  <br>
-                  <br>
                   <br>
 
                </div>
