@@ -117,11 +117,11 @@ $(document).ready(function () {
 
     $("#userName").on('keyup', function () {
         const name = $("#userName").val();
-        const pattern = /^[가-힣a-zA-Z]+$/;
+        const pattern = /^([가-힣]{2,4}|[a-zA-Z]{2,15})$/;
         const $message = $("#name_message");
 
         if (!pattern.test(name)) {
-            $message.removeClass('message success').addClass('message error').html("한글 2~4자 또는 영문 2~10자 가능합니다").css('color', 'red');
+            $message.removeClass('message success').addClass('message error').html("한글 2~4자 또는 영문 2~15자 가능합니다").css('color', 'red');
             $("#isChkName").val("N");
         } else {
             $message.removeClass('message error').addClass('message success').html("사용 가능한 이름입니다.").css('color', 'blue');
@@ -152,8 +152,11 @@ $(document).ready(function () {
             document.projectform.submit();
         }
     });
+    fucntion isChkEmail(email){
+    	
+    }
     
-    function validateForm() {
+    function validationcheck() {
         const isChkId = $("#isChkId").val();
         const isChkPassword = $("#isChkPassword").val();
         const isChkName = $("#isChkName").val();
@@ -204,7 +207,7 @@ $(document).ready(function () {
            <input type="password" id="confirmPassword"  placeholder="비밀번호를 한번 더 입력하세요" class="pw_check" name="passwd"   required>
         		 <span id="pw_check_message"></span>
           <b>이름</b>
-           <input type="text" id="userName" class="name"  name="name" placeholder="이름을 입력하세요" maxLength="20" required>
+           <input type="text" id="userName" class="name"  name="name" placeholder="이름을 입력하세요" maxLength="15" required>
            		 <span id="name_message"></span>
           <b>이메일 주소</b>
            <input type="text" id="email"  class="email" name="email" maxLength="30"  placeholder="이메일을 입력하세요" required> 
