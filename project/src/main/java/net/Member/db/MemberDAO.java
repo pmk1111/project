@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.usr.db.Usr;
+
 public class MemberDAO {
 
 	private DataSource ds;
@@ -27,6 +29,7 @@ public class MemberDAO {
 	}
 
 	public int getMemberListCount(int pnum) {
+		
 		int result = 0;
 
 		String sql = "SELECT COUNT(*) " 
@@ -83,12 +86,11 @@ public class MemberDAO {
 				m.setP_num(rs.getInt("p_num"));
 				m.setNum(rs.getInt("p_num"));
 				m.setGrade(rs.getString("grade"));
-				m.setP_name(rs.getString("p_name"));
-				m.setId(rs.getString("id"));
-				m.setName(rs.getString("name"));
-				m.setPic(rs.getString("pic"));
-				m.setTel(rs.getString("tel"));
-				m.setEmail(rs.getString("email"));
+				m.setM_id(rs.getString("M_id"));
+				m.setM_name(rs.getString("M_name"));
+				m.setM_pic(rs.getString("M_pic"));
+				m.setM_tel(rs.getString("M_tel"));
+				m.setM_email(rs.getString("M_email"));
 				list.add(m);
 			}
 
@@ -116,6 +118,81 @@ public class MemberDAO {
 	        e.printStackTrace();
 	    }
 	    return result;
+	}
+
+	public List<Usr> searchid() {
+		
+		   String sql = "SELECT * FROM USR";
+		    List<Usr> usrList = new ArrayList<>();
+		    try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+		        try (ResultSet rs = pstmt.executeQuery()) {
+		            while (rs.next()) {
+		            	Usr m = new Usr();
+		            	m.setNum(rs.getInt("num"));
+		            	m.setId(rs.getString("id"));
+		            	m.setName(rs.getString("name"));
+		            	m.setEmail(rs.getString("email"));
+		            	m.setPic(rs.getString("pic"));
+		            	m.setTel(rs.getString("tel"));
+		            	usrList.add(m);
+		            }
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		    return usrList;
+	}
+
+	public int getUserNum(String uID) {
+		
+		int result = 0;
+
+		String sql = "SELECT num " 
+				   + "FROM usr " 
+				   + "WHERE id = ?";
+
+		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+			pstmt.setString(1, uID);
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				System.out.println("getUserNum() 에러: " + ex);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("getUserNum() 에러: " + e);
+		}
+
+		return result;
+	}
+
+	public int memInvite(int p_num, int uNum) {
+		
+		int result = 0;
+		
+		String sql = "INSERT INTO MEMBER "
+				   + "(p_num, num, m_id, M_name, M_pic, M_tel, M_email) "
+				   + "SELECT ?, ?, id, name, pic, tel, email FROM USR WHERE num=?";
+		
+		 try (Connection con = ds.getConnection();
+		      PreparedStatement pstmt = con.prepareStatement(sql);) {
+			 
+			 pstmt.setInt(1, p_num);
+			 pstmt.setInt(2, uNum);
+			 pstmt.setInt(3, uNum);
+			 
+			 result = pstmt.executeUpdate();
+			 
+		 } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+
+		    return result;
 	}
 
 	

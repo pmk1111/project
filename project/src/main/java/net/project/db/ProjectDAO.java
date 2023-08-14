@@ -46,9 +46,9 @@ public class ProjectDAO {
 									  + " (P_NUM, P_NAME, P_START, P_CLOSING, P_FILE) "
 									  + " VALUES (" + seqnum + ", ?, ?, ?, ?)";
 
-					String membersql = " insert into member " 
-								     + " (p_num, num, grade) " 
-								     + " VALUES (" + seqnum + ", ?, 'master')";
+					String membersql = "INSERT INTO MEMBER "
+					          + "(p_num, num, grade, m_id, M_name, M_pic, M_tel, M_email) "
+					          + "SELECT " + seqnum + ", ?, 'master', id, name, pic, tel, email FROM USR WHERE num = ? ";
 
 					try (PreparedStatement pstmtProject = con.prepareStatement(projectsql);
 						 PreparedStatement pstmtMember = con.prepareStatement(membersql);) {
@@ -63,6 +63,7 @@ public class ProjectDAO {
 						result = pstmtProject.executeUpdate();
 
 						pstmtMember.setInt(1, num);
+						pstmtMember.setInt(2, num);
 						int memberResult = pstmtMember.executeUpdate();
 
 						if (result == 1 && memberResult == 1) {
