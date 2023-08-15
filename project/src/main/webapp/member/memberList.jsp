@@ -70,6 +70,57 @@ li {
 	margin-inline-end: 0px;
 	font-weight: bold;
 }
+td:nth-child(2){
+border-bottom:1px solid gray;
+padding:10px;
+color:rgb(116, 0, 137);
+
+
+
+}
+td{
+border-bottom:1px solid gray;
+padding:18px;
+
+
+
+
+}
+
+th{
+
+
+border-bottom:1px solid gray;
+text-align :center;
+padding:18px;
+
+
+}
+
+table{
+
+font-size:20px;
+text-align :center;
+width:80%;
+height:60%;
+
+
+
+}
+.issue_title{
+ margin-top:50px;
+}
+.issue_page{
+margin-left:40%;
+margin-top:10px;
+font-size:18px;
+
+}
+
+.issue_list_wrap{
+ margin-left:20px;
+
+}
 </style>
 
 </head>
@@ -92,16 +143,17 @@ li {
 
 
 					<div class="issue_title">
-						<h2>전체이슈</h2>
+					 <h3>${pname} 멤버리스트</h3>
 					</div>
-
+					<hr>
+                    <div class="member_total">
 					<c:if test="${listcount > 0 }">
 
 
 						<table class="member_list">
 
 							<tr>
-								<th>Grade</th>
+								<th>권한</th>
 								<th>이름</th>
 								<th>사진</th>
 								<th>번호</th>
@@ -109,9 +161,9 @@ li {
 
 							</tr>
 
-							<tbody>
+							
 								<c:set var="num" value="${listcount-(page-1)*limit}" />
-
+                                
 								<c:forEach var="m" items="${memberlist}">
 									<tr>
 										<td>${m.grade}</td>
@@ -121,7 +173,7 @@ li {
 										<td>${m.m_email}</td>
 									</tr>
 								</c:forEach>
-							</tbody>
+							
 
 						</table>
 					</c:if>
@@ -164,7 +216,9 @@ li {
 						<c:if test="${listcount ==0 }">
 					<h3 style="color:lightgrey;">등록 된 글이 없습니다.</h3>
 				</c:if>
-						<button id="openModalBtn" class="write"></button>
+				</div>
+						
+					
 					</div>
 				</div>
 

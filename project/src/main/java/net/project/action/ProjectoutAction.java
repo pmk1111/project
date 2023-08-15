@@ -33,12 +33,12 @@ public class ProjectoutAction implements Action {
         
         if (result == 1) {
             out.println("<script>");
-            out.println("alert('프로젝트 나감.');");
+            out.println("alert('해당 프로젝트를 나갔습니다.');");
             out.println("location.href='ProjectList.pro'");
             out.println("</script>");
         } else {
             out.println("<script>");
-            out.println("alert('프로젝트 못나감.');");
+            out.println("alert('해당 프로젝트를 나가지 못했습니다.');");
             out.println("history.back()");
             out.println("</script>");
 
@@ -48,3 +48,4 @@ public class ProjectoutAction implements Action {
     }
 
 }
+
