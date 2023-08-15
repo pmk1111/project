@@ -97,11 +97,12 @@ $(document).ready(function() {
 			<div class="board-content">
 				<div id="board_title_info">
 
-					<span class="pj_board_name" name="pj_board_name">프로젝트&nbsp;&nbsp;/&nbsp;
-						${pName}&nbsp;&nbsp;/&nbsp;<c:if
-							test="${issuedata.i_title.length()>=20 }">
+					<span class="pj_board_name" name="pj_board_name">
+						프로젝트&nbsp;&nbsp;/&nbsp; ${pName}&nbsp;&nbsp;/&nbsp;
+						<c:if test="${issuedata.i_title.length()>=20 }">
 							<c:out value="${issuedata.i_title.substring(0,20)}..." />
-						</c:if> <c:if test="${issuedata.i_title.length()<20}">
+						</c:if>
+						 <c:if test="${issuedata.i_title.length()<20}">
 							<c:out value="${issuedata.i_title}" />
 						</c:if>
 					</span>
@@ -158,7 +159,9 @@ $(document).ready(function() {
 								<img id="fav_icon" name="fav" src="img/star_grey.jpeg"> <label
 									for="fav" class="fav_label">즐겨찾기</label>
 							</div>
+						
 							<div class="ed_del_dropdown">
+							<c:if test="${issuedata.i_id == id || id =='admin' }">
 								<img class="ed_del_dropdown_icon" src="img/contentSetting.svg">
 								<div class="ed_del-dropdown_item">
 									<a id="openModalBtn" class="ed_issue" name="ed_issue" href="#">수정</a>
@@ -166,7 +169,9 @@ $(document).ready(function() {
 									<a class="del_issue" name="del_issue"
 										href="IssueDeleteAction.bo?num=${issuedata.i_seq }">삭제</a>
 								</div>
+								</c:if>
 							</div>
+						
 						</div>
 					</div>
 
