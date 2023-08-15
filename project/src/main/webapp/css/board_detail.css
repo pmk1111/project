@@ -117,6 +117,7 @@ textarea.comment-write-area-text {
     border: 1px solid lightgrey;
     border-radius: 3px;
     padding: 10px 0px 0px 10px ;
+    font-size: 14px;
 }
 .re_sub_cancel{float: right; width:200px; display: flex;} /*flex로 하여 답글달기,취소 위아래로 붙는 것 방지 */
 .re_submit{width: 85px; height: 27px; background-color: #8D52A9;
@@ -156,7 +157,7 @@ textarea.comment-write-area-text {
 .comment-info-date{position:relative; top:-5px; padding-left:10px; zoom:0.8; font-size:10px; color:lightgray;}
 .comment-nick-area{margin-bottom:28px;}
 .comment-nickname{font-size:13px;}
-
+hr{margin-top:40px; margin-bottom:20px;}
 
 .btn-group-sm>.btn,
 .btn-sm {padding: 2px 5px;font-size: 8px;}
