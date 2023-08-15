@@ -68,7 +68,7 @@ function validateForm() {
 
 				<div class="filebox bs3-primary">
 					&nbsp;&nbsp; <input id="filevalue" class="upload-name" value="파일선택"
-						disabled="disabled"> <label style="margin-bottom: 0px;"> 업로드 <input
+						disabled="disabled"> <label style="margin-bottom: 0px; top:-0.5px;"> 업로드 <input
 						type="file" class="upload-hidden" id="upfile" name="p_file">
 					</label>
 					<!-- 사진업로드 -->

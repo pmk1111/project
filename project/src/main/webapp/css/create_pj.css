@@ -53,8 +53,8 @@ body {
 .pj_upload {
 	margin: 0 auto;
 	/* display: inline-block; */
-	width: 200px;
-	height: 200px;
+	width: 202px;
+	height: 202px;
 	border: 1.2px solid #8D52A9;
 	border-radius: 5px;
 }
@@ -62,6 +62,7 @@ body {
 .pj_file {
 	width: 200px;
 	height: 200px;
+	border-radius:5px;
 }
 
 .create_pj_content p {

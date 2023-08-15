@@ -38,7 +38,7 @@
 .discription span{position:relative; top:9px;}
 
 .info_text{font-size:14px; padding-left:15px; width:90%; height:40px;
-	margin:40px 0px 0px 60px; border:1.5px solid lightgray; border-radius:3px 3px 0px 0px; 
+	margin-left:60px; border:1.5px solid lightgray; border-radius:3px 3px 0px 0px; 
 	background-color: #F2EFF3; color: #929292;
 	display: block;}
 .info_text > span{position:relative; top:9px;}
@@ -52,7 +52,7 @@
     border: 1.5px solid lightgrey;
     border-radius: 0px 0px 3px 3px;
     }
-.info_down_wrap{position:relative; width:90%; margin-left: 60px;}
+.info_down_wrap{position:relative; width:90%; margin-left: 60px; margin-bottom: 45px}
 .info_down{float:right; position:relative; top:20px; border:1px solid #F2EFF3; border-radius: 3px}
 .info_down:hover{cursor: pointer;}
 .info_dropdown_item{clear:both; display:none;}

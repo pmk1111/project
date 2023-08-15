@@ -105,18 +105,36 @@ public class MemberDAO {
 	return list;
 	}
 
-	/* 혜원 */
 	public int outproject(int userNum, int projectNum) {
 	    int result = 0;
-	    String sql = "DELETE FROM MEMBER WHERE num = ? AND p_num = ?";
+	    String sqlDeleteMember = "DELETE FROM MEMBER WHERE num = ? AND p_num = ?";
+	    String sqlCheckMember = "SELECT COUNT(*) FROM MEMBER WHERE p_num = ?";
+	    String sqlDeleteProject = "DELETE FROM PROJECT WHERE p_num = ?";
+
 	    try (Connection con = ds.getConnection();
-	         PreparedStatement pstmt = con.prepareStatement(sql);) {
-	         pstmt.setInt(1, userNum);
-	         pstmt.setInt(2, projectNum);
-	         result = pstmt.executeUpdate();
+	         PreparedStatement pstmtDeleteMember = con.prepareStatement(sqlDeleteMember);
+	         PreparedStatement pstmtCheckMember = con.prepareStatement(sqlCheckMember);
+	         PreparedStatement pstmtDeleteProject = con.prepareStatement(sqlDeleteProject);) {
+
+	        // Step 1: Delete the member
+	        pstmtDeleteMember.setInt(1, userNum);
+	        pstmtDeleteMember.setInt(2, projectNum);
+	        result = pstmtDeleteMember.executeUpdate();
+
+	        // Step 2: Check if there are any remaining members in the project
+	        pstmtCheckMember.setInt(1, projectNum);
+	        try (ResultSet rs = pstmtCheckMember.executeQuery()) {
+	            if (rs.next() && rs.getInt(1) == 0) { // If there are no remaining members
+	                // Step 3: Delete the project
+	                pstmtDeleteProject.setInt(1, projectNum);
+	                pstmtDeleteProject.executeUpdate();
+	            }
+	        }
+
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+
 	    return result;
 	}
 
@@ -195,7 +213,30 @@ public class MemberDAO {
 		    return result;
 	}
 
-	
+	public boolean isUserInProject(int p_num, int num) {
+		
+	    boolean result = false;
+
+	    String sql = "SELECT * FROM MEMBER WHERE p_num=? AND num=?";
+
+	    try (Connection con = ds.getConnection();
+	        PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+	        pstmt.setInt(1, p_num);
+	        pstmt.setInt(2, num);
+
+	        ResultSet rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            result = true;
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return result;
+	}
 	
 	
 }
