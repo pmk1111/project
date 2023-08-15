@@ -195,7 +195,30 @@ public class MemberDAO {
 		    return result;
 	}
 
-	
+	public boolean isUserInProject(int p_num, int num) {
+		
+	    boolean result = false;
+
+	    String sql = "SELECT * FROM MEMBER WHERE p_num=? AND num=?";
+
+	    try (Connection con = ds.getConnection();
+	        PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+	        pstmt.setInt(1, p_num);
+	        pstmt.setInt(2, num);
+
+	        ResultSet rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            result = true;
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return result;
+	}
 	
 	
 }

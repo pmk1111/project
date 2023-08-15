@@ -4,13 +4,14 @@ $(document).ready(function() {
 		// 파일명 기재
 		console.log($(this).val()); // C:\fakepath\upload.png
 		const inputfile = $(this).val().split('\\');
+		
 		$('#filevalue').val(inputfile[inputfile.length - 1]);
 		
 		
 		// 미리보기 사진
 		const filename = inputfile[inputfile.length - 1];
 
-		const pattern = /(gif|jpg|jpeg|png)$/i;
+		const pattern = /(gif|jpg|jpeg|png|svg)$/i;
 		
 		if (pattern.test(filename)) {
 			$('#pj_file').text(filename);
@@ -22,7 +23,7 @@ $(document).ready(function() {
 				$('#pj_file').attr('src', this.result);
 			};
 		} else {
-			alert('이미지 파일(gif,jpg,jpeg,png)이 아닌 경우는 무시됩니다.');
+			alert('이미지 파일(gif,jpg,jpeg,png,svg)이 아닌 경우는 무시됩니다.');
 			$(this).val('')
 		}
 	});
