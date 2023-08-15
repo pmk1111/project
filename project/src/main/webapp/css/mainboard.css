@@ -29,7 +29,7 @@
     .board_list_brief{margin: 30px 0px 0px 70px; width: 100%; min-width: 800px;}
     .brief{color:black; margin-top:10px;}
     .brief tr{height:50px;}
-    .see_all{width: 250px;}
+    .see_all{width: 210px; } 
     .see_all > h2{display: inline-block;}
     .see_all > a{font-size: 13px; float: right; margin-top: 32px; color: black;}
     .brief{width: 100%; border-collapse: collapse;}

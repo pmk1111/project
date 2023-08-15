@@ -81,6 +81,8 @@ $(document).ready(function() {
 .left-bar-items a:hover {
 	color: #8D52A9;
 	text-decoration: none
+	
+
 }
 </style>
 </head>
