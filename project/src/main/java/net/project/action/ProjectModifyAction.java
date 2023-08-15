@@ -44,7 +44,7 @@ public class ProjectModifyAction implements Action {
 			
 			p.setP_name(p_name); p.setP_start(p_start); p.setP_closing(p_closing); p.setP_num(Integer.parseInt(p_num));
 			p.setP_status(p_status);
-			if(p_file !=null) { //파일을 선택한 경우
+			if(p_file != null) { //파일을 선택한 경우
 				p.setP_file(p_file);
 			}
 			
