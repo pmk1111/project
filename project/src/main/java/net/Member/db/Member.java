@@ -63,14 +63,16 @@ public class Member {
 	public String getM_tel() {
 		return M_tel;
 	}
-	public String getM_tel2() {
-		if (M_tel == null) {
-			M_tel = "-";
-			return M_tel;
-		}else {
-			return M_tel;
-		}
-	}
+	
+//	public String getM_tel2() {
+//		if (M_tel == null) {
+//			M_tel = "-";
+//			return M_tel;
+//		}else {
+//			return M_tel;
+//		}
+//	}
+	
 	public void setM_tel(String m_tel) {
 		M_tel = m_tel;
 	}
