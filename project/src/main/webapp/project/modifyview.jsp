@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>프로젝트 수정</title>
+<title>프로젝트 설정 : ${pname}</title>
 <jsp:include page ="header.jsp"/>
 <link rel="stylesheet" href="css/modify_pj.css">
 
@@ -87,7 +87,7 @@
         
     	 		<div class="pj_submit">
    				 <button type="submit" class="create_pj_btn" onclick="modifyProject();" style="display: inline-block;">수정하기</button>
-    			 <button type="button" class="p_out" onclick="outproject();" style="  display: inline-block;  width: 100px; height: 35px;  color: white;  border-style: none; border-radius: 3px; background-color: #7C00B6;">나가기</button>
+    			 <button type="button" class="p_out" onclick="outproject();">나가기</button>
   				 <button type="button" class="delete_pj_btn" onclick="deleteProject();" style="display: inline-block;">삭제하기</button>		  
               </div> 
         		

@@ -59,6 +59,5 @@ public class Project {
 		}else {
 			return "projectupload/"+p_file;
 		}
-		
 	}
 }

@@ -82,3 +82,11 @@ DELETE FROM MEMBER WHERE num = 22 AND p_num = 124
 INSERT INTO MEMBER
 (p_num, num, m_id, M_name, M_pic, M_tel, M_email) 
 SELECT 173, 23, id, name, pic, tel, email FROM USR WHERE num=23
+
+UPDATE member 
+SET M_pic = null, M_email = 'spdlqjanf@naver.com', M_name = '옥진석', M_tel = '01040142405' 
+WHERE num IN (SELECT num FROM usr WHERE id = 38)
+
+update member
+set M_pic = 'user10.jpg'
+where M_id = 'admin'

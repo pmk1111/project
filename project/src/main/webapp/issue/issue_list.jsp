@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이슈 게시판</title>
+<title>이슈 게시판 : ${pname}</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -73,9 +73,22 @@ li {
 	font-weight: bold;
 }
 
-@keyframes modal_slide_fade { 
-	0% {opacity: 0;margin-top: -30px;}
-	100%{opacity:1;margin-top:0;}
+@
+keyframes modal_slide_fade { 0% {
+	opacity: 0;
+	margin-top: -30px;
+}
+
+100
+%
+{
+opacity
+:
+1;
+margin-top
+:
+0;
+}
 }
 #issue_modal {
 	animation: modal_slide_fade .5s linear;
@@ -205,12 +218,28 @@ li {
 								<a href="#" class="bt next">&gt;</a>
 								<a href="#" class="bt last">&gt;&gt;</a>
 							</c:if>
+							<button class="openModalBtn write">글쓰기</button>
+						</c:if>
 
-						</c:if>
 						<c:if test="${listcount ==0 }">
-							<h3 style="color: lightgrey;">등록 된 글이 없습니다.</h3>
+							<table class="issue_list">
+								<thead>
+									<tr>
+										<th>작성자</th>
+										<th>제목</th>
+										<th>타입</th>
+										<th>작성일</th>
+										<th>조회수</th>
+
+									</tr>
+								</thead>
+								</table>
+								<h3 style="color: lightgrey; margin-top:55px;">등록 된 글이 없습니다.</h3>
+								<div class="writeFirstWrap">
+									<button class="openModalBtn writeFirst">이슈 작성하기</button>
+								</div>
 						</c:if>
-						<button class="openModalBtn write">글쓰기</button>
+						<!-- <button class="openModalBtn write">글쓰기</button> -->
 					</div>
 				</div>
 

@@ -3,8 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 
-   <div class="left-bar">
-      <h3 class="project_name">${pname}</h3>
+	<div class="left-bar">
+		<h3 class="project_name">
+			<c:if test="${pname.length()>=11 }">
+				<c:out value="${pname.substring(0,11) }..." />
+			</c:if>
+			<c:if test="${pname.length()<11 }">
+				<c:out value="${pname}" />
+		</c:if>
+		</h3>
       
       <h5>프로젝트</h5>
       <div class="left-bar-items">

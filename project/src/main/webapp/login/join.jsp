@@ -51,15 +51,17 @@
     	<div class="mt10">
 	   		<div>
 	   			<input type="checkbox" id="policyCheckbox" class="policy" name="policy" value="필수">
-	       		<label for="policy">  
-	        		<b>(필수)</b>서비스 이용약관,개인정보 처리방침
+	   			<label for="policy" class="policyLabel">  
+	        		<b class="require">(필수)</b>&nbsp;
+	        		<a href="policy.net" style="color:#7C00B6; text-decoration: dash ">
+	        		서비스 이용약관,개인정보 처리방침</a>에 동의합니다.
 	           	</label>
 			</div>
 			<br>
 			<div>
 	          	<input type="checkbox" id="benefits" class="benefits" name="benefits" value="선택">
-	            <label for="benefits">  
-	            	<b>(선택)</b>혜택 수신에 동의
+	            <label for="benefits" class="benefitsLabel">  
+	            	<b>(선택)</b>&nbsp;혜택 수신에 동의합니다.
 			    </label>
 			</div>
     	</div>

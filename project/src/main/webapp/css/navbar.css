@@ -10,6 +10,7 @@ body{margin: 0; min-width: 900px;}
 
 a{text-decoration: none;}
 .nav_bar{
+  position:relative;
   display: flex;
   justify-content:space-between;
   align-items: center;
@@ -19,6 +20,7 @@ a{text-decoration: none;}
   box-shadow: 0px 0px 0.2em rgb(159, 159, 159);
   margin-bottom: 0px;
   animation: fade_in 0.7s linear;
+  z-index: 2;
 }
 /* :root{--navbar-height: 60px;} */
 li{list-style: none;}
@@ -58,14 +60,16 @@ li{list-style: none;}
   display: inline-block;
 }
 
+.uicon-dropdown:hover{cursor: pointer;}
+
 .uicon-dropdown-item {
   display: none;
   right: -198px;
   width: 100px;
   height: 82px;
-  border: 1px solid #7C00B6;
+  border: 1.3px solid lightgrey;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 3px;
   position: absolute;
   z-index: 2;
 }
@@ -75,21 +79,23 @@ li{list-style: none;}
   box-sizing: border-box;
   margin: 0px;
   padding: 10px 0px;
-  border-radius: 5px;
   font-size: 14px;
   text-align: center;
   color: black;
   text-decoration:none;
 }
+.uicon-dropdown-item1{border-radius: 3px 3px 0px 0px;}
+.uicon-dropdown-item2{border-radius: 0px 0px 3px 3px;}
 
 .uicon-dropdown-item a:hover {
   cursor: pointer;
-  background-color: #E9D2F4;
+  background-color: #F2EFF3;
+  transition:.4s;
 }
 
-.uicon-dropdown:hover .uicon-dropdown-item {
+/* .uicon-dropdown:hover .uicon-dropdown-item {
   display: block;
   margin-right: 200px;
-}
+} */
 
 

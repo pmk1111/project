@@ -24,6 +24,14 @@ public class Member {
 	public String getGrade() {
 		return grade;
 	}
+	public String getGrade2() {
+		if (grade == null) {
+			grade = "normal";
+			return grade;
+		}else {
+			return grade;
+		}
+	}
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
@@ -42,17 +50,43 @@ public class Member {
 	public String getM_pic() {
 		return M_pic;
 	}
+	public String getM_pic2() {
+		
+		if (M_pic == null) {
+			return "img/profile3.png";
+		}else {
+			return "usrupload/"+M_pic;
+		}
+	}
 	public void setM_pic(String m_pic) {
 		M_pic = m_pic;
 	}
 	public String getM_tel() {
 		return M_tel;
 	}
+	
+	public String getM_tel2() {
+		if (M_tel == null) {
+			M_tel = "-";
+			return M_tel;
+		}else {
+			return M_tel;
+		}
+	}
+	
 	public void setM_tel(String m_tel) {
 		M_tel = m_tel;
 	}
 	public String getM_email() {
 		return M_email;
+	}
+	public String getM_email2() {
+		if (M_email == null) {
+			M_email = "-";
+			return M_email;
+		}else {
+			return M_email;
+		}
 	}
 	public void setM_email(String m_email) {
 		M_email = m_email;
