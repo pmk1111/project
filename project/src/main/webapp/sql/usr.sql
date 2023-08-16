@@ -35,4 +35,8 @@ VALUES (USR_SEQ.NEXTVAL, 'admin4', '1', 'lee@test.com', '이지은', '', '010-12
 insert into usr
 VALUES (USR_SEQ.NEXTVAL, 'c', '1', 'lee@test.com', '이지은', '', '010-1234-5678', 0);
 
+update USR
+set pic = 'user10.jpg'
+where id = 'admin'
+
 delete from usr where num = 1

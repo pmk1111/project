@@ -141,7 +141,7 @@ select.form-control {
 	text-align: center;
 	font-size: 35px;
 	font-weight: bold;
-	margin-top: 70px
+	margin-top: 10px
 }
 /* 프로젝트 테이블 */
 .row {
@@ -239,7 +239,7 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last {
 	border-style: none !important;
 	border-radius: 3px !important;
 	background-color: #8D52A9 !important;
-	margin-bottom: 30px !important;
+	margin-bottom: 10px !important;
 	font-size:16px !important;
 }
 
@@ -276,6 +276,7 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last {
 
 		<div class="content">
 			<div class="board-content">
+			
 				<div class="board-name">내 프로젝트</div>
 				<div class="project_item">
 					<c:if test="${listcount > 0 }">
