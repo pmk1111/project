@@ -131,7 +131,7 @@ textarea.comment-write-area-text {
 
 .comment-order{margin-top:10%;}
 .comment-order-list, .comment-list{padding:0px}
-.comment-order-list{margin-bottom:7%;}
+.comment-order-list{margin-bottom:20px;}
 .comment-order-list li{display:inline-block;}
 .comment-order-list li+li{margin-left:5%;}
 .re_submit + .re_cancel{margin-left: 10px;}

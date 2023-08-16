@@ -204,6 +204,8 @@
 								<p>아이디</p>
 								<input type="text" class="id" name="id" value="${usrinfo.id}"
 									readOnly>
+									<br>
+									<br>
 							</div>
 
 							<div class="p_pass">
@@ -228,6 +230,8 @@
 								<p>이름</p>
 								<input type="text" class="name" name="name"
 									value="${usrinfo.name}">
+									<br>
+									<br>
 							</div>
 
 							<div class="p_tel">
