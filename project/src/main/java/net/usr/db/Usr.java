@@ -48,6 +48,15 @@ public class Usr {
 	public String getPic() {
 		return pic;
 	}
+	
+	public String getPic2() {
+		if (pic ==null) {
+			return "img/profile3.png";
+		}else {
+			return "usrupload/"+pic;
+		}
+	}
+	
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
