@@ -80,13 +80,11 @@ input[type=text]:focus, input[type=password]:focus {
 	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
 	outline: none;
 }
- input[type="checkbox"], label {
-    font-size: xx-small; 
-  }
+
 .required{color:red;}
 /* .hr {
         display: flex;
-        flex-basis: 100%; 가로 방향으로 flex 컨테이너의 전체 너비를 차지
+        flex-basis: 100%; ���� �������� flex �����̳��� ��ü �ʺ� ����
         align-items: center;
         color: rgba(0, 0, 0, 0.35);
         font-size: 12px;
@@ -108,7 +106,7 @@ input[type=text]:focus, input[type=password]:focus {
 	   padding: 10px 30px;
 	   border: none;
 	   margin:0 auto; 
-	   cursor: pointer; /* 손가락 커서 모양 */ 
+	   cursor: pointer; /* �հ��� Ŀ�� ��� */ 
 	   float: left;
 	   width: 100%;
 	   height:45px;
@@ -118,7 +116,7 @@ input[type=text]:focus, input[type=password]:focus {
     padding: 10px 30px;
     margin: 8px 0;
     border: 1px solid black;
-    cursor: pointer; /* 손가락 커서 모양 */
+    cursor: pointer; /* �հ��� Ŀ�� ��� */
     width: 100%;
     
 }
@@ -152,14 +150,6 @@ b+div {
 h1 {
 	text-align: center
 }
-
-b {
-	width: 100%;
-	display: block;
-	margin-bottom:10px;
-}
-
-
 
 /* input[name=id]+span, input[name=email]+span {
 	position: relative;
@@ -213,6 +203,53 @@ input[type="checkbox"]:checked::after {
 	color:white;
 }
 
+.error{
+	color :red;
+	
+	
+}
+
+.bTxt{
+	    display: block;
+	    margin-top: 5px;
+	    margin-bottom: 5px;
+	}
+	
+	.formDiv div input[type=text]{
+		width : 80%;
+		height: 4em;
+		margin: 5px 0 10px 0;
+	}
+	
+	.formDiv div input[type=password]{
+		width : 80%; 
+		height: 4em;
+		margin: 5px 0 10px 0;
+	}
+	
+	.formDiv div button{
+		border-style: none;
+	    border-radius: 5px;
+	    background-color: #8D52A9;
+	    color: white;
+	    width: 17%;
+	    height: 3em;
+	    font-size: 15px;
+	    text-align: center;
+	    margin-left: 10px;
+	}
+	
+	.errMsg {
+		visibility:hidden;
+		color:red;
+	}
+	
+	mt10 {
+		margin-top : 10px;
+	}
+	
+	
+	
 
 /* .id + .id_check, .mail + .send_verify, .verify + .verify_check{
 	margin-left:10px;

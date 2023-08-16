@@ -40,6 +40,10 @@ public class ProjectListAction implements Action {
 		HttpSession session = request.getSession();
 		int usrnum = (int) session.getAttribute("usrNum");
 		
+		// 세션에있는 프로젝트 num, id 삭제
+		session.removeAttribute("pname"); 
+		session.removeAttribute("p_num"); 
+		
 		// 임시 번호
 //		int usrnum = 1;
 		

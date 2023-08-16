@@ -29,12 +29,7 @@ body {animation: fade_in 0.4s linear;}
 .content {animation: fade_in 0.6s linear; width:100%;}
 .header-search-btn {position: relative;top: -1px;}
 .header-search {box-sizing: content-box;}
-.left-bar-items>label {position: relative;top: 2.5px;}
 .logo {position: relative;top: -2.5px;}
-
-.left-bar {width: 260px;}
-
-.left-bar a {text-decoration: none;color: #8D52A9;}
 
 select.form-control {
 	width: auto;
@@ -95,7 +90,7 @@ margin:10px 0px;
 	background-color: #fff;
 	color: #000;
 }
-
+.board-name{text-align:center; font-size: 35px; font-weight: bold; margin-top:70px}
 /* 프로젝트 테이블 */
 .row {
   position:relative;
@@ -110,21 +105,20 @@ margin:10px 0px;
 }
 
 .project_item {
-	margin : 70px 70px 0px 70px;
+	margin : 0px 70px;
 	top : 50%;
 	trasform : translate(-50%, 0%);
 
 }
 
 
-
+.row.text-center {margin:60px 16px 0px 30px;}
 
 
 .pj_page {
     width: 100%;
-     margin: 25px auto;
+    margin-top: 40px;
     display: inline-block;
-
     text-align: center;
 
 }
@@ -172,7 +166,20 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
 	top:-2.2px;
 	margin-right:5px;
 }
+.newProject{text-align:center; margin-top: 30px;}
 
+.create_pj{display: inline-block;
+    width: 220px;
+    height: 40px;
+    color: white;
+    top:45px; padding-top:8px;
+    border-style: none;
+    border-radius: 3px;
+    background-color: #8D52A9;
+    margin-bottom: 20px;}
+
+ 
+.create_pj:hover{opacity: .7; transition:0.4s; text-decoration: none; color:white;}
 </style>
 </head>
 <body>
@@ -184,8 +191,8 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
 	<main>
 
 		<div class="content">
-
 			<div class="board-content">
+       		  <div class="board-name">내 프로젝트</div>
 				<div class ="project_item">
 					<c:if test="${listcount > 0 }">
 
@@ -284,13 +291,20 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
 					</c:if>
 					<!-- listcount>0 end -->
 					</div>
-					<br> <br>
 
 					<c:if test="${listcount == 0 }">
 						<h3 style="text-align: center">프로젝트를 생성해 주세요.</h3>
 					</c:if>
+					
+					<div class="newProject">
+					<a class="create_pj" href="ProjectCreate.pro" >
+										<span >새 프로젝트</span></a>
+					</div>  
 				</div>
+					
+					
 			</div>
+			
 
 	</main>
 </body>

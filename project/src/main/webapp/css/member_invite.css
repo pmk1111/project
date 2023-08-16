@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.meber_list_wrap>h2 {
+	display: block;
+	font-size: 1.5em;
+	margin-block-start: 0.83em;
+	margin-block-end: 0.83em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+
+.addMemberIntoProject {
+	margin: 70px 70px 30px 70px;
+}
+
+.addMemberIntoProject H2 {
+	text-align: center;
+}
+
+.addMemberInput {
+	position: relative;
+	width: 80%;
+	margin: 50px auto;
+}
+
+.addMemberInput h5{text-align: center; color:#a9a9a9;}
+.addMemberSearch {
+	width: 80%;
+	min-width: 300px;
+	height: 50px;
+	border: 1.5px solid lightgray;
+	border-radius: 3px;
+	margin-left: 10%;
+	padding: 0px 0px 0px 10px;
+	font-weight: 500
+}
+
+.addMemberBtn {
+	width: 80%;
+	min-width: 300px;
+	height: 50px;
+	border: 1.2px solid lightgray;
+	border-radius: 3px;
+	margin-left: 10%;
+	margin-top: 10px;
+	background-color: white;
+	border: 1.5px solid #8D52A9;
+	color: #8D52A9;
+	font-weight: 500;
+}
+
+.MemberList {
+	position:relative;
+	top:-20px;
+	width: 80%;
+	margin-left: 10%;
+}
+
+.SearchedMemberInfo {
+	width: 80%;
+	border-collapse: seperate;
+	/* margin-top: 10px; */
+	margin-left: 10%;
+	color: #454545;
+	font-weight: 500;
+}
+
+.SearchedMemberInfo tr {
+	height: 60px;
+	border-bottom: 1.5px solid lightgrey;
+}
+
+.trFirst {
+	color: #3B336D;
+}
+
+.SearchedMemberInfo tr:hover {
+	background-color: #F2EFF3;
+	transition: 0.4s;
+}
+
+.SearchedMemberInfo td {
+	width: 25%;
+	padding: 0px 0px 0px 10px;
+}
+
+.SearchedMemberInfo a {
+	color: #454545;
+}
+
+.SearchedMemberInfo a:hover {
+	cursor: pointer
+}

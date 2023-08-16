@@ -180,8 +180,7 @@ body {
 
 .filebox.bs3-primary label {
 	position: relative;
-	top: 4.2px;
-	height: 29px; color : #fff;
+	height: 32px;
 	background-color: #8D52A9;
 	border-color: #8D52A9;
 	color: #fff;

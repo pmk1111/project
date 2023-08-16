@@ -61,9 +61,6 @@ public class UsrFrontController extends javax.servlet.http.HttpServlet {
 		case "/usrDelete.net":
 			action = new UsrDeleteAction();
 			break;
-		case "/usrInfo.net":
-			action = new UsrInfoAction();
-			break;
 		case "/confirmEmail.net":
 			action = new ConfirmEmailAction();
 			break;

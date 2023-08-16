@@ -8,7 +8,6 @@
 <head>
 <title>회원정보수정</title>
 <link rel="stylesheet" href="css/navbar.css">
-<link rel="stylesheet" href="css/leftbar.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/edit_profile.css">
 
@@ -21,7 +20,7 @@
 			const inputfile = $(this).val().split('\\');
 			const filename = inputfile[inputfile.length - 1];
 
-			const pattern = /(gif|jpg|jpeg|png)$/i;
+			const pattern = /(gif|jpg|jpeg|png|svg)$/i;
 			console.log($(this).val());
 			if (pattern.test(filename)) {
 				$('.upload-name').val(filename);
@@ -34,7 +33,7 @@
 					$('#showImage > img').attr('src', this.result);
 				};
 			} else {
-				alert('이미지 파일(gif,jpg,jpeg,png)만 첨부 바랍니다.');
+				alert('이미지 파일(gif,jpg,jpeg,png,svg)만 첨부 바랍니다.');
 				$(this).val('')
 			}
 
@@ -169,7 +168,6 @@
 	</header>
 
 	<main>
-		<jsp:include page="/menu_bar/leftbar.jsp" />
 		<form name="editform" action="usrEditProcess.net" method="post"
 			enctype="multipart/form-data">
 			<div class="content">

@@ -28,23 +28,26 @@ public class MemberInviteProcessAction implements Action {
 		int pnum = (int) session.getAttribute("p_num");
 		System.out.println("inviteAction : " + pnum);	
 		
-		int result = mdao.memInvite(pnum, uNum);
+		int result = 0;
 		
-		if(result == 0) {
-			System.out.println("멤버 초대 실패입니다.");
-			ActionForward forward = new ActionForward();
-			forward.setRedirect(false);
-			request.setAttribute("message", "멤버 초대 실패입니다.");
-			forward.setPath("error/error.jsp");
-			return forward;
+		if (!mdao.isUserInProject(pnum, uNum)) {
+		    result = mdao.memInvite(pnum, uNum);
+		} else {
+		    result = -1; // 회원이 이미 프로젝트에 존재합니다.
 		}
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		if(result == 1) {
-			out.println("alert('멤버가 초대되었습니다..');");
-			out.println("location.href='MemberList.mem';");
+		    out.println("alert('멤버가 초대되었습니다..');");
+		    out.println("location.href='MemberList.mem';");
+		} else if(result == -1) {
+		    out.println("alert('해당 유저는 프로젝트에 이미 존재합니다.');");
+		    out.println("location.href='MemberList.mem';");
+		} else {
+		    out.println("alert('멤버 초대 실패입니다.');");
+		    out.println("location.href='MemberList.mem';");
 		}
 		out.println("</script>");
 		out.close();

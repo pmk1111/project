@@ -114,7 +114,7 @@ function getList(state){// 현재 정렬한 정렬방식 저장 1=등록순, 2=�
                         
                   output += '</div>'// comment-nick-area
                         + '</li>'// li.comment-list-item
-                        + ' <hr> '; 
+                        + '<li class="hr-item"><hr></li>'; 
                         
                })//each end
                
