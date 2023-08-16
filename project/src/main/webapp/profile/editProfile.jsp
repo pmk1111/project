@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/edit_profile.css">
 
 <script src="js/jquery-3.7.0.min.js"></script>
+
 <script>
 	
 	//프로필 이미지
@@ -159,6 +160,13 @@
 		})//function end
 	})
 	</script>
+	
+<style>
+.uicon-dropdown-item {
+	height: 73px;
+}
+</style>
+
 
 </head>
 <body>

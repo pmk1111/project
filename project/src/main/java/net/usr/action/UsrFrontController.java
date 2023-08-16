@@ -40,6 +40,9 @@ public class UsrFrontController extends javax.servlet.http.HttpServlet {
 	      case "/join.net":
 	         action = new UsrJoinAction();
 	         break;
+	      case "/policy.net":
+		         action = new PolicyAction();
+		         break;
 	      case "/idcheck.net":
 	         action = new UsrIdcheckAction();
 	         break;

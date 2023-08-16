@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인보드 : ${pname}</title>
 
 <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/leftbar.css">

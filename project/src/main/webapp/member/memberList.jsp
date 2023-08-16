@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/leftbar.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/memberList.css">
 <style>
 ul {
 	list-style-type: none;
@@ -60,6 +61,8 @@ li {
 .navbar {
 	margin-bottom: 0px;
 }
+
+.memberInfoDiscription{background-color: #F2EFF3}
 
 .meber_list_wrap>h2 {
 	display: block;
@@ -143,7 +146,7 @@ font-size:18px;
 
 
 					<div class="issue_title">
-					 <h3>${pname} 멤버리스트</h3>
+					 <h2 style="margin-bottom: 35px">프로젝트 멤버 목록</h2>
 					</div>
 					<hr>
                     <div class="member_total">
@@ -152,7 +155,7 @@ font-size:18px;
 
 						<table class="member_list">
 
-							<tr>
+							<tr class="memberInfoDiscription">
 								<th>프로필</th>
 								<th>이름</th>
 								<th>권한</th>
@@ -165,7 +168,7 @@ font-size:18px;
                                 
 								<c:forEach var="m" items="${memberlist}">
 									<tr>
-										<td><img class="pjImg" src="${m.m_pic2}" width="50" height="50"></td>
+										<td><img class="pjImg" src="${m.m_pic2}" width="45" height="45"></td>
 										<td>${m.m_name}</td>
 										<td>${m.grade2}</td>
 										<td>${m.m_tel2}</td>
