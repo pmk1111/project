@@ -286,6 +286,7 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last {
 
 							<div class="row text-center">
 								<!-- <div class="col-sm-4"> -->
+
 								<!-- <div class="thumbnail"> -->
 								<img class="pjImg" src="${p.p2_file}" width="150" height="150">
 								<!-- <p> -->
@@ -302,8 +303,9 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last {
 								<a class="goToMainboardbtn"
 									href="ProjectMainboard.pro?num=${p.p_num }" class="btn"> <span
 									class="goToMainboard">프로젝트 선택</span></a>
-								<!-- </div> -->
-								<!-- </div> -->
+						
+
+				
 							</div>
 						</c:forEach>
 
