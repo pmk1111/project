@@ -168,7 +168,7 @@ font-size:18px;
 										<td><img class="pjImg" src="${m.m_pic2}" width="50" height="50"></td>
 										<td>${m.m_name}</td>
 										<td>${m.grade2}</td>
-										<td>${m.m_tel}</td>
+										<td>${m.m_tel2}</td>
 										<td>${m.m_email2}</td>
 									</tr>
 								</c:forEach>
