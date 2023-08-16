@@ -88,7 +88,7 @@ li {
 							<table class="SearchedMemberInfo">
 								<c:forEach var="user" items="${userList}">
 									<tr>
-										<td><img src="usrupload/${user.pic}" alt="유저 사진"
+										<td><img src="${user.pic2}" alt="유저 사진"
 												 style="width:45px; height:45px; border-radius:3px;"></td>
 										<td>${user.name}</td>
 										<td><a>${user.id}</a></td>

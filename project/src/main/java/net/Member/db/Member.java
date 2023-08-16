@@ -51,6 +51,7 @@ public class Member {
 		return M_pic;
 	}
 	public String getM_pic2() {
+		
 		if (M_pic == null) {
 			return "img/profile3.png";
 		}else {

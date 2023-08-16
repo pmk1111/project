@@ -9,6 +9,7 @@ public class Usr {
 	private String tel;
 	private String pic;
 	private String status;
+	
 	public int getNum() {
 		return num;
 	}
