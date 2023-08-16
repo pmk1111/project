@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>멤버초대</title>
+<title>팀원 초대하기 : ${pname}</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -81,7 +81,7 @@ li {
 								maxlength="20" placeholder="초대할 유저 정보를 입력하세요."
 								autocomplete="off" data-gtm-form-interact-field-id="1">
 							<br> <input class="addMemberBtn" type="submit" value="초대하기">
-							<br><br><h5>초대할 유저의 아이디를 클릭하세요</h5>
+							<br><br><h5>입력 후 초대할 유저의 아이디를 클릭하세요</h5>
 						</div>
 							
 						<div class="MemberList">

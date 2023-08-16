@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>프로젝트 수정</title>
+<title>프로젝트 설정 : ${pname}</title>
 <jsp:include page ="header.jsp"/>
 <link rel="stylesheet" href="css/modify_pj.css">
 

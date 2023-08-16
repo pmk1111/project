@@ -159,7 +159,11 @@
 		})//function end
 	})
 	</script>
-
+<style>
+.uicon-dropdown-item {
+    height: 73px;
+}
+</style>
 </head>
 <body>
 	<header>

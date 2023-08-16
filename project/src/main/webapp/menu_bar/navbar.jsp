@@ -36,8 +36,8 @@ $(document).ready(function() {
     <div class="nav_bar">
       <a href="ProjectList.pro"><img class="logo" src="img/mainlogo.svg" alt="메인 로고"></a>
       <div id="search">
-        <input class="header-search" type="text" name="search" id="search" />
-        <button class="header-search-btn">검색</button>
+       <!--  <input class="header-search" type="text" name="search" id="search" />
+        <button class="header-search-btn">검색</button> -->
       </div>
 
       <ul class="nav_icon">
