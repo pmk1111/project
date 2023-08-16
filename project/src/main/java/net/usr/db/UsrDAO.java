@@ -158,43 +158,27 @@ public class UsrDAO {
 
 	public int insert(Usr u) {
 
-	    int result = 0;
+	      int result = 0; // DB에 해당 id가 없습니다.
+	      String sql = "INSERT INTO usr (num, id, pass, email, name, pic, tel, status) "
+	            + " VALUES(usr_seq.nextval, ?, ?, ?, ?, ?, ?, 0)";
 
-	    String sql = "UPDATE usr SET pic = ?, pass = ?, email = ?, name = ?, tel = ? WHERE id = ?";
+	      try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql);) {
 
-	    String memsql = "UPDATE member "
-	                  + "SET M_pic = ?, M_email = ?, M_name = ?, M_tel = ? "
-	                  + "WHERE num IN (SELECT num FROM usr WHERE id = ?)";
+	         pstmt.setString(1, u.getId());
+	         pstmt.setString(2, u.getPass());
+	         pstmt.setString(3, u.getEmail());
+	         pstmt.setString(4, u.getName());
+	         pstmt.setString(5, u.getPic());
+	         pstmt.setString(6, u.getTel());
 
-	    try (Connection con = ds.getConnection();
-	         PreparedStatement pstmt = con.prepareStatement(sql);
-	         PreparedStatement mempstmt = con.prepareStatement(memsql);) {
+	         result = pstmt.executeUpdate(); // 삽입성공시 result는 1
 
-	        con.setAutoCommit(false); // 오토 커밋 기능 비활성화
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
 
-	        pstmt.setString(1, u.getPic());
-	        pstmt.setString(2, u.getPass());
-	        pstmt.setString(3, u.getEmail());
-	        pstmt.setString(4, u.getName());
-	        pstmt.setString(5, u.getTel());
-	        pstmt.setString(6, u.getId());
-	        result = pstmt.executeUpdate();
-
-	        mempstmt.setString(1, u.getPic());
-	        mempstmt.setString(2, u.getEmail());
-	        mempstmt.setString(3, u.getName());
-	        mempstmt.setString(4, u.getTel());
-	        mempstmt.setString(5, u.getId());
-	        mempstmt.executeUpdate();
-
-	        con.commit(); // 롤백이 불필요한 경우 커밋 수행
-
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-
-	    return result;
-	}
+	      return result;
+	   }
 
 	public int isId(String id, String pass) {
 		int result = -1;// 아이디가 존재하지 않습니다.
