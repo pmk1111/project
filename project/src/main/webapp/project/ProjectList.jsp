@@ -204,6 +204,7 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
 									<!-- <div class="thumbnail"> -->
 										<img class="pjImg" src="${p.p2_file}" width="150" height="150">
 										<!-- <p> -->
+										<div>
 											<strong class="pjName"> 
 												<c:if test="${p.p_name.length() >= 20 }">
 													<c:out value="${p.p_name.substring(0,20)}..." />
@@ -211,7 +212,7 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last{
 												    <c:if test="${p.p_name.length() < 20 }">
 													<c:out value="${p.p_name }" />
 												</c:if>
-											</strong>
+											</strong></div>
 										<!-- </p> -->
 										<p>${p.p_created }</p>
 										
