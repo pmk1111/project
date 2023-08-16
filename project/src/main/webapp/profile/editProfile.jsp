@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/edit_profile.css">
 
 <script src="js/jquery-3.7.0.min.js"></script>
+
 <script>
 	
 	//프로필 이미지
@@ -159,6 +160,13 @@
 		})//function end
 	})
 	</script>
+	
+<style>
+.uicon-dropdown-item {
+	height: 73px;
+}
+</style>
+
 
 </head>
 <body>
@@ -204,6 +212,8 @@
 								<p>아이디</p>
 								<input type="text" class="id" name="id" value="${usrinfo.id}"
 									readOnly>
+									<br>
+									<br>
 							</div>
 
 							<div class="p_pass">
@@ -228,6 +238,8 @@
 								<p>이름</p>
 								<input type="text" class="name" name="name"
 									value="${usrinfo.name}">
+									<br>
+									<br>
 							</div>
 
 							<div class="p_tel">

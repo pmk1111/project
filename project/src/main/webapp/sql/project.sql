@@ -32,3 +32,13 @@ VALUES (pro_seq.nextval, '프로젝트C', '완료', '2023-06-15', '2023-11-30', 
 
 DELETE FROM project WHERE p_num = 120
 
+SELECT *
+FROM (SELECT ROWNUM rnum, j.*
+      FROM (SELECT p.* 
+            FROM project p
+            JOIN member m ON p.p_num = m.p_num
+            WHERE m.num = 38
+            ORDER BY p.p_num DESC) j
+      WHERE ROWNUM <= 7)
+WHERE rnum BETWEEN 1 AND 7;
+

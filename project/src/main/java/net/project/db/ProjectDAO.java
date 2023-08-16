@@ -117,14 +117,14 @@ public class ProjectDAO {
 	public List<Project> getProjectList(int usrnum, int page, int limit) {
 
 		String sql = "SELECT * " 
-					+ "FROM (" 
-					+ "      SELECT ROWNUM rnum, p.* " 
-					+ "      FROM project p "
-					+ "      JOIN member m ON p.p_num = m.p_num " 
-					+ "      WHERE m.num = ? "
-					+ "      ORDER BY p.p_num DESC " 
-					+ "     ) " 
-					+ "WHERE rnum BETWEEN ? AND ?";
+				   + "FROM (SELECT ROWNUM rnum, j.* "
+				   + "		FROM (SELECT p.* " 
+				   + "      	  FROM project p "
+				   + "      	  JOIN member m ON p.p_num = m.p_num " 
+				   + "      	  WHERE m.num = ? "
+				   + "      	  ORDER BY p.p_num DESC) j "
+				   + "		WHERE ROWNUM <= ?) " 
+				   + "WHERE rnum BETWEEN ? AND ?";
 
 		List<Project> list = new ArrayList<Project>();
 
@@ -135,8 +135,9 @@ public class ProjectDAO {
 				PreparedStatement pstmt = con.prepareStatement(sql);) {
 
 			pstmt.setInt(1, usrnum);
-			pstmt.setInt(2, startrow);
-			pstmt.setInt(3, endrow);
+			pstmt.setInt(2, endrow);
+			pstmt.setInt(3, startrow);
+			pstmt.setInt(4, endrow);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 

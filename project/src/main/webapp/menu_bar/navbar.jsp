@@ -1,6 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<script>
+$(document).ready(function() {
+    const userIconDrop = $(".uicon-dropdown");
+    const userDropItems = $(".uicon-dropdown-item");
+
+    let isDropdownVisible = false; // Track the visibility state
+
+    userIconDrop.on("click", function() {
+        if (isDropdownVisible) {
+            userDropItems.slideUp(250, function() {
+                userDropItems.css("margin-right", "0px");
+                isDropdownVisible = false;
+            });
+        } else {
+            userDropItems.css("margin-right", "200px");
+            userDropItems.slideDown(250, function() {
+                isDropdownVisible = true;
+            });
+        }
+    });
+});
+
+</script>
+
 
 <style>
     ul {list-style-type: none;}
@@ -24,8 +48,8 @@
           <div class="uicon-dropdown">
             <img class="nav_img" src="img/usericon.png">
             <div class="uicon-dropdown-item">
-              <a id="mypage" href="usrEdit.net">마이페이지</a>
-              <a id="logout" href="logout.net">로그아웃</a>
+              <a class="uicon-dropdown-item1" id="mypage" href="usrEdit.net">마이페이지</a>
+              <a class="uicon-dropdown-item2" id="logout" href="logout.net">로그아웃</a>
             </div>
           </div>
         </li>

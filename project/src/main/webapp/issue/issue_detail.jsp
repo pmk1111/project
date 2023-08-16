@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시글 : ${issuedata.i_title}</title>
 
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -30,15 +30,6 @@
 <!-- <script src="js/board_detail.js"></script> -->
 
 <script>
-/* 상세보기 드롭다운 아이템 클릭 시, info_dropdown_item의 display none 해제 */
-/* $(document).ready(function() {
-  const infoDownWrap = $(".info_down_wrap");
-  const infoDropdownItem = $(".info_dropdown_item");
-
-  infoDownWrap.on("click", function() {
-    infoDropdownItem.slideToggle();
-  });
-}); */
 
 $(document).ready(function() {
 	  const infoDownWrap = $(".info_down_wrap");
@@ -51,20 +42,6 @@ $(document).ready(function() {
 	      infoDropdownItem.slideDown(400);
 	    }
 	  });
-	  
-	/*   const edDelIcon = $(".ed_del_dropdown_icon");
-	  const edDelItem = $(".ed_del_dropdown_item");
-	  
-	  edDelIcon.on("click", function() {
-		  console.log("Clicked on edDelIcon");
-		  if (edDelItem.is(":visible")) {
-		    console.log("Dropdown item is visible. Sliding up.");
-		    edDelItem.slideUp(400);
-		  } else {
-		    console.log("Dropdown item is hidden. Sliding down.");
-		    edDelItem.slideDown(400);
-		  }
-	  }); */
 	});
 </script>
 

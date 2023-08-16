@@ -39,15 +39,26 @@ public class Usr {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
 	public String getTel() {
 		return tel;
 	}
+	
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public String getPic() {
 		return pic;
 	}
+	
+	public String getPic2() {
+		if (pic ==null) {
+			return "img/profile3.png";
+		}else {
+			return "usrupload/"+pic;
+		}
+	}
+	
 	public void setPic(String pic) {
 		this.pic = pic;
 	}

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이슈 게시판</title>
+<title>프로젝트 멤버 : ${pname}</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/leftbar.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/memberList.css">
 <style>
 ul {
 	list-style-type: none;
@@ -60,6 +61,8 @@ li {
 .navbar {
 	margin-bottom: 0px;
 }
+
+.memberInfoDiscription{background-color: #F2EFF3}
 
 .meber_list_wrap>h2 {
 	display: block;
@@ -143,7 +146,7 @@ font-size:18px;
 
 
 					<div class="issue_title">
-					 <h3>${pname} 멤버리스트</h3>
+					 <h2 style="margin-bottom: 35px">프로젝트 멤버 목록</h2>
 					</div>
 					<hr>
                     <div class="member_total">
@@ -152,13 +155,12 @@ font-size:18px;
 
 						<table class="member_list">
 
-							<tr>
-								<th>권한</th>
+							<tr class="memberInfoDiscription">
+								<th>프로필</th>
 								<th>이름</th>
-								<th>사진</th>
-								<th>번호</th>
+								<th>권한</th>
+								<th>연락처</th>
 								<th>이메일</th>
-
 							</tr>
 
 							
@@ -166,11 +168,11 @@ font-size:18px;
                                 
 								<c:forEach var="m" items="${memberlist}">
 									<tr>
-										<td>${m.grade}</td>
+										<td><img class="pjImg" src="${m.m_pic2}" width="45" height="45"></td>
 										<td>${m.m_name}</td>
-										<td>${m.m_pic}</td>
-										<td>${m.m_tel}</td>
-										<td>${m.m_email}</td>
+										<td>${m.grade2}</td>
+										<td>${m.m_tel2}</td>
+										<td>${m.m_email2}</td>
 									</tr>
 								</c:forEach>
 							
@@ -214,7 +216,7 @@ font-size:18px;
 
 						</c:if>
 						<c:if test="${listcount ==0 }">
-					<h3 style="color:lightgrey;">등록 된 글이 없습니다.</h3>
+					<h3 style="color:lightgrey;">유저가 존재하지 않습니다.</h3>
 				</c:if>
 				</div>
 						

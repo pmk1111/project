@@ -98,7 +98,7 @@ function kakaoLogout() {
 			name="pass" maxlength="20" required>
 		<p class="find_pw">비밀번호 찾기</p>
 		<button type="submit" class="login_submit" name="login_submit">로그인</button>
-		<p class="auto_login_text">자동 로그인</p>
+		<p class="auto_login_text">아이디 기억하기</p>
 		<input type="checkbox" class="auto_login" name="auto_login">
 		<div class="hr">
 			<span>또는</span>
