@@ -1,7 +1,6 @@
 DROP TABLE MEMBER CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE MEMBER (
-
 p_num				NUMBER,	-- 프로젝트 식별번호
 num					NUMBER,			-- 유저 식별번호
 grade				varchar2(50),		-- 유저 권한
@@ -90,3 +89,13 @@ WHERE num IN (SELECT num FROM usr WHERE id = 38)
 update member
 set M_pic = 'user10.jpg'
 where M_id = 'admin'
+
+SELECT *
+FROM ( SELECT rownum rnum, j.*
+       FROM ( SELECT m.* 
+              FROM member m 
+              JOIN project p ON m.p_num = p.p_num 
+              WHERE p.p_num = 12 
+              ORDER BY m.grade asc ) j
+      WHERE rownum <= 10) 
+WHERE rnum BETWEEN 1 AND 10;
