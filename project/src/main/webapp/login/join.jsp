@@ -50,6 +50,7 @@
     	  
     	<div class="mt10">
 	   		<div>
+	   			<input type="checkbox" id="policyCheckbox" class="policy" name="policy" value="필수">
 	   			<label for="policy" class="policyLabel">  
 	        		<b class="require">(필수)</b>&nbsp;
 	        		<a href="policy.net" style="color:#7C00B6; text-decoration: dash ">

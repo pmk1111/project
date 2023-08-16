@@ -5,10 +5,10 @@
 
 	<div class="left-bar">
 		<h3 class="project_name">
-			<c:if test="${pname.length()>=13 }">
-				<c:out value="${pname.substring(0,13) }..." />
+			<c:if test="${pname.length()>=11 }">
+				<c:out value="${pname.substring(0,11) }..." />
 			</c:if>
-			<c:if test="${pname.length()<13 }">
+			<c:if test="${pname.length()<11 }">
 				<c:out value="${pname}" />
 		</c:if>
 		</h3>
