@@ -64,7 +64,7 @@ li {
 
 .memberInfoDiscription{background-color: #F2EFF3}
 
-.meber_list_wrap>h2 {
+/* .meber_list_wrap>h2 {
 	display: block;
 	font-size: 1.5em;
 	margin-block-start: 0.83em;
@@ -72,8 +72,8 @@ li {
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	font-weight: bold;
-}
-td:nth-child(2){
+} */
+/* td:nth-child(2){
 border-bottom:1px solid gray;
 padding:10px;
 color:rgb(116, 0, 137);
@@ -123,7 +123,7 @@ font-size:18px;
 .issue_list_wrap{
  margin-left:20px;
 
-}
+} */
 </style>
 
 </head>
@@ -142,13 +142,12 @@ font-size:18px;
 
 			<div class="board-content">
 
-				<div class="issue_list_wrap">
+				<div class="member_list_wrap">
 
 
 					<div class="issue_title">
 					 <h2 style="margin-bottom: 35px">프로젝트 멤버 목록</h2>
 					</div>
-					<hr>
                     <div class="member_total">
 					<c:if test="${listcount > 0 }">
 
