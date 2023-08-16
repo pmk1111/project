@@ -62,17 +62,17 @@ span[class=req]{color: red;}
 #issue_btn{text-align: center;}
 #issue_submit_btn{
   border-style: none;
-  border-radius: 5px;
-  background-color: rgb(116, 0, 137);
+  border-radius: 3px;
+  background-color: #8D52A9;
   color: white;
   width: 100px; height:40px; 
 }
 
 #close_modal_btn{
-  border:1px solid rgb(116, 0, 137);
-  border-radius: 5px;
+  border:1px solid #8D52A9;
+  border-radius: 3px;
   background-color: white;
-  color: rgb(116, 0, 137);
+  color: #8D52A9;
   width: 100px; height:40px; 
 
 }
