@@ -63,7 +63,7 @@ li {
 }
 
 .memberInfoDiscription{background-color: #F2EFF3}
-
+.member_list_wrap{margin:70px 0px 0px 70px;}
 /* .meber_list_wrap>h2 {
 	display: block;
 	font-size: 1.5em;

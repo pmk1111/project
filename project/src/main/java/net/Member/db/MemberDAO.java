@@ -59,13 +59,13 @@ public class MemberDAO {
 	public List<Member> getMemberList(int pnum, int page, int limit) {
 		
 		String sql = "SELECT * "
-				   + "FROM ( "
-				   + "		 SELECT ROWNUM rnum, m.* "
-				   + "		 FROM member m " 
-				   + "		 JOIN project p ON m.p_num = p.p_num "
-				   + "		 WHERE p.p_num = ? "
-				   + "		 ORDER BY m.num desc "
-				   + "		) "
+				   + "FROM ( SELECT rownum rnum, j.* "
+				   + "       FROM ( SELECT m.*"
+				   + "              FROM member m " 
+				   + "              JOIN project p ON m.p_num = p.p_num  "
+				   + "              WHERE p.p_num = ? "
+				   + "              ORDER BY m.grade asc ) j "
+				   + "      WHERE rownum <= ?) "
 				   + "WHERE rnum BETWEEN ? AND ? ";
 
 	List<Member> list = new ArrayList<Member>();
@@ -76,8 +76,9 @@ public class MemberDAO {
 		 PreparedStatement pstmt = con.prepareStatement(sql);) {
 
 		pstmt.setInt(1, pnum);
-		pstmt.setInt(2, startrow);
-		pstmt.setInt(3, endrow);
+		pstmt.setInt(2, endrow);
+		pstmt.setInt(3, startrow);
+		pstmt.setInt(4, endrow);
 
 		try (ResultSet rs = pstmt.executeQuery()) {
 
