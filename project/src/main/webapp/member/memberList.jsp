@@ -153,12 +153,11 @@ font-size:18px;
 						<table class="member_list">
 
 							<tr>
-								<th>권한</th>
+								<th>프로필</th>
 								<th>이름</th>
-								<th>사진</th>
-								<th>번호</th>
+								<th>권한</th>
+								<th>연락처</th>
 								<th>이메일</th>
-
 							</tr>
 
 							
@@ -166,11 +165,11 @@ font-size:18px;
                                 
 								<c:forEach var="m" items="${memberlist}">
 									<tr>
-										<td>${m.grade}</td>
+										<td><img class="pjImg" src="${m.m_pic2}" width="50" height="50"></td>
 										<td>${m.m_name}</td>
-										<td>${m.m_pic}</td>
-										<td>${m.m_tel}</td>
-										<td>${m.m_email}</td>
+										<td>${m.grade2}</td>
+										<td>${m.m_tel2}</td>
+										<td>${m.m_email2}</td>
 									</tr>
 								</c:forEach>
 							
@@ -214,7 +213,7 @@ font-size:18px;
 
 						</c:if>
 						<c:if test="${listcount ==0 }">
-					<h3 style="color:lightgrey;">등록 된 글이 없습니다.</h3>
+					<h3 style="color:lightgrey;">유저가 존재하지 않습니다.</h3>
 				</c:if>
 				</div>
 						
