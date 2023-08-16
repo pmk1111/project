@@ -39,9 +39,11 @@ public class Usr {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
 	public String getTel() {
 		return tel;
 	}
+	
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
