@@ -14,7 +14,7 @@ public class privatePolicyAction implements Action {
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("login/privatePolicy.jsp");
+		forward.setPath("login/PrivatePolicy.jsp");
 		return forward;
 	}
 
