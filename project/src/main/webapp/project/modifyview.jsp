@@ -95,5 +95,26 @@
   		</div> 
  	</main>
 </form>
+<script>
+
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('p_start').setAttribute('min', today);
+document.getElementById('p_closing').setAttribute('min', today);
+
+function updateEndDateMin() {
+  const startDateInput = document.getElementById('p_start');
+  const endDateInput = document.getElementById('p_closing');
+
+  const selectedStartDate = new Date(startDateInput.value);
+  endDateInput.setAttribute('min', selectedStartDate.toISOString().split('T')[0]);
+}
+
+function selectProjectStartDate() {
+  const startDate = document.querySelector("#p_start").value;
+  console.log(startDate);
+}
+
+
+  </script>
 </body>
 </html>

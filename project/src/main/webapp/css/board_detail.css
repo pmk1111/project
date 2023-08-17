@@ -154,7 +154,7 @@ textarea.comment-write-area-text {
 .comment-text-view{font-size:13px; margin: 5px 0px;   top: 7px;
     position: relative;}
 .comment-info-box:hover, .comment-tool:hover{text-decoration: none;} 
-.comment-info-date{position:relative; top:-5px; padding-left:10px; zoom:0.8; font-size:10px; color:lightgray;}
+.comment-info-date{position:relative; top:-5px; padding-left:10px; zoom:0.8; font-size:11px; color:rgb(173, 173, 173); font-weight: 500}
 .comment-nick-area{margin-bottom:28px;}
 .comment-nickname{font-size:13px;}
 hr{margin-top:40px; margin-bottom:20px;}

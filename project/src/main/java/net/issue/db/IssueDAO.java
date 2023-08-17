@@ -96,7 +96,6 @@ public class IssueDAO {
 							  + "		 order by i.i_seq desc "
 							  + "		) "
 							  + "WHERE rnum BETWEEN ? AND ?";
-		/*String issue_list_sql = " select * from issue order by issue_num desc ";*/
 		int startrow = (page - 1) * limit + 1; // 읽기 시작할 row 번호 (1 11 21 31 ...
 		int endrow = startrow + limit - 1; // 읽을 마지막 row 번호 (10 20 30 40 ...
 		try (Connection con = ds.getConnection(); PreparedStatement pstmt = con.prepareStatement(issue_list_sql);) {

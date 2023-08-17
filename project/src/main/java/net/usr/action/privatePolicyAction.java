@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class PolicyAction implements Action {
+public class privatePolicyAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -14,7 +14,7 @@ public class PolicyAction implements Action {
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("login/policy.jsp");
+		forward.setPath("login/PrivatePolicy.jsp");
 		return forward;
 	}
 
