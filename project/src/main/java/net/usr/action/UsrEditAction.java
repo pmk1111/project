@@ -22,8 +22,8 @@ public class UsrEditAction implements Action {
 		Usr u = dao.usr_info(id);
 		
 		// 세션에있는 프로젝트 num, id 삭제
-		session.removeAttribute("pname"); 
-		session.removeAttribute("p_num"); 
+//		session.removeAttribute("pname"); 
+//		session.removeAttribute("p_num"); 
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("profile/editProfile.jsp");

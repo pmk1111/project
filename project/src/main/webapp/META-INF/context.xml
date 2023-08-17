@@ -17,6 +17,7 @@ url = "jdbc:oracle:thin:@175.192.130.123:1521:xe"
 url = "jdbc:oracle:thin:@127.0.0.1:1521:xe"
 password = "TIGER"
 url = "jdbc:oracle:thin:@175.192.130.123:1521:xe"
+url = "jdbc:oracle:thin:@192.168.0.21:1521:xe" >> 서버 터져쓸 때 학
 password = "tiger"
 1. name = "jdbc/OracleDB"
 	JNDI로 호출될 이름을 설정하는 곳으로 임의로 이름 설정 가능합니다.
