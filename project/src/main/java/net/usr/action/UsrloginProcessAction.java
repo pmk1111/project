@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,9 +29,30 @@ public class UsrloginProcessAction implements Action {
 	         HttpSession session = request.getSession();
 	         session.setAttribute("id", id);
 	         
+	         
+	         
+	         
+	         String IDStore = request.getParameter("remember");
+				Cookie cookie = new Cookie("id", id);
+				
+				//id 기억하기 체크 시
+				if(IDStore != null && IDStore.equals("store")) {
+					cookie.setMaxAge(60*60);
+					response.addCookie(cookie);
+					System.out.println("쿠키 확인");
+				} else {
+					cookie.setMaxAge(0);
+					response.addCookie(cookie);
+				}
+	         
+	         
+	         
+	         
+	         
+	         
 	 		// UserDao를 사용하여 사용자의 num 값을 가져옵니다.
 	 		UsrDAO dao = new UsrDAO();
-	 		
+	 			
 	 		// 세션에 usrnum 저장
 	 		int usrNum = dao.getUserNum(id);
 	 		System.out.println("usrNum = " + usrNum);
