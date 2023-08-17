@@ -268,33 +268,41 @@ function validationcheck() {
 
     if (isChkId !== "Y") {
         alert('아이디를 확인하세요.');
+        $("#userId").focus();
         return false;
     }
 
     if (isChkPassword !== "Y") {
         alert('비밀번호를 확인하세요.');
+        $("#password").focus();
         return false;
+
     }
 
     if (isChkName !== "Y") {
         alert('이름을 확인하세요.');
+        $("#userName").focus();
         return false;
     }
 
     if (isChkPassword2 !== "Y") {
         alert('비밀번호를 다시 확인하세요.');
+        $("#password").focus();
         return false;
     } 
     if (isChkEmail !== "Y") {
         alert('이메일을 확인하세요');
+        $("#email").focus();
         return false;
     } 
     if (isChkverify !== "Y") {
         alert('인증번호를 확인하세요');
+        $("#verify").focus();
         return false;
     } 
     if ($("#policyCheckbox").is(":checked") != true) {
         alert('서비스 이용약관 동의는 필수입니다.');
+        $("#policyCheckbox").focus();
         return false;
     } 
     
