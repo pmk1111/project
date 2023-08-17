@@ -200,7 +200,7 @@ font-size:18px;
 								</c:if>
 								<c:if test="${a !=page}">
 
-									<a href="IssueList.bo?page=${a}" class="num">${a}</a>
+									<a href="MemberList.mem?page=${a}" class="num">${a}</a>
 								</c:if>
 							</c:forEach>
 							<c:if test="${page >= maxpage }">
