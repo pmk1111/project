@@ -24,8 +24,7 @@ public class CommentUpdate implements Action{
 		co.setC_num(Integer.parseInt(request.getParameter("num")));
 		System.out.println("content="+co.getC_content());
 	
-		request.setCharacterEncoding("UTF-8");
-
+		
 
 		int ok = dao.commentsUpdate(co);
 		response.getWriter().print(ok);

@@ -33,7 +33,7 @@ public class UsrjoinProcessAction implements Action {
 		UsrDAO udao= new UsrDAO();
 		
 		int result=udao.insert(u);
-		
+		System.out.println(result);
 		//result=0;
 		if(result==0) {
 			System.out.println("회원 가입 실패입니다.");
