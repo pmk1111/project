@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.innerSection{
+	width:80%; min-width: 800px;
+	margin:0 auto;
+}
+.innerSection h2{font-size: 50px; margin: 70px 0px 50px 0px; color:#2e2e2e;}
+.innerSection strong{display:block; margin-bottom:70px; color:#3b3b3b;}
+.innerSection li{margin-bottom:30px; float: left}
+.innerSection ul{line-height: 25px; color:#6a6a6a;}
+.innerSection p{line-height: 25px; color:#6a6a6a; margin-bottom: 20px}
+.innerSection b{line-height: 25px}
+.innerSection table{border:1.3px solid #6a6a6a; border-collapse: collapse; border-color: #6a6a6a; color:#6a6a6a; text-align: center; width:500px;}
+.innerSection th, td{border:1.3px solid #6a6a6a; height: 45px}
+.innerSection a{padding: 5px}
