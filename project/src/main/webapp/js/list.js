@@ -18,8 +18,7 @@ function ajax(sdata){
         dataType:"json",
         cache:false,
         success : function(data){
-			/*$("#viewcount").val(data.limit);
-		*/
+
 			if(data.listcount >0){
 				
 				$("tbody").remove();
