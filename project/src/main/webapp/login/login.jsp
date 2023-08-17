@@ -13,6 +13,16 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
+
+<script>
+$(function() {
+	const id = "${id}";
+	if (id) {
+		$("#id").val(id);
+		$("#remember").prop('checked', true);
+	}
+});
+</script>
 <script>
 $(document).ready(function () {
 	
@@ -98,8 +108,8 @@ function kakaoLogout() {
 			name="pass" maxlength="20" required>
 		<p class="find_pw">비밀번호 찾기</p>
 		<button type="submit" class="login_submit" name="login_submit">로그인</button>
-		<p class="auto_login_text">아이디 기억하기</p>
-		<input type="checkbox" class="auto_login" name="auto_login">
+		<p class="remember_text">아이디 기억하기</p>
+		<input type="checkbox" id="remember" name="remember" value="store">
 		<div class="hr">
 			<span>또는</span>
 		</div>

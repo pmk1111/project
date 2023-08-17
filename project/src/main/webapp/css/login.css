@@ -244,15 +244,19 @@ a {
 	font-size:13px;
 }
 
-.auto_login_text {
+.remember_text {
 	display: inline-block;
 	margin: 5px 0px 3px 0px;
 	color: #8D52A9;
 	font-size: 13px;
 }
 
-.auto_login {
+#remember {
+	position:relative;
 	border-color: #8D52A9;
-	margin-left: 10px;
+	margin-left: 5px;
+	top:2px;
+	accent-color:#8D52A9;
 }
+
 
