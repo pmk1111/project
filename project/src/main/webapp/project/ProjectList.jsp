@@ -279,33 +279,40 @@ a.bt.first, a.bt.prev, a.bt.next, a.bt.last {
 			
 				<div class="board-name">내 프로젝트</div>
 				<div class="project_item">
+				
+				
 					<c:if test="${listcount > 0 }">
 
-						<!-- 가져온 projectlist 정의 -->
 						<c:forEach var="p" items="${projectlist}">
 
 							<div class="row text-center">
-								<!-- <div class="col-sm-4"> -->
-								<!-- <div class="thumbnail"> -->
+								
 								<img class="pjImg" src="${p.p2_file}" width="150" height="150">
-								<!-- <p> -->
-								<strong class="pjName"> <c:if
-										test="${p.p_name.length() >= 20 }">
+								
+								<strong class="pjName"> 
+									
+									<c:if test="${p.p_name.length() >= 20 }">
 										<c:out value="${p.p_name.substring(0,20)}..." />
-									</c:if> <c:if test="${p.p_name.length() < 20 }">
+									</c:if> 
+									
+									<c:if test="${p.p_name.length() < 20 }">
 										<c:out value="${p.p_name }" />
 									</c:if>
+									
 								</strong>
-								<!-- </p> -->
+								
 								<p>${p.p_created }</p>
 
 								<a class="goToMainboardbtn"
-									href="ProjectMainboard.pro?num=${p.p_num }" class="btn"> <span
-									class="goToMainboard">프로젝트 선택</span></a>
-								<!-- </div> -->
-								<!-- </div> -->
+									href="ProjectMainboard.pro?num=${p.p_num }" class="btn"> 
+									<span class="goToMainboard">프로젝트 선택</span></a>
+									
 							</div>
+							
 						</c:forEach>
+
+
+
 
 						<%-- <div class="center-block">
 							<ul class="pagination justify-content-center">

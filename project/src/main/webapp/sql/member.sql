@@ -1,8 +1,8 @@
 DROP TABLE MEMBER CASCADE CONSTRAINTS PURGE;
 
 CREATE TABLE MEMBER (
-p_num				NUMBER,	-- 프로젝트 식별번호
-num					NUMBER,			-- 유저 식별번호
+p_num				NUMBER,				-- 프로젝트 식별번호
+num					NUMBER,				-- 유저 식별번호
 grade				varchar2(50),		-- 유저 권한
 M_id				VARCHAR2(50),
 M_name				VARCHAR2(50),

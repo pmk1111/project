@@ -29,8 +29,14 @@ public class ProjectDAO {
 	public boolean projectInsert(Project pdata, int num) {
 
 		int result = 0;
+		
+		
+		
 
 		String seq = " SELECT PRO_SEQ.NEXTVAL FROM DUAL";
+		
+		
+		
 
 		int seqnum = 0;
 
@@ -40,16 +46,27 @@ public class ProjectDAO {
 
 				if (rs.next()) {
 
+					
+					
 					seqnum = rs.getInt(1);
+					
+					
+					
 
 					String projectsql = " INSERT INTO PROJECT " 
 									  + " (P_NUM, P_NAME, P_START, P_CLOSING, P_FILE) "
 									  + " VALUES (" + seqnum + ", ?, ?, ?, ?)";
+					
+					
+					
 
 					String membersql = "INSERT INTO MEMBER "
-					          + "(p_num, num, grade, m_id, M_name, M_pic, M_tel, M_email) "
-					          + "SELECT " + seqnum + ", ?, 'master', id, name, pic, tel, email FROM USR WHERE num = ? ";
+					                 + "(p_num, num, grade, m_id, M_name, M_pic, M_tel, M_email) "
+					                 + "SELECT " + seqnum + ", ?, 'master', id, name, pic, tel, email FROM USR WHERE num = ? ";
 
+					
+					
+					
 					try (PreparedStatement pstmtProject = con.prepareStatement(projectsql);
 						 PreparedStatement pstmtMember = con.prepareStatement(membersql);) {
 

@@ -42,3 +42,7 @@ FROM (SELECT ROWNUM rnum, j.*
       WHERE ROWNUM <= 7)
 WHERE rnum BETWEEN 1 AND 7;
 
+update PROJECT
+set P_FILE = 'AI.png'
+where P_NUM = 12
+
